@@ -1,0 +1,12 @@
+### Visual Studio ###
+bin/
+obj/
+.vs/
+
+### Rider ###
+.idea/
+
+### NCrunch ###
+*_NCrunch*
+nCrunchTemp_*
+*.ncrunch*
