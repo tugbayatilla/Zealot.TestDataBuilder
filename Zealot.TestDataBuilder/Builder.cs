@@ -4,17 +4,16 @@ public class Builder<TEntity> : IBuilder<TEntity>
     where TEntity : new()
 {
     private readonly IContext _context;
-    private IStrategy<TEntity> _numberStrategy;
+    private readonly IStrategyContainer _strategyContainer;
 
-    public Builder(IContext context)
+    public Builder(IContext context, IStrategyContainer strategyContainer)
     {
         _context = context;
+        _strategyContainer = strategyContainer;
     }
 
     public TEntity Build()
     {
-        var entity = new TEntity();
-        
         // find properties
         var properties = typeof(TEntity).GetProperties();
         // for each property
@@ -22,22 +21,12 @@ public class Builder<TEntity> : IBuilder<TEntity>
         {
             // find the Type of the property
             // find the Strategy for the type, create if necessary
-            var strategy = FindStrategy(propertyInfo.PropertyType);
+            var strategy = _strategyContainer.Resolve(propertyInfo.PropertyType);
             // execute the strategy
             // TODO: parallelism 
-            Task.Run(() => strategy.ExecuteAsync(_context, entity, propertyInfo)).Wait();
+            Task.Run(() => strategy.ExecuteAsync(_context, propertyInfo)).Wait();
         }
 
-        return entity;
-    }
-
-    private IStrategy<TEntity> FindStrategy(Type propertyType)
-    {
-        if (_numberStrategy == null)
-        {
-            _numberStrategy = new NumberStrategy<TEntity>();
-        }
-
-        return _numberStrategy;
+        return (TEntity)_context.Entity;
     }
 }

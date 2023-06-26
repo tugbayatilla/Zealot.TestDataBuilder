@@ -2,13 +2,13 @@
 
 namespace Zealot;
 
-public class NumberStrategy<TEntity> : IStrategy<TEntity>
+public class NumberStrategy : IStrategy
 {
     private int _currentNumber = 0;
-    public async Task ExecuteAsync(IContext context, TEntity entity, PropertyInfo propertyInfo)
+    public async Task ExecuteAsync(IContext context, PropertyInfo propertyInfo)
     {
         _currentNumber++;
-        propertyInfo.SetValue(entity, _currentNumber);
+        propertyInfo.SetValue(context.Entity, _currentNumber);
         await Task.CompletedTask;
     }
 

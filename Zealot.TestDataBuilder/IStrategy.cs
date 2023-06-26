@@ -2,8 +2,8 @@
 
 namespace Zealot;
 
-public interface IStrategy<in TEntity>
+public interface IStrategy
 {
-    Task ExecuteAsync(IContext context, TEntity entity, PropertyInfo propertyInfo);
+    Task ExecuteAsync(IContext context, PropertyInfo propertyInfo);
     IEnumerable<Type> AvailableTypes { get; }
 }
