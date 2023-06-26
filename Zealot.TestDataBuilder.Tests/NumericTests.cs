@@ -45,4 +45,14 @@ public class NumericTests
 
         subject.ShortProp.Should().NotBe(subject.ShortProp2);
     }
+    
+    [Fact]
+    public void Support_two_integers_nullable()
+    {
+        var subject = TestDataBuilder.For<PublicWithTwoIntNullable>().Build();
+        subject.IntProp.Should().NotBe(0);
+        subject.IntProp2.Should().NotBe(0);
+
+        subject.IntProp.Should().NotBe(subject.IntProp2);
+    }
 }
