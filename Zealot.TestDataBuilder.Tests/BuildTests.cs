@@ -21,4 +21,10 @@ public class BuildTests
     {
         TestDataBuilder.For<PublicWithOneInt>().Build().IntProp.Should().Be(1);
     }
+    
+    [Fact]
+    public void GIVEN_PublicWithOneFloat_WHEN_Build_called_THEN_FloatProp_is_1()
+    {
+        TestDataBuilder.For<PublicWithOneFloat>().Build().FloatProp.Should().Be(1);
+    }
 }
