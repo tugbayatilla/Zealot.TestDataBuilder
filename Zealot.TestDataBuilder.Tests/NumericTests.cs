@@ -5,19 +5,19 @@ namespace Zealot.SampleBuilder.Tests;
 public class NumericTests
 {
     [Fact]
-    public void GIVEN_PublicWithOneInt_WHEN_Build_called_THEN_IntProp_is_1()
+    public void Support_one_integer()
     {
         TestDataBuilder.For<PublicWithOneInt>().Build().IntProp.Should().Be(1);
     }
     
     [Fact]
-    public void GIVEN_PublicWithOneFloat_WHEN_Build_called_THEN_FloatProp_is_1()
+    public void Support_one_float()
     {
         TestDataBuilder.For<PublicWithOneFloat>().Build().FloatProp.Should().Be(1);
     }
     
     [Fact]
-    public void GIVEN_PublicWithTwoInt_WHEN_Build_called_THEN_property_values_must_be_different()
+    public void Support_two_integers()
     {
         var subject = TestDataBuilder.For<PublicWithTwoInt>().Build();
         subject.IntProp.Should().NotBe(0);
@@ -27,7 +27,7 @@ public class NumericTests
     }
     
     [Fact]
-    public void GIVEN_PublicWithTwoDouble_WHEN_Build_called_THEN_property_values_must_be_different()
+    public void Support_two_double()
     {
         var subject = TestDataBuilder.For<PublicWithTwoDouble>().Build();
         subject.DoubleProp.Should().NotBe(0);

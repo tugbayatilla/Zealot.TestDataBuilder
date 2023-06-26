@@ -5,7 +5,7 @@ namespace Zealot.SampleBuilder.Tests;
 public class StringTests
 {
     [Fact]
-    public void GIVEN_PublicWithOneString_WHEN_Build_called_THEN_StringProp_is_StringProp()
+    public void Support_string()
     {
         var entity = TestDataBuilder.For<PublicWithOneString>().Build();
         entity.StringProp.Should().Be($"{nameof(entity.StringProp)}");

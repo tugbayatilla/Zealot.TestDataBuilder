@@ -13,13 +13,13 @@ public class BuildTests
     }
 
     [Fact]
-    public void Build_returns_not_null_for_public_empty()
+    public void Build_always_creates_an_instance()
     {
         TestDataBuilder.For<PublicEmpty>().Build().Should().NotBeNull();
     }
 
     [Fact]
-    public void UnsupportedException()
+    public void Throws_Exception_for_unsupported_types()
     {
         var exception = Assert.Throws<NotSupportedException>(() =>
         {
