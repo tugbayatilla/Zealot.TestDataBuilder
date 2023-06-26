@@ -31,8 +31,18 @@ public class NumericTests
     {
         var subject = TestDataBuilder.For<PublicWithTwoDouble>().Build();
         subject.DoubleProp.Should().NotBe(0);
-        subject.DoubleProp.Should().NotBe(0);
+        subject.DoubleProp2.Should().NotBe(0);
 
         subject.DoubleProp.Should().NotBe(subject.DoubleProp2);
+    }
+    
+    [Fact]
+    public void Support_two_short()
+    {
+        var subject = TestDataBuilder.For<PublicWithTwoShort>().Build();
+        subject.ShortProp.Should().NotBe(0);
+        subject.ShortProp2.Should().NotBe(0);
+
+        subject.ShortProp.Should().NotBe(subject.ShortProp2);
     }
 }
