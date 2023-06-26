@@ -1,4 +1,4 @@
-namespace Zealot.SampleBuilder.Tests;
+namespace Zealot.SampleBuilder.Tests.TestObjects;
 
 public class PublicEmpty
 {
