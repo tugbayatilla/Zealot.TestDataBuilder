@@ -3,11 +3,10 @@ namespace Zealot.SampleBuilder.Tests;
 public class BuildTests
 {
     [Fact]
-    public void Creates_new_instance_of_given_type()
+    public void For_returns_builder_interface()
     {
-        var instanceOfStringClass = TestDataBuilder<StringClass>
-            .Build();
+        var forResult = TestDataBuilder.For<PublicEmpty>();
 
-        instanceOfStringClass.Should().NotBeNull();
+        forResult.Should().BeAssignableTo<IBuilder>();
     }
 }

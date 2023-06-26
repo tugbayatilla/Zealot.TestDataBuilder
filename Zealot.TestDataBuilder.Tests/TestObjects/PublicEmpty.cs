@@ -1,6 +1,6 @@
 namespace Zealot.SampleBuilder.Tests;
 
-public class StringClass
+public class PublicEmpty
 {
     
 }

@@ -1,9 +1,15 @@
 namespace Zealot;
 
-public sealed class TestDataBuilder<T> where T: class, new()
+public sealed class TestDataBuilder : IBuilder
 {
-    public static T Build()
+    public static IBuilder For<T>()
     {
-        return new T();
+        var builder = new Builder<T>();
+        return builder;
     }
+}
+
+public class Builder<T> : IBuilder
+{
+    
 }
