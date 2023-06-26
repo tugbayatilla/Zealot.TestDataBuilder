@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zealot.SampleBuilder", "Zealot.SampleBuilder\Zealot.SampleBuilder.csproj", "{7B8FC399-FA09-40AB-AF2D-C76A41D803B0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zealot.TestDataBuilder", "Zealot.TestDataBuilder\Zealot.TestDataBuilder.csproj", "{7B8FC399-FA09-40AB-AF2D-C76A41D803B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zealot.SampleBuilder.IntegrationTests", "Zealot.SampleBuilder.IntegrationTests\Zealot.SampleBuilder.IntegrationTests.csproj", "{70DADA11-D9BD-4D1E-AD72-4FEC56C8009F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zealot.TestDataBuilder.IntegrationTests", "Zealot.TestDataBuilder.IntegrationTests\Zealot.TestDataBuilder.IntegrationTests.csproj", "{70DADA11-D9BD-4D1E-AD72-4FEC56C8009F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zealot.SampleBuilder.Tests", "Zealot.SampleBuilder.Tests\Zealot.SampleBuilder.Tests.csproj", "{0F89E3EF-90AD-4284-A70A-82091518744F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zealot.TestDataBuilder.Tests", "Zealot.TestDataBuilder.Tests\Zealot.TestDataBuilder.Tests.csproj", "{0F89E3EF-90AD-4284-A70A-82091518744F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

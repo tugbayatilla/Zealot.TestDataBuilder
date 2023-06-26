@@ -7,6 +7,7 @@
 
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
+    <RootNamespace>Zealot.SampleBuilder.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Zealot.SampleBuilder\Zealot.SampleBuilder.csproj" />
+    <ProjectReference Include="..\Zealot.TestDataBuilder\Zealot.TestDataBuilder.csproj" />
   </ItemGroup>
 
 </Project>
