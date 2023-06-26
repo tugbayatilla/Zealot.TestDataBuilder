@@ -15,4 +15,10 @@ public class BuildTests
     {
         TestDataBuilder.For<PublicEmpty>().Build().Should().NotBeNull();
     }
+    
+    [Fact]
+    public void GIVEN_PublicWithOneInt_WHEN_Build_called_THEN_IntProp_is_1()
+    {
+        TestDataBuilder.For<PublicWithOneInt>().Build().IntProp.Should().Be(1);
+    }
 }

@@ -1,20 +1,12 @@
 namespace Zealot;
 
-public sealed class TestDataBuilder
+public static class TestDataBuilder
 {
-    public static IBuilder<TEntity> For<TEntity>() 
-        where TEntity: new()
+    public static IBuilder<TEntity> For<TEntity>()
+        where TEntity : new()
     {
-        var builder = new Builder<TEntity>();
+        IContext context = default!;
+        var builder = new Builder<TEntity>(context);
         return builder;
-    }
-}
-
-public class Builder<TEntity> : IBuilder<TEntity> 
-    where TEntity: new()
-{
-    public TEntity Build()
-    {
-        return new TEntity();
     }
 }
