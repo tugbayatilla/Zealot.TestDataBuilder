@@ -4,6 +4,7 @@ public class Builder<TEntity> : IBuilder<TEntity>
     where TEntity : new()
 {
     private readonly IContext _context;
+    private IStrategy<TEntity> _numberStrategy;
 
     public Builder(IContext context)
     {
@@ -32,6 +33,11 @@ public class Builder<TEntity> : IBuilder<TEntity>
 
     private IStrategy<TEntity> FindStrategy(Type propertyType)
     {
-        return new NumberStrategy<TEntity>();
+        if (_numberStrategy == null)
+        {
+            _numberStrategy = new NumberStrategy<TEntity>();
+        }
+
+        return _numberStrategy;
     }
 }

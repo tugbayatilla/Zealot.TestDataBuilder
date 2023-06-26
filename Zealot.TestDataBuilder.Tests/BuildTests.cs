@@ -27,4 +27,14 @@ public class BuildTests
     {
         TestDataBuilder.For<PublicWithOneFloat>().Build().FloatProp.Should().Be(1);
     }
+    
+    [Fact]
+    public void GIVEN_PublicWithTwoInt_WHEN_Build_called_THEN_property_values_must_be_different()
+    {
+        var subject = TestDataBuilder.For<PublicWithTwoInt>().Build();
+        subject.IntProp.Should().NotBe(0);
+        subject.IntProp2.Should().NotBe(0);
+
+        subject.IntProp.Should().NotBe(subject.IntProp2);
+    }
 }
