@@ -12,5 +12,5 @@ public class NumberStrategy : IStrategy
         await Task.CompletedTask;
     }
 
-    public IEnumerable<Type> AvailableTypes => new[] { typeof(int) };
+    public IEnumerable<Type> AvailableTypes => new[] { typeof(int), typeof(double), typeof(float) };
 }
