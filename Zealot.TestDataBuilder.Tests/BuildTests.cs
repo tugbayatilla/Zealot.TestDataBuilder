@@ -7,6 +7,12 @@ public class BuildTests
     {
         var forResult = TestDataBuilder.For<PublicEmpty>();
 
-        forResult.Should().BeAssignableTo<IBuilder>();
+        forResult.Should().BeAssignableTo<IBuilder<PublicEmpty>>();
+    }
+    
+    [Fact]
+    public void Build_returns_not_null_for_public_empty()
+    {
+        TestDataBuilder.For<PublicEmpty>().Build().Should().NotBeNull();
     }
 }

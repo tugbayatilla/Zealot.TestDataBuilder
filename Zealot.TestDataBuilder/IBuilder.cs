@@ -1,5 +1,6 @@
 ﻿namespace Zealot;
 
-public interface IBuilder
+public interface IBuilder<TEntity> where TEntity: new()
 {
+    TEntity Build();
 }
