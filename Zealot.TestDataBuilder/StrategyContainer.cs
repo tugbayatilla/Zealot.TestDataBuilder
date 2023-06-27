@@ -12,6 +12,7 @@ public class StrategyContainer : IStrategyContainer
         _registeredStrategies.Add(new NumberStrategy());
         _registeredStrategies.Add(new StringStrategy());
         _registeredStrategies.Add(new CharStrategy());
+        _registeredStrategies.Add(new ByteStrategy());
     }
     
     public IStrategy Resolve(Type propertyType)
