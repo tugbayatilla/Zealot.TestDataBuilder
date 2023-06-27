@@ -2,6 +2,9 @@ namespace Zealot;
 
 public static class TestDataBuilder
 {
+    /// <summary>
+    /// Required
+    /// </summary>
     public static IBuilder<TEntity> For<TEntity>()
         where TEntity : new()
     {
