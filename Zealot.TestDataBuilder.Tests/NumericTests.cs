@@ -26,7 +26,6 @@ public class NumericTests
         TestHelper.AssertAllPropertiesWithSetOnly(subject, setOnlyType);
     }
     
-    
     [Fact]
     public void Support_integer()
     {
@@ -35,17 +34,12 @@ public class NumericTests
             .SetOnly<int>()
             .Build();
 
-        AssertIntProp(subject);
-        
-        TestHelper.CheckDefaultExcept<int>(subject);
-    }
-
-    internal static void AssertIntProp(PublicWithAll subject)
-    {
         subject.IntProp.Should().NotBe(0);
         subject.IntProp2.Should().NotBe(0);
 
         subject.IntProp.Should().NotBe(subject.IntProp2);
+
+        TestHelper.CheckDefaultExcept<int>(subject);
     }
 
     [Fact]

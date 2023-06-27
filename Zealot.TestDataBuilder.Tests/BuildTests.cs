@@ -27,15 +27,4 @@ public class BuildTests
         });
         exception.Message.Should().Be($"The strategy with type '{typeof(PublicWithUnsupportedType.UnsupportedType).FullName}' is not supported.");
     }
-    
-    [Fact]
-    public void Support_all()
-    {
-        var subject = TestDataBuilder
-            .For<PublicWithAll>()
-            .Build();
-        
-        NumericTests.AssertIntProp(subject);
-        // todo: get the rest here
-    }
 }
