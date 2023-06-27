@@ -25,4 +25,12 @@ public class StringTests
         subject.CharProp.Should().NotBeNull();
         subject.CharProp2.Should().NotBeNull();
     }
+    
+    [Fact]
+    public void Support_char_nullable()
+    {
+        var subject = TestDataBuilder.For<PublicWithTwoCharNullable>().Build();
+        subject.CharProp.Should().NotBeNull();
+        subject.CharProp2.Should().NotBeNull();
+    }
 }
