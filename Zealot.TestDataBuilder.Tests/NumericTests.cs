@@ -5,15 +5,25 @@ namespace Zealot.SampleBuilder.Tests;
 public class NumericTests
 {
     [Theory]
+    [InlineData(typeof(string))]
     [InlineData(typeof(int))]
-    public void Support_property_type(Type setOnlyType)
+    [InlineData(typeof(int?))]
+    [InlineData(typeof(double))]
+    [InlineData(typeof(double?))]
+    [InlineData(typeof(float))]
+    [InlineData(typeof(float?))]
+    [InlineData(typeof(long))]
+    [InlineData(typeof(long?))]
+    [InlineData(typeof(short))]
+    [InlineData(typeof(short?))]
+    public void Support_type(Type setOnlyType)
     {
         var subject = TestDataBuilder
             .For<PublicWithAll>()
             .SetOnly(setOnlyType)
             .Build();
 
-        TestHelper.CheckAllWithSetOnly(subject, setOnlyType);
+        TestHelper.AssertAllPropertiesWithSetOnly(subject, setOnlyType);
     }
     
     

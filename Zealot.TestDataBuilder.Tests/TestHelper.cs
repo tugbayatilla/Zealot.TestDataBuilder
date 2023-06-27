@@ -32,21 +32,23 @@ public static class TestHelper
         }
     }
     
-    public static void CheckAllWithSetOnly<TProperty>(object obj)
+    public static void AssertAllPropertiesWithSetOnly<TProperty>(object obj)
     {
-        CheckAllWithSetOnly(obj, typeof(TProperty));
+        AssertAllPropertiesWithSetOnly(obj, typeof(TProperty));
     }
     
-    public static void CheckAllWithSetOnly(object obj, Type setOnlyType)
+    public static void AssertAllPropertiesWithSetOnly(object obj, Type setOnlyType)
     {
         var props = obj.GetType().GetProperties();
         foreach (var prop in props)
         {
             if(prop.PropertyType == setOnlyType)
-                prop.GetValue(obj).Should().NotBe(prop.IsNullable() ? default : prop.PropertyType.GetDefault());
+                prop.GetValue(obj).Should().NotBe(prop.IsNullable() ? default : prop.PropertyType.GetDefault(), 
+                    $"{prop.Name} should not be {prop.PropertyType.GetDefault()}");
             else
             {
-                prop.GetValue(obj).Should().Be(prop.IsNullable() ? default : prop.PropertyType.GetDefault());
+                prop.GetValue(obj).Should().Be(prop.IsNullable() ? default : prop.PropertyType.GetDefault(), 
+                    $"{prop.Name} should be {prop.PropertyType.GetDefault()}");
             }
         }
     }
