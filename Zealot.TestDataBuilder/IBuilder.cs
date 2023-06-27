@@ -1,8 +1,11 @@
-﻿namespace Zealot;
+﻿using System.Linq.Expressions;
 
-public interface IBuilder<out TEntity> where TEntity: new()
+namespace Zealot;
+
+public interface IBuilder<TEntity> where TEntity: new()
 {
     TEntity Build();
     IBuilder<TEntity> SetOnly<TProperty>();
     IBuilder<TEntity> SetOnly(Type type);
+    IBuilder<TEntity> SetValue<TProperty>(Expression<Func<TEntity, TProperty>> propertySelector, TProperty value);
 }

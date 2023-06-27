@@ -1,4 +1,7 @@
-﻿namespace Zealot;
+﻿using System.Linq.Expressions;
+using System.Reflection;
+
+namespace Zealot;
 
 public class Builder<TEntity> : IBuilder<TEntity>
     where TEntity : new()
@@ -28,6 +31,13 @@ public class Builder<TEntity> : IBuilder<TEntity>
             Task.Run(() => strategy.ExecuteAsync(_context, propertyInfo)).Wait();
         }
 
+        // override values
+        overrideExpressions.ForEach(p =>
+        {
+            ((PropertyInfo)p.member.Member).SetValue(_context.Entity, p.value);
+        });
+        
+        
         return (TEntity)_context.Entity;
     }
 
@@ -39,6 +49,15 @@ public class Builder<TEntity> : IBuilder<TEntity>
     public IBuilder<TEntity> SetOnly(Type type)
     {
         _context.SetOnlyTypeContainer.Add(type);
+        return this;
+    }
+
+    private List<(MemberExpression member, object value)> overrideExpressions = new();
+    public IBuilder<TEntity> SetValue<TProperty>(Expression<Func<TEntity, TProperty>> propertySelector, TProperty value)
+    {
+        if (propertySelector == null) throw new ArgumentNullException(nameof(propertySelector));
+        
+        overrideExpressions.Add(new (propertySelector.Body as MemberExpression, value));
         return this;
     }
 }

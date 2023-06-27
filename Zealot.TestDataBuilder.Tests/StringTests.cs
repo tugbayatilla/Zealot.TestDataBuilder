@@ -31,4 +31,17 @@ public class StringTests
 
         TestHelper.CheckDefaultExcept<string>(entity);
     }
+    
+    [Fact]
+    public void Support_SetValue()
+    {
+        var expected = 1_000_000;
+        
+        var entity = TestDataBuilder
+            .For<PublicWithAll>()
+            .SetValue(p=>p.IntProp, expected)
+            .Build();
+        
+        entity.IntProp.Should().Be(expected);
+    }
 }
