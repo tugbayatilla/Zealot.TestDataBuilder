@@ -33,7 +33,8 @@ public class NumberStrategy : IStrategy
             typeof(int?), typeof(int),
             typeof(short?), typeof(short),
             typeof(double?), typeof(double), 
-            typeof(float)};
+            typeof(float?), typeof(float)
+        };
 
     static bool IsNullableType(Type type)
     {
