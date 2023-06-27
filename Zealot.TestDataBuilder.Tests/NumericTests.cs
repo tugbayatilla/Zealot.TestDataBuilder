@@ -4,6 +4,19 @@ namespace Zealot.SampleBuilder.Tests;
 
 public class NumericTests
 {
+    [Theory]
+    [InlineData(typeof(int))]
+    public void Support_property_type(Type setOnlyType)
+    {
+        var subject = TestDataBuilder
+            .For<PublicWithAll>()
+            .SetOnly(setOnlyType)
+            .Build();
+
+        TestHelper.CheckAllWithSetOnly(subject, setOnlyType);
+    }
+    
+    
     [Fact]
     public void Support_integer()
     {

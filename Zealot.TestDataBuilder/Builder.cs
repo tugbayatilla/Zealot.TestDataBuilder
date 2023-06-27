@@ -35,7 +35,12 @@ public class Builder<TEntity> : IBuilder<TEntity>
 
     public IBuilder<TEntity> SetOnly<TProperty>()
     {
-        _context.SetOnlyTypeContainer.Add(typeof(TProperty));
+        return SetOnly(typeof(TProperty));
+    }
+
+    public IBuilder<TEntity> SetOnly(Type type)
+    {
+        _context.SetOnlyTypeContainer.Add(type);
         return this;
     }
 }
