@@ -11,4 +11,12 @@ public class ByteTests
         subject.ByteProp.Should().NotBe(default);
         subject.ByteProp2.Should().NotBe(default);
     }
+    
+    [Fact]
+    public void Support_byte_nullable()
+    {
+        var subject = TestDataBuilder.For<PublicWithTwoByteNullable>().Build();
+        subject.ByteProp.Should().NotBe(default);
+        subject.ByteProp2.Should().NotBe(default);
+    }
 }

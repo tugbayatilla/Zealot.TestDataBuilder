@@ -14,6 +14,6 @@ public class ByteStrategy : IStrategy
 
     public IEnumerable<Type> AvailableTypes => new[]
     {
-        typeof(byte)
+        typeof(byte?), typeof(byte)
     };
 }
