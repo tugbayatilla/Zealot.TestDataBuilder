@@ -22,7 +22,7 @@ public class Builder<TEntity> : IBuilder<TEntity>
         // for each property
         foreach (var propertyInfo in properties)
         {
-            if (_context.SetOnlyTypeContainer.IgnoreThis(propertyInfo.PropertyType)) continue;
+            if (_context.WithOnlyContainer.IgnoreThis(propertyInfo.PropertyType)) continue;
             
             // find the Strategy for the type
             var strategy = _strategyContainer.Resolve(propertyInfo.PropertyType);
@@ -41,19 +41,19 @@ public class Builder<TEntity> : IBuilder<TEntity>
         return (TEntity)_context.Entity;
     }
 
-    public IBuilder<TEntity> SetOnly<TProperty>()
+    public IBuilder<TEntity> WithOnly<TProperty>()
     {
-        return SetOnly(typeof(TProperty));
+        return WithOnly(typeof(TProperty));
     }
 
-    public IBuilder<TEntity> SetOnly(Type type)
+    public IBuilder<TEntity> WithOnly(Type type)
     {
-        _context.SetOnlyTypeContainer.Add(type);
+        _context.WithOnlyContainer.Add(type);
         return this;
     }
 
     private List<(MemberExpression member, object value)> overrideExpressions = new();
-    public IBuilder<TEntity> SetValue<TProperty>(Expression<Func<TEntity, TProperty>> propertySelector, TProperty value)
+    public IBuilder<TEntity> WithValue<TProperty>(Expression<Func<TEntity, TProperty>> propertySelector, TProperty value)
     {
         if (propertySelector == null) throw new ArgumentNullException(nameof(propertySelector));
         

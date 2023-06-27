@@ -9,7 +9,7 @@ public class StringTests
     {
         var entity = TestDataBuilder
             .For<PublicWithAll>()
-            .SetOnly<string>()
+            .WithOnly<string>()
             .Build();
         
         entity.StringProp.Should().Be($"{nameof(entity.StringProp)}");
@@ -26,7 +26,7 @@ public class StringTests
     {
         var entity = TestDataBuilder
             .For<PublicWithAll>()
-            .SetOnly<string>()
+            .WithOnly<string>()
             .Build();
 
         TestHelper.CheckDefaultExcept<string>(entity);
@@ -39,7 +39,7 @@ public class StringTests
         
         var entity = TestDataBuilder
             .For<PublicWithAll>()
-            .SetValue(p=>p.IntProp, expected)
+            .WithValue(p=>p.IntProp, expected)
             .Build();
         
         entity.IntProp.Should().Be(expected);

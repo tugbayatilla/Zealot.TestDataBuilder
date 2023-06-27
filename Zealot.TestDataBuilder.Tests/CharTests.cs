@@ -9,7 +9,7 @@ public class CharTests
     {
         var subject = TestDataBuilder
             .For<PublicWithAll>()
-            .SetOnly<char>()
+            .WithOnly<char>()
             .Build();
         
         subject.CharProp.Should().NotBeNull();
@@ -21,7 +21,7 @@ public class CharTests
     {
         var subject = TestDataBuilder
             .For<PublicWithAll>()
-            .SetOnly<char?>()
+            .WithOnly<char?>()
             .Build();
 
         subject.CharNullableProp.Should().NotBeNull();

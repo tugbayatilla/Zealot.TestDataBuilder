@@ -20,7 +20,7 @@ public class NumericTests
     {
         var subject = TestDataBuilder
             .For<PublicWithAll>()
-            .SetOnly(setOnlyType)
+            .WithOnly(setOnlyType)
             .Build();
 
         TestHelper.AssertAllPropertiesWithSetOnly(subject, setOnlyType);
@@ -31,7 +31,7 @@ public class NumericTests
     {
         var subject = TestDataBuilder
             .For<PublicWithAll>()
-            .SetOnly<int>()
+            .WithOnly<int>()
             .Build();
 
         subject.IntProp.Should().NotBe(0);
@@ -47,7 +47,7 @@ public class NumericTests
     {
         var subject = TestDataBuilder
             .For<PublicWithAll>()
-            .SetOnly<double>()
+            .WithOnly<double>()
             .Build();
         subject.DoubleProp.Should().NotBe(0);
         subject.DoubleProp2.Should().NotBe(0);
@@ -60,7 +60,7 @@ public class NumericTests
     {
         var subject = TestDataBuilder
             .For<PublicWithAll>()
-            .SetOnly<short>()
+            .WithOnly<short>()
             .Build();
         
         subject.ShortProp.Should().NotBe(0);
@@ -74,7 +74,7 @@ public class NumericTests
     {
         var subject = TestDataBuilder
             .For<PublicWithAll>()
-            .SetOnly<int?>()
+            .WithOnly<int?>()
             .Build();
         
         subject.IntNullableProp.Should().NotBe(0);
@@ -88,7 +88,7 @@ public class NumericTests
     {
         var subject = TestDataBuilder
             .For<PublicWithAll>()
-            .SetOnly<short?>()
+            .WithOnly<short?>()
             .Build();
         
         subject.ShortNullableProp.Should().NotBeNull();
@@ -105,7 +105,7 @@ public class NumericTests
     {
         var subject = TestDataBuilder
             .For<PublicWithAll>()
-            .SetOnly<double?>()
+            .WithOnly<double?>()
             .Build();
         
         subject.DoubleNullableProp.Should().NotBeNull();
@@ -122,7 +122,7 @@ public class NumericTests
     {
         var subject = TestDataBuilder
             .For<PublicWithAll>()
-            .SetOnly<float?>()
+            .WithOnly<float?>()
             .Build();
         
         subject.FloatNullableProp.Should().NotBeNull();
@@ -138,7 +138,7 @@ public class NumericTests
     public void Support_float()
     {
         var subject = TestDataBuilder.For<PublicWithAll>()
-                .SetOnly<float>()
+                .WithOnly<float>()
                 .Build();
         subject.FloatProp.Should().NotBe(0);
         subject.FloatProp2.Should().NotBe(0);

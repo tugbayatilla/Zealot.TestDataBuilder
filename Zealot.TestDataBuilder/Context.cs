@@ -2,12 +2,12 @@ namespace Zealot;
 
 public class Context : IContext
 {
-    public Context(object entity, ISetOnlyTypeContainer setOnlyTypeContainer)
+    public Context(object entity, IWithOnlyContainer withOnlyContainer)
     {
         Entity = entity;
-        SetOnlyTypeContainer = setOnlyTypeContainer;
+        WithOnlyContainer = withOnlyContainer;
     }
 
     public object Entity { get; }
-    public ISetOnlyTypeContainer SetOnlyTypeContainer { get; }
+    public IWithOnlyContainer WithOnlyContainer { get; }
 }

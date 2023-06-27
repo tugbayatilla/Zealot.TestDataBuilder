@@ -2,7 +2,7 @@ using System.Reflection;
 
 namespace Zealot;
 
-public interface ISetOnlyTypeContainer
+public interface IWithOnlyContainer
 {
     void Add(Type type);
     IEnumerable<Type> List();

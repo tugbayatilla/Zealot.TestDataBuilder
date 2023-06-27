@@ -9,7 +9,7 @@ public class ByteTests
     {
         var subject = TestDataBuilder
             .For<PublicWithAll>()
-            .SetOnly<byte>()
+            .WithOnly<byte>()
             .Build();
         
         subject.ByteProp.Should().NotBe(default);
@@ -21,7 +21,7 @@ public class ByteTests
     {
         var subject = TestDataBuilder
             .For<PublicWithAll>()
-            .SetOnly<byte?>()
+            .WithOnly<byte?>()
             .Build();
         
         subject.ByteNullableProp.Should().NotBeNull();

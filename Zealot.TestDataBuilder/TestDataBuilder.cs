@@ -7,7 +7,7 @@ public static class TestDataBuilder
     {
         IContext context = new Context(
             new TEntity(), 
-            new SetOnlyTypeContainer());
+            new WithOnlyContainer());
 
         return new Builder<TEntity>(context, new StrategyContainer());
     }

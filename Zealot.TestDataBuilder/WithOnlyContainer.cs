@@ -2,7 +2,7 @@ using System.Reflection;
 
 namespace Zealot;
 
-internal class SetOnlyTypeContainer : ISetOnlyTypeContainer
+internal class WithOnlyContainer : IWithOnlyContainer
 {
     private readonly IList<Type> _list = new List<Type>();
     public void Add(Type type)
