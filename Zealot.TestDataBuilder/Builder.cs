@@ -19,15 +19,13 @@ public class Builder<TEntity> : IBuilder<TEntity>
         // for each property
         foreach (var propertyInfo in properties)
         {
-            if (_context.SetOnlyTypeContainer.HasNothing ||
-                _context.SetOnlyTypeContainer.Exist(propertyInfo.PropertyType))
-            {
-                // find the Strategy for the type
-                var strategy = _strategyContainer.Resolve(propertyInfo.PropertyType);
-                // execute the strategy
-                // TODO: parallelism 
-                Task.Run(() => strategy.ExecuteAsync(_context, propertyInfo)).Wait();
-            }
+            if (_context.SetOnlyTypeContainer.IgnoreThis(propertyInfo.PropertyType)) continue;
+            
+            // find the Strategy for the type
+            var strategy = _strategyContainer.Resolve(propertyInfo.PropertyType);
+            // execute the strategy
+            // TODO: parallelism 
+            Task.Run(() => strategy.ExecuteAsync(_context, propertyInfo)).Wait();
         }
 
         return (TEntity)_context.Entity;

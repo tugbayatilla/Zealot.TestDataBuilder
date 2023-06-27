@@ -1,3 +1,5 @@
+using System.Reflection;
+
 namespace Zealot;
 
 internal class SetOnlyTypeContainer : ISetOnlyTypeContainer
@@ -17,6 +19,6 @@ internal class SetOnlyTypeContainer : ISetOnlyTypeContainer
     }
 
     public bool Exist(Type type) => _list.Any(p => p == type && p.IsNullable() == type.IsNullable());
-
-    public bool HasNothing => !_list.Any();
+    public bool HasSomething => _list.Any();
+    public bool IgnoreThis(Type ignoreType) => HasSomething && !Exist(ignoreType);
 }

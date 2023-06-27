@@ -1,3 +1,5 @@
+using System.Reflection;
+
 namespace Zealot;
 
 public interface ISetOnlyTypeContainer
@@ -6,5 +8,7 @@ public interface ISetOnlyTypeContainer
     IEnumerable<Type> List();
     
     bool Exist(Type type);
-    bool HasNothing { get; }
+    bool HasSomething { get; }
+
+    bool IgnoreThis(Type ignoreType);
 }
