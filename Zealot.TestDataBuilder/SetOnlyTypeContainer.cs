@@ -16,5 +16,7 @@ internal class SetOnlyTypeContainer : ISetOnlyTypeContainer
         return _list.AsEnumerable();
     }
 
-    public bool IsMemberOfSetOnly(Type type) => _list.Any() && _list.All(p => p != type);
+    public bool Exist(Type type) => _list.Any(p => p == type && p.IsNullable() == type.IsNullable());
+
+    public bool HasNothing => !_list.Any();
 }

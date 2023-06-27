@@ -1,6 +1,6 @@
 ﻿namespace Zealot.SampleBuilder.Tests.TestObjects;
 
-public class PublicWithAllNumerics
+public class PublicWithAll
 {
     public int IntProp { get; set; }
     public int IntProp2 { get; set; }
@@ -37,4 +37,22 @@ public class PublicWithAllNumerics
     
     public short? ShortNullableProp { get; set; }
     public short? ShortNullableProp2 { get; set; }
+    
+    public byte ByteProp { get; set; }
+    public byte ByteProp2 { get; set; }
+    
+    public byte? ByteNullableProp { get; set; }
+    public byte? ByteNullableProp2 { get; set; }
+    
+    public char CharProp { get; set; }
+    public char CharProp2 { get; set; }
+    
+    public char? CharNullableProp { get; set; }
+    public char? CharNullableProp2 { get; set; }
+    
+    public string StringProp { get; set; }
+    public string StringProp2 { get; set; }
+    
+    public string? StringNullableProp { get; set; }
+    public string? StringNullableProp2 { get; set; }
 }

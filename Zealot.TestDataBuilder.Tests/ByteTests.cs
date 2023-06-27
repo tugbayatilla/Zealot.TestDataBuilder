@@ -7,7 +7,11 @@ public class ByteTests
     [Fact]
     public void Support_byte()
     {
-        var subject = TestDataBuilder.For<PublicWithTwoByte>().Build();
+        var subject = TestDataBuilder
+            .For<PublicWithAll>()
+            .SetOnly<byte>()
+            .Build();
+        
         subject.ByteProp.Should().NotBe(default);
         subject.ByteProp2.Should().NotBe(default);
     }
@@ -15,8 +19,15 @@ public class ByteTests
     [Fact]
     public void Support_byte_nullable()
     {
-        var subject = TestDataBuilder.For<PublicWithTwoByteNullable>().Build();
-        subject.ByteProp.Should().NotBe(default);
-        subject.ByteProp2.Should().NotBe(default);
+        var subject = TestDataBuilder
+            .For<PublicWithAll>()
+            .SetOnly<byte?>()
+            .Build();
+        
+        subject.ByteNullableProp.Should().NotBeNull();
+        subject.ByteNullableProp2.Should().NotBeNull();
+        
+        subject.ByteNullableProp.Should().NotBe(default);
+        subject.ByteNullableProp2.Should().NotBe(default);
     }
 }

@@ -4,11 +4,11 @@ namespace Zealot.Strategies;
 
 public class ByteStrategy : IStrategy
 {
+    private static readonly byte A = Convert.ToByte('A');
+
     public async Task ExecuteAsync(IContext context, PropertyInfo propertyInfo)
     {
-        var value = Convert.ToByte('a');
-        
-        propertyInfo.SetValue(context.Entity, value);
+        propertyInfo.SetValue(context.Entity, A);
         await Task.CompletedTask;
     }
 

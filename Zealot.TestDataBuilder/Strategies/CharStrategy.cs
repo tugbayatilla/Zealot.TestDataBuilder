@@ -4,11 +4,11 @@ namespace Zealot.Strategies;
 
 public class CharStrategy : IStrategy
 {
+    private const char A = 'A';
+
     public async Task ExecuteAsync(IContext context, PropertyInfo propertyInfo)
     {
-        const char a = 'a';
-
-        propertyInfo.SetValue(context.Entity, a);
+        propertyInfo.SetValue(context.Entity, A);
         await Task.CompletedTask;
     }
 

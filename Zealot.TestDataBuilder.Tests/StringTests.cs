@@ -7,14 +7,28 @@ public class StringTests
     [Fact]
     public void Support_string()
     {
-        var entity = TestDataBuilder.For<PublicWithOneString>().Build();
+        var entity = TestDataBuilder
+            .For<PublicWithAll>()
+            .SetOnly<string>()
+            .Build();
+        
         entity.StringProp.Should().Be($"{nameof(entity.StringProp)}");
+        
+        entity.StringNullableProp.Should().NotBeNull();
+        entity.StringNullableProp2.Should().NotBeNull();
+        
+        entity.StringNullableProp.Should().Be($"{nameof(entity.StringNullableProp)}");
+        entity.StringNullableProp2.Should().Be($"{nameof(entity.StringNullableProp2)}");
     }
     
     [Fact]
-    public void Support_nullable_string()
+    public void Support_SetOnly_method()
     {
-        var entity = TestDataBuilder.For<PublicWithOneStringNullable>().Build();
-        entity.StringPropNullable.Should().Be($"{nameof(entity.StringPropNullable)}");
+        var entity = TestDataBuilder
+            .For<PublicWithAll>()
+            .SetOnly<string>()
+            .Build();
+
+        TestHelper.CheckDefaultExcept<string>(entity);
     }
 }

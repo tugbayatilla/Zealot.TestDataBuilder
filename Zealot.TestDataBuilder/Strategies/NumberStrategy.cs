@@ -9,12 +9,9 @@ public class NumberStrategy : IStrategy
 
     public async Task ExecuteAsync(IContext context, PropertyInfo propertyInfo)
     {
-        if(context.SetOnlyTypeContainer.IsMemberOfSetOnly(propertyInfo.PropertyType))
-            return;
-        
         _currentNumber++;
 
-        if (IsNullableType(propertyInfo.PropertyType))
+        if (propertyInfo.IsNullable())
         {
             var underlyingType = propertyInfo.PropertyType.GenericTypeArguments.FirstOrDefault();
 
@@ -40,16 +37,4 @@ public class NumberStrategy : IStrategy
             typeof(decimal?), typeof(decimal),
             typeof(long?), typeof(long)
         };
-
-    static bool IsNullableType(Type type)
-    {
-        // ref-type
-        if (!type.IsValueType)
-        {
-            return true; 
-        }
-
-        // Nullable<T>
-        return Nullable.GetUnderlyingType(type) != null;
-    }
 }
