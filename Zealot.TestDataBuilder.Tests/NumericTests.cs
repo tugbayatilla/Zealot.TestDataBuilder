@@ -65,4 +65,14 @@ public class NumericTests
 
         subject.ShortProp.Should().NotBe(subject.ShortProp2);
     }
+    
+    [Fact]
+    public void Support_two_double_nullable()
+    {
+        var subject = TestDataBuilder.For<PublicWithTwoDoubleNullable>().Build();
+        subject.DoubleProp.Should().NotBe(0);
+        subject.DoubleProp2.Should().NotBe(0);
+
+        subject.DoubleProp.Should().NotBe(subject.DoubleProp2);
+    }
 }
