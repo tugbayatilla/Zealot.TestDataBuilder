@@ -8,8 +8,10 @@ public static class TestDataBuilder
         where TEntity : new()
     {
         var entity = new TEntity();
+        ISetOnlyTypeContainer setOnlyContainer = new SetOnlyTypeContainer();
         
-        IContext context = new Context(entity);
+        IContext context = new Context(entity, setOnlyContainer);
+        
         IStrategyContainer strategyContainer = new StrategyContainer();
         
         var builder = new Builder<TEntity>(context, strategyContainer);

@@ -60,10 +60,13 @@ public class NumericTests
     public void Support_two_short_nullable()
     {
         var subject = TestDataBuilder.For<PublicWithTwoShortNullable>().Build();
-        subject.ShortProp.Should().NotBe(0);
-        subject.ShortProp2.Should().NotBe(0);
+        subject.ShortNullableProp.Should().NotBeNull();
+        subject.ShortNullableProp2.Should().NotBeNull();
 
-        subject.ShortProp.Should().NotBe(subject.ShortProp2);
+        subject.ShortNullableProp.Should().NotBe(0);
+        subject.ShortNullableProp2.Should().NotBe(0);
+
+        subject.ShortNullableProp.Should().NotBe(subject.ShortNullableProp2);
     }
     
     [Fact]
@@ -90,6 +93,18 @@ public class NumericTests
     public void Support_two_float_nullable()
     {
         var subject = TestDataBuilder.For<PublicWithTwoFloatNullable>().Build();
+        subject.FloatProp.Should().NotBe(0);
+        subject.FloatProp2.Should().NotBe(0);
+
+        subject.FloatProp.Should().NotBe(subject.FloatProp2);
+    }
+    
+    [Fact]
+    public void Support_float()
+    {
+        var subject = TestDataBuilder.For<PublicWithAllNumerics>()
+                .SetOnly<float>()
+                .Build();
         subject.FloatProp.Should().NotBe(0);
         subject.FloatProp2.Should().NotBe(0);
 

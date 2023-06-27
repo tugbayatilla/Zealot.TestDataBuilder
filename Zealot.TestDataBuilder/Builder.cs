@@ -29,4 +29,10 @@ public class Builder<TEntity> : IBuilder<TEntity>
 
         return (TEntity)_context.Entity;
     }
+
+    public IBuilder<TEntity> SetOnly<TProperty>()
+    {
+        _context.SetOnlyTypeContainer.Add(typeof(TProperty));
+        return this;
+    }
 }

@@ -9,6 +9,9 @@ public class NumberStrategy : IStrategy
 
     public async Task ExecuteAsync(IContext context, PropertyInfo propertyInfo)
     {
+        if(context.SetOnlyTypeContainer.IsMemberOfSetOnly(propertyInfo.PropertyType))
+            return;
+        
         _currentNumber++;
 
         if (IsNullableType(propertyInfo.PropertyType))
@@ -33,7 +36,9 @@ public class NumberStrategy : IStrategy
             typeof(int?), typeof(int),
             typeof(short?), typeof(short),
             typeof(double?), typeof(double), 
-            typeof(float?), typeof(float)
+            typeof(float?), typeof(float),
+            typeof(decimal?), typeof(decimal),
+            typeof(long?), typeof(long)
         };
 
     static bool IsNullableType(Type type)

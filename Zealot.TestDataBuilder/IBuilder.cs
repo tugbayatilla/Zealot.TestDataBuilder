@@ -1,6 +1,7 @@
 ﻿namespace Zealot;
 
-public interface IBuilder<TEntity> where TEntity: new()
+public interface IBuilder<out TEntity> where TEntity: new()
 {
     TEntity Build();
+    IBuilder<TEntity> SetOnly<TProperty>();
 }
