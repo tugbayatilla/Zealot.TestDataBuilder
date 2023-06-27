@@ -13,7 +13,11 @@ public class NumberStrategy : IStrategy
 
         if (IsNullableType(propertyInfo.PropertyType))
         {
-            var finalExpression = Expression.Constant(_currentNumber++, propertyInfo.PropertyType);
+            var underlyingType = propertyInfo.PropertyType.GenericTypeArguments.FirstOrDefault();
+
+            var finalExpression = Expression.Constant(
+                Convert.ChangeType(_currentNumber, underlyingType!), 
+                propertyInfo.PropertyType);
             propertyInfo.SetValue(context.Entity, finalExpression.Value);
         }
         else
@@ -25,7 +29,10 @@ public class NumberStrategy : IStrategy
     }
 
     public IEnumerable<Type> AvailableTypes =>
-        new[] {typeof(int?), typeof(int), typeof(double), typeof(float), typeof(short)};
+        new[] {
+            typeof(int?), typeof(int),
+            typeof(short?), typeof(short),
+            typeof(double), typeof(float)};
 
     static bool IsNullableType(Type type)
     {
