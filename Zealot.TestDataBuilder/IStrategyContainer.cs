@@ -1,3 +1,5 @@
+using Zealot.Strategies;
+
 namespace Zealot;
 
 public interface IStrategyContainer

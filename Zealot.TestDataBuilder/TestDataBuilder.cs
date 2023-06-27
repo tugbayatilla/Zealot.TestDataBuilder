@@ -16,13 +16,3 @@ public static class TestDataBuilder
         return builder;
     }
 }
-
-public class Context : IContext
-{
-    public Context(object entity)
-    {
-        Entity = entity;
-    }
-
-    public object Entity { get; }
-}

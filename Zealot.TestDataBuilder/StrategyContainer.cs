@@ -1,3 +1,5 @@
+using Zealot.Strategies;
+
 namespace Zealot;
 
 public class StrategyContainer : IStrategyContainer
@@ -9,6 +11,7 @@ public class StrategyContainer : IStrategyContainer
         // todo: not a good idea
         _registeredStrategies.Add(new NumberStrategy());
         _registeredStrategies.Add(new StringStrategy());
+        _registeredStrategies.Add(new CharStrategy());
     }
     
     public IStrategy Resolve(Type propertyType)

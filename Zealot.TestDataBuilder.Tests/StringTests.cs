@@ -17,4 +17,12 @@ public class StringTests
         var entity = TestDataBuilder.For<PublicWithOneStringNullable>().Build();
         entity.StringPropNullable.Should().Be($"{nameof(entity.StringPropNullable)}");
     }
+    
+    [Fact]
+    public void Support_char()
+    {
+        var subject = TestDataBuilder.For<PublicWithTwoChar>().Build();
+        subject.CharProp.Should().NotBeNull();
+        subject.CharProp2.Should().NotBeNull();
+    }
 }

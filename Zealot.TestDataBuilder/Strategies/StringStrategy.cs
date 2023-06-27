@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace Zealot;
+namespace Zealot.Strategies;
 
 public class StringStrategy : IStrategy
 {
