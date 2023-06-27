@@ -75,4 +75,14 @@ public class NumericTests
 
         subject.DoubleProp.Should().NotBe(subject.DoubleProp2);
     }
+    
+    [Fact]
+    public void Support_two_float()
+    {
+        var subject = TestDataBuilder.For<PublicWithTwoFloat>().Build();
+        subject.FloatProp.Should().NotBe(0);
+        subject.FloatProp2.Should().NotBe(0);
+
+        subject.FloatProp.Should().NotBe(subject.FloatProp2);
+    }
 }
