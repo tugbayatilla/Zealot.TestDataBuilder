@@ -113,4 +113,14 @@ public class ListTests
 
         entity.IEnumerableProp.Should().BeNull();
     }
+    
+    [Fact]
+    public void Support_IReadOnlyCollectionGeneric()
+    {
+        var entity = TestDataBuilder
+            .For<InternalWithIListString>()
+            .Build();
+
+        entity.IReadOnlyCollectionStringProp.Should().NotBeNull();
+    }
 }
