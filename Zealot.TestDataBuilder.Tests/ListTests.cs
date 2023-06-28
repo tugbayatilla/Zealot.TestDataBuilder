@@ -43,4 +43,14 @@ public class ListTests
 
         entity.LinkedListStringProp.Should().NotBeNull();
     }
+    
+    [Fact]
+    public void Support_QueueGeneric()
+    {
+        var entity = TestDataBuilder
+            .For<InternalWithIListString>()
+            .Build();
+
+        entity.QueueStringProp.Should().NotBeNull();
+    }
 }

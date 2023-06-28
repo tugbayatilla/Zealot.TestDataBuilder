@@ -8,4 +8,5 @@ internal class InternalWithIListString
     public ICollection<string> ICollectionStringProp { get; set; }
     public ArrayList ArrayListProp { get; set; }
     public LinkedList<string> LinkedListStringProp { get; set; }
+    public Queue<string> QueueStringProp { get; set; }
 }

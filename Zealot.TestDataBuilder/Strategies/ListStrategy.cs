@@ -26,6 +26,7 @@ public class ListStrategy : IStrategy
             typeof(IList<>),
             typeof(ICollection<>),
             typeof(ArrayList),
-            typeof(LinkedList<>)
+            typeof(LinkedList<>),
+            typeof(Queue<>)
         };
 }
