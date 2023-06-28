@@ -13,11 +13,12 @@ public class StrategyContainer : IStrategyContainer
         _registeredStrategies.Add(new StringStrategy());
         _registeredStrategies.Add(new CharStrategy());
         _registeredStrategies.Add(new ByteStrategy());
+        _registeredStrategies.Add(new DictionaryStrategy());
     }
     
     public IStrategy Resolve(Type propertyType)
     {
-        var strategy = _registeredStrategies.FirstOrDefault(p => p.AvailableTypes.Contains(propertyType));
+        var strategy = _registeredStrategies.FirstOrDefault(p => p.AvailableTypes.Any(x=>x.Name == propertyType.Name));
         if (strategy == null)
         {
             throw new NotSupportedException($"The strategy with type '{propertyType.FullName}' is not supported.");
