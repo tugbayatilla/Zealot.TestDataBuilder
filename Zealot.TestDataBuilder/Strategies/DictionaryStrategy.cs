@@ -6,14 +6,22 @@ public class DictionaryStrategy : IStrategy
 {
     public async Task ExecuteAsync(IContext context, PropertyInfo propertyInfo)
     {
-        var ins = Instance.Create(propertyInfo.PropertyType);
-        propertyInfo.SetValue(context.Entity, ins); 
+        var propertyType = propertyInfo.PropertyType;
+
+        if (propertyInfo.PropertyType is {IsInterface: true, IsGenericType: true})
+        {
+            propertyType = typeof(Dictionary<,>).MakeGenericType(propertyInfo.PropertyType.GenericTypeArguments);
+        }
+
+        var listInstance = Instance.Create(propertyType);
+        propertyInfo.SetValue(context.Entity, listInstance);
 
         await Task.CompletedTask;
     }
 
     public IEnumerable<Type> AvailableTypes =>
         new[] {
-            typeof(Dictionary<,>)
+            typeof(Dictionary<,>),
+            typeof(IReadOnlyDictionary<,>)
         };
 }

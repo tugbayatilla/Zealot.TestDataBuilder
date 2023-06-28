@@ -8,13 +8,13 @@ public static class Extensions
     {
         return new NullabilityInfoContext().Create(p).WriteState is NullabilityState.Nullable;
     }
-    
+
     public static bool IsNullable(this Type type)
     {
         // ref-type
         if (!type.IsValueType)
         {
-            return true; 
+            return true;
         }
 
         // Nullable<T>
@@ -25,4 +25,8 @@ public static class Extensions
     {
         return type.IsValueType ? Activator.CreateInstance(type) : null;
     }
+
+    public static bool IsSame(this Type p, Type type) =>
+        p.IsEquivalentTo(type)
+        || (p.IsGenericType == type.IsGenericType && !p.GenericTypeArguments.Except(type.GenericTypeArguments).Any());
 }

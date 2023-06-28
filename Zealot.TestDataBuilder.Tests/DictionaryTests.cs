@@ -14,4 +14,15 @@ public class DictionaryTests
         entity.DictionaryProp.Should().NotBeNull();
         entity.DictionaryStringIntProp.Should().NotBeNull();
     }
+    [Fact]
+    public void Support_IReadOnlyDictionary()
+    {
+        var entity = TestDataBuilder
+            .For<InternalWithDictionary>()
+            .WithOnly(typeof(IReadOnlyDictionary<,>))
+            .Build();
+
+        entity.IReadOnlyDictionaryStringIntProp.Should().NotBeNull();
+    }
+    
 }

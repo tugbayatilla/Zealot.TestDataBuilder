@@ -5,7 +5,7 @@ namespace Zealot.SampleBuilder.Tests;
 public class MethodTests
 {
     [Fact]
-    public void Support_SetOnly_method()
+    public void IBuilder_WithOnly()
     {
         var entity = TestDataBuilder
             .For<PublicWithAll>()
@@ -16,7 +16,7 @@ public class MethodTests
     }
     
     [Fact]
-    public void Support_SetValue()
+    public void IBuilder_WithValue()
     {
         const int expected = 1_000_000;
         
@@ -26,5 +26,29 @@ public class MethodTests
             .Build();
         
         entity.IntProp.Should().Be(expected);
+    }
+    
+    [Fact]
+    public void IWithOnlyContainer_Exist_with_IReadOnlyDictionary()
+    {
+        IWithOnlyContainer container = new WithOnlyContainer();
+        container.Add(typeof(IReadOnlyDictionary<,>));
+
+        container
+            .Exist(typeof(IReadOnlyDictionary<string, int>))
+            .Should()
+            .BeTrue();
+    }
+    
+    [Fact]
+    public void IWithOnlyContainer_Exist_with_NullableDouble()
+    {
+        IWithOnlyContainer container = new WithOnlyContainer();
+        container.Add(typeof(double?));
+
+        container
+            .Exist(typeof(int?))
+            .Should()
+            .BeFalse();
     }
 }

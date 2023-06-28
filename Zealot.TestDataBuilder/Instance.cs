@@ -50,16 +50,6 @@ internal static class Instance
         }
 
         /// <summary>
-        /// Creates the instance.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        public static T Create<T>()
-        {
-            return (T)Create(typeof(T));
-        }
-
-        /// <summary>
         /// Gets the activator.
         /// </summary>
         /// <typeparam name="T"></typeparam>

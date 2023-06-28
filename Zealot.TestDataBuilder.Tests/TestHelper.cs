@@ -12,7 +12,7 @@ public static class TestHelper
         var props = obj.GetType().GetProperties();
         foreach (var prop in props)
         {
-            if(prop.PropertyType == typeof(TProperty)) continue;
+            if(prop.PropertyType.IsSame(typeof(TProperty))) continue;
             
             prop.GetValue(obj).Should().Be(prop.IsNullable() ? default : prop.PropertyType.GetDefault());
         }
@@ -23,13 +23,13 @@ public static class TestHelper
         var props = obj.GetType().GetProperties();
         foreach (var prop in props)
         {
-            if(prop.PropertyType == setOnlyType)
+            if(prop.PropertyType.IsSame(setOnlyType))
                 prop.GetValue(obj).Should().NotBe(prop.IsNullable() ? default : prop.PropertyType.GetDefault(), 
-                    $"{prop.Name} should not be {prop.PropertyType.GetDefault()}");
+                    $"{prop.Name} should not be {prop.PropertyType.GetDefault() ?? "null"}");
             else
             {
                 prop.GetValue(obj).Should().Be(prop.IsNullable() ? default : prop.PropertyType.GetDefault(), 
-                    $"{prop.Name} should be {prop.PropertyType.GetDefault()}");
+                    $"{prop.Name} should be {prop.PropertyType.GetDefault() ?? "null"}");
             }
         }
     }

@@ -2,7 +2,7 @@ using System.Collections;
 
 namespace Zealot.SampleBuilder.Tests.TestObjects;
 
-internal class InternalWithIListString
+internal class InternalWithList
 {
     public IList<string> IListStringProp { get; set; }
     public ICollection<string> ICollectionStringProp { get; set; }
@@ -16,4 +16,5 @@ internal class InternalWithIListString
     public IEnumerable<string> IEnumerableStringProp { get; set; }
     public IEnumerable IEnumerableProp { get; set; }
     public IReadOnlyCollection<string> IReadOnlyCollectionStringProp { get; set; }
+    public IReadOnlyList<string> IReadOnlyListStringProp { get; set; }
 }

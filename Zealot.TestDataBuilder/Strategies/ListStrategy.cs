@@ -34,6 +34,7 @@ public class ListStrategy : IStrategy
             typeof(Stack<>),
             typeof(IEnumerable<>),
             typeof(IEnumerable),
-            typeof(IReadOnlyCollection<>)
+            typeof(IReadOnlyCollection<>),
+            typeof(IReadOnlyList<>)
         };
 }
