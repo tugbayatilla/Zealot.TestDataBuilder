@@ -11,4 +11,5 @@ internal class InternalWithIListString
     public Queue<string> QueueStringProp { get; set; }
     public Queue QueueProp { get; set; }
     public Stack StackProp { get; set; }
+    public Stack<string> StackStringProp { get; set; }
 }

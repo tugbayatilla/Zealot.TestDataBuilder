@@ -73,4 +73,14 @@ public class ListTests
 
         entity.StackProp.Should().NotBeNull();
     }
+    
+    [Fact]
+    public void Support_StackGeneric()
+    {
+        var entity = TestDataBuilder
+            .For<InternalWithIListString>()
+            .Build();
+
+        entity.StackStringProp.Should().NotBeNull();
+    }
 }
