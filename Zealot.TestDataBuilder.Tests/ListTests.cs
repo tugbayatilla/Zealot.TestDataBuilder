@@ -23,4 +23,14 @@ public class ListTests
 
         entity.ICollectionStringProp.Should().NotBeNull();
     }
+    
+    [Fact]
+    public void Support_ArrayList()
+    {
+        var entity = TestDataBuilder
+            .For<InternalWithIListString>()
+            .Build();
+
+        entity.ArrayListProp.Should().NotBeNull();
+    }
 }
