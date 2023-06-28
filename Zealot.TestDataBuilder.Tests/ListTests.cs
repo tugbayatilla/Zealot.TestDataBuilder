@@ -15,13 +15,23 @@ public class ListTests
     }
     
     [Fact]
-    public void Support_ICollection()
+    public void Support_ICollectionGeneric()
     {
         var entity = TestDataBuilder
             .For<InternalWithIListString>()
             .Build();
 
         entity.ICollectionStringProp.Should().NotBeNull();
+    }
+    
+    [Fact]
+    public void NotSupport_ICollection()
+    {
+        var entity = TestDataBuilder
+            .For<InternalWithIListString>()
+            .Build();
+
+        entity.ICollectionProp.Should().BeNull();
     }
     
     [Fact]

@@ -9,14 +9,14 @@ public class ListStrategy : IStrategy
     {
         var listType = propertyInfo.PropertyType;
 
-        if (propertyInfo.PropertyType.IsInterface)
+        if (propertyInfo.PropertyType is {IsInterface: true, IsGenericType: true})
         {
             listType = typeof(List<>).MakeGenericType(propertyInfo.PropertyType.GenericTypeArguments);
         }
 
         var listInstance = Instance.Create(listType);
         propertyInfo.SetValue(context.Entity, listInstance);
-        
+
         await Task.CompletedTask;
     }
 
@@ -25,6 +25,7 @@ public class ListStrategy : IStrategy
         {
             typeof(IList<>),
             typeof(ICollection<>),
+            typeof(ICollection),
             typeof(ArrayList),
             typeof(LinkedList<>),
             typeof(Queue<>),
