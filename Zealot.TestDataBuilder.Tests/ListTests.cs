@@ -5,13 +5,23 @@ namespace Zealot.SampleBuilder.Tests;
 public class ListTests
 {
     [Fact]
-    public void Support_IList()
+    public void Support_IListGeneric()
     {
         var entity = TestDataBuilder
             .For<InternalWithList>()
             .Build();
 
         entity.IListStringProp.Should().NotBeNull();
+    }
+    
+    [Fact]
+    public void NotSupport_IList()
+    {
+        var entity = TestDataBuilder
+            .For<InternalWithList>()
+            .Build();
+
+        entity.IListProp.Should().BeNull();
     }
     
     [Fact]

@@ -5,6 +5,7 @@ namespace Zealot.SampleBuilder.Tests.TestObjects;
 internal class InternalWithList
 {
     public IList<string> IListStringProp { get; set; }
+    public IList IListProp { get; set; }
     public ICollection<string> ICollectionStringProp { get; set; }
     public ICollection ICollectionProp { get; set; }
     public ArrayList ArrayListProp { get; set; }

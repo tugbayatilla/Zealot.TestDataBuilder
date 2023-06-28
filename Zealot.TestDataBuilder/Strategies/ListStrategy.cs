@@ -24,6 +24,7 @@ public class ListStrategy : IStrategy
         new[]
         {
             typeof(IList<>),
+            typeof(IList),
             typeof(ICollection<>),
             typeof(ICollection),
             typeof(ArrayList),
