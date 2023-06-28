@@ -33,4 +33,14 @@ public class ListTests
 
         entity.ArrayListProp.Should().NotBeNull();
     }
+    
+    [Fact]
+    public void Support_LinkedList()
+    {
+        var entity = TestDataBuilder
+            .For<InternalWithIListString>()
+            .Build();
+
+        entity.LinkedListStringProp.Should().NotBeNull();
+    }
 }
