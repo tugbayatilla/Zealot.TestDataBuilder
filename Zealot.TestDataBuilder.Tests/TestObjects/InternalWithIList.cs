@@ -9,4 +9,5 @@ internal class InternalWithIListString
     public ArrayList ArrayListProp { get; set; }
     public LinkedList<string> LinkedListStringProp { get; set; }
     public Queue<string> QueueStringProp { get; set; }
+    public Queue QueueProp { get; set; }
 }

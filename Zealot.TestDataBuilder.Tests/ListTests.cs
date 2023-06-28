@@ -53,4 +53,14 @@ public class ListTests
 
         entity.QueueStringProp.Should().NotBeNull();
     }
+    
+    [Fact]
+    public void Support_Queue()
+    {
+        var entity = TestDataBuilder
+            .For<InternalWithIListString>()
+            .Build();
+
+        entity.QueueProp.Should().NotBeNull();
+    }
 }
