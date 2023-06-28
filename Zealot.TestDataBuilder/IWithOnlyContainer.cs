@@ -1,5 +1,3 @@
-using System.Reflection;
-
 namespace Zealot;
 
 public interface IWithOnlyContainer

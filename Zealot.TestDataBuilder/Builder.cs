@@ -8,6 +8,7 @@ public class Builder<TEntity> : IBuilder<TEntity>
 {
     private readonly IContext _context;
     private readonly IStrategyContainer _strategyContainer;
+    private readonly List<(MemberExpression member, object value)> _overrideExpressions = new();
 
     public Builder(IContext context, IStrategyContainer strategyContainer)
     {
@@ -32,7 +33,7 @@ public class Builder<TEntity> : IBuilder<TEntity>
         }
 
         // override values
-        overrideExpressions.ForEach(p =>
+        _overrideExpressions.ForEach(p =>
         {
             ((PropertyInfo)p.member.Member).SetValue(_context.Entity, p.value);
         });
@@ -52,12 +53,16 @@ public class Builder<TEntity> : IBuilder<TEntity>
         return this;
     }
 
-    private List<(MemberExpression member, object value)> overrideExpressions = new();
     public IBuilder<TEntity> WithValue<TProperty>(Expression<Func<TEntity, TProperty>> propertySelector, TProperty value)
     {
         if (propertySelector == null) throw new ArgumentNullException(nameof(propertySelector));
+        if (value == null) throw new ArgumentNullException(nameof(value));
+
+        if (propertySelector.Body is MemberExpression propertySelectorBody)
+        {
+            _overrideExpressions.Add(new (propertySelectorBody, value));    
+        }
         
-        overrideExpressions.Add(new (propertySelector.Body as MemberExpression, value));
         return this;
     }
 }

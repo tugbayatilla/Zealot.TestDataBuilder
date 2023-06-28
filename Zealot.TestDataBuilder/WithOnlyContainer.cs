@@ -1,5 +1,3 @@
-using System.Reflection;
-
 namespace Zealot;
 
 internal class WithOnlyContainer : IWithOnlyContainer

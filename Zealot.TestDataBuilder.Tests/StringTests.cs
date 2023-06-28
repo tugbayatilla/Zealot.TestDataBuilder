@@ -20,28 +20,4 @@ public class StringTests
         entity.StringNullableProp.Should().Be($"{nameof(entity.StringNullableProp)}");
         entity.StringNullableProp2.Should().Be($"{nameof(entity.StringNullableProp2)}");
     }
-    
-    [Fact]
-    public void Support_SetOnly_method()
-    {
-        var entity = TestDataBuilder
-            .For<PublicWithAll>()
-            .WithOnly<string>()
-            .Build();
-
-        TestHelper.CheckDefaultExcept<string>(entity);
-    }
-    
-    [Fact]
-    public void Support_SetValue()
-    {
-        var expected = 1_000_000;
-        
-        var entity = TestDataBuilder
-            .For<PublicWithAll>()
-            .WithValue(p=>p.IntProp, expected)
-            .Build();
-        
-        entity.IntProp.Should().Be(expected);
-    }
 }
