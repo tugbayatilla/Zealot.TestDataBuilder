@@ -63,4 +63,14 @@ public class ListTests
 
         entity.QueueProp.Should().NotBeNull();
     }
+    
+    [Fact]
+    public void Support_Stack()
+    {
+        var entity = TestDataBuilder
+            .For<InternalWithIListString>()
+            .Build();
+
+        entity.StackProp.Should().NotBeNull();
+    }
 }

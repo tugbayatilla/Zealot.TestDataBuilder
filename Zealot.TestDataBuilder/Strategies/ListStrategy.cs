@@ -28,6 +28,7 @@ public class ListStrategy : IStrategy
             typeof(ArrayList),
             typeof(LinkedList<>),
             typeof(Queue<>),
-            typeof(Queue)
+            typeof(Queue),
+            typeof(Stack)
         };
 }
