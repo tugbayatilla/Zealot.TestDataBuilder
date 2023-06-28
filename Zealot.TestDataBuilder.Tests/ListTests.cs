@@ -93,4 +93,14 @@ public class ListTests
 
         entity.StackStringProp.Should().NotBeNull();
     }
+    
+    [Fact]
+    public void Support_IEnumerableGeneric()
+    {
+        var entity = TestDataBuilder
+            .For<InternalWithIListString>()
+            .Build();
+
+        entity.IEnumerableStringProp.Should().NotBeNull();
+    }
 }
