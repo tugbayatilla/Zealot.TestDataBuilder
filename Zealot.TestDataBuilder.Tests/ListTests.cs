@@ -13,4 +13,14 @@ public class ListTests
 
         entity.IListStringProp.Should().NotBeNull();
     }
+    
+    [Fact]
+    public void Support_ICollection()
+    {
+        var entity = TestDataBuilder
+            .For<InternalWithIListString>()
+            .Build();
+
+        entity.ICollectionStringProp.Should().NotBeNull();
+    }
 }

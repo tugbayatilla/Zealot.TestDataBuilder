@@ -16,6 +16,7 @@ public class ListStrategy : IStrategy
 
     public IEnumerable<Type> AvailableTypes =>
         new[] {
-            typeof(IList<>)
+            typeof(IList<>),
+            typeof(ICollection<>)
         };
 }
