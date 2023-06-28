@@ -32,6 +32,7 @@ public class ListStrategy : IStrategy
             typeof(Queue),
             typeof(Stack),
             typeof(Stack<>),
-            typeof(IEnumerable<>)
+            typeof(IEnumerable<>),
+            typeof(IEnumerable)
         };
 }

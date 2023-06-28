@@ -14,4 +14,5 @@ internal class InternalWithIListString
     public Stack StackProp { get; set; }
     public Stack<string> StackStringProp { get; set; }
     public IEnumerable<string> IEnumerableStringProp { get; set; }
+    public IEnumerable IEnumerableProp { get; set; }
 }

@@ -103,4 +103,14 @@ public class ListTests
 
         entity.IEnumerableStringProp.Should().NotBeNull();
     }
+    
+    [Fact]
+    public void NotSupport_IEnumerable()
+    {
+        var entity = TestDataBuilder
+            .For<InternalWithIListString>()
+            .Build();
+
+        entity.IEnumerableProp.Should().BeNull();
+    }
 }
