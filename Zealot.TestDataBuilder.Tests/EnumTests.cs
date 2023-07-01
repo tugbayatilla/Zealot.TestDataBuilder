@@ -23,4 +23,14 @@ public class EnumTests
 
         entity.EnumHavingNoValueProp.Should().Be(default);
     }
+    
+    [Fact]
+    public void Support_Enum_nullable()
+    {
+        var entity = TestDataBuilder
+            .For<EnumHavingOneValueNullableClass>()
+            .Build();
+
+        entity.EnumHavingOneValueNullableProp.Should().Be(EnumHavingOneValue.FirstValue);
+    }
 }

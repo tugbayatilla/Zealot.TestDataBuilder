@@ -9,5 +9,5 @@ public abstract class Strategy : IStrategy
     public abstract IEnumerable<Type> AvailableTypes { get; }
     
     public virtual Expression<Func<PropertyInfo, bool>> ResolveCondition 
-        => info => AvailableTypes.Any(x=>x.Name == info.PropertyType.Name);
+        => info => AvailableTypes.Any(x=>x == info.PropertyType);
 }

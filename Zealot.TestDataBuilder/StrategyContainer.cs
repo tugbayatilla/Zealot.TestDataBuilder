@@ -29,4 +29,7 @@ public class StrategyContainer : IStrategyContainer
         }
         return strategy;
     }
+    
+    public IEnumerable<IStrategy> ResolveAll(PropertyInfo propertyInfo) 
+        =>_registeredStrategies.Where(p => p.ResolveCondition.Compile().Invoke(propertyInfo)); 
 }

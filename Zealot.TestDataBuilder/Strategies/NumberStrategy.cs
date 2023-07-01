@@ -37,5 +37,4 @@ public class NumberStrategy : Strategy
             typeof(decimal?), typeof(decimal),
             typeof(long?), typeof(long)
         };
-    
 }

@@ -5,4 +5,4 @@ internal class EnumHavingNoValueClass
     public EnumHavingNoValue EnumHavingNoValueProp { get; set; }
 }
 
-internal enum EnumHavingNoValue { }
+public enum EnumHavingNoValue { }

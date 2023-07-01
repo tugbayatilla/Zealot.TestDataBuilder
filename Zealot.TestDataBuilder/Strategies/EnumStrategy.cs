@@ -7,7 +7,13 @@ public class EnumStrategy : Strategy
 {
     public override async Task ExecuteAsync(IContext context, PropertyInfo propertyInfo)
     {
-        var tempEnum = Enum.GetValues(propertyInfo.PropertyType);
+        var type = propertyInfo.PropertyType;
+        if (propertyInfo.PropertyType.IsNullableEnum())
+        {
+            type = Nullable.GetUnderlyingType(propertyInfo.PropertyType);
+        }
+        
+        var tempEnum = Enum.GetValues(type!);
         if (tempEnum.Length > 0)
         {
             var value = tempEnum.GetValue(0);
@@ -20,5 +26,7 @@ public class EnumStrategy : Strategy
     public override IEnumerable<Type> AvailableTypes => default!;
 
     public override Expression<Func<PropertyInfo, bool>> ResolveCondition => 
-        info => info.PropertyType.IsEnum || (info.PropertyType.BaseType != null && info.PropertyType.BaseType == typeof(Enum));
+        info => info.PropertyType.IsEnum 
+                || info.PropertyType.IsNullableEnum() 
+                || (info.PropertyType.BaseType != null && info.PropertyType.BaseType == typeof(Enum));
 }

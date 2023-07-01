@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq.Expressions;
 using System.Reflection;
 
 namespace Zealot.Strategies;
@@ -38,4 +39,7 @@ public class ListStrategy : Strategy
             typeof(IReadOnlyCollection<>),
             typeof(IReadOnlyList<>)
         };
+    
+    public override Expression<Func<PropertyInfo, bool>> ResolveCondition 
+        => info => AvailableTypes.Any(x=>x.Name == info.PropertyType.Name);
 }

@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Linq.Expressions;
+using System.Reflection;
 
 namespace Zealot.Strategies;
 
@@ -24,4 +25,7 @@ public class DictionaryStrategy : Strategy
             typeof(Dictionary<,>),
             typeof(IReadOnlyDictionary<,>)
         };
+    
+    public override Expression<Func<PropertyInfo, bool>> ResolveCondition 
+        => info => AvailableTypes.Any(x=>x.Name == info.PropertyType.Name);
 }

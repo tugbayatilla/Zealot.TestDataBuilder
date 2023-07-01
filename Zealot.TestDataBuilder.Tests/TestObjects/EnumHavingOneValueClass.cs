@@ -5,7 +5,7 @@ internal class EnumHavingOneValueClass
     public EnumHavingOneValue EnumHavingOneValueProp { get; set; }
 }
 
-internal enum EnumHavingOneValue
+public enum EnumHavingOneValue
 {
     FirstValue = 1
 }
