@@ -5,12 +5,22 @@ namespace Zealot.SampleBuilder.Tests;
 public class EnumTests
 {
     [Fact]
-    public void Support_Enum()
+    public void Support_Enum_one_value()
     {
         var entity = TestDataBuilder
-            .For<EnumPropClass>()
+            .For<EnumHavingOneValueClass>()
             .Build();
 
         entity.EnumHavingOneValueProp.Should().Be(EnumHavingOneValue.FirstValue);
+    }
+    
+    [Fact]
+    public void Support_Enum_no_value()
+    {
+        var entity = TestDataBuilder
+            .For<EnumHavingNoValueClass>()
+            .Build();
+
+        entity.EnumHavingNoValueProp.Should().Be(default);
     }
 }

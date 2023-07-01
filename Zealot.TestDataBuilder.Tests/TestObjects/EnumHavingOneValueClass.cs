@@ -1,6 +1,6 @@
 namespace Zealot.SampleBuilder.Tests.TestObjects;
 
-internal class EnumPropClass
+internal class EnumHavingOneValueClass
 {
     public EnumHavingOneValue EnumHavingOneValueProp { get; set; }
 }
