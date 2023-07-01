@@ -1,3 +1,4 @@
+using System.Reflection;
 using Zealot.Strategies;
 
 namespace Zealot;
@@ -15,14 +16,15 @@ public class StrategyContainer : IStrategyContainer
         _registeredStrategies.Add(new ByteStrategy());
         _registeredStrategies.Add(new DictionaryStrategy());
         _registeredStrategies.Add(new ListStrategy());
+        _registeredStrategies.Add(new ArrayStrategy());
     }
     
-    public IStrategy Resolve(Type propertyType)
+    public IStrategy Resolve(PropertyInfo propertyInfo)
     {
-        var strategy = _registeredStrategies.FirstOrDefault(p => p.AvailableTypes.Any(x=>x.Name == propertyType.Name));
+        var strategy = _registeredStrategies.FirstOrDefault(p => p.ResolveCondition.Compile().Invoke(propertyInfo));
         if (strategy == null)
         {
-            throw new NotSupportedException($"The strategy with type '{propertyType.FullName}' is not supported.");
+            throw new NotSupportedException($"The strategy with type '{propertyInfo.PropertyType.FullName}' is not supported.");
         }
         return strategy;
     }

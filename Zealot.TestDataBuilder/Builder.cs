@@ -26,7 +26,7 @@ public class Builder<TEntity> : IBuilder<TEntity>
             if (_context.WithOnlyContainer.IgnoreThis(propertyInfo.PropertyType)) continue;
             
             // find the Strategy for the type
-            var strategy = _strategyContainer.Resolve(propertyInfo.PropertyType);
+            var strategy = _strategyContainer.Resolve(propertyInfo);
             // execute the strategy
             // TODO: parallelism 
             Task.Run(() => strategy.ExecuteAsync(_context, propertyInfo)).Wait();

@@ -2,13 +2,13 @@
 
 namespace Zealot.Strategies;
 
-public class StringStrategy : IStrategy
+public class StringStrategy : Strategy
 {
-    public async Task ExecuteAsync(IContext context, PropertyInfo propertyInfo)
+    public override async Task ExecuteAsync(IContext context, PropertyInfo propertyInfo)
     {
         propertyInfo.SetValue(context.Entity, propertyInfo.Name);
         await Task.CompletedTask;
     }
 
-    public IEnumerable<Type> AvailableTypes => new[] { typeof(string) };
+    public override IEnumerable<Type> AvailableTypes => new[] { typeof(string) };
 }

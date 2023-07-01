@@ -3,9 +3,9 @@ using System.Reflection;
 
 namespace Zealot.Strategies;
 
-public class ListStrategy : IStrategy
+public class ListStrategy : Strategy
 {
-    public async Task ExecuteAsync(IContext context, PropertyInfo propertyInfo)
+    public override async Task ExecuteAsync(IContext context, PropertyInfo propertyInfo)
     {
         var listType = propertyInfo.PropertyType;
 
@@ -20,7 +20,7 @@ public class ListStrategy : IStrategy
         await Task.CompletedTask;
     }
 
-    public IEnumerable<Type> AvailableTypes =>
+    public override IEnumerable<Type> AvailableTypes =>
         new[]
         {
             typeof(IList<>),

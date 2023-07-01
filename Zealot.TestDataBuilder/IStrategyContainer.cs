@@ -1,8 +1,9 @@
+using System.Reflection;
 using Zealot.Strategies;
 
 namespace Zealot;
 
 public interface IStrategyContainer
 {
-    IStrategy Resolve(Type propertyType);
+    IStrategy Resolve(PropertyInfo propertyInfo);
 }

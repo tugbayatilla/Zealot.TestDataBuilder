@@ -3,11 +3,11 @@ using System.Reflection;
 
 namespace Zealot.Strategies;
 
-public class NumberStrategy : IStrategy
+public class NumberStrategy : Strategy
 {
     private int _currentNumber = 0;
 
-    public async Task ExecuteAsync(IContext context, PropertyInfo propertyInfo)
+    public override async Task ExecuteAsync(IContext context, PropertyInfo propertyInfo)
     {
         _currentNumber++;
 
@@ -28,7 +28,7 @@ public class NumberStrategy : IStrategy
         await Task.CompletedTask;
     }
 
-    public IEnumerable<Type> AvailableTypes =>
+    public override IEnumerable<Type> AvailableTypes =>
         new[] {
             typeof(int?), typeof(int),
             typeof(short?), typeof(short),
@@ -37,4 +37,5 @@ public class NumberStrategy : IStrategy
             typeof(decimal?), typeof(decimal),
             typeof(long?), typeof(long)
         };
+    
 }

@@ -2,9 +2,9 @@
 
 namespace Zealot.Strategies;
 
-public class DictionaryStrategy : IStrategy
+public class DictionaryStrategy : Strategy
 {
-    public async Task ExecuteAsync(IContext context, PropertyInfo propertyInfo)
+    public override async Task ExecuteAsync(IContext context, PropertyInfo propertyInfo)
     {
         var propertyType = propertyInfo.PropertyType;
 
@@ -19,7 +19,7 @@ public class DictionaryStrategy : IStrategy
         await Task.CompletedTask;
     }
 
-    public IEnumerable<Type> AvailableTypes =>
+    public override IEnumerable<Type> AvailableTypes =>
         new[] {
             typeof(Dictionary<,>),
             typeof(IReadOnlyDictionary<,>)
