@@ -17,6 +17,7 @@ public class StrategyContainer : IStrategyContainer
         _registeredStrategies.Add(new DictionaryStrategy());
         _registeredStrategies.Add(new ListStrategy());
         _registeredStrategies.Add(new ArrayStrategy());
+        _registeredStrategies.Add(new EnumStrategy());
     }
     
     public IStrategy Resolve(PropertyInfo propertyInfo)
