@@ -20,6 +20,7 @@ public class StrategyContainer : IStrategyContainer
         _registeredStrategies.Add(new EnumStrategy());
         _registeredStrategies.Add(new BooleanStrategy());
         _registeredStrategies.Add(new DatetimeStrategy());
+        _registeredStrategies.Add(new GuidStrategy());
     }
     
     public IStrategy Resolve(PropertyInfo propertyInfo)

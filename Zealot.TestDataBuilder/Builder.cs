@@ -78,4 +78,10 @@ internal class Builder<TEntity> : IBuilder<TEntity>
         _strategyContainer.Register(strategy);
         return this;
     }
+
+    public IBuilder<TEntity> WithGuid(Guid guid)
+    {
+        _context.WithGuid = guid;
+        return this;
+    }
 }
