@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace Zealot.Strategies;
 
-public abstract class Strategy : IStrategy
+internal abstract class Strategy : IStrategy
 {
     public abstract Task ExecuteAsync(IContext context, PropertyInfo propertyInfo);
     public abstract IEnumerable<Type> AvailableTypes { get; }

@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace Zealot;
 
-public class Builder<TEntity> : IBuilder<TEntity>
+internal class Builder<TEntity> : IBuilder<TEntity>
     where TEntity : new()
 {
     private readonly IContext _context;
@@ -63,6 +63,12 @@ public class Builder<TEntity> : IBuilder<TEntity>
             _overrideExpressions.Add(new (propertySelectorBody, value));    
         }
         
+        return this;
+    }
+
+    public IBuilder<TEntity> WithDate(DateTime dateTime)
+    {
+        _context.WithUtcDate = dateTime;
         return this;
     }
 }

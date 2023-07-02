@@ -2,7 +2,7 @@
 
 namespace Zealot.Strategies;
 
-public class ByteStrategy : Strategy
+internal class ByteStrategy : Strategy
 {
     private static readonly byte A = Convert.ToByte('A');
 

@@ -1,6 +1,6 @@
 namespace Zealot;
 
-public class Context : IContext
+internal class Context : IContext
 {
     public Context(object entity, IWithOnlyContainer withOnlyContainer)
     {

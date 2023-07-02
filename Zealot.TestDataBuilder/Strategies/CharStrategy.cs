@@ -2,7 +2,7 @@ using System.Reflection;
 
 namespace Zealot.Strategies;
 
-public class CharStrategy : Strategy
+internal class CharStrategy : Strategy
 {
     private const char A = 'A';
 

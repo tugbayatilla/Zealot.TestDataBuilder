@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace Zealot.Strategies;
 
-public class EnumStrategy : Strategy
+internal class EnumStrategy : Strategy
 {
     public override async Task ExecuteAsync(IContext context, PropertyInfo propertyInfo)
     {

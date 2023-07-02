@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace Zealot.Strategies;
 
-public class NumberStrategy : Strategy
+internal class NumberStrategy : Strategy
 {
     private int _currentNumber = 0;
 

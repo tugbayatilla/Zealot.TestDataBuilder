@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace Zealot.Strategies;
 
-public class ArrayStrategy : Strategy
+internal class ArrayStrategy : Strategy
 {
     public override async Task ExecuteAsync(IContext context, PropertyInfo propertyInfo)
     {

@@ -2,7 +2,7 @@
 
 namespace Zealot.Strategies;
 
-public class StringStrategy : Strategy
+internal class StringStrategy : Strategy
 {
     public override async Task ExecuteAsync(IContext context, PropertyInfo propertyInfo)
     {

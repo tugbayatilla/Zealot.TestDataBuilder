@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace Zealot.Strategies;
 
-public class ListStrategy : Strategy
+internal class ListStrategy : Strategy
 {
     public override async Task ExecuteAsync(IContext context, PropertyInfo propertyInfo)
     {

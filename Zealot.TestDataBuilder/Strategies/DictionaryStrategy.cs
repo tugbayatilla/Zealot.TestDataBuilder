@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace Zealot.Strategies;
 
-public class DictionaryStrategy : Strategy
+internal class DictionaryStrategy : Strategy
 {
     public override async Task ExecuteAsync(IContext context, PropertyInfo propertyInfo)
     {
