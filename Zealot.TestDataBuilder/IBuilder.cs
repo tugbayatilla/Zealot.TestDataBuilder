@@ -1,4 +1,5 @@
 ﻿using System.Linq.Expressions;
+using Zealot.Strategies;
 
 namespace Zealot;
 
@@ -25,4 +26,5 @@ public interface IBuilder<TEntity> where TEntity: new()
     IBuilder<TEntity> WithValue<TProperty>(Expression<Func<TEntity, TProperty>> propertySelector, TProperty value);
 
     IBuilder<TEntity> WithDate(DateTime dateTime);
+    IBuilder<TEntity> WithStrategy(IStrategy strategy);
 }

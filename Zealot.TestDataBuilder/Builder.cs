@@ -1,5 +1,6 @@
 ﻿using System.Linq.Expressions;
 using System.Reflection;
+using Zealot.Strategies;
 
 namespace Zealot;
 
@@ -69,6 +70,12 @@ internal class Builder<TEntity> : IBuilder<TEntity>
     public IBuilder<TEntity> WithDate(DateTime dateTime)
     {
         _context.WithUtcDate = dateTime;
+        return this;
+    }
+
+    public IBuilder<TEntity> WithStrategy(IStrategy strategy)
+    {
+        _strategyContainer.Register(strategy);
         return this;
     }
 }

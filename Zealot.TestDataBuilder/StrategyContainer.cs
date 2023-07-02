@@ -33,5 +33,10 @@ public class StrategyContainer : IStrategyContainer
     }
     
     public IEnumerable<IStrategy> ResolveAll(PropertyInfo propertyInfo) 
-        =>_registeredStrategies.Where(p => p.ResolveCondition.Compile().Invoke(propertyInfo)); 
+        =>_registeredStrategies.Where(p => p.ResolveCondition.Compile().Invoke(propertyInfo));
+
+    public void Register(IStrategy strategy)
+    {
+        _registeredStrategies.Add(strategy);
+    }
 }
