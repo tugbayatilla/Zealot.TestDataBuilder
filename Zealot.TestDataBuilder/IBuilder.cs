@@ -23,4 +23,6 @@ public interface IBuilder<TEntity> where TEntity: new()
     /// Optional
     /// </summary>
     IBuilder<TEntity> WithValue<TProperty>(Expression<Func<TEntity, TProperty>> propertySelector, TProperty value);
+
+    IBuilder<TEntity> WithDate(DateTime dateTime);
 }
