@@ -158,4 +158,17 @@ public class NumericTests
 
         subject.UInt16Prop.Should().NotBe(subject.UInt16Prop2);
     }
+    
+    [Fact]
+    public void Support_unsigned_int16_nullable()
+    {
+        var subject = TestDataBuilder
+            .For<PublicWithAll>()
+            .WithOnly<UInt16?>()
+            .Build();
+        subject.UInt16NullableProp.Should().NotBe(0);
+        subject.UInt16NullableProp2.Should().NotBe(0);
+
+        subject.UInt16NullableProp.Should().NotBe(subject.UInt16NullableProp2);
+    }
 }

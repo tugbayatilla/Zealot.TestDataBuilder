@@ -59,4 +59,7 @@ public class PublicWithAll
     public UInt16 UInt16Prop { get; set; }
     public UInt16 UInt16Prop2 { get; set; }
     
+    public UInt16? UInt16NullableProp { get; set; }
+    public UInt16? UInt16NullableProp2 { get; set; }
+    
 }
