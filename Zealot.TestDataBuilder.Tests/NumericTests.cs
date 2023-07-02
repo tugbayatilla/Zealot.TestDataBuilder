@@ -184,4 +184,17 @@ public class NumericTests
 
         subject.UInt32Prop.Should().NotBe(subject.UInt32Prop2);
     }
+    
+    [Fact]
+    public void Support_unsigned_int32_nullable()
+    {
+        var subject = TestDataBuilder
+            .For<PublicWithAll>()
+            .WithOnly<UInt32?>()
+            .Build();
+        subject.UInt32NullableProp.Should().NotBe(0);
+        subject.UInt32NullableProp2.Should().NotBe(0);
+
+        subject.UInt32NullableProp.Should().NotBe(subject.UInt32NullableProp2);
+    }
 }
