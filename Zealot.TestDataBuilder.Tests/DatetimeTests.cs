@@ -15,4 +15,15 @@ public class DatetimeTests
 
         entity.DateTimeProp.Should().Be(now);
     }
+    
+    [Fact]
+    public void Support_datetime_is_close_to_now()
+    {
+        var entity = TestDataBuilder
+            .For<PublicDatetime>()
+            .Build();
+
+        entity.DateTimeProp.Should().BeBefore(DateTime.UtcNow);
+        entity.DateTimeProp.Should().BeAfter(DateTime.UtcNow.AddSeconds(-10));
+    }
 }
