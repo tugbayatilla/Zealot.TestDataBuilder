@@ -145,4 +145,17 @@ public class NumericTests
 
         subject.FloatProp.Should().NotBe(subject.FloatProp2);
     }
+    
+    [Fact]
+    public void Support_unsigned_int16()
+    {
+        var subject = TestDataBuilder
+            .For<PublicWithAll>()
+            .WithOnly<UInt16>()
+            .Build();
+        subject.UInt16Prop.Should().NotBe(0);
+        subject.UInt16Prop2.Should().NotBe(0);
+
+        subject.UInt16Prop.Should().NotBe(subject.UInt16Prop2);
+    }
 }

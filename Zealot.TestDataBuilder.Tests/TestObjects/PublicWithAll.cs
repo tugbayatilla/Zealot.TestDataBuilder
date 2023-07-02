@@ -55,4 +55,8 @@ public class PublicWithAll
     
     public string? StringNullableProp { get; set; }
     public string? StringNullableProp2 { get; set; }
+    
+    public UInt16 UInt16Prop { get; set; }
+    public UInt16 UInt16Prop2 { get; set; }
+    
 }

@@ -35,6 +35,7 @@ internal class NumberStrategy : Strategy
             typeof(double?), typeof(double), 
             typeof(float?), typeof(float),
             typeof(decimal?), typeof(decimal),
-            typeof(long?), typeof(long)
+            typeof(long?), typeof(long),
+            typeof(UInt16)
         };
 }
