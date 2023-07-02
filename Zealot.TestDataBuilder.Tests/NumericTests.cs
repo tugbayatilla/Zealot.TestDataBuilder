@@ -210,4 +210,17 @@ public class NumericTests
 
         subject.UInt64Prop.Should().NotBe(subject.UInt64Prop2);
     }
+    
+    [Fact]
+    public void Support_unsigned_int64_nullable()
+    {
+        var subject = TestDataBuilder
+            .For<PublicWithAll>()
+            .WithOnly<UInt64?>()
+            .Build();
+        subject.UInt64NullableProp.Should().NotBe(0);
+        subject.UInt64NullableProp2.Should().NotBe(0);
+
+        subject.UInt64NullableProp.Should().NotBe(subject.UInt64NullableProp2);
+    }
 }
