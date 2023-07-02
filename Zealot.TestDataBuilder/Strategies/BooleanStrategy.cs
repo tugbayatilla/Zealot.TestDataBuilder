@@ -12,6 +12,7 @@ public class BooleanStrategy : Strategy
 
     public override IEnumerable<Type> AvailableTypes => new[]
     {
-        typeof(bool)
+        typeof(bool),
+        typeof(bool?)
     };
 }
