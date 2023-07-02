@@ -12,6 +12,7 @@ internal class DatetimeStrategy : Strategy
 
     public override IEnumerable<Type> AvailableTypes => new[]
     {
-        typeof(DateTime)
+        typeof(DateTime),
+        typeof(DateTime?)
     };
 }

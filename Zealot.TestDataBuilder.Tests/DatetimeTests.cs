@@ -26,4 +26,16 @@ public class DatetimeTests
         entity.DateTimeProp.Should().BeBefore(DateTime.UtcNow);
         entity.DateTimeProp.Should().BeAfter(DateTime.UtcNow.AddSeconds(-10));
     }
+    
+    [Fact]
+    public void Support_datetime_nullable()
+    {
+        var now = DateTime.Now;
+        var entity = TestDataBuilder
+            .For<PublicDatetimeNullable>()
+            .WithDate(now)
+            .Build();
+
+        entity.DateTimeNullableProp.Should().Be(now);
+    }
 }
