@@ -27,14 +27,29 @@ internal class Builder<TEntity> : IBuilder<TEntity>
             // find the Strategy for the type
             var strategy = _context.StrategyContainer.Resolve(propertyInfo);
             // execute the strategy
-            // TODO: parallelism 
             Task.Run(() => strategy.ExecuteAsync(_context, propertyInfo)).Wait();
         }
 
         // override values
         _overrideExpressions.ForEach(p =>
         {
-            ((PropertyInfo)p.member.Member).SetValue(_context.Entity, p.value);
+            var prop = ((PropertyInfo) p.member.Member);
+            if (prop.ReflectedType == _context.Entity.GetType())
+            {
+                prop.SetValue(_context.Entity, p.value);
+            }
+            else
+            {
+                // get value of property of property
+                var propertyInstance = _context.Entity.GetType().GetRuntimeProperty(prop.ReflectedType.Name)
+                    .GetValue(_context.Entity);
+
+                //change value of property of property
+                propertyInstance.GetType().GetRuntimeProperty(prop.Name).SetValue(propertyInstance, p.value);
+                
+                // set property to property of propery
+                _context.Entity.GetType().GetRuntimeProperty(prop.ReflectedType.Name).SetValue(_context.Entity, propertyInstance);
+            }
         });
         
         

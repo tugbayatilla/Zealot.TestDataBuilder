@@ -1,5 +1,5 @@
-using System.Linq.Expressions;
 using System.Reflection;
+using Zealot.SampleBuilder.Tests.Samples;
 using Zealot.SampleBuilder.Tests.TestObjects;
 using Zealot.Strategies;
 
@@ -25,7 +25,7 @@ public class MethodTests
         
         var entity = TestDataBuilder
             .For<PublicWithAll>()
-            .WithValue(p=>p.IntProp, expected)
+            .WithValue((e) => e.IntProp, expected)
             .Build();
         
         entity.IntProp.Should().Be(expected);
@@ -72,6 +72,17 @@ public class MethodTests
 
         entity.NIntProp.Should().Be(1);
 
+    }
+    
+    [Fact]
+    public void IBuilder_WithValue_property_of_property()
+    {
+        var entity = TestDataBuilder
+            .For<SimpleClassWithStruct>()
+            .WithValue(p=>p.SimpleStruct.BoolProp, true)
+            .Build();
+
+        entity.SimpleStruct.BoolProp.Should().BeTrue();
     }
 }
 
