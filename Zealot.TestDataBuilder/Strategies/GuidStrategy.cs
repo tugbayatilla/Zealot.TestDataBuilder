@@ -12,6 +12,6 @@ internal class GuidStrategy : Strategy
 
     public override IEnumerable<Type> AvailableTypes => new[]
     {
-        typeof(Guid),
+        typeof(Guid?),typeof(Guid),
     };
 }
