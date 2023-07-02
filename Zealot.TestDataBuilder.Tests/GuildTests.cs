@@ -16,4 +16,14 @@ public class GuidTests
         entity.GuidProp.Should().Be(guid);
     }
     
+    [Fact]
+    public void Support_guid_not_empty_as_default()
+    {
+        var entity = TestDataBuilder
+            .For<PublicGuid>()
+            .Build();
+
+        entity.GuidProp.Should().NotBeEmpty();
+    }
+    
 }

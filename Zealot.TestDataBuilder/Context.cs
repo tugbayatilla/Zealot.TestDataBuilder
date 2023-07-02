@@ -11,5 +11,5 @@ internal class Context : IContext
     public object Entity { get; }
     public IWithOnlyContainer WithOnlyContainer { get; }
     public DateTime WithUtcDate { get; set; } = DateTime.UtcNow;
-    public Guid WithGuid { get; set; }
+    public Guid WithGuid { get; set; } = Guid.NewGuid();
 }
