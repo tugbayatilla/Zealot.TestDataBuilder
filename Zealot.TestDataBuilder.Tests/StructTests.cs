@@ -1,0 +1,21 @@
+using Zealot.SampleBuilder.Tests.TestObjects;
+
+namespace Zealot.SampleBuilder.Tests;
+
+public class StructTests
+{
+    
+    //todo: setvalue for a property of a property
+    
+    [Fact]
+    public void Support_struct()
+    {
+        var subject = TestDataBuilder
+            .For<Samples.SimpleClassWithStruct>()
+            .Build();
+
+        subject.SimpleStruct.Should().NotBeNull();
+        subject.SimpleStruct.BoolProp.Should().BeFalse();
+        subject.SimpleStruct.StringProp.Should().Be(nameof(subject.SimpleStruct.StringProp));
+    }
+}

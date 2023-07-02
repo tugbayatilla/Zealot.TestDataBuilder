@@ -25,6 +25,6 @@ public class BuildTests
         {
             TestDataBuilder.For<PublicWithUnsupportedType>().Build();
         });
-        exception.Message.Should().Be($"The strategy with type '{typeof(PublicWithUnsupportedType.UnsupportedType).FullName}' is not supported.");
+        exception.Message.Should().Be($"The strategy with type '{typeof(IntPtr).FullName}' is not supported.");
     }
 }

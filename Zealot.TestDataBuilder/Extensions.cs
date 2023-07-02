@@ -30,9 +30,14 @@ public static class Extensions
         p.IsEquivalentTo(type)
         || (p.IsGenericType == type.IsGenericType && !p.GenericTypeArguments.Except(type.GenericTypeArguments).Any());
     
-    public static bool IsNullableEnum(this Type t)
+    public static bool IsNullableEnum(this Type type)
     {
-        var u = Nullable.GetUnderlyingType(t);
+        var u = Nullable.GetUnderlyingType(type);
         return u is {IsEnum: true};
+    }
+    
+    public static bool IsStruct(this Type type) 
+    {
+        return type.IsValueType && !type.IsPrimitive && !type.IsEnum;
     }
 }
