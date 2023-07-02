@@ -24,6 +24,9 @@ public class StrategyContainer : IStrategyContainer
     
     public IStrategy Resolve(PropertyInfo propertyInfo)
     {
+        //todo: multiple strategies can be found!
+        //todo: find a way to replace existing strategies
+        
         var strategy = _registeredStrategies.FirstOrDefault(p => p.ResolveCondition.Compile().Invoke(propertyInfo));
         if (strategy == null)
         {
