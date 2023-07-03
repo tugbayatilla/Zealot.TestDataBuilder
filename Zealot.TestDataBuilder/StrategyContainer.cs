@@ -22,6 +22,7 @@ public class StrategyContainer : IStrategyContainer
         _registeredStrategies.Add(new DatetimeStrategy());
         _registeredStrategies.Add(new GuidStrategy());
         _registeredStrategies.Add(new StructStrategy());
+        _registeredStrategies.Add(new ClassStrategy());
     }
     
     public IStrategy Resolve(PropertyInfo propertyInfo)
