@@ -7,7 +7,7 @@ internal class ClassStrategy : Strategy
 {
     public override async Task ExecuteAsync(IContext context, PropertyInfo propertyInfo)
     {
-        if (!context.CanContinueInRecursion(propertyInfo.PropertyType))
+        if (!context.WithRecursionLevelContainer.CanContinueDeeper(propertyInfo.PropertyType))
             return;
         
         var instance = Instance.Create(propertyInfo.PropertyType);

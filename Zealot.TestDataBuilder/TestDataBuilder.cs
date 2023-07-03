@@ -8,10 +8,12 @@ public static class TestDataBuilder
     public static IBuilder<TEntity> For<TEntity>()
         where TEntity : new()
     {
+        // todo: rename Strategycontainer with withstrategy...
         IContext context = new Context(
             new TEntity(), 
             new WithOnlyContainer(),
-            new StrategyContainer());
+            new StrategyContainer(),
+            new WithRecursionLevelContainer());
 
         return new Builder<TEntity>(context);
     }
