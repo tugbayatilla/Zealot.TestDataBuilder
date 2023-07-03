@@ -1,7 +1,7 @@
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace Zealot;
+namespace Zealot.Internals;
 
 internal static class Instance
 {

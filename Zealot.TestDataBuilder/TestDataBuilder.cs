@@ -1,3 +1,6 @@
+using Zealot.Interfaces;
+using Zealot.Internals;
+
 namespace Zealot;
 
 public static class TestDataBuilder
@@ -8,12 +11,11 @@ public static class TestDataBuilder
     public static IBuilder<TEntity> For<TEntity>()
         where TEntity : class, new()
     {
-        // todo: rename Strategycontainer with withstrategy...
         IContext context = new Context(
             new TEntity(), 
-            new WithOnlyContainer(),
+            new WithOnly(),
             new StrategyContainer(),
-            new WithRecursionLevelContainer());
+            new WithRecursionLevel());
 
         return new Builder<TEntity>(context);
     }

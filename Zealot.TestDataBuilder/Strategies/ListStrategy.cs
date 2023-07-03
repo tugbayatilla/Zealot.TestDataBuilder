@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Linq.Expressions;
 using System.Reflection;
+using Zealot.Interfaces;
+using Zealot.Internals;
 
 namespace Zealot.Strategies;
 

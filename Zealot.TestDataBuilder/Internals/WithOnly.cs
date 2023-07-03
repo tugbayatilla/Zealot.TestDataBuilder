@@ -1,6 +1,8 @@
-namespace Zealot;
+using Zealot.Interfaces;
 
-internal class WithOnlyContainer : IWithOnlyContainer
+namespace Zealot.Internals;
+
+internal class WithOnly : IWithOnly
 {
     private readonly IList<Type> _list = new List<Type>();
 
@@ -11,14 +13,8 @@ internal class WithOnlyContainer : IWithOnlyContainer
             _list.Add(type);
         }
     }
-
-    public IEnumerable<Type> List()
-    {
-        return _list.AsEnumerable();
-    }
-
+    
     public bool Exist(Type type) => _list.Any(p => p.IsSame(type));
-
-    public bool HasSomething => _list.Any();
     public bool IgnoreThis(Type ignoreType) => HasSomething && !Exist(ignoreType);
+    private bool HasSomething => _list.Any();
 }

@@ -1,4 +1,4 @@
-﻿namespace Zealot;
+﻿namespace Zealot.Interfaces;
 
 public interface IContext
 {
@@ -9,6 +9,6 @@ public interface IContext
     Guid WithGuid { get; set; }
     
     IStrategyContainer StrategyContainer { get; }
-    IWithRecursionLevelContainer WithRecursionLevelContainer { get; }
-    IWithOnlyContainer WithOnlyContainer { get; }
+    IWithRecursionLevel WithRecursionLevel { get; }
+    IWithOnly WithOnly { get; }
 }

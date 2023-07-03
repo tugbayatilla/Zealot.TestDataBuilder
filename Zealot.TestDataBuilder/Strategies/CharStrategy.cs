@@ -1,4 +1,5 @@
 using System.Reflection;
+using Zealot.Interfaces;
 
 namespace Zealot.Strategies;
 

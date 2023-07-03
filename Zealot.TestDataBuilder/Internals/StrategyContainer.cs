@@ -1,9 +1,10 @@
 using System.Reflection;
+using Zealot.Interfaces;
 using Zealot.Strategies;
 
-namespace Zealot;
+namespace Zealot.Internals;
 
-public class StrategyContainer : IStrategyContainer
+internal class StrategyContainer : IStrategyContainer
 {
     private readonly IList<IStrategy> _registeredStrategies = new List<IStrategy>();
 

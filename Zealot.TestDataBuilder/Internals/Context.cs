@@ -1,24 +1,26 @@
-namespace Zealot;
+using Zealot.Interfaces;
+
+namespace Zealot.Internals;
 
 internal class Context : IContext
 {
     public Context(object entity, 
-        IWithOnlyContainer withOnlyContainer, 
+        IWithOnly withOnly, 
         IStrategyContainer strategyContainer, 
-        IWithRecursionLevelContainer withRecursionLevelContainer)
+        IWithRecursionLevel withRecursionLevel)
     {
         Entity = entity;
-        WithOnlyContainer = withOnlyContainer;
+        WithOnly = withOnly;
         StrategyContainer = strategyContainer;
-        WithRecursionLevelContainer = withRecursionLevelContainer;
+        WithRecursionLevel = withRecursionLevel;
     }
 
     public IContext CloneWithNew(object entity)
     {
         var newContext = new Context(entity, 
-            WithOnlyContainer, 
+            WithOnly, 
             StrategyContainer, 
-            WithRecursionLevelContainer)
+            WithRecursionLevel)
         {
             WithUtcDate = WithUtcDate,
             WithGuid = WithGuid
@@ -28,9 +30,9 @@ internal class Context : IContext
     }
 
     public object Entity { get; private set; }
-    public IWithOnlyContainer WithOnlyContainer { get; }
+    public IWithOnly WithOnly { get; }
     public IStrategyContainer StrategyContainer { get; }
-    public IWithRecursionLevelContainer WithRecursionLevelContainer { get; }
+    public IWithRecursionLevel WithRecursionLevel { get; }
 
     public DateTime WithUtcDate { get; set; } = DateTime.UtcNow;
     public Guid WithGuid { get; set; } = Guid.NewGuid();

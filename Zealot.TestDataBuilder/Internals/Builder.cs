@@ -1,8 +1,9 @@
 ﻿using System.Linq.Expressions;
 using System.Reflection;
+using Zealot.Interfaces;
 using Zealot.Strategies;
 
-namespace Zealot;
+namespace Zealot.Internals;
 
 internal class Builder<TEntity> : IBuilder<TEntity>
     where TEntity : new()
@@ -13,7 +14,7 @@ internal class Builder<TEntity> : IBuilder<TEntity>
     public Builder(IContext context)
     {
         _context = context;
-        _context.WithRecursionLevelContainer.Register(_context.Entity.GetType());
+        _context.WithRecursionLevel.Register(_context.Entity.GetType());
     }
 
     public TEntity Build()
@@ -23,7 +24,7 @@ internal class Builder<TEntity> : IBuilder<TEntity>
         // for each property
         foreach (var propertyInfo in properties)
         {
-            if (_context.WithOnlyContainer.IgnoreThis(propertyInfo.PropertyType)) continue;
+            if (_context.WithOnly.IgnoreThis(propertyInfo.PropertyType)) continue;
             
             // find the Strategy for the type
             var strategy = _context.StrategyContainer.Resolve(propertyInfo);
@@ -64,7 +65,7 @@ internal class Builder<TEntity> : IBuilder<TEntity>
 
     public IBuilder<TEntity> WithOnly(Type type)
     {
-        _context.WithOnlyContainer.Add(type);
+        _context.WithOnly.Add(type);
         return this;
     }
 
@@ -101,7 +102,7 @@ internal class Builder<TEntity> : IBuilder<TEntity>
 
     public IBuilder<TEntity> WithRecursionLevel(int recursionLevel)
     {
-        _context.WithRecursionLevelContainer.SetAllowedRecursionLevel(recursionLevel);
+        _context.WithRecursionLevel.SetAllowedRecursionLevel(recursionLevel);
         return this;
     }
 }

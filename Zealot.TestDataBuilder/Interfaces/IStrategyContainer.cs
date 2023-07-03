@@ -1,7 +1,7 @@
 using System.Reflection;
 using Zealot.Strategies;
 
-namespace Zealot;
+namespace Zealot.Interfaces;
 
 public interface IStrategyContainer
 {

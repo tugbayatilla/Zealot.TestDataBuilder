@@ -1,6 +1,8 @@
-namespace Zealot;
+using Zealot.Interfaces;
 
-internal class WithRecursionLevelContainer : IWithRecursionLevelContainer
+namespace Zealot.Internals;
+
+internal class WithRecursionLevel : IWithRecursionLevel
 {
     private int _allowedRecursionLevel;
     private readonly Dictionary<Type, int> _recursion = new();

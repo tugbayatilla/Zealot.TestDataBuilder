@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
 using Zealot.Strategies;
 
-namespace Zealot;
+namespace Zealot.Interfaces;
 
 public interface IBuilder<TEntity> where TEntity: new()
 {

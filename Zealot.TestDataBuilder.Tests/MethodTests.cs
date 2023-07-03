@@ -1,4 +1,6 @@
 using System.Reflection;
+using Zealot.Interfaces;
+using Zealot.Internals;
 using Zealot.SampleBuilder.Tests.Samples;
 using Zealot.SampleBuilder.Tests.TestObjects;
 using Zealot.Strategies;
@@ -34,7 +36,7 @@ public class MethodTests
     [Fact]
     public void IWithOnlyContainer_Exist_with_IReadOnlyDictionary()
     {
-        IWithOnlyContainer container = new WithOnlyContainer();
+        IWithOnly container = new WithOnly();
         container.Add(typeof(IReadOnlyDictionary<,>));
 
         container
@@ -46,7 +48,7 @@ public class MethodTests
     [Fact]
     public void IWithOnlyContainer_Exist_with_NullableDouble()
     {
-        IWithOnlyContainer container = new WithOnlyContainer();
+        IWithOnly container = new WithOnly();
         container.Add(typeof(double?));
 
         container

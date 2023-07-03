@@ -1,6 +1,6 @@
-namespace Zealot;
+namespace Zealot.Interfaces;
 
-public interface IWithRecursionLevelContainer
+public interface IWithRecursionLevel
 {
     bool CanContinueDeeper(Type type);
     void Register(Type type);
