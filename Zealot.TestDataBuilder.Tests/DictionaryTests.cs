@@ -35,4 +35,15 @@ public class DictionaryTests
         entity.DictionaryStringIntProp.Count.Should().Be(2);
     }
     
+    [Fact]
+    public void Support_dictionary_complex_has_2_items()
+    {
+        var entity = TestDataBuilder
+            .For<DictionaryIntPublicWithAllClass>()
+            .Build();
+
+        entity.DictionaryIntPublicWithAllProp.Count.Should().Be(2);
+        entity.DictionaryIntPublicWithAllProp.Values.First().Should().NotBeNull();
+    }
+    
 }
