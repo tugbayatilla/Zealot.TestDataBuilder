@@ -74,6 +74,8 @@ public class MethodTests
 
     }
     
+    // todo: create separate test file for WithValue
+    // todo: add more scenario
     [Fact]
     public void IBuilder_WithValue_property_of_property()
     {

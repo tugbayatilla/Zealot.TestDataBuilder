@@ -6,8 +6,7 @@ namespace Zealot.Strategies;
 public abstract class Strategy : IStrategy
 {
     public abstract Task ExecuteAsync(IContext context, PropertyInfo propertyInfo);
-    public abstract IEnumerable<Type> AvailableTypes { get; }
-    
+    public virtual IEnumerable<Type> AvailableTypes { get; } = default!;
     public virtual Expression<Func<PropertyInfo, bool>> ResolveCondition 
         => info => AvailableTypes.Any(x=>x == info.PropertyType);
 }

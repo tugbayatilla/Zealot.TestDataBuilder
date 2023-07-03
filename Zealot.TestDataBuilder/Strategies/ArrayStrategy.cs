@@ -19,8 +19,6 @@ internal class ArrayStrategy : Strategy
 
         await Task.CompletedTask;
     }
-
-    public override IEnumerable<Type> AvailableTypes { get; } = default!;
-
+    
     public override Expression<Func<PropertyInfo, bool>> ResolveCondition => info => info.PropertyType.IsArray;
 }

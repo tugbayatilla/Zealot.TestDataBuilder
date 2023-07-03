@@ -12,9 +12,8 @@ internal class CharStrategy : Strategy
         await Task.CompletedTask;
     }
 
-    public override IEnumerable<Type> AvailableTypes =>
-        new[]
-        {
-            typeof(char?), typeof(char)
-        };
+    public override IEnumerable<Type> AvailableTypes => new[]
+    {
+        typeof(char?), typeof(char)
+    };
 }

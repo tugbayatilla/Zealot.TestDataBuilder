@@ -16,7 +16,5 @@ internal class StructStrategy : Strategy
         await Task.CompletedTask;
     }
 
-    public override IEnumerable<Type> AvailableTypes { get; } = default!;
-
     public override Expression<Func<PropertyInfo, bool>> ResolveCondition => info => info.PropertyType.IsStruct();
 }

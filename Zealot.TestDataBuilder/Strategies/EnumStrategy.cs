@@ -23,8 +23,6 @@ internal class EnumStrategy : Strategy
         await Task.CompletedTask;
     }
 
-    public override IEnumerable<Type> AvailableTypes => default!;
-
     public override Expression<Func<PropertyInfo, bool>> ResolveCondition => 
         info => info.PropertyType.IsEnum 
                 || info.PropertyType.IsNullableEnum() 
