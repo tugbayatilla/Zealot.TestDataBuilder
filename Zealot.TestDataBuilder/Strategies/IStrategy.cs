@@ -6,7 +6,8 @@ namespace Zealot.Strategies;
 
 public interface IStrategy
 {
-    Task ExecuteAsync(IContext context, PropertyInfo propertyInfo);
     IEnumerable<Type> AvailableTypes { get; }
-    Expression<Func<PropertyInfo, bool>> ResolveCondition { get; }
+    Expression<Func<Type, bool>> ResolveCondition { get; }
+    object GenerateValue(IContext context, Type type);
+    void SetValue(IContext context, PropertyInfo propertyInfo);
 }

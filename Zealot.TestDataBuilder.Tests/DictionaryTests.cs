@@ -25,4 +25,14 @@ public class DictionaryTests
         entity.IReadOnlyDictionaryStringIntProp.Should().NotBeNull();
     }
     
+    [Fact]
+    public void Support_dictionary_string_int_has_2_items()
+    {
+        var entity = TestDataBuilder
+            .For<DictionaryStringIntClass>()
+            .Build();
+
+        entity.DictionaryStringIntProp.Count.Should().Be(2);
+    }
+    
 }

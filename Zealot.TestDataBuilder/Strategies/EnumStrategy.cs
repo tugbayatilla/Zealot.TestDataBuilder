@@ -6,26 +6,29 @@ namespace Zealot.Strategies;
 
 internal class EnumStrategy : Strategy
 {
-    public override async Task ExecuteAsync(IContext context, PropertyInfo propertyInfo)
+    public override void SetValue(IContext context, PropertyInfo propertyInfo)
     {
-        var type = propertyInfo.PropertyType;
-        if (propertyInfo.PropertyType.IsNullableEnum())
-        {
-            type = Nullable.GetUnderlyingType(propertyInfo.PropertyType);
-        }
-        
-        var tempEnum = Enum.GetValues(type!);
+        var tempEnum = (Array)GenerateValue(context, propertyInfo.PropertyType);
         if (tempEnum.Length > 0)
         {
             var value = tempEnum.GetValue(0);
             propertyInfo.SetValue(context.Entity, value);
         }
-        
-        await Task.CompletedTask;
     }
 
-    public override Expression<Func<PropertyInfo, bool>> ResolveCondition => 
-        info => info.PropertyType.IsEnum 
-                || info.PropertyType.IsNullableEnum() 
-                || (info.PropertyType.BaseType != null && info.PropertyType.BaseType == typeof(Enum));
+    public override Expression<Func<Type, bool>> ResolveCondition => 
+        info => info.IsEnum 
+                || info.IsNullableEnum() 
+                || (info.BaseType != null && info.BaseType == typeof(Enum));
+
+    public override object GenerateValue(IContext context, Type type)
+    {
+        var enumType = type;
+        if (type.IsNullableEnum())
+        {
+            enumType = Nullable.GetUnderlyingType(type);
+        }
+        
+        return Enum.GetValues(enumType!);
+    }
 }

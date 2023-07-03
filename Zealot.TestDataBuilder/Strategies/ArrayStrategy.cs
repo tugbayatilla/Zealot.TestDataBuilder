@@ -7,20 +7,16 @@ namespace Zealot.Strategies;
 
 internal class ArrayStrategy : Strategy
 {
-    public override async Task ExecuteAsync(IContext context, PropertyInfo propertyInfo)
+    public override Expression<Func<Type, bool>> ResolveCondition => info => info.IsArray;
+    public override object GenerateValue(IContext context, Type type)
     {
-        var listType = propertyInfo.PropertyType;
+        var instanceType = type;
 
-        if (propertyInfo.PropertyType is {IsInterface: true, IsGenericType: true})
+        if (type is {IsInterface: true, IsGenericType: true})
         {
-            listType = typeof(List<>).MakeGenericType(propertyInfo.PropertyType.GenericTypeArguments);
+            instanceType = typeof(List<>).MakeGenericType(type.GenericTypeArguments);
         }
 
-        var listInstance = Instance.Create(listType);
-        propertyInfo.SetValue(context.Entity, listInstance);
-
-        await Task.CompletedTask;
+        return Instance.Create(instanceType);
     }
-    
-    public override Expression<Func<PropertyInfo, bool>> ResolveCondition => info => info.PropertyType.IsArray;
 }

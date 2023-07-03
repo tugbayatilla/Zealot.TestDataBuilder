@@ -5,11 +5,16 @@ namespace Zealot.Strategies;
 
 internal class StringStrategy : Strategy
 {
-    public override async Task ExecuteAsync(IContext context, PropertyInfo propertyInfo)
+    public override IEnumerable<Type> AvailableTypes => new[] { typeof(string) };
+
+    public override object GenerateValue(IContext context, Type type)
     {
-        propertyInfo.SetValue(context.Entity, propertyInfo.Name);
-        await Task.CompletedTask;
+        Thread.Sleep(1);
+        return DateTime.Now.ToString("ddMMyyyyhhmmssfffff");
     }
 
-    public override IEnumerable<Type> AvailableTypes => new[] { typeof(string) };
+    public override void SetValue(IContext context, PropertyInfo propertyInfo)
+    {
+        propertyInfo.SetValue(context.Entity, propertyInfo.Name);
+    }
 }

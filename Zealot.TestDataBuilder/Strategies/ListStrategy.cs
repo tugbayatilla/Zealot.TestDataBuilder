@@ -8,21 +8,6 @@ namespace Zealot.Strategies;
 
 internal class ListStrategy : Strategy
 {
-    public override async Task ExecuteAsync(IContext context, PropertyInfo propertyInfo)
-    {
-        var listType = propertyInfo.PropertyType;
-
-        if (propertyInfo.PropertyType is {IsInterface: true, IsGenericType: true})
-        {
-            listType = typeof(List<>).MakeGenericType(propertyInfo.PropertyType.GenericTypeArguments);
-        }
-
-        var listInstance = Instance.Create(listType);
-        propertyInfo.SetValue(context.Entity, listInstance);
-
-        await Task.CompletedTask;
-    }
-
     public override IEnumerable<Type> AvailableTypes =>
         new[]
         {
@@ -42,6 +27,18 @@ internal class ListStrategy : Strategy
             typeof(IReadOnlyList<>)
         };
     
-    public override Expression<Func<PropertyInfo, bool>> ResolveCondition 
-        => info => AvailableTypes.Any(x=>x.Name == info.PropertyType.Name);
+    public override Expression<Func<Type, bool>> ResolveCondition 
+        => info => AvailableTypes.Any(x=>x.Name == info.Name);
+
+    public override object GenerateValue(IContext context, Type type)
+    {
+        var listType = type;
+
+        if (type is {IsInterface: true, IsGenericType: true})
+        {
+            listType = typeof(List<>).MakeGenericType(type.GenericTypeArguments);
+        }
+
+        return Instance.Create(listType);
+    }
 }

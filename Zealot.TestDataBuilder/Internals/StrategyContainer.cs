@@ -26,22 +26,20 @@ internal class StrategyContainer : IStrategyContainer
         _registeredStrategies.Add(new ClassStrategy());
     }
     
-    public IStrategy Resolve(PropertyInfo propertyInfo)
+    public IStrategy Resolve(Type propertyInfo)
     {
         //todo: multiple strategies can be found!
         //todo: find a way to replace existing strategies
         
-        var strategy = _registeredStrategies.FirstOrDefault(p => p.ResolveCondition.Compile().Invoke(propertyInfo));
+        var strategy = _registeredStrategies.FirstOrDefault(p 
+            => p.ResolveCondition.Compile().Invoke(propertyInfo));
         if (strategy == null)
         {
-            throw new NotSupportedException($"The strategy with type '{propertyInfo.PropertyType.FullName}' is not supported.");
+            throw new NotSupportedException($"The strategy with type '{propertyInfo.FullName}' is not supported.");
         }
         return strategy;
     }
     
-    public IEnumerable<IStrategy> ResolveAll(PropertyInfo propertyInfo) 
-        =>_registeredStrategies.Where(p => p.ResolveCondition.Compile().Invoke(propertyInfo));
-
     public void Register(IStrategy strategy)
     {
         _registeredStrategies.Add(strategy);

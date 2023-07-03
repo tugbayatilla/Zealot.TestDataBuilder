@@ -5,14 +5,13 @@ namespace Zealot.Strategies;
 
 internal class GuidStrategy : Strategy
 {
-    public override async Task ExecuteAsync(IContext context, PropertyInfo propertyInfo)
-    {
-        propertyInfo.SetValue(context.Entity, context.WithGuid);
-        await Task.CompletedTask;
-    }
-
     public override IEnumerable<Type> AvailableTypes => new[]
     {
         typeof(Guid?),typeof(Guid),
     };
+
+    public override object GenerateValue(IContext context, Type type)
+    {
+        return context.WithGuid;
+    }
 }

@@ -45,6 +45,10 @@ internal static class Instance
             {
                 instance = Activator.CreateInstance(type);
             }
+            if (type.IsValueType)
+            {
+                instance = Activator.CreateInstance(type);
+            }
             
             return instance;
         }

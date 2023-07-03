@@ -7,16 +7,9 @@ namespace Zealot.Strategies;
 
 internal class StructStrategy : Strategy
 {
-    public override async Task ExecuteAsync(IContext context, PropertyInfo propertyInfo)
+    public override Expression<Func<Type, bool>> ResolveCondition => info => info.IsStruct() && false;
+    public override object GenerateValue(IContext context, Type type)
     {
-        var instance = Instance.Create(propertyInfo.PropertyType);
-        
-        var newInstance = instance.WithContext(context).Build();
-        
-        propertyInfo.SetValue(context.Entity, newInstance);
-
-        await Task.CompletedTask;
+        return null;
     }
-
-    public override Expression<Func<PropertyInfo, bool>> ResolveCondition => info => info.PropertyType.IsStruct();
 }

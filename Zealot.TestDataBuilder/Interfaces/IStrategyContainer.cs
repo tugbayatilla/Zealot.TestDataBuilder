@@ -5,7 +5,6 @@ namespace Zealot.Interfaces;
 
 public interface IStrategyContainer
 {
-    IStrategy Resolve(PropertyInfo propertyInfo);
-    IEnumerable<IStrategy> ResolveAll(PropertyInfo propertyInfo);
+    IStrategy Resolve(Type propertyInfo);
     void Register(IStrategy strategy);
 }

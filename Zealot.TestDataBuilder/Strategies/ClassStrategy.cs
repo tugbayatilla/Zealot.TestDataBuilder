@@ -7,18 +7,18 @@ namespace Zealot.Strategies;
 
 internal class ClassStrategy : Strategy
 {
-    public override async Task ExecuteAsync(IContext context, PropertyInfo propertyInfo)
+    public override void SetValue(IContext context, PropertyInfo propertyInfo)
     {
         if (!context.WithRecursionLevel.CanContinueDeeper(propertyInfo.PropertyType))
             return;
         
-        var instance = Instance.Create(propertyInfo.PropertyType);
-        var newInstance = instance.WithContext(context).Build();
-        
-        propertyInfo.SetValue(context.Entity, newInstance);
-
-        await Task.CompletedTask;
+        base.SetValue(context, propertyInfo);
     }
 
-    public override Expression<Func<PropertyInfo, bool>> ResolveCondition => info => info.PropertyType.IsClass;
+    public override Expression<Func<Type, bool>> ResolveCondition => info => info.IsClass || info.IsStruct();
+    public override object GenerateValue(IContext context, Type type)
+    {
+        var instance = Instance.Create(type);
+        return instance.WithContext(context).Build();
+    }
 }

@@ -92,11 +92,9 @@ public class MethodTests
 
 internal class NIntStrategy : Strategy
 {
-    public override Task ExecuteAsync(IContext context, PropertyInfo propertyInfo)
-    {
-        propertyInfo.SetValue(context.Entity, IntPtr.Parse("1"));
-        return Task.CompletedTask;
-    }
-
     public override IEnumerable<Type> AvailableTypes => new[] { typeof(IntPtr) };
+    public override object GenerateValue(IContext context, Type type)
+    {
+        return IntPtr.Parse("1");
+    }
 }

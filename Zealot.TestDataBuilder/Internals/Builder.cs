@@ -27,9 +27,9 @@ internal class Builder<TEntity> : IBuilder<TEntity>
             if (_context.WithOnly.IgnoreThis(propertyInfo.PropertyType)) continue;
             
             // find the Strategy for the type
-            var strategy = _context.StrategyContainer.Resolve(propertyInfo);
+            var strategy = _context.StrategyContainer.Resolve(propertyInfo.PropertyType);
             // execute the strategy
-            Task.Run(() => strategy.ExecuteAsync(_context, propertyInfo)).Wait();
+            strategy.SetValue(_context, propertyInfo);
         }
 
         // override values
