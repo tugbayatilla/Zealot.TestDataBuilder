@@ -36,7 +36,7 @@ public class DictionaryTests
     }
     
     [Fact]
-    public void Support_dictionary_complex_has_2_items()
+    public void Support_dictionary_int_complex_has_2_items()
     {
         var entity = TestDataBuilder
             .For<DictionaryIntPublicWithAllClass>()
@@ -44,6 +44,17 @@ public class DictionaryTests
 
         entity.DictionaryIntPublicWithAllProp.Count.Should().Be(2);
         entity.DictionaryIntPublicWithAllProp.Values.First().Should().NotBeNull();
+    }
+    
+    [Fact]
+    public void Support_dictionary_string_complex_has_2_items()
+    {
+        var entity = TestDataBuilder
+            .For<DictionaryStringPublicWithAllClass>()
+            .Build();
+
+        entity.DictionaryStringPublicWithAllProp.Count.Should().Be(2);
+        entity.DictionaryStringPublicWithAllProp.Values.First().Should().NotBeNull();
     }
     
 }

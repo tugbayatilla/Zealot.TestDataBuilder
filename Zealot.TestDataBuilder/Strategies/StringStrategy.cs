@@ -5,12 +5,13 @@ namespace Zealot.Strategies;
 
 internal class StringStrategy : Strategy
 {
+    private int _number;
     public override IEnumerable<Type> AvailableTypes => new[] { typeof(string) };
 
     public override object GenerateValue(IContext context, Type type)
     {
-        Thread.Sleep(1);
-        return DateTime.Now.ToString("ddMMyyyyhhmmssfffff");
+        _number++;
+        return _number.ToString();
     }
 
     public override void SetValue(IContext context, PropertyInfo propertyInfo)
