@@ -2,14 +2,14 @@ namespace Zealot;
 
 internal class WithRecursionLevelContainer : IWithRecursionLevelContainer
 {
+    private int _allowedRecursionLevel;
     private readonly Dictionary<Type, int> _recursion = new();
+    
     public bool CanContinueDeeper(Type type)
     {
-        const int defaultRecursionLevel = 0;
-
         if (_recursion.TryGetValue(type, out var value))
         {
-            return value > defaultRecursionLevel;
+            return value < _allowedRecursionLevel;
         }
 
         return true;
@@ -25,5 +25,10 @@ internal class WithRecursionLevelContainer : IWithRecursionLevelContainer
         {
             _recursion.Add(type, 0);
         }
+    }
+
+    public void SetAllowedRecursionLevel(int allowedRecursionLevel)
+    {
+        _allowedRecursionLevel = allowedRecursionLevel;
     }
 }

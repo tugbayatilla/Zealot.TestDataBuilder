@@ -6,7 +6,7 @@ public static class TestDataBuilder
     /// Required
     /// </summary>
     public static IBuilder<TEntity> For<TEntity>()
-        where TEntity : new()
+        where TEntity : class, new()
     {
         // todo: rename Strategycontainer with withstrategy...
         IContext context = new Context(
@@ -22,7 +22,7 @@ public static class TestDataBuilder
     /// Required
     /// </summary>
     public static IBuilder<TEntity> WithContext<TEntity>(this TEntity entity, IContext context)
-        where TEntity : new()
+        where TEntity : class, new()
     {
         var newContext = context.CloneWithNew(entity);
         

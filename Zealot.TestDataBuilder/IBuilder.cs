@@ -28,4 +28,5 @@ public interface IBuilder<TEntity> where TEntity: new()
     IBuilder<TEntity> WithDate(DateTime dateTime);
     IBuilder<TEntity> WithStrategy(IStrategy strategy);
     IBuilder<TEntity> WithGuid(Guid guid);
+    IBuilder<TEntity> WithRecursionLevel(int recursionLevel);
 }

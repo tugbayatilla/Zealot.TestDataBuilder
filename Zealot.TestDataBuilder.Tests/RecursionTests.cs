@@ -6,15 +6,26 @@ public class RecursionTests
 {
     // todo: check for struct recursion as well
     [Fact]
-    public void Support_recursion_1()
+    public void Support_recursion_with_default_level_0()
     {
         var guid = Guid.NewGuid();
         var entity = TestDataBuilder
             .For<PublicRecursionAClass>()
-            .WithGuid(guid)
             .Build();
 
         entity.PublicRecursionBProp.PublicRecursionAClassProp.Should().BeNull();
+    }
+    
+    [Fact]
+    public void Support_recursion_with_recursion_level_1()
+    {
+        var entity = TestDataBuilder
+            .For<PublicRecursionAClass>()
+            .WithRecursionLevel(1)
+            .Build();
+
+        entity.PublicRecursionBProp.PublicRecursionAClassProp.Should().NotBeNull();
+        entity.PublicRecursionBProp.PublicRecursionAClassProp.PublicRecursionBProp.PublicRecursionAClassProp.Should().BeNull();
     }
     
     

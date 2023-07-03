@@ -13,7 +13,7 @@ internal class Builder<TEntity> : IBuilder<TEntity>
     public Builder(IContext context)
     {
         _context = context;
-        _context.WithRecursionLevelContainer.Register(typeof(TEntity));
+        _context.WithRecursionLevelContainer.Register(_context.Entity.GetType());
     }
 
     public TEntity Build()
@@ -96,6 +96,12 @@ internal class Builder<TEntity> : IBuilder<TEntity>
     public IBuilder<TEntity> WithGuid(Guid guid)
     {
         _context.WithGuid = guid;
+        return this;
+    }
+
+    public IBuilder<TEntity> WithRecursionLevel(int recursionLevel)
+    {
+        _context.WithRecursionLevelContainer.SetAllowedRecursionLevel(recursionLevel);
         return this;
     }
 }
