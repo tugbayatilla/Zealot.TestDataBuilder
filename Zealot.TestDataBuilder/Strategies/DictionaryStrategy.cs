@@ -1,8 +1,5 @@
 ﻿using System.Collections;
-using System.Dynamic;
 using System.Linq.Expressions;
-using System.Reflection;
-using System.Reflection.Emit;
 using Zealot.Interfaces;
 using Zealot.Internals;
 
@@ -10,6 +7,8 @@ namespace Zealot.Strategies;
 
 internal class DictionaryStrategy : Strategy
 {
+    private const int SizeOfList = 2;
+    
     public override IEnumerable<Type> AvailableTypes =>
         new[]
         {
@@ -29,12 +28,11 @@ internal class DictionaryStrategy : Strategy
             propertyType = typeof(Dictionary<,>).MakeGenericType(type.GenericTypeArguments);
         }
 
-        //todo: what if it is null?
         var propertyInstance = Instance.Create(propertyType) as IDictionary;
 
         var arguments = propertyInstance.GetType().GetGenericArguments();
-        // todo: get rid of magic number
-        for (var i = 0; i < 2; i++)
+
+        for (var i = 0; i < SizeOfList; i++)
         {
             var strategy1 = context.StrategyContainer.Resolve(arguments[0]);
             var key = strategy1.GenerateValue(context, arguments[0]);
