@@ -32,6 +32,7 @@ internal class Builder<TEntity> : IBuilder<TEntity>
             strategy.SetValue(_context, propertyInfo);
         }
 
+        //todo: write more tests
         // override values
         _overrideExpressions.ForEach(p =>
         {

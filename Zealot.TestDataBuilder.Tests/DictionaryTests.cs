@@ -57,4 +57,15 @@ public class DictionaryTests
         entity.DictionaryStringPublicWithAllProp.Values.First().Should().NotBeNull();
     }
     
+    [Fact]
+    public void Support_IReadOnlyDictionary_has_2_values()
+    {
+        var entity = TestDataBuilder
+            .For<InternalWithDictionary>()
+            .WithOnly(typeof(IReadOnlyDictionary<,>))
+            .Build();
+
+        entity.IReadOnlyDictionaryStringIntProp.Count.Should().Be(2);
+    }
+    
 }

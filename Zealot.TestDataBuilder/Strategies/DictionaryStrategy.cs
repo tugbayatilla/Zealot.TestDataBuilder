@@ -29,24 +29,22 @@ internal class DictionaryStrategy : Strategy
             propertyType = typeof(Dictionary<,>).MakeGenericType(type.GenericTypeArguments);
         }
 
-        var propertyInstance = Instance.Create(propertyType);
+        //todo: what if it is null?
+        var propertyInstance = Instance.Create(propertyType) as IDictionary;
 
-        if (propertyInstance is IDictionary dict)
+        var arguments = propertyInstance.GetType().GetGenericArguments();
+        // todo: get rid of magic number
+        for (var i = 0; i < 2; i++)
         {
-            var arguments = propertyInstance.GetType().GetGenericArguments();
+            var strategy1 = context.StrategyContainer.Resolve(arguments[0]);
+            var key = strategy1.GenerateValue(context, arguments[0]);
 
-            for (var i = 0; i < 2; i++)
-            {
-                var strategy1 = context.StrategyContainer.Resolve(arguments[0]);
-                var key = strategy1.GenerateValue(context, arguments[0]);
+            var strategy2 = context.StrategyContainer.Resolve(arguments[1]);
+            var value = strategy2.GenerateValue(context, arguments[1]);
 
-                var strategy2 = context.StrategyContainer.Resolve(arguments[1]);
-                var value = strategy2.GenerateValue(context, arguments[1]);
-
-                dict.Add(key, value);
-            }
+            propertyInstance.Add(key, value);
         }
-
+        
         return propertyInstance;
     }
 }
