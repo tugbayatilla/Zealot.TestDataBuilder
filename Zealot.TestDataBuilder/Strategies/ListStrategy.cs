@@ -16,7 +16,6 @@ internal class ListStrategy : Strategy
             typeof(IList),
             typeof(ICollection<>),
             typeof(ICollection),
-            typeof(ArrayList),
             typeof(LinkedList<>),
             typeof(Queue<>),
             typeof(Queue),
