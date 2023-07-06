@@ -25,6 +25,7 @@ public class RecursionTests
             .Build();
 
         entity.PublicRecursionBProp.PublicRecursionAClassProp.Should().NotBeNull();
+        entity.PublicRecursionBProp.PublicRecursionAClassProp.PublicRecursionBProp.Should().NotBeNull();
         entity.PublicRecursionBProp.PublicRecursionAClassProp.PublicRecursionBProp.PublicRecursionAClassProp.Should().BeNull();
     }
     

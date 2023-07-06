@@ -5,27 +5,35 @@ namespace Zealot.Internals;
 internal class WithRecursionLevel : IWithRecursionLevel
 {
     private int _allowedRecursionLevel;
-    private readonly Dictionary<Type, int> _recursion = new();
-    
-    public bool CanContinueDeeper(Type type)
+
+    public bool CanContinueDeeper(IContext context, Type type)
     {
-        if (_recursion.TryGetValue(type, out var value))
+        var (exist, level) = RecursionExist(context, type);
+        if (exist)
         {
-            return value < _allowedRecursionLevel;
+            return level <= _allowedRecursionLevel;
         }
 
         return true;
     }
 
-    public void Register(Type type)
+    private (bool exist, int level) RecursionExist(IContext context, Type type)
     {
-        if (_recursion.ContainsKey(type))
+        var level = 0;
+        var exist = false;
+        while (true)
         {
-            _recursion[type] += 1;
-        }
-        else
-        {
-            _recursion.Add(type, 0);
+            // no parent, no recursion
+            if (context.Parent == null) return (exist, level);
+            
+            // parent has same type, recursion
+            if (context.Parent.Entity.GetType() == type)
+            {
+                exist = true;
+                level++;
+            }
+
+            context = context.Parent;
         }
     }
 

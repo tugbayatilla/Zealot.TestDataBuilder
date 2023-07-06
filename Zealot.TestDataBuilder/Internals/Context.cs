@@ -26,8 +26,12 @@ internal class Context : IContext
             WithGuid = WithGuid
         };
 
+        newContext.Parent = this;
+        
         return newContext;
     }
+
+    public IContext? Parent { get; private set; }
 
     public object Entity { get; private set; }
     public IWithOnly WithOnly { get; }

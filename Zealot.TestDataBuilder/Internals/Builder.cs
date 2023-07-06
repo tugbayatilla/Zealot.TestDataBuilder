@@ -12,7 +12,6 @@ internal class Builder<TEntity> : IBuilder<TEntity>
     public Builder(IContext context)
     {
         _context = context;
-        _context.WithRecursionLevel.Register(_context.Entity.GetType());
     }
 
     public TEntity Build()
