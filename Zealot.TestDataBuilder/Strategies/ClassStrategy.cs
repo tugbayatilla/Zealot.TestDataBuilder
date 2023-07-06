@@ -7,12 +7,12 @@ namespace Zealot.Strategies;
 
 internal class ClassStrategy : Strategy
 {
-    public override void SetValue(IContext context, PropertyInfo propertyInfo)
+    public override void Execute(IContext context, PropertyInfo propertyInfo)
     {
         if (!context.WithRecursionLevel.CanContinueDeeper(propertyInfo.PropertyType))
             return;
         
-        base.SetValue(context, propertyInfo);
+        base.Execute(context, propertyInfo);
     }
 
     public override Expression<Func<Type, bool>> ResolveCondition => info => info.IsClass || info.IsStruct();

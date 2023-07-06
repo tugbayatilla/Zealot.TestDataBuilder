@@ -21,10 +21,10 @@ internal class NumberStrategy : Strategy
         return Convert.ChangeType(_currentNumber, type);
     }
 
-    public override void SetValue(IContext context, PropertyInfo propertyInfo)
+    public override void Execute(IContext context, PropertyInfo propertyInfo)
     {
         _currentNumber++;
-        base.SetValue(context, propertyInfo);
+        base.Execute(context, propertyInfo);
     }
 
     public override IEnumerable<Type> AvailableTypes =>

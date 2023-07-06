@@ -12,9 +12,9 @@ public abstract class Strategy : IStrategy
 
     public abstract object GenerateValue(IContext context, Type type);
 
-    public virtual void SetValue(IContext context, PropertyInfo propertyInfo)
+    public virtual void Execute(IContext context, PropertyInfo propertyInfo)
     {
-        propertyInfo.SetValue(context.Entity, GenerateValue(context, propertyInfo.PropertyType));
+        propertyInfo.SecureSetValue(context.Entity, GenerateValue(context, propertyInfo.PropertyType));
     }
 
 }

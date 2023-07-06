@@ -29,7 +29,7 @@ internal class Builder<TEntity> : IBuilder<TEntity>
             // find the Strategy for the type
             var strategy = _context.StrategyContainer.Resolve(propertyInfo.PropertyType);
             // execute the strategy
-            strategy.SetValue(_context, propertyInfo);
+            strategy.Execute(_context, propertyInfo);
         }
 
         //todo: write more tests

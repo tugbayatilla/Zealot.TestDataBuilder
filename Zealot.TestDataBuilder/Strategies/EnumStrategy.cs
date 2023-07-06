@@ -6,7 +6,7 @@ namespace Zealot.Strategies;
 
 internal class EnumStrategy : Strategy
 {
-    public override void SetValue(IContext context, PropertyInfo propertyInfo)
+    public override void Execute(IContext context, PropertyInfo propertyInfo)
     {
         var tempEnum = (Array)GenerateValue(context, propertyInfo.PropertyType);
         if (tempEnum.Length > 0)
