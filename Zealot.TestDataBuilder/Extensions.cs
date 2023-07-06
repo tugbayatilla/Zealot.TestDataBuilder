@@ -40,4 +40,12 @@ public static class Extensions
     {
         return type.IsValueType && !type.IsPrimitive && !type.IsEnum;
     }
+    
+    public static void SecureSetValue(this PropertyInfo propertyInfo, object entity, object value)
+    {
+        if (propertyInfo.GetSetMethod() != null)
+        {
+            propertyInfo.SetValue(entity, value);
+        }
+    }
 }

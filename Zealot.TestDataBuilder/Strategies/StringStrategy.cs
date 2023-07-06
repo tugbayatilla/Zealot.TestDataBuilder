@@ -14,8 +14,8 @@ internal class StringStrategy : Strategy
         return _number.ToString();
     }
 
-    public override void SetValue(IContext context, PropertyInfo propertyInfo)
+    public override void Execute(IContext context, PropertyInfo propertyInfo)
     {
-        propertyInfo.SetValue(context.Entity, propertyInfo.Name);
+        propertyInfo.SecureSetValue(context.Entity, propertyInfo.Name);
     }
 }
