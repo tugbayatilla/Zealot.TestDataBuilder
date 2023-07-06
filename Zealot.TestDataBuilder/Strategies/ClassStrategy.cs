@@ -15,10 +15,14 @@ internal class ClassStrategy : Strategy
         base.Execute(context, propertyInfo);
     }
 
-    public override Expression<Func<Type, bool>> ResolveCondition => info => info.IsClass || info.IsStruct();
+    public override Expression<Func<Type, bool>> ResolveCondition => info => 
+        (info.IsClass || info.IsStruct()) 
+        && !info.IsArray
+        && !new ListStrategy().ResolveCondition.Compile().Invoke(info);
+    
     public override object GenerateValue(IContext context, Type type)
     {
         var instance = Instance.Create(type);
-        return instance.WithContext(context).Build();
+        return instance?.WithContext(context).Build()!;
     }
 }
