@@ -1,6 +1,4 @@
-﻿using System.Linq.Expressions;
-using System.Reflection;
-using Zealot.Interfaces;
+﻿using Zealot.Interfaces;
 using Zealot.Strategies;
 
 namespace Zealot.Internals;
@@ -9,8 +7,8 @@ internal class Builder<TEntity> : IBuilder<TEntity>
     where TEntity : new()
 {
     private readonly IContext _context;
-    private readonly List<(MemberExpression member, object value)> _overrideExpressions = new();
-
+    private Action<TEntity> _withValueAction = default!;
+    
     public Builder(IContext context)
     {
         _context = context;
@@ -25,38 +23,16 @@ internal class Builder<TEntity> : IBuilder<TEntity>
         foreach (var propertyInfo in properties)
         {
             if (_context.WithOnly.IgnoreThis(propertyInfo.PropertyType)) continue;
-            
+
             // find the Strategy for the type
             var strategy = _context.StrategyContainer.Resolve(propertyInfo.PropertyType);
             // execute the strategy
             strategy.Execute(_context, propertyInfo);
         }
-
-        //todo: write more tests
-        // override values
-        _overrideExpressions.ForEach(p =>
-        {
-            var prop = ((PropertyInfo) p.member.Member);
-            if (prop.ReflectedType == _context.Entity.GetType())
-            {
-                prop.SetValue(_context.Entity, p.value);
-            }
-            else
-            {
-                // get value of property of property
-                var propertyInstance = _context.Entity.GetType().GetRuntimeProperty(prop.ReflectedType.Name)
-                    .GetValue(_context.Entity);
-
-                //change value of property of property
-                propertyInstance.GetType().GetRuntimeProperty(prop.Name).SetValue(propertyInstance, p.value);
-                
-                // set property to property of propery
-                _context.Entity.GetType().GetRuntimeProperty(prop.ReflectedType.Name).SetValue(_context.Entity, propertyInstance);
-            }
-        });
         
+        _withValueAction?.Invoke((TEntity) _context.Entity);
         
-        return (TEntity)_context.Entity;
+        return (TEntity) _context.Entity;
     }
 
     public IBuilder<TEntity> WithOnly<TProperty>()
@@ -70,16 +46,10 @@ internal class Builder<TEntity> : IBuilder<TEntity>
         return this;
     }
 
-    public IBuilder<TEntity> WithValue<TProperty>(Expression<Func<TEntity, TProperty>> propertySelector, TProperty value)
-    {
-        if (propertySelector == null) throw new ArgumentNullException(nameof(propertySelector));
-        if (value == null) throw new ArgumentNullException(nameof(value));
 
-        if (propertySelector.Body is MemberExpression propertySelectorBody)
-        {
-            _overrideExpressions.Add(new (propertySelectorBody, value));    
-        }
-        
+    public IBuilder<TEntity> WithValue(Action<TEntity> action)
+    {
+        _withValueAction = action;
         return this;
     }
 

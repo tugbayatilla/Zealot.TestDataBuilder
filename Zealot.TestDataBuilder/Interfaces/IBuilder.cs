@@ -1,5 +1,4 @@
-﻿using System.Linq.Expressions;
-using Zealot.Strategies;
+﻿using Zealot.Strategies;
 
 namespace Zealot.Interfaces;
 
@@ -23,10 +22,25 @@ public interface IBuilder<TEntity> where TEntity: new()
     /// <summary>
     /// Optional
     /// </summary>
-    IBuilder<TEntity> WithValue<TProperty>(Expression<Func<TEntity, TProperty>> propertySelector, TProperty value);
+    IBuilder<TEntity> WithValue(Action<TEntity> action);
 
+    /// <summary>
+    /// Optional
+    /// </summary>
     IBuilder<TEntity> WithDate(DateTime dateTime);
+    
+    /// <summary>
+    /// Optional
+    /// </summary>
     IBuilder<TEntity> WithStrategy(IStrategy strategy);
+    
+    /// <summary>
+    /// Optional
+    /// </summary>
     IBuilder<TEntity> WithGuid(Guid guid);
+    
+    /// <summary>
+    /// Optional
+    /// </summary>
     IBuilder<TEntity> WithRecursionLevel(int recursionLevel);
 }
