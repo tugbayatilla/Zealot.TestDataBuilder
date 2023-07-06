@@ -16,6 +16,9 @@ internal class Builder<TEntity> : IBuilder<TEntity>
 
     public TEntity Build()
     {
+        var newInstance = Instance.Create(_context.Entity.GetType());
+        _context.SetEntity(newInstance); 
+        
         // find properties
         var properties = _context.Entity.GetType().GetProperties();
         // for each property
@@ -48,6 +51,7 @@ internal class Builder<TEntity> : IBuilder<TEntity>
 
     public IBuilder<TEntity> WithValue(Action<TEntity> action)
     {
+        //todo: this can be called more than one. make a list
         _withValueAction = action;
         return this;
     }

@@ -38,6 +38,11 @@ internal class Context : IContext
     public IStrategyContainer StrategyContainer { get; }
     public IWithRecursionLevel WithRecursionLevel { get; }
 
+    public void SetEntity(object entity)
+    {
+        Entity = entity;
+    }
+
     public DateTime WithUtcDate { get; set; } = DateTime.UtcNow;
     public Guid WithGuid { get; set; } = Guid.NewGuid();
 }

@@ -7,6 +7,8 @@ public interface IContext
     public IContext? Parent { get; }
     
     object Entity { get; }
+    void SetEntity(object entity);
+    
     DateTime WithUtcDate { get; set; }
     Guid WithGuid { get; set; }
     

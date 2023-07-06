@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using System.Collections;
+using System.Linq.Expressions;
 using Zealot.Interfaces;
 using Zealot.Internals;
 
@@ -16,6 +17,19 @@ internal class ArrayStrategy : Strategy
             instanceType = typeof(List<>).MakeGenericType(type.GenericTypeArguments);
         }
 
-        return Instance.Create(instanceType);
+        var elementType = instanceType.GetElementType();
+        var instance = Array.CreateInstance(elementType, 2);
+        
+        if (instance == null) return null!;
+        
+        var strategy = context.StrategyContainer.Resolve(elementType);
+            
+        for (var i = 0; i < 2; i++)
+        {
+            var value = strategy.GenerateValue(context, elementType);
+            instance.SetValue(value, i);
+        }
+
+        return instance;
     }
 }
