@@ -8,9 +8,11 @@ namespace Zealot.Strategies;
 
 internal class ListStrategy : Strategy
 {
+    //todo: split these different strategies
     public override IEnumerable<Type> AvailableTypes =>
         new[]
         {
+            typeof(List<>),
             typeof(IList<>),
             typeof(IList),
             typeof(ICollection<>),
