@@ -1,3 +1,5 @@
+using Zealot.SampleBuilder.Tests.TestObjects;
+
 namespace Zealot.SampleBuilder.Tests;
 
 public class StructTests
@@ -6,7 +8,7 @@ public class StructTests
     public void Support_struct()
     {
         var subject = TestDataBuilder
-            .For<Samples.SimpleClassWithStruct>()
+            .For<SimpleClassWithStruct>()
             .Build();
 
         subject.SimpleStruct.Should().NotBeNull();

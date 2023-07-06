@@ -6,6 +6,8 @@ namespace Zealot.Strategies;
 
 internal class NumberStrategy : Strategy
 {
+    //todo: implement withStartingNumber so numbers can start instead of zero 
+
     private int _currentNumber;
 
     public override object GenerateValue(IContext context, Type type)

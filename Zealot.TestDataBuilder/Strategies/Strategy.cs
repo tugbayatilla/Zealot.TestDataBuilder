@@ -16,5 +16,4 @@ public abstract class Strategy : IStrategy
     {
         propertyInfo.SecureSetValue(context.Entity, GenerateValue(context, propertyInfo.PropertyType));
     }
-
 }

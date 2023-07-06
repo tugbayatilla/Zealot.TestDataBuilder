@@ -1,4 +1,3 @@
-using System.Reflection;
 using Zealot.Interfaces;
 using Zealot.Strategies;
 
@@ -22,20 +21,18 @@ internal class StrategyContainer : IStrategyContainer
         _registeredStrategies.Add(new BooleanStrategy());
         _registeredStrategies.Add(new DatetimeStrategy());
         _registeredStrategies.Add(new GuidStrategy());
-        _registeredStrategies.Add(new StructStrategy());
         _registeredStrategies.Add(new ClassStrategy());
     }
     
-    public IStrategy Resolve(Type propertyInfo)
+    public IStrategy Resolve(Type type)
     {
         //todo: multiple strategies can be found!
         //todo: find a way to replace existing strategies
-        
-        var strategy = _registeredStrategies.FirstOrDefault(p 
-            => p.ResolveCondition.Compile().Invoke(propertyInfo));
+
+        var strategy = _registeredStrategies.FirstOrDefault(p => p.ResolveCondition.Compile().Invoke(type));
         if (strategy == null)
         {
-            throw new NotSupportedException($"The strategy with type '{propertyInfo.FullName}' is not supported.");
+            throw new NotSupportedException($"The strategy with type '{type.FullName}' is not supported.");
         }
         return strategy;
     }
