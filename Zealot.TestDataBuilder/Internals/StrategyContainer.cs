@@ -22,7 +22,6 @@ internal class StrategyContainer : IStrategyContainer
         _registeredStrategies.Add(new DatetimeStrategy());
         _registeredStrategies.Add(new GuidStrategy());
         _registeredStrategies.Add(new ClassStrategy());
-        _registeredStrategies.Add(new ArrayListStrategy());
     }
     
     public IStrategy Resolve(Type type)

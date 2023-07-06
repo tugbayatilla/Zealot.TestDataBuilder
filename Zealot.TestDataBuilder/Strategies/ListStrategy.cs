@@ -11,6 +11,7 @@ internal class ListStrategy : Strategy
     public override IEnumerable<Type> AvailableTypes =>
         new[]
         {
+            typeof(ArrayList),
             typeof(List<>),
             typeof(IList<>),
             typeof(IList),
@@ -39,6 +40,21 @@ internal class ListStrategy : Strategy
             listType = typeof(List<>).MakeGenericType(type.GenericTypeArguments);
         }
 
-        return Instance.Create(listType);
+        var instance = Instance.Create(listType);
+        
+        if (instance == null) return null!;
+        if (instance is not IList list) return instance;
+        
+        var argumentType = instance.GetType().GetGenericArguments().FirstOrDefault() ?? typeof(string);
+
+        var strategy = context.StrategyContainer.Resolve(argumentType);
+            
+        for (var i = 0; i < 2; i++)
+        {
+            var value = strategy.GenerateValue(context, argumentType);
+            list.Add(value);
+        }
+
+        return instance;
     }
 }
