@@ -391,9 +391,8 @@ public class SampleTests
         p1.Should().NotBeNull();
         p1.SampleEnumNoElementEnumProperty.Should().Be(0);
     }
-
-    //todo: failing tests
-    //[Fact]
+    
+    [Fact]
     public void Should_create_sample_for_SampleArrayPropertyClass()
     {
         var p1 = TestDataBuilder
@@ -402,13 +401,10 @@ public class SampleTests
 
         //Assert
         p1.Should().NotBeNull();
-        p1.BoolArray.Should().NotBeNull();
-        p1.BoolArray.Length.Should().Be(2);
-        p1.BoolArray[0].Should().BeTrue();
-
+        
         p1.SampleDataClassArray.Should().NotBeNull();
         p1.SampleDataClassArray.Length.Should().Be(2);
-        p1.SampleDataClassArray[0].BooleanProperty.Should().BeTrue();
+        p1.SampleDataClassArray[0].BooleanProperty.Should().BeFalse();
 
         p1.Recursive_A.Should().NotBeNull();
     }

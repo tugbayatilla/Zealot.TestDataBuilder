@@ -1,21 +1,10 @@
 ﻿using System.Linq.Expressions;
-using System.Reflection;
 using Zealot.Interfaces;
 
 namespace Zealot.Strategies;
 
 internal class EnumStrategy : Strategy
 {
-    public override void Execute(IContext context, PropertyInfo propertyInfo)
-    {
-        var tempEnum = (Array)GenerateValue(context, propertyInfo.PropertyType);
-        if (tempEnum.Length > 0)
-        {
-            var value = tempEnum.GetValue(0);
-            propertyInfo.SetValue(context.Entity, value);
-        }
-    }
-
     public override Expression<Func<Type, bool>> ResolveCondition => 
         info => info.IsEnum 
                 || info.IsNullableEnum() 
@@ -29,6 +18,7 @@ internal class EnumStrategy : Strategy
             enumType = Nullable.GetUnderlyingType(type);
         }
         
-        return Enum.GetValues(enumType!);
+        var values = Enum.GetValues(enumType!);
+        return values.Length > 0 ? values.GetValue(0)! : default!;
     }
 }

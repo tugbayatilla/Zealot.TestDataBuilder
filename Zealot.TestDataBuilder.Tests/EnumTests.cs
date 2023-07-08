@@ -33,4 +33,14 @@ public class EnumTests
 
         entity.EnumHavingOneValueNullableProp.Should().Be(EnumHavingOneValue.FirstValue);
     }
+    
+    [Fact]
+    public void Support_Enum_multiple_values()
+    {
+        var entity = TestDataBuilder
+            .For<EnumHavingMultipleValuesClass>()
+            .Build();
+
+        entity.EnumHavingMultipleValuesProp.Should().Be(EnumHavingMultipleValues.item1);
+    }
 }
