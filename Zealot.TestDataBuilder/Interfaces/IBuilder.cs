@@ -2,7 +2,13 @@
 
 namespace Zealot.Interfaces;
 
-public interface IBuilder<TEntity> where TEntity: new()
+internal interface IBuilder
+{
+    object Build();
+}
+
+public interface IBuilder<TEntity>
+    where TEntity: new() 
 {
     /// <summary>
     /// Required

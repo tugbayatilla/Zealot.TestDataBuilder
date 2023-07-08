@@ -12,23 +12,21 @@ public static class TestDataBuilder
         where TEntity : class, new()
     {
         IContext context = new Context(
-            new TEntity(), 
+            typeof(TEntity), 
             new WithOnly(),
             new StrategyContainer(),
             new WithRecursionLevel());
 
         return new Builder<TEntity>(context);
     }
-    
+
     /// <summary>
     /// Required
     /// </summary>
-    public static IBuilder<TEntity> WithContext<TEntity>(this TEntity entity, IContext context)
-        where TEntity : class, new()
+    internal static IBuilder WithContext(Type entityType, IContext context)
     {
-        var newContext = context.CloneWithNew(entity);
+        var newContext = context.CloneWithType(entityType);
         
-        return new Builder<TEntity>(newContext);
+        return new Builder<object>(newContext);
     }
-    
 }

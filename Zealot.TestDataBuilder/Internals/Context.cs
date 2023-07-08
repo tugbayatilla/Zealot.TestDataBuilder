@@ -4,20 +4,22 @@ namespace Zealot.Internals;
 
 internal class Context : IContext
 {
-    public Context(object entity, 
+    public Context(Type entityType, 
         IWithOnly withOnly, 
         IStrategyContainer strategyContainer, 
         IWithRecursionLevel withRecursionLevel)
     {
-        Entity = entity;
+        EntityType = entityType;
         WithOnly = withOnly;
         StrategyContainer = strategyContainer;
         WithRecursionLevel = withRecursionLevel;
     }
 
-    public IContext CloneWithNew(object entity)
+    public Type EntityType { get; private set; }
+
+    public IContext CloneWithType(Type entityType)
     {
-        var newContext = new Context(entity, 
+        var newContext = new Context(entityType, 
             WithOnly, 
             StrategyContainer, 
             WithRecursionLevel)

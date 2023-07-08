@@ -3,7 +3,7 @@ using Zealot.Strategies;
 
 namespace Zealot.Internals;
 
-internal class Builder<TEntity> : IBuilder<TEntity>
+internal class Builder<TEntity> : IBuilder<TEntity>, IBuilder
     where TEntity : new()
 {
     private readonly IContext _context;
@@ -16,7 +16,9 @@ internal class Builder<TEntity> : IBuilder<TEntity>
 
     public TEntity Build()
     {
-        var newInstance = Instance.Create(_context.Entity.GetType());
+        var newInstance = Instance.Create(_context.EntityType);
+        if (newInstance == null) return default!;
+        
         _context.SetEntity(newInstance); 
         
         // find properties
@@ -78,5 +80,10 @@ internal class Builder<TEntity> : IBuilder<TEntity>
     {
         _context.WithRecursionLevel.SetAllowedRecursionLevel(recursionLevel);
         return this;
+    }
+
+    object IBuilder.Build()
+    {
+        return Build();
     }
 }
