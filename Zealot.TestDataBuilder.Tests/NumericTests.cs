@@ -46,8 +46,7 @@ public class NumericTests
     public void Support_double()
     {
         var subject = TestDataBuilder
-            .For<AllPrimitivesClass>()
-            .WithOnly<double>()
+            .For<DoublePropertyClass>()
             .Build();
         subject.DoubleProp.Should().NotBe(0);
         subject.DoubleProp2.Should().NotBe(0);
@@ -104,7 +103,7 @@ public class NumericTests
     public void Support_double_nullable()
     {
         var subject = TestDataBuilder
-            .For<AllPrimitivesClass>()
+            .For<DoubleNullablePropertyClass>()
             .WithOnly<double?>()
             .Build();
         
@@ -223,4 +222,5 @@ public class NumericTests
 
         subject.UInt64NullableProp.Should().NotBe(subject.UInt64NullableProp2);
     }
+    
 }
