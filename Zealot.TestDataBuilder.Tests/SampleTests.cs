@@ -13,8 +13,7 @@ public class SampleTests
 
         entity.DictionaryProperty.Should().NotBeNull();
     }
-
-
+    
     [Fact]
     public void Should_create_same_instance_when_build_method_called()
     {
@@ -296,8 +295,7 @@ public class SampleTests
             .For<SampleRecursiveListClass.A>()
             .WithRecursionLevel(4)
             .Build();
-
-        //Assert
+        
         p1.Should().NotBeNull();
         p1.Ref_B.Ref_C.Ref_A_list.Should().NotBeNull();
         p1.Ref_B.Ref_C.Ref_A_list.Count.Should().Be(2);
@@ -320,26 +318,12 @@ public class SampleTests
     }
 
     [Fact]
-    public void Should_be_nullable_enum_class_be_filled_and_enum_index_1_picked()
-    {
-        //todo: select index on enums, if no support then remove this test 
-        var p1 = TestDataBuilder
-            .For<SampleNullableEnumClass>()
-            .WithValue(@class => @class.SampleNullableEnum = SampleNullableEnum.OnlyItem2)
-            .Build();
-
-        p1.Should().NotBeNull();
-        p1.SampleNullableEnum.Should().Be(SampleNullableEnum.OnlyItem2);
-    }
-
-    [Fact]
     public void Should_create_sample_for_SampleEnumNoElementClass()
     {
         var p1 = TestDataBuilder
             .For<SampleEnumNoElementClass>()
             .Build();
-
-        //Assert
+        
         p1.Should().NotBeNull();
         p1.SampleEnumNoElementEnumProperty.Should().Be(0);
     }
@@ -350,8 +334,7 @@ public class SampleTests
         var p1 = TestDataBuilder
             .For<SampleArrayPropertyClass>()
             .Build();
-
-        //Assert
+        
         p1.Should().NotBeNull();
         
         p1.SampleDataClassArray.Should().NotBeNull();
