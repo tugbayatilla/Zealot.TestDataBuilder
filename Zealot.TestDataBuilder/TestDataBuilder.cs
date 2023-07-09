@@ -9,7 +9,7 @@ public static class TestDataBuilder
     /// Required
     /// </summary>
     public static IBuilder<TEntity> For<TEntity>()
-        where TEntity : class, new()
+        where TEntity : new()
     {
         IContext context = new Context(
             typeof(TEntity), 

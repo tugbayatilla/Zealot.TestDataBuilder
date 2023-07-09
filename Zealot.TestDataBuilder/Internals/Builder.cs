@@ -85,4 +85,6 @@ internal class Builder<TEntity> : IBuilder<TEntity>, IBuilder
     {
         return Build();
     }
+    
+    //todo: add WithLogger
 }
