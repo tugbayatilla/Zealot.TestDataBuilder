@@ -2,6 +2,9 @@
 
 public class PublicWithAll
 {
+    //todo: bool is missing
+    //todo: check all other types
+    
     public int IntProp { get; set; }
     public int IntProp2 { get; set; }
     

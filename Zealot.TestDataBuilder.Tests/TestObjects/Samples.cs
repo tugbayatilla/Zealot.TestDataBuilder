@@ -326,11 +326,6 @@ public class SampleUserShort
     }
 }
 
-public class SimpleClassWithStruct
-{
-    public SimpleStruct SimpleStruct { get; set; }
-}
-
 public struct SimpleStruct
 {
     public string StringProp { get; set; }

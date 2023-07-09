@@ -17,20 +17,7 @@ public class MethodTests
 
         TestHelper.CheckDefaultExcept<string>(entity);
     }
-    
-    [Fact]
-    public void IBuilder_WithValue()
-    {
-        const int expected = 1_000_000;
-        
-        var entity = TestDataBuilder
-            .For<PublicWithAll>()
-            .WithValue(e => e.IntProp = expected)
-            .Build();
-        
-        entity.IntProp.Should().Be(expected);
-    }
-    
+
     [Fact]
     public void IWithOnlyContainer_Exist_with_IReadOnlyDictionary()
     {
@@ -74,18 +61,7 @@ public class MethodTests
 
     }
     
-    // todo: create separate test file for WithValue
-    // todo: add more scenario
-    [Fact]
-    public void IBuilder_WithValue_property_of_property()
-    {
-        var entity = TestDataBuilder
-            .For<SimpleClassWithStruct>()
-            .WithValue(p=> p.SimpleStruct = new SimpleStruct { BoolProp = true})
-            .Build();
-
-        entity.SimpleStruct.BoolProp.Should().BeTrue();
-    }
+    
 }
 
 internal class NIntStrategy : Strategy

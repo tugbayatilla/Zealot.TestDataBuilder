@@ -8,11 +8,11 @@ public class StructTests
     public void Support_struct()
     {
         var subject = TestDataBuilder
-            .For<SimpleClassWithStruct>()
+            .For<AllPrimitivesStructClass>()
             .Build();
 
-        subject.SimpleStruct.Should().NotBeNull();
-        subject.SimpleStruct.BoolProp.Should().BeFalse();
-        subject.SimpleStruct.StringProp.Should().Be(nameof(subject.SimpleStruct.StringProp));
+        subject.AllPrimitivesStructProp.Should().NotBeNull();
+        subject.AllPrimitivesStructProp.BoolProp.Should().BeFalse();
+        subject.AllPrimitivesStructProp.StringProp.Should().Be(nameof(subject.AllPrimitivesStructProp.StringProp));
     }
 }
