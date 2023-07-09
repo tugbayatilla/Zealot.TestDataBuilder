@@ -49,4 +49,11 @@ public interface IBuilder<TEntity>
     /// Optional
     /// </summary>
     IBuilder<TEntity> WithRecursionLevel(int recursionLevel);
+    
+    /// <summary>
+    /// Optional
+    /// </summary>
+    IBuilder<TEntity> WithStringPrefix(string prefix);
+    
+    IBuilder<TEntity> WithStringSuffix(string suffix);
 }

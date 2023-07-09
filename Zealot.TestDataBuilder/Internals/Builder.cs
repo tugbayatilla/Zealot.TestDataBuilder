@@ -81,6 +81,18 @@ internal class Builder<TEntity> : IBuilder<TEntity>, IBuilder
         return this;
     }
 
+    public IBuilder<TEntity> WithStringPrefix(string prefix)
+    {
+        _context.WithStringPrefix = prefix;
+        return this;
+    }
+
+    public IBuilder<TEntity> WithStringSuffix(string suffix)
+    {
+        _context.WithStringSuffix = suffix;
+        return this;
+    }
+
     object IBuilder.Build()
     {
         return Build();

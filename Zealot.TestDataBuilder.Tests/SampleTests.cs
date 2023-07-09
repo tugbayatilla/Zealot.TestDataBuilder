@@ -304,37 +304,16 @@ public class SampleTests
     [InlineData("pre_", "", "pre_{0}")]
     [InlineData("", "_suf", "{0}_suf")]
     [InlineData("pre_", "_suf", "pre_{0}_suf")]
-    public void Should_create_sample_data_with_config(string prefix, string suffix, string result)
+    public void support_prefix_ans_suffix(string prefix, string suffix, string result)
     {
-        //todo: support prefix, suffix on string
-
-        /*var instance = TestDataBuilder
-            .For<ClassHavingAnotherClassAsProperty>()
+        var instance = TestDataBuilder
+            .For<StringPropertyClass>()
+            .WithStringPrefix(prefix)
+            .WithStringSuffix(suffix)
             .Build();
-        
-        var instance = SampleBuilder.Create<ClassHavingNoArguments>(null,
-            p =>
-            {
-                p.AlwaysUsePrefixForStringAs = prefix;
-                p.AlwaysUseSuffixForStringAs = suffix;
-            });
 
-        instance.Priority.Should().Be(866);
-        instance.Type.Should().Be(string.Format(result, nameof(instance.Type)));
-        instance.Value.Should().Be(string.Format(result, nameof(instance.Value)));*/
-    }
-
-    [Fact]
-    public void Should_be_create_new_sample_with_constructor()
-    {
-        // todo: support parameterless constructor
-
-        // var p1 = TestDataBuilder
-        //     .For<SampleUser>()
-        //     .Build();
-        //
-        // //Assert
-        // p1.Should().NotBeNull();
+        instance.Should().NotBeNull();
+        instance.StringProp.Should().Be(string.Format(result, nameof(instance.StringProp)));
     }
 
     [Fact]

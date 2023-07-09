@@ -13,6 +13,8 @@ public interface IContext
     
     DateTime WithUtcDate { get; set; }
     Guid WithGuid { get; set; }
+    string WithStringPrefix { get; set; }
+    string WithStringSuffix { get; set; }
     
     IStrategyContainer StrategyContainer { get; }
     IWithRecursionLevel WithRecursionLevel { get; }
