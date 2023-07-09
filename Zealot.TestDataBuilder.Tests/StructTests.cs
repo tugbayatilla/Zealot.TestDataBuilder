@@ -26,4 +26,15 @@ public class StructTests
         subject.Should().NotBeNull();
         subject.IntProp.Should().Be(1);
     }
+    
+    [Fact]
+    public void Support_struct_recursion()
+    {
+        var subject = TestDataBuilder
+            .For<RecursiveItselfStruct>()
+            .Build();
+
+        subject.Should().NotBeNull();
+        subject.RecursiveItselfProp.IntProp.Should().Be(2);
+    }
 }

@@ -4,11 +4,9 @@ namespace Zealot.SampleBuilder.Tests;
 
 public class RecursionTests
 {
-    // todo: check for struct recursion as well
     [Fact]
     public void Support_recursion_with_default_level_0()
     {
-        var guid = Guid.NewGuid();
         var entity = TestDataBuilder
             .For<PublicRecursionAClass>()
             .Build();
@@ -28,6 +26,4 @@ public class RecursionTests
         entity.PublicRecursionBProp.PublicRecursionAClassProp.PublicRecursionBProp.Should().NotBeNull();
         entity.PublicRecursionBProp.PublicRecursionAClassProp.PublicRecursionBProp.PublicRecursionAClassProp.Should().BeNull();
     }
-    
-    
 }

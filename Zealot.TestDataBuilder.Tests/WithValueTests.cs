@@ -35,9 +35,9 @@ public class WithValueTests
             .For<RecursiveItselfClass>()
             .Build();
 
-        entity.RecursiveItselfProp.intProp.Should().Be(2);
+        entity.RecursiveItselfProp.IntProp.Should().Be(2);
     }
-    //todo: support struct in For
+    
     [Fact]
     public void WithValue_called_2_times()
     {
