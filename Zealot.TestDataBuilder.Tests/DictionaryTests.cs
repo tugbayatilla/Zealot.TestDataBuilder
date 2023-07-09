@@ -8,64 +8,64 @@ public class DictionaryTests
     public void Support_dictionary()
     {
         var entity = TestDataBuilder
-            .For<InternalWithDictionary>()
+            .For<ClassWithSomeDictionaries>()
             .Build();
 
-        entity.DictionaryProp.Should().NotBeNull();
-        entity.DictionaryStringIntProp.Should().NotBeNull();
+        entity.ObjectAndObjectProp.Should().NotBeNull();
+        entity.StringAndIntProp.Should().NotBeNull();
     }
     [Fact]
     public void Support_IReadOnlyDictionary()
     {
         var entity = TestDataBuilder
-            .For<InternalWithDictionary>()
+            .For<ClassWithSomeDictionaries>()
             .WithOnly(typeof(IReadOnlyDictionary<,>))
             .Build();
 
-        entity.IReadOnlyDictionaryStringIntProp.Should().NotBeNull();
+        entity.StringAndIntReadOnlyProp.Should().NotBeNull();
     }
     
     [Fact]
     public void Support_dictionary_string_int_has_2_items()
     {
         var entity = TestDataBuilder
-            .For<DictionaryStringIntClass>()
+            .For<ClassWithDictionaryOfStringAndInt>()
             .Build();
 
-        entity.DictionaryStringIntProp.Count.Should().Be(2);
+        entity.Prop.Count.Should().Be(2);
     }
     
     [Fact]
     public void Support_dictionary_int_complex_has_2_items()
     {
         var entity = TestDataBuilder
-            .For<DictionaryIntPublicWithAllClass>()
+            .For<ClassWithDictionaryOfIntAndClassWithAllPrimitives>()
             .Build();
 
-        entity.DictionaryIntPublicWithAllProp.Count.Should().Be(2);
-        entity.DictionaryIntPublicWithAllProp.Values.First().Should().NotBeNull();
+        entity.Prop.Count.Should().Be(2);
+        entity.Prop.Values.First().Should().NotBeNull();
     }
     
     [Fact]
     public void Support_dictionary_string_complex_has_2_items()
     {
         var entity = TestDataBuilder
-            .For<DictionaryStringPublicWithAllClass>()
+            .For<ClassWithDictionaryOfStringAndClasWithAllPrimitives>()
             .Build();
 
-        entity.DictionaryStringPublicWithAllProp.Count.Should().Be(2);
-        entity.DictionaryStringPublicWithAllProp.Values.First().Should().NotBeNull();
+        entity.Prop.Count.Should().Be(2);
+        entity.Prop.Values.First().Should().NotBeNull();
     }
     
     [Fact]
     public void Support_IReadOnlyDictionary_has_2_values()
     {
         var entity = TestDataBuilder
-            .For<InternalWithDictionary>()
+            .For<ClassWithSomeDictionaries>()
             .WithOnly(typeof(IReadOnlyDictionary<,>))
             .Build();
 
-        entity.IReadOnlyDictionaryStringIntProp.Count.Should().Be(2);
+        entity.StringAndIntReadOnlyProp.Count.Should().Be(2);
     }
     
 }

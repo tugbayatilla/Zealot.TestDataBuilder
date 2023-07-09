@@ -10,12 +10,12 @@ public class WithStartingNumberTests
     public void WithStartingNumber_is_5()
     {
         var entity = TestDataBuilder
-            .For<IntPropertyClass>()
+            .For<ClassWithTwoInteger>()
             .WithStartingNumber(5)
             .Build();
 
-        entity.IntProp.Should().Be(5);
-        entity.IntProp2.Should().Be(6);
+        entity.Prop1.Should().Be(5);
+        entity.Prop2.Should().Be(6);
     }
 
     

@@ -12,16 +12,16 @@ public class WithStrategyTests
         Assert.Throws<NotSupportedException>(() =>
         {
              TestDataBuilder
-                .For<PublicNInt>()
+                .For<ClassWithTwoIntPtr>()
                 .Build();
         });
         
         var entity = TestDataBuilder
-            .For<PublicNInt>()
+            .For<ClassWithTwoIntPtr>()
             .WithStrategy(new NIntStrategy())
             .Build();
 
-        entity.NIntProp.Should().Be(1);
+        entity.Prop1.Should().Be(1);
 
     }
     

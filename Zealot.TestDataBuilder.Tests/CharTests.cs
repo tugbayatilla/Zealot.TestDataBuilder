@@ -8,7 +8,7 @@ public class CharTests
     public void Support_char()
     {
         var subject = TestDataBuilder
-            .For<AllPrimitivesClass>()
+            .For<ClassWithAllPrimitives>()
             .WithOnly<char>()
             .Build();
         
@@ -20,7 +20,7 @@ public class CharTests
     public void Support_char_nullable()
     {
         var subject = TestDataBuilder
-            .For<AllPrimitivesClass>()
+            .For<ClassWithAllPrimitives>()
             .WithOnly<char?>()
             .Build();
 

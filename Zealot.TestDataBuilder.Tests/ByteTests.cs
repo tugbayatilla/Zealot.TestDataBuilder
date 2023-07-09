@@ -8,7 +8,7 @@ public class ByteTests
     public void Support_byte()
     {
         var subject = TestDataBuilder
-            .For<AllPrimitivesClass>()
+            .For<ClassWithAllPrimitives>()
             .WithOnly<byte>()
             .Build();
         
@@ -20,7 +20,7 @@ public class ByteTests
     public void Support_byte_nullable()
     {
         var subject = TestDataBuilder
-            .For<AllPrimitivesClass>()
+            .For<ClassWithAllPrimitives>()
             .WithOnly<byte?>()
             .Build();
         

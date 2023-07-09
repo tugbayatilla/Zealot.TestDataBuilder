@@ -19,7 +19,7 @@ public class NumericTests
     public void Support_type(Type setOnlyType)
     {
         var subject = TestDataBuilder
-            .For<AllPrimitivesClass>()
+            .For<ClassWithAllPrimitives>()
             .WithOnly(setOnlyType)
             .Build();
 
@@ -30,7 +30,7 @@ public class NumericTests
     public void Support_integer()
     {
         var subject = TestDataBuilder
-            .For<AllPrimitivesClass>()
+            .For<ClassWithAllPrimitives>()
             .WithOnly<int>()
             .Build();
 
@@ -46,7 +46,7 @@ public class NumericTests
     public void Support_double()
     {
         var subject = TestDataBuilder
-            .For<DoublePropertyClass>()
+            .For<ClassWithTwoDouble>()
             .Build();
         subject.DoubleProp.Should().NotBe(0);
         subject.DoubleProp2.Should().NotBe(0);
@@ -58,7 +58,7 @@ public class NumericTests
     public void Support_short()
     {
         var subject = TestDataBuilder
-            .For<AllPrimitivesClass>()
+            .For<ClassWithAllPrimitives>()
             .WithOnly<short>()
             .Build();
         
@@ -72,7 +72,7 @@ public class NumericTests
     public void Support_integer_nullable()
     {
         var subject = TestDataBuilder
-            .For<AllPrimitivesClass>()
+            .For<ClassWithAllPrimitives>()
             .WithOnly<int?>()
             .Build();
         
@@ -86,7 +86,7 @@ public class NumericTests
     public void Support_short_nullable()
     {
         var subject = TestDataBuilder
-            .For<AllPrimitivesClass>()
+            .For<ClassWithAllPrimitives>()
             .WithOnly<short?>()
             .Build();
         
@@ -103,24 +103,24 @@ public class NumericTests
     public void Support_double_nullable()
     {
         var subject = TestDataBuilder
-            .For<DoubleNullablePropertyClass>()
+            .For<ClassWithTwoDoubleNullable>()
             .WithOnly<double?>()
             .Build();
         
-        subject.DoubleNullableProp.Should().NotBeNull();
-        subject.DoubleNullableProp2.Should().NotBeNull();
+        subject.Prop1.Should().NotBeNull();
+        subject.Prop2.Should().NotBeNull();
         
-        subject.DoubleNullableProp.Should().NotBe(0);
-        subject.DoubleNullableProp2.Should().NotBe(0);
+        subject.Prop1.Should().NotBe(0);
+        subject.Prop2.Should().NotBe(0);
 
-        subject.DoubleNullableProp.Should().NotBe(subject.DoubleNullableProp2);
+        subject.Prop1.Should().NotBe(subject.Prop2);
     }
 
     [Fact]
     public void Support_float_nullable()
     {
         var subject = TestDataBuilder
-            .For<AllPrimitivesClass>()
+            .For<ClassWithAllPrimitives>()
             .WithOnly<float?>()
             .Build();
         
@@ -136,7 +136,7 @@ public class NumericTests
     [Fact]
     public void Support_float()
     {
-        var subject = TestDataBuilder.For<AllPrimitivesClass>()
+        var subject = TestDataBuilder.For<ClassWithAllPrimitives>()
                 .WithOnly<float>()
                 .Build();
         subject.FloatProp.Should().NotBe(0);
@@ -149,7 +149,7 @@ public class NumericTests
     public void Support_unsigned_int16()
     {
         var subject = TestDataBuilder
-            .For<AllPrimitivesClass>()
+            .For<ClassWithAllPrimitives>()
             .WithOnly<UInt16>()
             .Build();
         subject.UInt16Prop.Should().NotBe(0);
@@ -162,7 +162,7 @@ public class NumericTests
     public void Support_unsigned_int16_nullable()
     {
         var subject = TestDataBuilder
-            .For<AllPrimitivesClass>()
+            .For<ClassWithAllPrimitives>()
             .WithOnly<UInt16?>()
             .Build();
         subject.UInt16NullableProp.Should().NotBe(0);
@@ -175,7 +175,7 @@ public class NumericTests
     public void Support_unsigned_int32()
     {
         var subject = TestDataBuilder
-            .For<AllPrimitivesClass>()
+            .For<ClassWithAllPrimitives>()
             .WithOnly<UInt32>()
             .Build();
         subject.UInt32Prop.Should().NotBe(0);
@@ -188,7 +188,7 @@ public class NumericTests
     public void Support_unsigned_int32_nullable()
     {
         var subject = TestDataBuilder
-            .For<AllPrimitivesClass>()
+            .For<ClassWithAllPrimitives>()
             .WithOnly<UInt32?>()
             .Build();
         subject.UInt32NullableProp.Should().NotBe(0);
@@ -201,7 +201,7 @@ public class NumericTests
     public void Support_unsigned_int64()
     {
         var subject = TestDataBuilder
-            .For<AllPrimitivesClass>()
+            .For<ClassWithAllPrimitives>()
             .WithOnly<UInt64>()
             .Build();
         subject.UInt64Prop.Should().NotBe(0);
@@ -214,7 +214,7 @@ public class NumericTests
     public void Support_unsigned_int64_nullable()
     {
         var subject = TestDataBuilder
-            .For<AllPrimitivesClass>()
+            .For<ClassWithAllPrimitives>()
             .WithOnly<UInt64?>()
             .Build();
         subject.UInt64NullableProp.Should().NotBe(0);

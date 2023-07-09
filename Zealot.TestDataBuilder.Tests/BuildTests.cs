@@ -8,15 +8,15 @@ public class BuildTests
     [Fact]
     public void For_returns_builder_interface()
     {
-        var forResult = TestDataBuilder.For<PublicEmpty>();
+        var forResult = TestDataBuilder.For<ClassWithNoProperty>();
 
-        forResult.Should().BeAssignableTo<IBuilder<PublicEmpty>>();
+        forResult.Should().BeAssignableTo<IBuilder<ClassWithNoProperty>>();
     }
 
     [Fact]
     public void Build_always_creates_an_instance()
     {
-        TestDataBuilder.For<PublicEmpty>().Build().Should().NotBeNull();
+        TestDataBuilder.For<ClassWithNoProperty>().Build().Should().NotBeNull();
     }
 
     [Fact]
@@ -24,7 +24,7 @@ public class BuildTests
     {
         var exception = Assert.Throws<NotSupportedException>(() =>
         {
-            TestDataBuilder.For<PublicWithUnsupportedType>().Build();
+            TestDataBuilder.For<ClassWithIntPtr>().Build();
         });
         exception.Message.Should().Be($"The strategy with type '{typeof(IntPtr).FullName}' is not supported.");
     }

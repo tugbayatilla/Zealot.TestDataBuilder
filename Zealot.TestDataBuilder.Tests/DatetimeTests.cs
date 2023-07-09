@@ -9,22 +9,22 @@ public class DatetimeTests
     {
         var now = DateTime.Now;
         var entity = TestDataBuilder
-            .For<PublicDatetime>()
+            .For<ClassWithTwoDatetime>()
             .WithDate(now)
             .Build();
 
-        entity.DateTimeProp.Should().Be(now);
+        entity.Prop1.Should().Be(now);
     }
     
     [Fact]
     public void Support_datetime_is_close_to_now()
     {
         var entity = TestDataBuilder
-            .For<PublicDatetime>()
+            .For<ClassWithTwoDatetime>()
             .Build();
 
-        entity.DateTimeProp.Should().BeBefore(DateTime.UtcNow);
-        entity.DateTimeProp.Should().BeAfter(DateTime.UtcNow.AddSeconds(-10));
+        entity.Prop1.Should().BeBefore(DateTime.UtcNow);
+        entity.Prop1.Should().BeAfter(DateTime.UtcNow.AddSeconds(-10));
     }
     
     [Fact]
@@ -32,10 +32,10 @@ public class DatetimeTests
     {
         var now = DateTime.Now;
         var entity = TestDataBuilder
-            .For<PublicDatetimeNullable>()
+            .For<ClassWithTwoDatetimeNullable>()
             .WithDate(now)
             .Build();
 
-        entity.DateTimeNullableProp.Should().Be(now);
+        entity.Prop1.Should().Be(now);
     }
 }

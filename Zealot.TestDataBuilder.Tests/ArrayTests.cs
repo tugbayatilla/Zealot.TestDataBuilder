@@ -1,4 +1,4 @@
-using Zealot.SampleBuilder.Tests.TestObjects.ArrayTestClasses;
+using Zealot.SampleBuilder.Tests.TestObjects;
 
 namespace Zealot.SampleBuilder.Tests;
 
@@ -8,43 +8,43 @@ public class ArrayTests
     public void Support_StringArray()
     {
         var entity = TestDataBuilder
-            .For<StringArrayTestClass>()
+            .For<ClassWithTwoStringArray>()
             .Build();
 
-        entity.StringArrayProp.Should().NotBeNull();
+        entity.Prop1.Should().NotBeNull();
     }
     
     [Fact]
     public void Support_ByteArray()
     {
         var entity = TestDataBuilder
-            .For<ByteArrayTestClass>()
+            .For<ClassWithTwoByteArray>()
             .Build();
 
-        entity.ByteArrayProp.Should().NotBeNull();
+        entity.Prop1.Should().NotBeNull();
     }
     
     [Fact]
     public void Support_IntArray()
     {
         var entity = TestDataBuilder
-            .For<IntArrayTestClass>()
+            .For<ClassWithTwoIntegerArray>()
             .Build();
 
-        entity.IntArrayProp.Should().NotBeNull();
+        entity.Prop1.Should().NotBeNull();
     }
     
     [Fact]
     public void Support_BooleanArray()
     {
         var entity = TestDataBuilder
-            .For<BooleanArrayTestClass>()
-            .WithValue(p=>p.BooleanArrayProp[0] = true)
+            .For<ClassWithTwoBoolArray>()
+            .WithValue(p=>p.Prop1[0] = true)
             .Build();
 
-        entity.BooleanArrayProp.Should().NotBeNull();
-        entity.BooleanArrayProp.Length.Should().Be(2);
-        entity.BooleanArrayProp[0].Should().BeTrue();
+        entity.Prop1.Should().NotBeNull();
+        entity.Prop1.Length.Should().Be(2);
+        entity.Prop1[0].Should().BeTrue();
 
     }
     
@@ -52,9 +52,9 @@ public class ArrayTests
     public void Support_EnumArray()
     {
         var entity = TestDataBuilder
-            .For<EnumArrayTestClass>()
+            .For<ClassWithOneEnumWithTreeItemArray>()
             .Build();
 
-        entity.EnumArrayProp.Should().NotBeNull();
+        entity.Prop1.Should().NotBeNull();
     }
 }

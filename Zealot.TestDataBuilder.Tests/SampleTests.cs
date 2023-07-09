@@ -19,8 +19,8 @@ public class SampleTests
     {
         var now = DateTime.Now;
 
-        var p1 = TestDataBuilder.For<SampleDataClassForEquality>().WithDate(now).Build();
-        var p2 = TestDataBuilder.For<SampleDataClassForEquality>().WithDate(now).Build();
+        var p1 = TestDataBuilder.For<ClassWithEquality>().WithDate(now).Build();
+        var p2 = TestDataBuilder.For<ClassWithEquality>().WithDate(now).Build();
 
         p1.Should().Be(p2);
     }
@@ -28,36 +28,12 @@ public class SampleTests
     [Fact]
     public void Should_create_new_instance_every_time_when_build_method_called()
     {
-        var builder = TestDataBuilder.For<SampleDataClassForEquality>();
+        var builder = TestDataBuilder.For<ClassWithEquality>();
         var p1 = builder.Build();
         var p2 = builder.Build();
 
         p1.Should().NotBe(p2);
     }
-
-    [Fact]
-    public void Should_run_extension_method()
-    {
-        var p2 = TestDataBuilder
-            .For<ClassHavingEnumProperty>()
-            .WithValue(p => p.SampleEnumProperty = ClassHavingEnumProperty.SampleEnum.Value2)
-            .Build();
-
-        p2.SampleEnumProperty.Should().Be(ClassHavingEnumProperty.SampleEnum.Value2);
-    }
-
-
-    [Fact]
-    public void Should_fill_class_having_enum_property()
-    {
-        var sample = TestDataBuilder
-            .For<ClassHavingEnumProperty>()
-            .WithValue(p => p.SampleEnumProperty = ClassHavingEnumProperty.SampleEnum.Value2)
-            .Build();
-
-        sample.SampleEnumProperty.Should().Be(ClassHavingEnumProperty.SampleEnum.Value2);
-    }
-
 
     [Fact]
     public void Should_create_and_fill_when_having_ilist_interface_property()
@@ -76,11 +52,11 @@ public class SampleTests
     public void Should_create_private_constructor_property_be_null()
     {
         var instance = TestDataBuilder
-            .For<SampleDataClass>()
+            .For<ClassOfGod>()
             .Build();
 
         instance.Should().NotBeNull();
-        instance.SampleDataPrivateConstructorSubClass.Should().BeNull();
+        instance.ClassWithPrivateConstructorProp.Should().BeNull();
     }
 
 
@@ -107,7 +83,7 @@ public class SampleTests
         var now = DateTime.Now;
         var guid = Guid.NewGuid();
         var sample = TestDataBuilder
-            .For<SampleDataClass>()
+            .For<ClassOfGod>()
             .WithDate(now)
             .WithGuid(guid)
             .Build();
@@ -164,12 +140,12 @@ public class SampleTests
     public void Should_fill_simple_sub_class_property()
     {
         var sample = TestDataBuilder
-            .For<SampleDataClass>()
+            .For<ClassOfGod>()
             .Build();
 
-        sample.SampleDataSimpleSubClass.Should().NotBeNull();
-        sample.SampleDataSimpleSubClass.IntProperty.Should().NotBe(default);
-        sample.SampleDataSimpleSubClass.StringProperty.Should().Be("StringProperty");
+        sample.ClassWithOnePropertyWithoutSetter.Should().NotBeNull();
+        sample.ClassWithOnePropertyWithoutSetter.IntProperty.Should().NotBe(default);
+        sample.ClassWithOnePropertyWithoutSetter.StringProperty.Should().Be("StringProperty");
     }
 
     [Fact]
@@ -177,12 +153,12 @@ public class SampleTests
     {
         var now = DateTime.Now;
         var sample = TestDataBuilder
-            .For<SampleDataClass>()
+            .For<ClassOfGod>()
             .WithDate(now)
             .Build();
 
-        sample.SampleDataInheritedSubClass.Should().NotBeNull();
-        sample.SampleDataInheritedSubClass.DateTimeProperty.Should().NotBe(default);
+        sample.ClassWithTwoDateTimeAndInheritFromClassWithTwoInteger.Should().NotBeNull();
+        sample.ClassWithTwoDateTimeAndInheritFromClassWithTwoInteger.DateTimeProperty.Should().NotBe(default);
     }
 
     [Fact]
@@ -190,7 +166,7 @@ public class SampleTests
     {
         var now = DateTime.Now;
         var sample = TestDataBuilder
-            .For<SampleDataClass>()
+            .For<ClassOfGod>()
             .WithDate(now)
             .Build();
 
@@ -202,7 +178,7 @@ public class SampleTests
     public void Should_fill_generic_list_property()
     {
         var sample = TestDataBuilder
-            .For<SampleDataClass>()
+            .For<ClassOfGod>()
             .Build();
 
         sample.SampleDataSimpleSubClassList.Should().NotBeNull();
@@ -215,7 +191,7 @@ public class SampleTests
     public void Should_fill_generic_list_interface_property()
     {
         var sample = TestDataBuilder
-            .For<SampleDataClass>()
+            .For<ClassOfGod>()
             .Build();
 
         sample.SampleDataSimpleSubClassIListInterface.Should().NotBeNullOrEmpty();
@@ -226,7 +202,7 @@ public class SampleTests
     public void Should_fill_generic_collection_interface_property()
     {
         var sample = TestDataBuilder
-            .For<SampleDataClass>()
+            .For<ClassOfGod>()
             .Build();
 
         sample.SampleDataSimpleSubClassICollectionInterface.Should().NotBeNullOrEmpty();
@@ -236,7 +212,7 @@ public class SampleTests
     public void Should_fill_generic_enumeration_interface_property()
     {
         var sample = TestDataBuilder
-            .For<SampleDataClass>()
+            .For<ClassOfGod>()
             .Build();
 
         sample.SampleDataSimpleSubClassIEnumerableInterface.Should().NotBeNullOrEmpty();
@@ -249,12 +225,11 @@ public class SampleTests
             .For<InheritedClass>()
             .Build();
 
-        instance.Addressing.Should().Be(nameof(instance.Addressing));
-        instance.City.Should().Be(nameof(instance.City));
-        instance.CountryIsoAlpha2Code.Should().Be(nameof(instance.CountryIsoAlpha2Code));
-        instance.AdditionalLines.Count.Should().Be(2);
-        instance.AdditionalLines[0].Should().Be("1");//AdditionalLines_1
-        instance.AdditionalLines[1].Should().Be("2");//AdditionalLines_2
+        instance.BaseStringProp.Should().Be(nameof(instance.BaseStringProp));
+        instance.StringProp1.Should().Be(nameof(instance.StringProp1));
+        instance.ListOfStringProp.Count.Should().Be(2);
+        instance.ListOfStringProp[0].Should().Be("1");//AdditionalLines_1
+        instance.ListOfStringProp[1].Should().Be("2");//AdditionalLines_2
     }
 
     [Fact]
@@ -264,11 +239,11 @@ public class SampleTests
             .For<ClassHavingAnotherClassAsProperty>()
             .Build();
 
-        instance.Address.Should().NotBeNull();
-        instance.Address.Name.Should().Be(nameof(instance.Address.Name));
-        instance.Address.AdditionalLines.Count.Should().Be(2);
-        instance.Address.AdditionalLines[0].Should().Be("1");//AdditionalLines_0
-        instance.Address.AdditionalLines[1].Should().Be("2");//AdditionalLines_1
+        instance.InheritedClassProp.Should().NotBeNull();
+        instance.InheritedClassProp.StringProp1.Should().Be(nameof(instance.InheritedClassProp.StringProp1));
+        instance.InheritedClassProp.ListOfStringProp.Count.Should().Be(2);
+        instance.InheritedClassProp.ListOfStringProp[0].Should().Be("1");//AdditionalLines_0
+        instance.InheritedClassProp.ListOfStringProp[1].Should().Be("2");//AdditionalLines_1
     }
 
     [Theory]
@@ -279,20 +254,20 @@ public class SampleTests
     public void support_prefix_ans_suffix(string prefix, string suffix, string result)
     {
         var instance = TestDataBuilder
-            .For<StringPropertyClass>()
+            .For<ClassWithTwoString>()
             .WithStringPrefix(prefix)
             .WithStringSuffix(suffix)
             .Build();
 
         instance.Should().NotBeNull();
-        instance.StringProp.Should().Be(string.Format(result, nameof(instance.StringProp)));
+        instance.Prop1.Should().Be(string.Format(result, nameof(instance.Prop1)));
     }
 
     [Fact]
     public void Should_be_recursive_list_property_must_be_filled()
     {
         var p1 = TestDataBuilder
-            .For<SampleRecursiveListClass.A>()
+            .For<ClassWithThreeClassRecursively.A>()
             .WithRecursionLevel(4)
             .Build();
         
@@ -310,36 +285,36 @@ public class SampleTests
     public void Should_be_nullable_enum_class_be_filled()
     {
         var p1 = TestDataBuilder
-            .For<SampleNullableEnumClass>()
+            .For<ClassWithOneEnumWithOneItemNullable>()
             .Build();
 
         p1.Should().NotBeNull();
-        p1.SampleNullableEnum.Should().Be(SampleNullableEnum.OnlyItem);
+        p1.Prop.Should().Be(EnumWithOneItem.Item1);
     }
 
     [Fact]
-    public void Should_create_sample_for_SampleEnumNoElementClass()
+    public void Support_class_with_one_enum_with_nothing()
     {
         var p1 = TestDataBuilder
-            .For<SampleEnumNoElementClass>()
+            .For<ClassWithOneEnumWithNothing>()
             .Build();
         
         p1.Should().NotBeNull();
-        p1.SampleEnumNoElementEnumProperty.Should().Be(0);
+        p1.Prop.Should().Be(0);
     }
     
     [Fact]
     public void Should_create_sample_for_SampleArrayPropertyClass()
     {
         var p1 = TestDataBuilder
-            .For<SampleArrayPropertyClass>()
+            .For<ClassWithOneClassOfGodAndAClassOfRecursive>()
             .Build();
         
         p1.Should().NotBeNull();
         
-        p1.SampleDataClassArray.Should().NotBeNull();
-        p1.SampleDataClassArray.Length.Should().Be(2);
-        p1.SampleDataClassArray[0].BooleanProperty.Should().BeFalse();
+        p1.ClassOfGodArrayProp.Should().NotBeNull();
+        p1.ClassOfGodArrayProp.Length.Should().Be(2);
+        p1.ClassOfGodArrayProp[0].BooleanProperty.Should().BeFalse();
 
         p1.Recursive_A.Should().NotBeNull();
     }

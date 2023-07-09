@@ -8,10 +8,10 @@ public class ClassTests
     public void Support_class()
     {
         var entity = TestDataBuilder
-            .For<PublicClass>()
+            .For<ClassWithOneClassWithAllPrimitives>()
             .Build();
 
-        entity.AllPrimitivesClassProp.Should().NotBeNull();
+        entity.Prop.Should().NotBeNull();
     }
     
     

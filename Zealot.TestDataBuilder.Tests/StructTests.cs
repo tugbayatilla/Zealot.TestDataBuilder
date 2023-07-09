@@ -8,19 +8,19 @@ public class StructTests
     public void Support_struct_as_property()
     {
         var subject = TestDataBuilder
-            .For<AllPrimitivesStructClass>()
+            .For<ClassWithStructWithAllPrimitives>()
             .Build();
 
-        subject.AllPrimitivesStructProp.Should().NotBeNull();
-        subject.AllPrimitivesStructProp.BoolProp.Should().BeFalse();
-        subject.AllPrimitivesStructProp.StringProp.Should().Be(nameof(subject.AllPrimitivesStructProp.StringProp));
+        subject.Prop.Should().NotBeNull();
+        subject.Prop.BoolProp.Should().BeFalse();
+        subject.Prop.StringProp.Should().Be(nameof(subject.Prop.StringProp));
     }
     
     [Fact]
     public void Support_struct_directly()
     {
         var subject = TestDataBuilder
-            .For<AllPrimitivesStruct>()
+            .For<StructWithAllPrimitives>()
             .Build();
 
         subject.Should().NotBeNull();
@@ -31,10 +31,10 @@ public class StructTests
     public void Support_struct_recursion()
     {
         var subject = TestDataBuilder
-            .For<RecursiveItselfStruct>()
+            .For<StructWithIntAndItselfRecursively>()
             .Build();
 
         subject.Should().NotBeNull();
-        subject.RecursiveItselfProp.IntProp.Should().Be(2);
+        subject.Prop.IntProp.Should().Be(2);
     }
 }

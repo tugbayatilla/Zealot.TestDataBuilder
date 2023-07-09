@@ -10,7 +10,7 @@ public class WithOnlyTests
     public void WithOnly_string()
     {
         var entity = TestDataBuilder
-            .For<AllPrimitivesClass>()
+            .For<ClassWithAllPrimitives>()
             .WithOnly<string>()
             .Build();
 

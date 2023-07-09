@@ -8,19 +8,19 @@ public class BooleanTests
     public void Support_bool()
     {
         var entity = TestDataBuilder
-            .For<PublicBool>()
+            .For<ClassWithTwoBool>()
             .Build();
 
-        entity.BoolProp.Should().Be(false);
+        entity.Prop.Should().Be(false);
     }
     
     [Fact]
     public void Support_bool_nullable()
     {
         var entity = TestDataBuilder
-            .For<PublicBoolNullable>()
+            .For<ClassWithTwoBoolNullable>()
             .Build();
 
-        entity.BoolNullableProp.Should().Be(false);
+        entity.Prop1.Should().Be(false);
     }
 }

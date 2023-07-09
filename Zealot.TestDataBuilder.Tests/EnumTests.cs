@@ -8,39 +8,39 @@ public class EnumTests
     public void Support_Enum_one_value()
     {
         var entity = TestDataBuilder
-            .For<EnumHavingOneValueClass>()
+            .For<ClassWithOneEnumWithOneItem>()
             .Build();
 
-        entity.EnumHavingOneValueProp.Should().Be(EnumHavingOneValue.FirstValue);
+        entity.Prop.Should().Be(EnumWithOneItem.Item1);
     }
     
     [Fact]
     public void Support_Enum_no_value()
     {
         var entity = TestDataBuilder
-            .For<EnumHavingNoValueClass>()
+            .For<ClassWithOneEnumWithNothing>()
             .Build();
 
-        entity.EnumHavingNoValueProp.Should().Be(default);
+        entity.Prop.Should().Be(default);
     }
     
     [Fact]
     public void Support_Enum_nullable()
     {
         var entity = TestDataBuilder
-            .For<EnumHavingOneValueNullableClass>()
+            .For<ClassWithOneEnumWithOneItemNullable>()
             .Build();
 
-        entity.EnumHavingOneValueNullableProp.Should().Be(EnumHavingOneValue.FirstValue);
+        entity.Prop.Should().Be(EnumWithOneItem.Item1);
     }
     
     [Fact]
     public void Support_Enum_multiple_values()
     {
         var entity = TestDataBuilder
-            .For<EnumHavingMultipleValuesClass>()
+            .For<ClassWithOneEnumWithThreeItem>()
             .Build();
 
-        entity.EnumHavingMultipleValuesProp.Should().Be(EnumHavingMultipleValues.item1);
+        entity.Prop.Should().Be(EnumWithThreeItem.Item1);
     }
 }

@@ -10,39 +10,39 @@ public class WithValueTests
         const int expected = 1_000_000;
 
         var entity = TestDataBuilder
-            .For<IntPropertyClass>()
-            .WithValue(e => e.IntProp = expected)
+            .For<ClassWithTwoInteger>()
+            .WithValue(e => e.Prop1 = expected)
             .Build();
 
-        entity.IntProp.Should().Be(expected);
+        entity.Prop1.Should().Be(expected);
     }
 
     [Fact]
     public void WithValue_struct_property()
     {
         var entity = TestDataBuilder
-            .For<AllPrimitivesStructClass>()
-            .WithValue(p => p.AllPrimitivesStructProp = new AllPrimitivesStruct() {BoolProp = true})
+            .For<ClassWithStructWithAllPrimitives>()
+            .WithValue(p => p.Prop = new StructWithAllPrimitives() {BoolProp = true})
             .Build();
 
-        entity.AllPrimitivesStructProp.BoolProp.Should().BeTrue();
+        entity.Prop.BoolProp.Should().BeTrue();
     }
 
     [Fact]
     public void WithValue_struct_property_of_property()
     {
         var entity = TestDataBuilder
-            .For<RecursiveItselfClass>()
+            .For<ClassWithIntAndItselfRecursively>()
             .Build();
 
-        entity.RecursiveItselfProp.IntProp.Should().Be(2);
+        entity.Prop.IntProp.Should().Be(2);
     }
     
     [Fact]
     public void WithValue_called_2_times()
     {
         var entity = TestDataBuilder
-            .For<AllPrimitivesClass>()
+            .For<ClassWithAllPrimitives>()
             .WithValue(p=>p.IntProp = 1_000_000)
             .WithValue(p=>p.IntNullableProp = 2_000_000)
             .Build();

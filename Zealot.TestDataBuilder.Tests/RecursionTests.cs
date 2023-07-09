@@ -8,22 +8,22 @@ public class RecursionTests
     public void Support_recursion_with_default_level_0()
     {
         var entity = TestDataBuilder
-            .For<PublicRecursionAClass>()
+            .For<ClassWithClassBRecursively>()
             .Build();
 
-        entity.PublicRecursionBProp.PublicRecursionAClassProp.Should().BeNull();
+        entity.Prop.Prop.Should().BeNull();
     }
     
     [Fact]
     public void Support_recursion_with_recursion_level_1()
     {
         var entity = TestDataBuilder
-            .For<PublicRecursionAClass>()
+            .For<ClassWithClassBRecursively>()
             .WithRecursionLevel(1)
             .Build();
 
-        entity.PublicRecursionBProp.PublicRecursionAClassProp.Should().NotBeNull();
-        entity.PublicRecursionBProp.PublicRecursionAClassProp.PublicRecursionBProp.Should().NotBeNull();
-        entity.PublicRecursionBProp.PublicRecursionAClassProp.PublicRecursionBProp.PublicRecursionAClassProp.Should().BeNull();
+        entity.Prop.Prop.Should().NotBeNull();
+        entity.Prop.Prop.Prop.Should().NotBeNull();
+        entity.Prop.Prop.Prop.Prop.Should().BeNull();
     }
 }

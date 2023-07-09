@@ -8,7 +8,7 @@ public class StringTests
     public void Support_string()
     {
         var entity = TestDataBuilder
-            .For<AllPrimitivesClass>()
+            .For<ClassWithAllPrimitives>()
             .WithOnly<string>()
             .Build();
         
@@ -26,9 +26,9 @@ public class StringTests
     public void Support_string_has_default_value()
     {
         var instance = TestDataBuilder
-            .For<StringPropHasDefaultValueClass>()
+            .For<ClassWithStringHavingDefaultValue>()
             .Build();
 
-        instance.StringProp1.Should().Be("DefaultValueStringProp1");
+        instance.Prop.Should().Be("DefaultValueStringProp1");
     }
 }

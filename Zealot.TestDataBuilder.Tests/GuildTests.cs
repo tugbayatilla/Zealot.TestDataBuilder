@@ -9,21 +9,21 @@ public class GuidTests
     {
         var guid = Guid.NewGuid();
         var entity = TestDataBuilder
-            .For<PublicGuid>()
+            .For<ClassWithTwoGuid>()
             .WithGuid(guid)
             .Build();
 
-        entity.GuidProp.Should().Be(guid);
+        entity.Prop1.Should().Be(guid);
     }
     
     [Fact]
     public void Support_guid_not_empty_as_default()
     {
         var entity = TestDataBuilder
-            .For<PublicGuid>()
+            .For<ClassWithTwoGuid>()
             .Build();
 
-        entity.GuidProp.Should().NotBeEmpty();
+        entity.Prop1.Should().NotBeEmpty();
     }
     
     [Fact]
@@ -31,20 +31,20 @@ public class GuidTests
     {
         var guid = Guid.NewGuid();
         var entity = TestDataBuilder
-            .For<PublicGuidNullable>()
+            .For<ClassWithTwoGuidNullable>()
             .WithGuid(guid)
             .Build();
 
-        entity.GuidNullableProp.Should().Be(guid);
+        entity.Prop1.Should().Be(guid);
     }
     
     [Fact]
     public void Support_guid_nullable_not_empty_as_default()
     {
         var entity = TestDataBuilder
-            .For<PublicGuidNullable>()
+            .For<ClassWithTwoGuidNullable>()
             .Build();
 
-        entity.GuidNullableProp.Should().NotBeEmpty();
+        entity.Prop1.Should().NotBeEmpty();
     }
 }
