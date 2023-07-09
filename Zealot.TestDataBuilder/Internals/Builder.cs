@@ -7,7 +7,7 @@ internal class Builder<TEntity> : IBuilder<TEntity>, IBuilder
     where TEntity : new()
 {
     private readonly IContext _context;
-    private Action<TEntity> _withValueAction = default!;
+    private readonly List<Action<TEntity>> _withValueAction = new();
     
     public Builder(IContext context)
     {
@@ -34,7 +34,7 @@ internal class Builder<TEntity> : IBuilder<TEntity>, IBuilder
             strategy.Execute(_context, propertyInfo);
         }
         
-        _withValueAction?.Invoke((TEntity) _context.Entity);
+        _withValueAction.ForEach(p=>p.Invoke((TEntity) _context.Entity));
         
         return (TEntity) _context.Entity;
     }
@@ -53,8 +53,7 @@ internal class Builder<TEntity> : IBuilder<TEntity>, IBuilder
 
     public IBuilder<TEntity> WithValue(Action<TEntity> action)
     {
-        //todo: this can be called more than one. make a list
-        _withValueAction = action;
+        _withValueAction.Add(action);
         return this;
     }
 

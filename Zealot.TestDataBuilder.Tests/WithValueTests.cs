@@ -37,4 +37,17 @@ public class WithValueTests
 
         entity.RecursiveItselfProp.intProp.Should().Be(2);
     }
+    //todo: support struct in For
+    [Fact]
+    public void WithValue_called_2_times()
+    {
+        var entity = TestDataBuilder
+            .For<PublicWithAll>()
+            .WithValue(p=>p.IntProp = 1_000_000)
+            .WithValue(p=>p.IntNullableProp = 2_000_000)
+            .Build();
+
+        entity.IntProp.Should().Be(1_000_000);
+        entity.IntNullableProp.Should().Be(2_000_000);
+    }
 }
