@@ -56,4 +56,5 @@ public interface IBuilder<TEntity>
     IBuilder<TEntity> WithStringPrefix(string prefix);
     
     IBuilder<TEntity> WithStringSuffix(string suffix);
+    IBuilder<TEntity> WithStartingNumber(int startingNumber);
 }

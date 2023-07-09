@@ -18,13 +18,15 @@ internal class Context : IContext
     public Type EntityType { get; private set; }
     public IContext? Parent { get; private set; }
     public object Entity { get; private set; }
-    public IWithOnly WithOnly { get; }
     public IStrategyContainer StrategyContainer { get; }
+    
+    public IWithOnly WithOnly { get; } //todo: merge with(s) in one object
     public IWithRecursionLevel WithRecursionLevel { get; }
     public DateTime WithUtcDate { get; set; } = DateTime.UtcNow; //todo: support default values if they exist
     public Guid WithGuid { get; set; } = Guid.NewGuid();
     public string WithStringSuffix { get; set; }
     public string WithStringPrefix { get; set; }
+    public int WithStartingNumber { get; set; } = 1;
 
     public void SetEntity(object entity)
     {

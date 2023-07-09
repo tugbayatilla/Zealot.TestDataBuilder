@@ -6,27 +6,29 @@ namespace Zealot.Strategies;
 
 internal class NumberStrategy : Strategy
 {
-    //todo: implement withStartingNumber so numbers can start instead of zero 
-
     private int _currentNumber;
 
     public override object GenerateValue(IContext context, Type type)
     {
+        SetStartingNumberAtTheBeginning(context);
+
         if (type.IsNullable())
         {
             var underlyingType = type.GenericTypeArguments.FirstOrDefault();
 
-            var finalExpression = Expression.Constant(Convert.ChangeType(_currentNumber, underlyingType!), type);
+            var finalExpression = Expression.Constant(Convert.ChangeType(_currentNumber++, underlyingType!), type);
             return finalExpression.Value;
         }
 
-        return Convert.ChangeType(_currentNumber, type);
+        return Convert.ChangeType(_currentNumber++, type);
     }
 
-    public override void Execute(IContext context, PropertyInfo propertyInfo)
+    private void SetStartingNumberAtTheBeginning(IContext context)
     {
-        _currentNumber++;
-        base.Execute(context, propertyInfo);
+        if (_currentNumber == default)
+        {
+            _currentNumber = context.WithStartingNumber;
+        }
     }
 
     public override IEnumerable<Type> AvailableTypes =>

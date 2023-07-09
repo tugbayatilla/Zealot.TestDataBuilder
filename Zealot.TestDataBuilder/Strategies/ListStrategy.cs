@@ -7,7 +7,6 @@ namespace Zealot.Strategies;
 
 internal class ListStrategy : Strategy
 {
-    //todo: split these different strategies
     public override IEnumerable<Type> AvailableTypes =>
         new[]
         {

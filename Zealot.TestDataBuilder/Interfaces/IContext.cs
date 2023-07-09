@@ -19,4 +19,5 @@ public interface IContext
     IStrategyContainer StrategyContainer { get; }
     IWithRecursionLevel WithRecursionLevel { get; }
     IWithOnly WithOnly { get; }
+    int WithStartingNumber { get; set; }
 }

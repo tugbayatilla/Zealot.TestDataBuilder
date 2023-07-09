@@ -93,6 +93,12 @@ internal class Builder<TEntity> : IBuilder<TEntity>, IBuilder
         return this;
     }
 
+    public IBuilder<TEntity> WithStartingNumber(int startingNumber)
+    {
+        _context.WithStartingNumber = startingNumber;
+        return this;
+    }
+
     object IBuilder.Build()
     {
         return Build();
