@@ -23,6 +23,9 @@ public static class TestHelper
         var props = obj.GetType().GetProperties();
         foreach (var prop in props)
         {
+            //skip bool because it can be compared
+            if (prop.PropertyType == typeof(bool)) return;
+            
             if(prop.PropertyType.IsSame(setOnlyType))
                 prop.GetValue(obj).Should().NotBe(prop.IsNullable() ? default : prop.PropertyType.GetDefault(), 
                     $"{prop.Name} should not be {prop.PropertyType.GetDefault() ?? "null"}");

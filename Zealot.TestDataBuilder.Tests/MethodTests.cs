@@ -11,7 +11,7 @@ public class MethodTests
     public void IBuilder_WithOnly()
     {
         var entity = TestDataBuilder
-            .For<PublicWithAll>()
+            .For<AllPrimitivesClass>()
             .WithOnly<string>()
             .Build();
 

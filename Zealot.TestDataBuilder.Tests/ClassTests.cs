@@ -11,7 +11,7 @@ public class ClassTests
             .For<PublicClass>()
             .Build();
 
-        entity.PublicWithAllProp.Should().NotBeNull();
+        entity.AllPrimitivesClassProp.Should().NotBeNull();
     }
     
     

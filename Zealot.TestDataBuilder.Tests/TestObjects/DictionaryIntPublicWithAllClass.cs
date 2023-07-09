@@ -2,5 +2,5 @@ namespace Zealot.SampleBuilder.Tests.TestObjects;
 
 internal class DictionaryIntPublicWithAllClass
 {
-    public Dictionary<int, PublicWithAll> DictionaryIntPublicWithAllProp { get; set; }
+    public Dictionary<int, AllPrimitivesClass> DictionaryIntPublicWithAllProp { get; set; }
 }

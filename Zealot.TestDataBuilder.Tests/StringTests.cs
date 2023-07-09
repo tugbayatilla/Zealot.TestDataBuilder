@@ -8,7 +8,7 @@ public class StringTests
     public void Support_string()
     {
         var entity = TestDataBuilder
-            .For<PublicWithAll>()
+            .For<AllPrimitivesClass>()
             .WithOnly<string>()
             .Build();
         

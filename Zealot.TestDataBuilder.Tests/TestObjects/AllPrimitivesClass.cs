@@ -1,9 +1,12 @@
 ﻿namespace Zealot.SampleBuilder.Tests.TestObjects;
 
-public class PublicWithAll
+public class AllPrimitivesClass
 {
-    //todo: bool is missing
-    //todo: check all other types
+    public bool BoolProp { get; set; }
+    public bool BoolProp2 { get; set; }
+    
+    public bool? BoolNullableProp { get; set; }
+    public bool? BoolNullableProp2 { get; set; }
     
     public int IntProp { get; set; }
     public int IntProp2 { get; set; }

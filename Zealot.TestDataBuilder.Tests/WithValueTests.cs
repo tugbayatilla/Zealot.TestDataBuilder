@@ -42,7 +42,7 @@ public class WithValueTests
     public void WithValue_called_2_times()
     {
         var entity = TestDataBuilder
-            .For<PublicWithAll>()
+            .For<AllPrimitivesClass>()
             .WithValue(p=>p.IntProp = 1_000_000)
             .WithValue(p=>p.IntNullableProp = 2_000_000)
             .Build();
