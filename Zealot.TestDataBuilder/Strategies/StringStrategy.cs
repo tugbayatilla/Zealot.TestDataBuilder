@@ -16,6 +16,8 @@ internal class StringStrategy : Strategy
 
     public override void Execute(IContext context, PropertyInfo propertyInfo)
     {
+        if (propertyInfo.GetValue(context.Entity) != default) return;
+        
         var value = $"{context.WithStringPrefix}{propertyInfo.Name}{context.WithStringSuffix}";
         propertyInfo.SecureSetValue(context.Entity, value);
     }

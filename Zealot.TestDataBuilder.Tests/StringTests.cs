@@ -20,4 +20,15 @@ public class StringTests
         entity.StringNullableProp.Should().Be($"{nameof(entity.StringNullableProp)}");
         entity.StringNullableProp2.Should().Be($"{nameof(entity.StringNullableProp2)}");
     }
+    
+    //todo: support default value for all primitive types 
+    [Fact]
+    public void Support_string_has_default_value()
+    {
+        var instance = TestDataBuilder
+            .For<StringPropHasDefaultValueClass>()
+            .Build();
+
+        instance.StringProp1.Should().Be("DefaultValueStringProp1");
+    }
 }

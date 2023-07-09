@@ -40,15 +40,6 @@ public class ClassHavingArguments
     public int Priority { get; set; } = 0;
 }
 
-public class ClassHavingNoArguments
-{
-    public string Type { get; set; }
-
-    public string Value { get; set; }
-
-    public int Priority { get; set; } = 0;
-}
-
 public class ClassHavingAnotherClassAsProperty
 {
     public InheritedClass Address { get; set; }
@@ -157,10 +148,10 @@ internal class SampleDataClass
     public DateTime? DateTimePropertyNullable { get; set; }
     public bool BooleanProperty { get; set; }
     public bool? BooleanPropertyNullable { get; set; }
-    public string StringProperty { get; set; } = "";
-    public string StringPropertyNullable { get; set; } = null;
+    public string StringProperty { get; set; }
+    public string StringPropertyNullable { get; set; }
     public Guid GuidProperty { get; set; }
-    public Guid GuidPropertyNullable { get; set; } = Guid.Empty;
+    public Guid GuidPropertyNullable { get; set; }
 
     #endregion
 }

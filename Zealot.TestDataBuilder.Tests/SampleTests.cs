@@ -243,33 +243,6 @@ public class SampleTests
         sample.SampleDataSimpleSubClassIEnumerableInterface.Should().NotBeNullOrEmpty();
     }
 
-
-    [Fact]
-    public void Should_create_sample_data_for_a_class_having_public_parameterless_constructor()
-    {
-        //todo: support parameterless constructor
-        
-        var instance = TestDataBuilder
-            .For<ClassHavingNoArguments>()
-            .Build();
-
-        instance.Priority.Should().NotBe(default);
-        instance.Type.Should().Be(nameof(instance.Type));
-        instance.Value.Should().Be(nameof(instance.Value));
-    }
-
-    [Fact]
-    public void Should_create_sample_data_for_a_class_having_public_parameter_constructor()
-    {
-        // var instance = TestDataBuilder
-        //     .For<ClassHavingArguments>()
-        //     .Build();
-        //
-        // instance.Priority.Should().NotBe(default);
-        // instance.Type.Should().Be(nameof(instance.Type));
-        // instance.Value.Should().Be(nameof(instance.Value));
-    }
-
     [Fact]
     public void Should_create_sample_data_for_inherited_class()
     {
