@@ -27,7 +27,7 @@ internal class NumberStrategy : Strategy
     {
         if (_currentNumber == default)
         {
-            _currentNumber = context.WithStartingNumber;
+            _currentNumber = context.With.Number.StartingNumber;
         }
     }
 

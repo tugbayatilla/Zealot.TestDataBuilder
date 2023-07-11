@@ -13,9 +13,8 @@ public static class TestDataBuilder
     {
         IContext context = new Context(
             typeof(TEntity), 
-            new WithOnly(),
-            new StrategyContainer(),
-            new WithRecursionLevel());
+            new With(),
+            new StrategyContainer());
 
         return new Builder<TEntity>(context);
     }

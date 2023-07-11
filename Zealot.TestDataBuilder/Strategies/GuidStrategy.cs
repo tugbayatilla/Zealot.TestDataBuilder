@@ -11,6 +11,6 @@ internal class GuidStrategy : Strategy
 
     public override object GenerateValue(IContext context, Type type)
     {
-        return context.WithGuid;
+        return context.With.Guid.Guid;
     }
 }

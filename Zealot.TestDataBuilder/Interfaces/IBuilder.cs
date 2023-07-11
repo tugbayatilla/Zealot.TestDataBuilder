@@ -23,7 +23,7 @@ public interface IBuilder<TEntity>
     /// <summary>
     /// Optional
     /// </summary>
-    IBuilder<TEntity> WithOnly(Type type);
+    IBuilder<TEntity> WithOnly(Type type); //todo: think about public interface and usage of these WITH methods, merge all if possible maybe. 
     
     /// <summary>
     /// Optional

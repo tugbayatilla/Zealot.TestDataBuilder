@@ -11,14 +11,14 @@ internal class StringStrategy : Strategy
     public override object GenerateValue(IContext context, Type type)
     {
         _number++;
-        return $"{context.WithStringPrefix}{_number}{context.WithStringSuffix}";
+        return $"{context.With.String.Prefix}{_number}{context.With.String.Suffix}";
     }
 
     public override void Execute(IContext context, PropertyInfo propertyInfo)
     {
         if (propertyInfo.GetValue(context.Entity) != default) return;
         
-        var value = $"{context.WithStringPrefix}{propertyInfo.Name}{context.WithStringSuffix}";
+        var value = $"{context.With.String.Prefix}{propertyInfo.Name}{context.With.String.Suffix}";
         propertyInfo.SecureSetValue(context.Entity, value);
     }
 }

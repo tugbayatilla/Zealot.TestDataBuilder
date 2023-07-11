@@ -4,7 +4,7 @@ using Zealot.Interfaces;
 
 namespace Zealot.Strategies;
 
-public abstract class Strategy : IStrategy
+internal abstract class Strategy : IStrategy
 {
     public virtual IEnumerable<Type> AvailableTypes { get; } = default!;
     public virtual Expression<Func<Type, bool>> ResolveCondition 

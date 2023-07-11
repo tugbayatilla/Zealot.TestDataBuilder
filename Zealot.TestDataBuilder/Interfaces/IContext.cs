@@ -11,13 +11,7 @@ public interface IContext
     
     Type EntityType { get; }
     
-    DateTime WithUtcDate { get; set; }
-    Guid WithGuid { get; set; }
-    string WithStringPrefix { get; set; }
-    string WithStringSuffix { get; set; }
     
     IStrategyContainer StrategyContainer { get; }
-    IWithRecursionLevel WithRecursionLevel { get; }
-    IWithOnly WithOnly { get; }
-    int WithStartingNumber { get; set; }
+    IWith With { get; }
 }

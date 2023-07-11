@@ -8,7 +8,7 @@ internal class ClassStrategy : Strategy
 {
     public override void Execute(IContext context, PropertyInfo propertyInfo)
     {
-        if (!context.WithRecursionLevel.CanContinueDeeper(context, propertyInfo.PropertyType))
+        if (!context.With.RecursionLevel.CanContinueDeeper(context, propertyInfo.PropertyType))
             return;
         
         base.Execute(context, propertyInfo);

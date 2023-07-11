@@ -26,7 +26,7 @@ internal class Builder<TEntity> : IBuilder<TEntity>, IBuilder
         // for each property
         foreach (var propertyInfo in properties)
         {
-            if (_context.WithOnly.IgnoreThis(propertyInfo.PropertyType)) continue;
+            if (_context.With.Only.IgnoreThis(propertyInfo.PropertyType)) continue;
 
             // find the Strategy for the type
             var strategy = _context.StrategyContainer.Resolve(propertyInfo.PropertyType);
@@ -46,7 +46,7 @@ internal class Builder<TEntity> : IBuilder<TEntity>, IBuilder
 
     public IBuilder<TEntity> WithOnly(Type type)
     {
-        _context.WithOnly.Add(type);
+        _context.With.Only.Add(type);
         return this;
     }
 
@@ -59,7 +59,7 @@ internal class Builder<TEntity> : IBuilder<TEntity>, IBuilder
 
     public IBuilder<TEntity> WithDate(DateTime dateTime)
     {
-        _context.WithUtcDate = dateTime;
+        _context.With.Date.UtcDate = dateTime;
         return this;
     }
 
@@ -71,31 +71,31 @@ internal class Builder<TEntity> : IBuilder<TEntity>, IBuilder
 
     public IBuilder<TEntity> WithGuid(Guid guid)
     {
-        _context.WithGuid = guid;
+        _context.With.Guid.Guid = guid;
         return this;
     }
 
     public IBuilder<TEntity> WithRecursionLevel(int recursionLevel)
     {
-        _context.WithRecursionLevel.SetAllowedRecursionLevel(recursionLevel);
+        _context.With.RecursionLevel.SetAllowedRecursionLevel(recursionLevel);
         return this;
     }
 
     public IBuilder<TEntity> WithStringPrefix(string prefix)
     {
-        _context.WithStringPrefix = prefix;
+        _context.With.String.Prefix = prefix;
         return this;
     }
 
     public IBuilder<TEntity> WithStringSuffix(string suffix)
     {
-        _context.WithStringSuffix = suffix;
+        _context.With.String.Suffix = suffix;
         return this;
     }
 
     public IBuilder<TEntity> WithStartingNumber(int startingNumber)
     {
-        _context.WithStartingNumber = startingNumber;
+        _context.With.Number.StartingNumber = startingNumber;
         return this;
     }
 
