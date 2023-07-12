@@ -1,4 +1,5 @@
-﻿using Zealot.Interfaces;
+﻿using Microsoft.Extensions.Logging;
+using Zealot.Interfaces;
 using Zealot.Strategies;
 
 namespace Zealot.Internals;
@@ -99,10 +100,14 @@ internal class Builder<TEntity> : IBuilder<TEntity>, IBuilder
         return this;
     }
 
+    public IBuilder<TEntity> WithLogger(ILogger logger)
+    {
+        _context.With.Log.Logger = logger;
+        return this;
+    }
+
     object IBuilder.Build()
     {
         return Build();
     }
-    
-    //todo: add WithLogger
 }

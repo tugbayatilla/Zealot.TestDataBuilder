@@ -1,4 +1,5 @@
-﻿using Zealot.Strategies;
+﻿using Microsoft.Extensions.Logging;
+using Zealot.Strategies;
 
 namespace Zealot.Interfaces;
 
@@ -23,7 +24,7 @@ public interface IBuilder<TEntity>
     /// <summary>
     /// Optional
     /// </summary>
-    IBuilder<TEntity> WithOnly(Type type); //todo: think about public interface and usage of these WITH methods, merge all if possible maybe. 
+    IBuilder<TEntity> WithOnly(Type type); 
     
     /// <summary>
     /// Optional
@@ -57,4 +58,5 @@ public interface IBuilder<TEntity>
     
     IBuilder<TEntity> WithStringSuffix(string suffix);
     IBuilder<TEntity> WithStartingNumber(int startingNumber);
+    IBuilder<TEntity> WithLogger(ILogger logger);
 }

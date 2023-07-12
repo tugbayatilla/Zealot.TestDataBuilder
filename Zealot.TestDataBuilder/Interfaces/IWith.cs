@@ -8,4 +8,5 @@ public interface IWith
     IWithString String { get; }
     IWithDate Date { get; }
     IWithGuid Guid { get; }
+    IWithLogger Log { get; set; }
 }
