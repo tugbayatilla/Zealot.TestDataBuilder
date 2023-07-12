@@ -1,5 +1,3 @@
-using Zealot.Interfaces;
-using Zealot.Internals;
 using Zealot.SampleBuilder.Tests.TestObjects;
 
 namespace Zealot.SampleBuilder.Tests;
@@ -17,6 +15,4 @@ public class WithStartingNumberTests
         entity.Prop1.Should().Be(5);
         entity.Prop2.Should().Be(6);
     }
-
-    
 }
