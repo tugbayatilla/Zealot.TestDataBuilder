@@ -104,7 +104,11 @@ internal class Builder<TEntity> : IBuilder<TEntity>, IBuilder
 
     public IBuilder<TEntity> WithLogger(ILogger logger)
     {
-        _context.With.Log.Logger = logger;
+        if(logger != null)
+        {
+            _context.With.Log.Logger = logger;
+        }
+
         return this;
     }
 
