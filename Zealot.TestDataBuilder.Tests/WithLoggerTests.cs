@@ -1,5 +1,5 @@
-using Zealot.Interfaces;
-using Zealot.Internals;
+using Microsoft.Extensions.Logging;
+using Moq;
 using Zealot.SampleBuilder.Tests.TestObjects;
 
 namespace Zealot.SampleBuilder.Tests;
@@ -17,5 +17,16 @@ public class WithLoggerTests
         entity.Should().NotBeNull();
     }
 
-    
+    [Fact]
+    public void Debug_log_on_build_start()
+    {
+        var loggerMock = new Mock<ILogger>();
+        
+        _ = TestDataBuilder
+            .For<ClassWithTwoInteger>()
+            .WithLogger(loggerMock.Object)
+            .Build();
+
+        loggerMock.VerifyDebug($"Build for {nameof(ClassWithTwoInteger)} starts", Times.Once());
+    }
 }

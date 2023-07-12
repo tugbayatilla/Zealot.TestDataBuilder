@@ -17,6 +17,8 @@ internal class Builder<TEntity> : IBuilder<TEntity>, IBuilder
 
     public TEntity Build()
     {
+        _context.With.Log.Logger.LogDebug("{ExecuteName} for {EntityType} starts", nameof(Build), _context.EntityType.Name);
+        
         var newInstance = Instance.Create(_context.EntityType);
         if (newInstance == null) return default!;
         
