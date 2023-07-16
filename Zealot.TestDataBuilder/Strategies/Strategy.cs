@@ -12,7 +12,7 @@ internal abstract class Strategy : IStrategy
 
     public abstract object GenerateValue(IContext context, Type type);
 
-    public virtual void Execute(IContext context, PropertyInfo propertyInfo)
+    public virtual void Execute(IContext context)
     {
         var pi = context.Entity.GetType().GetProperty(context.PropertyName);
         pi.SecureSetValue(context.Entity, GenerateValue(context, pi.PropertyType));

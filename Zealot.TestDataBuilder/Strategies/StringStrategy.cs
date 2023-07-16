@@ -14,7 +14,7 @@ internal class StringStrategy : Strategy
         return $"{context.With.String.Prefix}{_number}{context.With.String.Suffix}";
     }
 
-    public override void Execute(IContext context, PropertyInfo propertyInfo)
+    public override void Execute(IContext context)
     {
         var pi = context.Entity.GetType().GetProperty(context.PropertyName);
         

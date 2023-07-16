@@ -6,14 +6,14 @@ namespace Zealot.Strategies;
 
 internal class ClassStrategy : Strategy
 {
-    public override void Execute(IContext context, PropertyInfo propertyInfo)
+    public override void Execute(IContext context)
     {
         var pi = context.Entity.GetType().GetProperty(context.PropertyName);
         
         if (!context.With.RecursionLevel.CanContinueDeeper(context, pi.PropertyType))
             return;
         
-        base.Execute(context, pi);
+        base.Execute(context);
     }
 
     public override Expression<Func<Type, bool>> ResolveCondition => info => 

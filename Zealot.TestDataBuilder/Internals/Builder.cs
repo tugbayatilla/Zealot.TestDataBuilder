@@ -36,7 +36,7 @@ internal class Builder<TEntity> : IBuilder<TEntity>, IBuilder
             _context.PropertyName = propertyInfo.Name;
             
             // execute the strategy
-            strategy.Execute(_context, null!);
+            strategy.Execute(_context);
         }
 
         _context.With.Override.Apply(_context.Entity);
