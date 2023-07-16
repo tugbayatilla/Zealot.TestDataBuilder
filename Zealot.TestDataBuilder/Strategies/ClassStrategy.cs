@@ -23,6 +23,6 @@ internal class ClassStrategy : Strategy
     
     public override object GenerateValue(IContext context, Type type)
     {
-        return TestDataBuilder.WithContext(type, context).Build()!;
+        return TestDataBuilder.WithContext(context, type).Build()!;
     }
 }
