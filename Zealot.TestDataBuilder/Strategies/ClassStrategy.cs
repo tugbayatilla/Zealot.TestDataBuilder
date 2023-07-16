@@ -21,7 +21,7 @@ internal class ClassStrategy : Strategy
         && !info.IsArray
         && !new ListStrategy().ResolveCondition.Compile().Invoke(info);
     
-    public override object GenerateValue(IContext context, Type type)
+    public override object GenerateValue(IContext context, Type type) //todo: get rid of Type argument in GenerateValue method
     {
         return TestDataBuilder.WithContext(context, type).Build()!;
     }
