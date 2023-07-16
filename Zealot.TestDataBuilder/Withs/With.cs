@@ -1,7 +1,7 @@
 using Zealot.Interfaces;
 using Zealot.Internals;
 
-namespace Zealot;
+namespace Zealot.Withs;
 
 internal class With : IWith
 {

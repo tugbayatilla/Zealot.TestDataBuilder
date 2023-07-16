@@ -1,5 +1,6 @@
 using Zealot.Interfaces;
 using Zealot.Internals;
+using Zealot.Withs;
 
 namespace Zealot;
 

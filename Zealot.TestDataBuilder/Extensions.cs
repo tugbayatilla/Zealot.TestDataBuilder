@@ -48,7 +48,7 @@ public static class Extensions
 
     public static bool IsStruct(this Type type)
     {
-        return type.IsValueType && !type.IsPrimitive && !type.IsEnum;
+        return type is {IsValueType: true, IsPrimitive: false, IsEnum: false};
     }
 
     public static void SecureSetValue(this PropertyInfo propertyInfo, object entity, object value)

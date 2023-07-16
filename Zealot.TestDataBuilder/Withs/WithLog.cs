@@ -2,7 +2,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Zealot.Interfaces;
 
-namespace Zealot;
+namespace Zealot.Withs;
 
 internal class WithLog : IWithLogger
 {

@@ -1,6 +1,6 @@
 using Zealot.Interfaces;
 
-namespace Zealot;
+namespace Zealot.Withs;
 
 internal class WithNumber : IWithNumber
 {
