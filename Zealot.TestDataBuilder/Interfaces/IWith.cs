@@ -9,4 +9,11 @@ public interface IWith
     IWithDate Date { get; }
     IWithGuid Guid { get; }
     IWithLogger Log { get; set; }
+    IWithOverride Override { get; set; }
+}
+
+public interface IWithOverride
+{
+    void Add(Action<object> overrideAction);
+    void Apply(object entity);
 }

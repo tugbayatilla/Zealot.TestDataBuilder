@@ -29,7 +29,7 @@ public interface IBuilder<TEntity>
     /// <summary>
     /// Optional
     /// </summary>
-    IBuilder<TEntity> WithValue(Action<TEntity> action);
+    IBuilder<TEntity> WithOverride(Action<TEntity> action);
 
     /// <summary>
     /// Optional

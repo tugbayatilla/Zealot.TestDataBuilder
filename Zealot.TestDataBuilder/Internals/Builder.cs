@@ -8,8 +8,7 @@ internal class Builder<TEntity> : IBuilder<TEntity>, IBuilder
     where TEntity : new()
 {
     private readonly IContext _context;
-    private readonly List<Action<TEntity>> _withValueAction = new();
-    
+
     public Builder(IContext context)
     {
         _context = context;
@@ -17,13 +16,14 @@ internal class Builder<TEntity> : IBuilder<TEntity>, IBuilder
 
     public TEntity Build()
     {
-        _context.With.Log.Logger.LogDebug("{ExecuteName} for {EntityType} starts", nameof(Build), _context.EntityType.Name);
-        
+        _context.With.Log.Logger.LogDebug("{ExecuteName} for {EntityType} starts", nameof(Build),
+            _context.EntityType.Name);
+
         var newInstance = Instance.Create(_context.EntityType);
         if (newInstance == null) return default!;
-        
-        _context.SetEntity(newInstance); 
-        
+
+        _context.SetEntity(newInstance);
+
         // find properties
         var properties = _context.Entity.GetType().GetProperties();
         // for each property
@@ -36,9 +36,9 @@ internal class Builder<TEntity> : IBuilder<TEntity>, IBuilder
             // execute the strategy
             strategy.Execute(_context, propertyInfo);
         }
-        
-        _withValueAction.ForEach(p=>p.Invoke((TEntity) _context.Entity));
-        
+
+        _context.With.Override.Apply(_context.Entity);
+
         return (TEntity) _context.Entity;
     }
 
@@ -54,9 +54,9 @@ internal class Builder<TEntity> : IBuilder<TEntity>, IBuilder
     }
 
 
-    public IBuilder<TEntity> WithValue(Action<TEntity> action)
+    public IBuilder<TEntity> WithOverride(Action<TEntity> action)
     {
-        _withValueAction.Add(action);
+        _context.With.Override.Add(o => action.Invoke((TEntity) o));
         return this;
     }
 
@@ -104,7 +104,7 @@ internal class Builder<TEntity> : IBuilder<TEntity>, IBuilder
 
     public IBuilder<TEntity> WithLogger(ILogger logger)
     {
-        if(logger != null)
+        if (logger != null)
         {
             _context.With.Log.Logger = logger;
         }
