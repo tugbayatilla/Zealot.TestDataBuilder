@@ -8,10 +8,12 @@ internal class ClassStrategy : Strategy
 {
     public override void Execute(IContext context, PropertyInfo propertyInfo)
     {
-        if (!context.With.RecursionLevel.CanContinueDeeper(context, propertyInfo.PropertyType))
+        var pi = context.Entity.GetType().GetProperty(context.PropertyName);
+        
+        if (!context.With.RecursionLevel.CanContinueDeeper(context, pi.PropertyType))
             return;
         
-        base.Execute(context, propertyInfo);
+        base.Execute(context, pi);
     }
 
     public override Expression<Func<Type, bool>> ResolveCondition => info => 

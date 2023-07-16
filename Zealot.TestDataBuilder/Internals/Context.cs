@@ -14,6 +14,7 @@ internal class Context : IContext
     }
 
     public Type EntityType { get; private set; }
+    public string PropertyName { get; set; }
     public IContext? Parent { get; private set; }
     public object Entity { get; private set; }
     public IStrategyContainer StrategyContainer { get; }

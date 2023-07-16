@@ -10,7 +10,7 @@ public interface IContext
     void SetEntity(object entity);
     
     Type EntityType { get; }
-    
+    string PropertyName { get; set; }
     
     IStrategyContainer StrategyContainer { get; }
     IWith With { get; }

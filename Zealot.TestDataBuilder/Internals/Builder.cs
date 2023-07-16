@@ -33,8 +33,10 @@ internal class Builder<TEntity> : IBuilder<TEntity>, IBuilder
 
             // find the Strategy for the type
             var strategy = _context.StrategyContainer.Resolve(propertyInfo.PropertyType);
+            _context.PropertyName = propertyInfo.Name;
+            
             // execute the strategy
-            strategy.Execute(_context, propertyInfo);
+            strategy.Execute(_context, null!);
         }
 
         _context.With.Override.Apply(_context.Entity);
