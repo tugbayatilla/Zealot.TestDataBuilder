@@ -8,26 +8,24 @@ public class CharTests
     public void Support_char()
     {
         var subject = TestDataBuilder
-            .For<ClassWithAllPrimitives>()
-            .WithOnly<char>()
+            .For<ClassWithTwoChar>()
             .Build();
         
-        subject.CharProp.Should().NotBeNull();
-        subject.CharProp2.Should().NotBeNull();
+        subject.Prop.Should().NotBeNull();
+        subject.Prop2.Should().NotBeNull();
     }
     
     [Fact]
     public void Support_char_nullable()
     {
         var subject = TestDataBuilder
-            .For<ClassWithAllPrimitives>()
-            .WithOnly<char?>()
+            .For<ClassWithTwoCharNullable>()
             .Build();
 
-        subject.CharNullableProp.Should().NotBeNull();
-        subject.CharNullableProp2.Should().NotBeNull();
+        subject.Prop.Should().NotBeNull();
+        subject.Prop2.Should().NotBeNull();
         
-        subject.CharNullableProp.Should().NotBe(default);
-        subject.CharNullableProp2.Should().NotBe(default);
+        subject.Prop.Should().NotBe(default);
+        subject.Prop2.Should().NotBe(default);
     }
 }
