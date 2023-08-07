@@ -19,14 +19,4 @@ public static class TestDataBuilder
 
         return new Builder<TEntity>(context);
     }
-
-    /// <summary>
-    /// Required
-    /// </summary>
-    internal static IBuilder WithContext(IContext context, Type entityType)
-    {
-        var newContext = context.CloneWithType(entityType);
-        
-        return new Builder<object>(newContext);
-    }
 }

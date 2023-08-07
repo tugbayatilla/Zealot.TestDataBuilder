@@ -4,7 +4,7 @@ using Zealot.Strategies;
 
 namespace Zealot.Internals;
 
-internal class Builder<TEntity> : IBuilder<TEntity>, IBuilder
+internal class Builder<TEntity> : IBuilder<TEntity>
     where TEntity : new()
 {
     private readonly IContext _context;
@@ -94,10 +94,5 @@ internal class Builder<TEntity> : IBuilder<TEntity>, IBuilder
         }
 
         return this;
-    }
-
-    object IBuilder.Build()
-    {
-        return Build();
     }
 }

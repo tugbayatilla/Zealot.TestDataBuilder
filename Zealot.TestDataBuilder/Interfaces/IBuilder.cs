@@ -3,12 +3,7 @@ using Zealot.Strategies;
 
 namespace Zealot.Interfaces;
 
-internal interface IBuilder
-{
-    object Build();
-}
-
-public interface IBuilder<TEntity>
+public interface IBuilder<out TEntity>
     where TEntity: new() 
 {
     /// <summary>
