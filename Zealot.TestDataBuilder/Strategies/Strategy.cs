@@ -1,5 +1,4 @@
 using System.Linq.Expressions;
-using System.Reflection;
 using Zealot.Interfaces;
 
 namespace Zealot.Strategies;
@@ -12,8 +11,16 @@ internal abstract class Strategy : IStrategy
 
     public abstract object GenerateValue(IContext context, Type type);
 
-    public virtual void Execute(IContext context, PropertyInfo propertyInfo)
+    public virtual void Execute(IContext context)
     {
-        propertyInfo.SecureSetValue(context.Entity, GenerateValue(context, propertyInfo.PropertyType));
+        if (!string.IsNullOrWhiteSpace(context.PropertyName))
+        {
+            var pi = context.Entity.GetType().GetProperty(context.PropertyName);
+            pi.SecureSetValue(context.Entity, GenerateValue(context, pi.PropertyType));
+        }
+        else
+        {
+            context.SetEntity(GenerateValue(context, context.EntityType));
+        }
     }
 }

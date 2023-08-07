@@ -23,7 +23,7 @@ public static class TestDataBuilder
     /// <summary>
     /// Required
     /// </summary>
-    internal static IBuilder WithContext(Type entityType, IContext context)
+    internal static IBuilder WithContext(IContext context, Type entityType)
     {
         var newContext = context.CloneWithType(entityType);
         

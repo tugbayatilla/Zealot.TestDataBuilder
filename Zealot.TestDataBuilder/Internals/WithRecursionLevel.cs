@@ -11,15 +11,15 @@ internal class WithRecursionLevel : IWithRecursionLevel
         var (exist, level) = RecursionExist(context, type);
         if (exist)
         {
-            return level <= _allowedRecursionLevel;
+            return level[type] <= _allowedRecursionLevel;
         }
 
         return true;
     }
 
-    private (bool exist, int level) RecursionExist(IContext context, Type type)
+    private (bool exist, Dictionary<Type, int> level) RecursionExist(IContext context, Type type)
     {
-        var level = 0;
+        Dictionary<Type, int> level = new Dictionary<Type, int>();
         var exist = false;
         while (true)
         {
@@ -30,7 +30,14 @@ internal class WithRecursionLevel : IWithRecursionLevel
             if (context.Parent.Entity.GetType() == type)
             {
                 exist = true;
-                level++;
+                if(level.ContainsKey(type))
+                {
+                    level[type] += 1;
+                }
+                else
+                {
+                    level.Add(type, 1);
+                }
             }
 
             context = context.Parent;

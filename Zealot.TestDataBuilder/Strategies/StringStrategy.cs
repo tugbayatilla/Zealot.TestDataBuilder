@@ -14,11 +14,13 @@ internal class StringStrategy : Strategy
         return $"{context.With.String.Prefix}{_number}{context.With.String.Suffix}";
     }
 
-    public override void Execute(IContext context, PropertyInfo propertyInfo)
+    public override void Execute(IContext context)
     {
-        if (propertyInfo.GetValue(context.Entity) != default) return;
+        var pi = context.Entity.GetType().GetProperty(context.PropertyName);
         
-        var value = $"{context.With.String.Prefix}{propertyInfo.Name}{context.With.String.Suffix}";
-        propertyInfo.SecureSetValue(context.Entity, value);
+        if (pi.GetValue(context.Entity) != default) return;
+        
+        var value = $"{context.With.String.Prefix}{pi.Name}{context.With.String.Suffix}";
+        pi.SecureSetValue(context.Entity, value);
     }
 }
