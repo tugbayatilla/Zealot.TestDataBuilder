@@ -34,6 +34,7 @@ public class WithOverrideTests
     {
         var entity = TestDataBuilder
             .For<ClassWithIntAndItselfRecursively>()
+            .WithRecursionLevel(1)
             .Build();
 
         entity.Prop.IntProp.Should().Be(2);

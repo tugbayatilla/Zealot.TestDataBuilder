@@ -13,7 +13,14 @@ internal abstract class Strategy : IStrategy
 
     public virtual void Execute(IContext context)
     {
-        var pi = context.Entity.GetType().GetProperty(context.PropertyName);
-        pi.SecureSetValue(context.Entity, GenerateValue(context, pi.PropertyType));
+        if (!string.IsNullOrWhiteSpace(context.PropertyName))
+        {
+            var pi = context.Entity.GetType().GetProperty(context.PropertyName);
+            pi.SecureSetValue(context.Entity, GenerateValue(context, pi.PropertyType));
+        }
+        else
+        {
+            context.SetEntity(GenerateValue(context, context.EntityType));
+        }
     }
 }

@@ -18,29 +18,11 @@ internal class Builder<TEntity> : IBuilder<TEntity>, IBuilder
     {
         _context.With.Log.Logger.LogDebug("{ExecuteName} for {EntityType} starts", nameof(Build),
             _context.EntityType.Name);
+        
+        var strategy = _context.StrategyContainer.Resolve(_context.EntityType);
+        strategy.Execute(_context);
 
-        var newInstance = Instance.Create(_context.EntityType);
-        if (newInstance == null) return default!;
-
-        _context.SetEntity(newInstance);
-
-        // find properties
-        var properties = _context.Entity.GetType().GetProperties();
-        // for each property
-        foreach (var propertyInfo in properties)
-        {
-            if (_context.With.Only.IgnoreThis(propertyInfo.PropertyType)) continue;
-
-            // find the Strategy for the type
-            var strategy = _context.StrategyContainer.Resolve(propertyInfo.PropertyType);
-            _context.PropertyName = propertyInfo.Name;
-            
-            // execute the strategy
-            strategy.Execute(_context);
-        }
-
-        _context.With.Override.Apply(_context.Entity);
-
+        _context.PropertyName = ""; //todo: get rid of this
         return (TEntity) _context.Entity;
     }
 

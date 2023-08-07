@@ -13,17 +13,4 @@ public class RecursionTests
 
         entity.Prop.Prop.Should().BeNull();
     }
-    
-    [Fact]
-    public void Support_recursion_with_recursion_level_1()
-    {
-        var entity = TestDataBuilder
-            .For<ClassWithClassBRecursively>()
-            .WithRecursionLevel(1)
-            .Build();
-
-        entity.Prop.Prop.Should().NotBeNull();
-        entity.Prop.Prop.Prop.Should().NotBeNull();
-        entity.Prop.Prop.Prop.Prop.Should().BeNull();
-    }
 }

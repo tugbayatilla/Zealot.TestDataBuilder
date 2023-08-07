@@ -32,6 +32,7 @@ public class StructTests
     {
         var subject = TestDataBuilder
             .For<StructWithIntAndItselfRecursively>()
+            .WithRecursionLevel(1)
             .Build();
 
         subject.Should().NotBeNull();
