@@ -18,11 +18,11 @@ internal class Builder<TEntity> : IBuilder<TEntity>
     {
         _context.With.Log.Logger.LogDebug("{ExecuteName} for {EntityType} starts", nameof(Build),
             _context.EntityType.Name);
-        
+
         var strategy = _context.StrategyContainer.Resolve(_context.EntityType);
         strategy.Execute(_context);
 
-        _context.PropertyName = ""; //todo: get rid of this
+        _context.Scope = _context.Scope with { PropertyName = ""};
         return (TEntity) _context.Entity;
     }
 

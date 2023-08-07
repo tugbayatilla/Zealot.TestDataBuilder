@@ -13,9 +13,9 @@ internal abstract class Strategy : IStrategy
 
     public virtual void Execute(IContext context)
     {
-        if (!string.IsNullOrWhiteSpace(context.PropertyName))
+        if (!string.IsNullOrWhiteSpace(context.Scope.PropertyName))
         {
-            var pi = context.Entity.GetType().GetProperty(context.PropertyName);
+            var pi = context.Entity.GetType().GetProperty(context.Scope.PropertyName);
             pi.SecureSetValue(context.Entity, GenerateValue(context, pi.PropertyType));
         }
         else

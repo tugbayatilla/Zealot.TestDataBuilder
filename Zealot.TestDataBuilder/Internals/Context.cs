@@ -4,7 +4,7 @@ namespace Zealot.Internals;
 
 //todo: make this class move friendly. we need more higher level to hold configuration so
 // when we clone the context, configuration will not be transferred and copied to next context.
-internal class Context : IContext  
+internal class Context : IContext
 { 
     public Context(Type entityType, 
         IWith with, 
@@ -13,14 +13,17 @@ internal class Context : IContext
         EntityType = entityType;
         With = with;
         StrategyContainer = strategyContainer;
+
+        Scope = new Scope(null, entityType, null, null);
     }
 
     public Type EntityType { get; private set; }
-    public string PropertyName { get; set; }
     public IContext? Parent { get; private set; }
     public object Entity { get; private set; }
     public IStrategyContainer StrategyContainer { get; }
     public IWith With { get; }
+    
+    public Scope Scope { get; set; }
 
     public void SetEntity(object entity)
     {

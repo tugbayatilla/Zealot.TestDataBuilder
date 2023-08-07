@@ -16,7 +16,7 @@ internal class StringStrategy : Strategy
 
     public override void Execute(IContext context) //todo: change this logic.
     {
-        var pi = context.Entity.GetType().GetProperty(context.PropertyName);
+        var pi = context.Entity.GetType().GetProperty(context.Scope.PropertyName);
         
         if (pi.GetValue(context.Entity) != default) return;
         

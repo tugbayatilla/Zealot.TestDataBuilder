@@ -15,7 +15,7 @@ internal class ClassStrategy : Strategy
     public override object GenerateValue(IContext context, Type type) //todo: get rid of Type argument in GenerateValue method
     {
         var newContext = context.CloneWithType(type);
-        if (string.IsNullOrWhiteSpace(context.PropertyName))
+        if (string.IsNullOrWhiteSpace(context.Scope.PropertyName))
         {
             newContext = context;    
         }
@@ -38,7 +38,7 @@ internal class ClassStrategy : Strategy
 
             // find the Strategy for the type
             var strategy = newContext.StrategyContainer.Resolve(propertyInfo.PropertyType);
-            newContext.PropertyName = propertyInfo.Name;
+            newContext.Scope = newContext.Scope with {PropertyName = propertyInfo.Name}; 
             
             // execute the strategy
             strategy.Execute(newContext);
