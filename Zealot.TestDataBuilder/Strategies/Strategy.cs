@@ -15,12 +15,13 @@ internal abstract class Strategy : IStrategy
     {
         if (!string.IsNullOrWhiteSpace(context.Scope.PropertyName))
         {
-            var pi = context.Entity.GetType().GetProperty(context.Scope.PropertyName);
-            pi.SecureSetValue(context.Entity, GenerateValue(context, pi.PropertyType));
+            var pi = context.Scope.Entity.GetType().GetProperty(context.Scope.PropertyName);
+            pi.SecureSetValue(context.Scope.Entity, GenerateValue(context, pi.PropertyType));
         }
         else
         {
-            context.SetEntity(GenerateValue(context, context.EntityType));
+            object entity = GenerateValue(context, context.Scope.EntityType);
+            context.Scope = context.Scope with {Entity = entity};
         }
     }
 }

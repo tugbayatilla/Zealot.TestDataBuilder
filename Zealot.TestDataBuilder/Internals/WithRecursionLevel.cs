@@ -8,7 +8,7 @@ internal class WithRecursionLevel : IWithRecursionLevel
 
     public bool CanContinueDeeper(IContext context, Type type)
     {
-        var (exist, level) = RecursionExist(context, type);
+        var (exist, level) = RecursionExist(context.Scope, type);
         if (exist)
         {
             return level[type] <= _allowedRecursionLevel;
@@ -17,17 +17,17 @@ internal class WithRecursionLevel : IWithRecursionLevel
         return true;
     }
 
-    private (bool exist, Dictionary<Type, int> level) RecursionExist(IContext context, Type type)
+    private (bool exist, Dictionary<Type, int> level) RecursionExist(Scope scope, Type type)
     {
         Dictionary<Type, int> level = new Dictionary<Type, int>();
         var exist = false;
         while (true)
         {
             // no parent, no recursion
-            if (context.Parent == null) return (exist, level);
+            if (scope.Parent == null) return (exist, level);
             
             // parent has same type, recursion
-            if (context.Parent.Entity.GetType() == type)
+            if (scope.Parent.Entity.GetType() == type)
             {
                 exist = true;
                 if(level.ContainsKey(type))
@@ -40,7 +40,7 @@ internal class WithRecursionLevel : IWithRecursionLevel
                 }
             }
 
-            context = context.Parent;
+            scope = scope.Parent;
         }
     }
 

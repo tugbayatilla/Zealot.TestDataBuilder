@@ -17,13 +17,13 @@ internal class Builder<TEntity> : IBuilder<TEntity>
     public TEntity Build()
     {
         _context.With.Log.Logger.LogDebug("{ExecuteName} for {EntityType} starts", nameof(Build),
-            _context.EntityType.Name);
+            _context.Scope.EntityType.Name);
 
-        var strategy = _context.StrategyContainer.Resolve(_context.EntityType);
+        var strategy = _context.StrategyContainer.Resolve(_context.Scope.EntityType);
         strategy.Execute(_context);
 
         _context.Scope = _context.Scope with { PropertyName = ""};
-        return (TEntity) _context.Entity;
+        return (TEntity) _context.Scope.Entity;
     }
 
     public IBuilder<TEntity> WithOnly<TProperty>()

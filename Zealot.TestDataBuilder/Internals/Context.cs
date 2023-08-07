@@ -10,33 +10,24 @@ internal class Context : IContext
         IWith with, 
         IStrategyContainer strategyContainer)
     {
-        EntityType = entityType;
         With = with;
         StrategyContainer = strategyContainer;
 
         Scope = new Scope(null, entityType, null, null);
     }
 
-    public Type EntityType { get; private set; }
-    public IContext? Parent { get; private set; }
-    public object Entity { get; private set; }
     public IStrategyContainer StrategyContainer { get; }
     public IWith With { get; }
     
     public Scope Scope { get; set; }
 
-    public void SetEntity(object entity)
-    {
-        Entity = entity;
-    }
-    
     public IContext CloneWithType(Type entityType)
     {
         var newContext = new Context(entityType, 
             With, 
             StrategyContainer);
 
-        newContext.Parent = this;
+        newContext.Scope = newContext.Scope with {Parent = Scope};
         
         return newContext;
     }

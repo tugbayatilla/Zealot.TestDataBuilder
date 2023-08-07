@@ -24,13 +24,13 @@ internal class ClassStrategy : Strategy
         if (!newContext.With.RecursionLevel.CanContinueDeeper(newContext, type))
             return default!;
 
-        var newInstance = Instance.Create(newContext.EntityType);
+        var newInstance = Instance.Create(newContext.Scope.EntityType);
         if (newInstance == null) return default!;
 
-        newContext.SetEntity(newInstance);
+        newContext.Scope = newContext.Scope with {Entity = newInstance};
         
         // find properties
-        var properties = newContext.Entity.GetType().GetProperties();
+        var properties = newContext.Scope.Entity.GetType().GetProperties();
         // for each property
         foreach (var propertyInfo in properties)
         {
@@ -44,8 +44,8 @@ internal class ClassStrategy : Strategy
             strategy.Execute(newContext);
         }
 
-        newContext.With.Override.Apply(newContext.Entity);
+        newContext.With.Override.Apply(newContext.Scope.Entity);
 
-        return newContext.Entity;
+        return newContext.Scope.Entity;
     }
 }

@@ -16,11 +16,11 @@ internal class StringStrategy : Strategy
 
     public override void Execute(IContext context) //todo: change this logic.
     {
-        var pi = context.Entity.GetType().GetProperty(context.Scope.PropertyName);
+        var pi = context.Scope.Entity.GetType().GetProperty(context.Scope.PropertyName);
         
-        if (pi.GetValue(context.Entity) != default) return;
+        if (pi.GetValue(context.Scope.Entity) != default) return;
         
         var value = $"{context.With.String.Prefix}{pi.Name}{context.With.String.Suffix}";
-        pi.SecureSetValue(context.Entity, value);
+        pi.SecureSetValue(context.Scope.Entity, value);
     }
 }
