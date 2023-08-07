@@ -2,7 +2,9 @@ using Zealot.Interfaces;
 
 namespace Zealot.Internals;
 
-internal class Context : IContext
+//todo: make this class move friendly. we need more higher level to hold configuration so
+// when we clone the context, configuration will not be transferred and copied to next context.
+internal class Context : IContext  
 { 
     public Context(Type entityType, 
         IWith with, 

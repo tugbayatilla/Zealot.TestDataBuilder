@@ -9,7 +9,7 @@ internal class ArrayStrategy : Strategy
     public override object GenerateValue(IContext context, Type type)
     {
         var elementType = type.GetElementType();
-        var instance = Array.CreateInstance(elementType!, 2);
+        var instance = Array.CreateInstance(elementType!, 2); //todo: using with method to handle magic number
 
         var strategy = context.StrategyContainer.Resolve(elementType!);
             

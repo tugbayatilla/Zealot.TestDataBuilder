@@ -11,9 +11,3 @@ public interface IWith
     IWithLogger Log { get; set; }
     IWithOverride Override { get; set; }
 }
-
-public interface IWithOverride
-{
-    void Add(Action<object> overrideAction);
-    void Apply(object entity);
-}

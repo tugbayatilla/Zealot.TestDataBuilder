@@ -7,19 +7,6 @@ namespace Zealot.Strategies;
 
 internal class ClassStrategy : Strategy
 {
-    public override void Execute(IContext context)
-    {
-        if (!string.IsNullOrWhiteSpace(context.PropertyName))
-        {
-            var pi = context.Entity.GetType().GetProperty(context.PropertyName);
-
-          //  if (!context.With.RecursionLevel.CanContinueDeeper(context, pi.PropertyType))
-          //      return;
-        }
-
-        base.Execute(context);
-    }
-
     public override Expression<Func<Type, bool>> ResolveCondition => info => 
         (info.IsClass || info.IsStruct()) 
         && !info.IsArray
@@ -27,13 +14,13 @@ internal class ClassStrategy : Strategy
     
     public override object GenerateValue(IContext context, Type type) //todo: get rid of Type argument in GenerateValue method
     {
-        
         var newContext = context.CloneWithType(type);
         if (string.IsNullOrWhiteSpace(context.PropertyName))
         {
             newContext = context;    
         }
         
+        // break recursion
         if (!newContext.With.RecursionLevel.CanContinueDeeper(newContext, type))
             return default!;
 
@@ -41,7 +28,6 @@ internal class ClassStrategy : Strategy
         if (newInstance == null) return default!;
 
         newContext.SetEntity(newInstance);
-
         
         // find properties
         var properties = newContext.Entity.GetType().GetProperties();

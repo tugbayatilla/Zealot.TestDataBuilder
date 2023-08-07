@@ -51,7 +51,18 @@ public interface IBuilder<out TEntity>
     /// </summary>
     IBuilder<TEntity> WithStringPrefix(string prefix);
     
+    /// <summary>
+    /// Optional
+    /// </summary>
     IBuilder<TEntity> WithStringSuffix(string suffix);
+    
+    /// <summary>
+    /// Optional
+    /// </summary>
     IBuilder<TEntity> WithStartingNumber(int startingNumber);
+    
+    /// <summary>
+    /// Optional
+    /// </summary>
     IBuilder<TEntity> WithLogger(ILogger logger);
 }

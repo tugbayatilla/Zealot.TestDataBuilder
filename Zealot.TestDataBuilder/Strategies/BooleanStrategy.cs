@@ -14,6 +14,4 @@ internal class BooleanStrategy : Strategy
     {
         return false;
     }
-
-    
 }
