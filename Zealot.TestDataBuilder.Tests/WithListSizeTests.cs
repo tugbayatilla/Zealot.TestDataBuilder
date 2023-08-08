@@ -70,4 +70,15 @@ public class WithListSizeTests
 
         entity.StackProp.Count.Should().Be(3);
     }
+    
+    [Fact]
+    public void ArrayList_size_changed_to_3()
+    {
+        var entity = TestDataBuilder
+            .For<ClassWithAllList>()
+            .WithListSize(3)
+            .Build();
+
+        entity.ArrayListProp.Count.Should().Be(3);
+    }
 }
