@@ -42,12 +42,21 @@ internal class ListStrategy : Strategy
         var instance = Instance.Create(listType);
         
         if (instance == null) return null!;
+        var argumentType = instance.GetType().GetGenericArguments().FirstOrDefault() ?? typeof(string);
+        var strategy = context.StrategyContainer.Resolve(argumentType);
+
+        if (instance is Queue queueInstance)
+        {
+            for (var i = 0; i < context.With.List.Size; i++)
+            {
+                var value = strategy.GenerateValue(context, argumentType);
+                queueInstance.Enqueue(value);
+            }
+
+            return queueInstance;
+        }
         if (instance is not IList list) return instance;
         
-        var argumentType = instance.GetType().GetGenericArguments().FirstOrDefault() ?? typeof(string);
-
-        var strategy = context.StrategyContainer.Resolve(argumentType);
-            
         for (var i = 0; i < context.With.List.Size; i++)
         {
             var value = strategy.GenerateValue(context, argumentType);
