@@ -92,4 +92,15 @@ public class WithListSizeTests
 
         entity.IReadOnlyListStringProp.Count.Should().Be(3);
     }
+    
+    [Fact]
+    public void LinkedList_size_changed_to_3()
+    {
+        var entity = TestDataBuilder
+            .For<ClassWithAllList>()
+            .WithListSize(3)
+            .Build();
+
+        entity.LinkedListStringProp.Count.Should().Be(3);
+    }
 }
