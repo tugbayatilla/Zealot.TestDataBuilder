@@ -11,6 +11,7 @@ internal class With : IWith
     public IWithString String { get; } = new WithString();
     public IWithDate Date { get; } = new WithDate();
     public IWithGuid Guid { get; } = new WithGuid();
-    public IWithLogger Log { get; set; } = new WithLog();
-    public IWithOverride Override { get; set; } = new WithOverride();
+    public IWithLogger Log { get; } = new WithLog();
+    public IWithOverride Override { get; } = new WithOverride();
+    public IWithList List { get; } = new WithList();
 }

@@ -65,4 +65,10 @@ public interface IBuilder<out TEntity>
     /// Optional
     /// </summary>
     IBuilder<TEntity> WithLogger(ILogger logger);
+    
+    /// <summary>
+    /// Optional
+    /// </summary>
+    IBuilder<TEntity> WithListSize(int size);
+
 }

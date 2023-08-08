@@ -9,7 +9,6 @@ internal class StrategyContainer : IStrategyContainer
 
     public StrategyContainer()
     {
-        // todo: not a good idea
         _registeredStrategies.Add(new NumberStrategy());
         _registeredStrategies.Add(new StringStrategy());
         _registeredStrategies.Add(new CharStrategy());
@@ -26,9 +25,6 @@ internal class StrategyContainer : IStrategyContainer
     
     public IStrategy Resolve(Type type)
     {
-        //todo: multiple strategies can be found!
-        //todo: find a way to replace existing strategies
-
         var strategy = _registeredStrategies.FirstOrDefault(p => p.ResolveCondition.Compile().Invoke(type));
         if (strategy == null)
         {

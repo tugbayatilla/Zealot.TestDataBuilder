@@ -95,4 +95,10 @@ internal class Builder<TEntity> : IBuilder<TEntity>
 
         return this;
     }
+
+    public IBuilder<TEntity> WithListSize(int size)
+    {
+        _context.With.List.Size = size;
+        return this;
+    }
 }

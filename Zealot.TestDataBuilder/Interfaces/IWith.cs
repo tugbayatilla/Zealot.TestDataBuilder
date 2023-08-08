@@ -8,6 +8,7 @@ public interface IWith
     IWithString String { get; }
     IWithDate Date { get; }
     IWithGuid Guid { get; }
-    IWithLogger Log { get; set; }
-    IWithOverride Override { get; set; }
+    IWithLogger Log { get; }
+    IWithOverride Override { get; }
+    IWithList List { get; }
 }

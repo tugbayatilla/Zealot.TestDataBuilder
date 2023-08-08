@@ -48,7 +48,7 @@ internal class ListStrategy : Strategy
 
         var strategy = context.StrategyContainer.Resolve(argumentType);
             
-        for (var i = 0; i < 2; i++)
+        for (var i = 0; i < context.With.List.Size; i++)
         {
             var value = strategy.GenerateValue(context, argumentType);
             list.Add(value);
