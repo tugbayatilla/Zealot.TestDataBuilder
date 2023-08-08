@@ -3,11 +3,7 @@
 public interface IContext
 {
     IContext CloneWithType(Type entityType);
-
     IStrategyContainer StrategyContainer { get; }
     IWith With { get; }
-    
     Scope Scope { get; set; }
 }
-
-public record Scope(object Entity, Type EntityType, string PropertyName, Scope Parent);
