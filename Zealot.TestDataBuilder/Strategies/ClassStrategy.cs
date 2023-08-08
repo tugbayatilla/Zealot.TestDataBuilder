@@ -16,7 +16,7 @@ internal class ClassStrategy : Strategy
         var newContext = HandleContext(context, type);
 
         // break recursion
-        if (BreakRecursion(type, newContext))
+        if (BreakRecursion(newContext, type))
             return default!;
 
         CreateEntity(newContext);
@@ -70,7 +70,7 @@ internal class ClassStrategy : Strategy
         return newContext;
     }
 
-    private static bool BreakRecursion(Type type, IContext newContext)
+    private static bool BreakRecursion(IContext newContext, Type type)
     {
         return !newContext.With.RecursionLevel.CanContinueDeeper(newContext, type);
     }
