@@ -48,4 +48,15 @@ public class WithListSizeTests
 
         entity.Prop.Count.Should().Be(2);
     }
+    
+    [Fact]
+    public void Array_size_changed_to_3()
+    {
+        var entity = TestDataBuilder
+            .For<ClassWithTwoIntegerArray>()
+            .WithListSize(3)
+            .Build();
+
+        entity.Prop1.Count().Should().Be(3);
+    }
 }
