@@ -45,22 +45,23 @@ internal class ListStrategy : Strategy
         var argumentType = instance.GetType().GetGenericArguments().FirstOrDefault() ?? typeof(string);
         var strategy = context.StrategyContainer.Resolve(argumentType);
 
-        if (instance is Queue queueInstance)
-        {
-            for (var i = 0; i < context.With.List.Size; i++)
-            {
-                var value = strategy.GenerateValue(context, argumentType);
-                queueInstance.Enqueue(value);
-            }
-
-            return queueInstance;
-        }
-        if (instance is not IList list) return instance;
-        
         for (var i = 0; i < context.With.List.Size; i++)
         {
             var value = strategy.GenerateValue(context, argumentType);
-            list.Add(value);
+            if (instance is Queue queueInstance)
+            {
+                queueInstance.Enqueue(value);
+            }
+
+            if (instance is Stack stackInstance)
+            {
+                stackInstance.Push(value);
+            }
+
+            if (instance is IList list)
+            {
+                list.Add(value);
+            }
         }
 
         return instance;
