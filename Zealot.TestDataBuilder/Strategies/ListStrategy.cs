@@ -38,7 +38,7 @@ internal class ListStrategy : Strategy
         {
             listType = typeof(List<>).MakeGenericType(type.GenericTypeArguments);
         }
-
+        
         var instance = Instance.Create(listType);
         
         if (instance == null) return null!;
@@ -57,11 +57,12 @@ internal class ListStrategy : Strategy
             {
                 stackInstance.Push(value);
             }
-
-            if (instance is IList list)
+            
+            if (instance is ICollection)
             {
-                list.Add(value);
+                (instance as IList)?.Add(value);
             }
+            
         }
 
         return instance;

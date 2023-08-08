@@ -81,4 +81,15 @@ public class WithListSizeTests
 
         entity.ArrayListProp.Count.Should().Be(3);
     }
+    
+    [Fact]
+    public void IReadOnlyList_size_changed_to_3()
+    {
+        var entity = TestDataBuilder
+            .For<ClassWithAllList>()
+            .WithListSize(3)
+            .Build();
+
+        entity.IReadOnlyListStringProp.Count.Should().Be(3);
+    }
 }
