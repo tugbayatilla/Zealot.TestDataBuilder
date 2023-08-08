@@ -39,9 +39,8 @@ internal static class Instance
             var createdActivator = GetActivator<object>(ctorInfo);
             instance = createdActivator(constructorArguments.ToArray());
         }
-
-        var isStruct = type.IsValueType && !type.IsPrimitive && !type.IsEnum;
-        if (isStruct)
+        
+        if (type.IsStruct())
         {
             instance = Activator.CreateInstance(type);
         }
