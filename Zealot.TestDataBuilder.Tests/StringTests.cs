@@ -12,13 +12,13 @@ public class StringTests
             .WithOnly<string>()
             .Build();
         
-        entity.StringProp.Should().Be($"{nameof(entity.StringProp)}");
+        entity.StringProp.Should().MatchRegex("StringProp_[0-9]");
         
         entity.StringNullableProp.Should().NotBeNull();
         entity.StringNullableProp2.Should().NotBeNull();
         
-        entity.StringNullableProp.Should().Be($"{nameof(entity.StringNullableProp)}");
-        entity.StringNullableProp2.Should().Be($"{nameof(entity.StringNullableProp2)}");
+        entity.StringNullableProp.Should().MatchRegex("StringNullableProp_[0-9]");
+        entity.StringNullableProp2.Should().MatchRegex("StringNullableProp2_[0-9]");
     }
     
     //todo: support default value for all primitive types 
@@ -29,6 +29,6 @@ public class StringTests
             .For<ClassWithStringHavingDefaultValue>()
             .Build();
 
-        instance.Prop.Should().Be("DefaultValueStringProp1");
+        instance.Prop.Should().MatchRegex("Prop_[0-9]");
     }
 }

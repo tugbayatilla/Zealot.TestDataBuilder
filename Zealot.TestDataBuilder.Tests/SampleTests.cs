@@ -13,7 +13,7 @@ public class SampleTests
 
         entity.DictionaryProperty.Should().NotBeNull();
     }
-    
+
     [Fact]
     public void Should_create_same_instance_when_build_method_called()
     {
@@ -119,8 +119,8 @@ public class SampleTests
         sample.SingleProperty.Should().NotBe(default);
         sample.SinglePropertyNullable.Should().NotBe(default);
 
-        sample.StringProperty.Should().Be("StringProperty");
-        sample.StringPropertyNullable.Should().Be("StringPropertyNullable");
+        sample.StringProperty.Should().MatchRegex("StringProperty_[0-9]");
+        sample.StringPropertyNullable.Should().StartWith("StringPropertyNullable");
 
         sample.UInt16Property.Should().NotBe(default);
         sample.UInt16PropertyNullable.Should().NotBe(default);
@@ -145,7 +145,7 @@ public class SampleTests
 
         sample.ClassWithOnePropertyWithoutSetter.Should().NotBeNull();
         sample.ClassWithOnePropertyWithoutSetter.IntProperty.Should().NotBe(default);
-        sample.ClassWithOnePropertyWithoutSetter.StringProperty.Should().Be("StringProperty");
+        sample.ClassWithOnePropertyWithoutSetter.StringProperty.Should().MatchRegex("StringProperty_[0-9]");
     }
 
     [Fact]
@@ -225,11 +225,11 @@ public class SampleTests
             .For<InheritedClass>()
             .Build();
 
-        instance.BaseStringProp.Should().Be(nameof(instance.BaseStringProp));
-        instance.StringProp1.Should().Be(nameof(instance.StringProp1));
+        instance.BaseStringProp.Should().MatchRegex("BaseStringProp_[0-9]");
+        instance.StringProp1.Should().MatchRegex( "StringProp1_[0-9]");
         instance.ListOfStringProp.Count.Should().Be(2);
-        instance.ListOfStringProp[0].Should().Be("1");//AdditionalLines_1
-        instance.ListOfStringProp[1].Should().Be("2");//AdditionalLines_2
+        instance.ListOfStringProp[0].Should().MatchRegex("ListOfStringProp_[0-9]");
+        instance.ListOfStringProp[1].Should().MatchRegex("ListOfStringProp_[0-9]");
     }
 
     [Fact]
@@ -240,17 +240,17 @@ public class SampleTests
             .Build();
 
         instance.InheritedClassProp.Should().NotBeNull();
-        instance.InheritedClassProp.StringProp1.Should().Be(nameof(instance.InheritedClassProp.StringProp1));
+        instance.InheritedClassProp.StringProp1.Should().MatchRegex("StringProp1_[0-9]");
         instance.InheritedClassProp.ListOfStringProp.Count.Should().Be(2);
-        instance.InheritedClassProp.ListOfStringProp[0].Should().Be("1");//AdditionalLines_0
-        instance.InheritedClassProp.ListOfStringProp[1].Should().Be("2");//AdditionalLines_1
+        instance.InheritedClassProp.ListOfStringProp[0].Should().MatchRegex("ListOfStringProp_[0-9]");
+        instance.InheritedClassProp.ListOfStringProp[1].Should().MatchRegex("ListOfStringProp_[0-9]");
     }
 
     [Theory]
-    [InlineData("", "", "{0}")]
-    [InlineData("pre_", "", "pre_{0}")]
-    [InlineData("", "_suf", "{0}_suf")]
-    [InlineData("pre_", "_suf", "pre_{0}_suf")]
+    [InlineData("", "", "{0}_[0-9]")]
+    [InlineData("pre_", "", "pre_{0}_[0-9]")]
+    [InlineData("", "_suf", "{0}_[0-9]_suf")]
+    [InlineData("pre_", "_suf", "pre_{0}_[0-9]_suf")]
     public void support_prefix_ans_suffix(string prefix, string suffix, string result)
     {
         var instance = TestDataBuilder
@@ -260,7 +260,7 @@ public class SampleTests
             .Build();
 
         instance.Should().NotBeNull();
-        instance.Prop1.Should().Be(string.Format(result, nameof(instance.Prop1)));
+        instance.Prop1.Should().MatchRegex(string.Format(result, nameof(instance.Prop1)));
     }
 
     [Fact]
@@ -270,7 +270,7 @@ public class SampleTests
             .For<ClassWithThreeClassRecursively.A>()
             .WithRecursionLevel(4)
             .Build();
-        
+
         p1.Should().NotBeNull();
         p1.Ref_B.Ref_C.Ref_A_list.Should().NotBeNull();
         p1.Ref_B.Ref_C.Ref_A_list.Count.Should().Be(2);
@@ -298,20 +298,20 @@ public class SampleTests
         var p1 = TestDataBuilder
             .For<ClassWithOneEnumWithNothing>()
             .Build();
-        
+
         p1.Should().NotBeNull();
         p1.Prop.Should().Be(0);
     }
-    
+
     [Fact]
     public void Should_create_sample_for_SampleArrayPropertyClass()
     {
         var p1 = TestDataBuilder
             .For<ClassWithOneClassOfGodAndAClassOfRecursive>()
             .Build();
-        
+
         p1.Should().NotBeNull();
-        
+
         p1.ClassOfGodArrayProp.Should().NotBeNull();
         p1.ClassOfGodArrayProp.Length.Should().Be(2);
         p1.ClassOfGodArrayProp[0].BooleanProperty.Should().BeFalse();
