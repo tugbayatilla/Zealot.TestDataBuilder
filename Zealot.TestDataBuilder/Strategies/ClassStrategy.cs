@@ -1,5 +1,4 @@
 ﻿using System.Linq.Expressions;
-using System.Reflection;
 using Zealot.Interfaces;
 using Zealot.Internals;
 
@@ -12,7 +11,7 @@ internal class ClassStrategy : Strategy
         && !info.IsArray
         && !new ListStrategy().ResolveCondition.Compile().Invoke(info);
     
-    public override object GenerateValue(IContext context, Type type) //todo: get rid of Type argument in GenerateValue method
+    public override object GenerateValue(IContext context, Type type)
     {
         var newContext = context.CloneWithType(type);
         if (string.IsNullOrWhiteSpace(context.Scope.PropertyName))
