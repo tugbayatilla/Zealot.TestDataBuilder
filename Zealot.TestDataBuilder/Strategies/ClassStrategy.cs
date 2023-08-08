@@ -13,13 +13,13 @@ internal class ClassStrategy : Strategy
 
     public override object GenerateValue(IContext context, Type type)
     {
-        var newContext = HandleContext(context, type);
+        var newContext = CreateNewContextIfItIsForAProperty(context, type);
 
         // break recursion
         if (BreakRecursion(newContext, type))
             return default!;
 
-        CreateEntity(newContext);
+        CreateAnInstanceOfAnEntityAndSetToScope(newContext);
 
         HandleForeachProperty(newContext);
 
@@ -51,23 +51,16 @@ internal class ClassStrategy : Strategy
         }
     }
 
-    private static void CreateEntity(IContext newContext)
+    private static void CreateAnInstanceOfAnEntityAndSetToScope(IContext context)
     {
-        var newInstance = Instance.Create(newContext.Scope.EntityType);
-        newContext.Scope = newContext.Scope with {Entity = newInstance};
+        var newInstance = Instance.Create(context.Scope.EntityType);
+        context.Scope = context.Scope with {Entity = newInstance};
     }
 
-    private static IContext HandleContext(IContext context, Type type)
+    private static IContext CreateNewContextIfItIsForAProperty(IContext context, Type type)
     {
-        var newContext = context;
-        var itIsAPropertyOfAClass = !string.IsNullOrWhiteSpace(context.Scope.PropertyName);
-        if (itIsAPropertyOfAClass)
-        {
-            // create a new context
-            newContext = context.CloneWithType(type);
-        }
-
-        return newContext;
+        var itIsForAProperty = !string.IsNullOrWhiteSpace(context.Scope.PropertyName);
+        return itIsForAProperty ? context.CloneWithType(type) : context;
     }
 
     private static bool BreakRecursion(IContext newContext, Type type)
