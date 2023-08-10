@@ -71,6 +71,18 @@ public class WithListSizeTests
     }
     
     [Fact]
+    public void LinkedList_not_supported()
+    {
+        var entity = TestDataBuilder
+            .For<ClassWithGenericLinkedList>()
+            .WithListSize(3)
+            .Build();
+
+        entity.Prop.Count.Should().Be(0);
+    }
+    
+    
+    [Fact]
     public void Default_List_size_is_2()
     {
         var entity = TestDataBuilder
