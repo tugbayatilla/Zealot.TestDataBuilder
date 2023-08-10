@@ -167,10 +167,10 @@ public class WithListSizeTests
     public void IReadOnlyList_size_changed_to_3()
     {
         var entity = TestDataBuilder
-            .For<ClassWithAllList>()
+            .For<ClassWithGenericIReadOnlyList>()
             .WithListSize(3)
             .Build();
 
-        entity.IReadOnlyListStringProp.Count.Should().Be(3);
+        entity.Prop.Count.Should().Be(3);
     }
 }
