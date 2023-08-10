@@ -154,11 +154,11 @@ public class WithListSizeTests
     public void Stack_size_changed_to_3()
     {
         var entity = TestDataBuilder
-            .For<ClassWithAllList>()
+            .For<ClassWithStack>()
             .WithListSize(3)
             .Build();
 
-        entity.StackProp.Count.Should().Be(3);
+        entity.Prop.Count.Should().Be(3);
     }
     
     
