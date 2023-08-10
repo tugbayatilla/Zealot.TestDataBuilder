@@ -8,11 +8,11 @@ public class WithListSizeTests
     public void ArrayList_size_changed_to_3()
     {
         var entity = TestDataBuilder
-            .For<ClassWithAllList>()
+            .For<ClassWithArrayList>()
             .WithListSize(3)
             .Build();
 
-        entity.ArrayListProp.Count.Should().Be(3);
+        entity.Prop.Count.Should().Be(3);
     }
     
     [Fact]
