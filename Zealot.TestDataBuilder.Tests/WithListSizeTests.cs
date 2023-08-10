@@ -1,12 +1,87 @@
-using System.Collections;
-using Zealot.Interfaces;
-using Zealot.Internals;
 using Zealot.SampleBuilder.Tests.TestObjects;
 
 namespace Zealot.SampleBuilder.Tests;
 
 public class WithListSizeTests
 {
+    [Fact]
+    public void ArrayList_size_changed_to_3()
+    {
+        var entity = TestDataBuilder
+            .For<ClassWithAllList>()
+            .WithListSize(3)
+            .Build();
+
+        entity.ArrayListProp.Count.Should().Be(3);
+    }
+    
+    [Fact]
+    public void GenericList_size_changed_to_3()
+    {
+        var entity = TestDataBuilder
+            .For<ClassWithGenericList>()
+            .WithListSize(3)
+            .Build();
+
+        entity.Prop.Count.Should().Be(3);
+    }
+    
+    [Fact]
+    public void GenericIList_size_changed_to_3()
+    {
+        var entity = TestDataBuilder
+            .For<ClassWithGenericIList>()
+            .WithListSize(3)
+            .Build();
+
+        entity.Prop.Count.Should().Be(3);
+    }
+    
+    [Fact]
+    public void IList_not_supported()
+    {
+        var entity = TestDataBuilder
+            .For<ClassWithIList>()
+            .WithListSize(3)
+            .Build();
+
+        entity.Prop.Should().BeNull();
+    }
+    
+    [Fact]
+    public void GenericICollection_size_changed_to_3()
+    {
+        var entity = TestDataBuilder
+            .For<ClassWithAllList>()
+            .WithListSize(3)
+            .Build();
+
+        entity.ICollectionStringProp.Count.Should().Be(3);
+    }
+    
+    [Fact]
+    public void ICollection_not_supported()
+    {
+        var entity = TestDataBuilder
+            .For<ClassWithAllList>()
+            .WithListSize(3)
+            .Build();
+
+        entity.ICollectionProp.Should().BeNull();
+    }
+    
+    [Fact]
+    public void LinkedList_not_supported()
+    {
+        var entity = TestDataBuilder
+            .For<ClassWithAllList>()
+            .WithListSize(3)
+            .Build();
+
+        entity.LinkedListStringProp.Count.Should().Be(0);
+    }
+    
+    
     [Fact]
     public void Default_List_size_is_2()
     {
@@ -15,17 +90,6 @@ public class WithListSizeTests
             .Build();
 
         entity.Prop.Count.Should().Be(2);
-    }
-    
-    [Fact]
-    public void Change_size_to_3()
-    {
-        var entity = TestDataBuilder
-            .For<ClassWithOneStringList>()
-            .WithListSize(3)
-            .Build();
-
-        entity.Prop.Count.Should().Be(3);
     }
     
     [Fact]
@@ -38,6 +102,32 @@ public class WithListSizeTests
 
         entity.Prop.Count.Should().Be(3);
     }
+    
+    [Fact]
+    public void GenericQueue_size_changed_to_3()
+    {
+        var entity = TestDataBuilder
+            .For<ClassWithGenericQueue>()
+            .WithListSize(3)
+            .Build();
+
+        entity.Prop.Count.Should().Be(3);
+    }
+    
+    
+    
+    [Fact]
+    public void Change_size_to_3()
+    {
+        var entity = TestDataBuilder
+            .For<ClassWithOneStringList>()
+            .WithListSize(3)
+            .Build();
+
+        entity.Prop.Count.Should().Be(3);
+    }
+    
+    
     
     [Fact]
     public void Default_Queue_size_is_2()
@@ -71,16 +161,7 @@ public class WithListSizeTests
         entity.StackProp.Count.Should().Be(3);
     }
     
-    [Fact]
-    public void ArrayList_size_changed_to_3()
-    {
-        var entity = TestDataBuilder
-            .For<ClassWithAllList>()
-            .WithListSize(3)
-            .Build();
-
-        entity.ArrayListProp.Count.Should().Be(3);
-    }
+    
     
     [Fact]
     public void IReadOnlyList_size_changed_to_3()

@@ -62,6 +62,11 @@ internal class ListStrategy : Strategy
             {
                 (instance as IList)?.Add(value);
             }
+
+            if (instance.GetType().Name == typeof(Queue<>).Name)
+            {
+                (instance as dynamic)?.Enqueue(value);
+            }
             
         }
 
