@@ -63,11 +63,11 @@ public class WithListSizeTests
     public void ICollection_not_supported()
     {
         var entity = TestDataBuilder
-            .For<ClassWithAllList>()
+            .For<ClassWithICollection>()
             .WithListSize(3)
             .Build();
 
-        entity.ICollectionProp.Should().BeNull();
+        entity.Prop.Should().BeNull();
     }
     
     [Fact]
