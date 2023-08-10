@@ -67,7 +67,6 @@ internal class ListStrategy : Strategy
             {
                 (instance as dynamic)?.Enqueue(value);
             }
-            
         }
 
         return instance;

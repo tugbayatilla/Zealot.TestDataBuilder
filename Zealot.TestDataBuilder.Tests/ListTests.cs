@@ -8,139 +8,139 @@ public class ListTests
     public void Support_IListGeneric()
     {
         var entity = TestDataBuilder
-            .For<ClassWithAllList>()
+            .For<ClassWithGenericIList>()
             .Build();
 
-        entity.IListStringProp.Should().NotBeNull();
+        entity.Prop.Should().NotBeNull();
     }
     
     [Fact]
     public void NotSupport_IList()
     {
         var entity = TestDataBuilder
-            .For<ClassWithAllList>()
+            .For<ClassWithIList>()
             .Build();
 
-        entity.IListProp.Should().BeNull();
+        entity.Prop.Should().BeNull();
     }
     
     [Fact]
     public void Support_ICollectionGeneric()
     {
         var entity = TestDataBuilder
-            .For<ClassWithAllList>()
+            .For<ClassWithGenericICollection>()
             .Build();
 
-        entity.ICollectionStringProp.Should().NotBeNull();
+        entity.Prop.Should().NotBeNull();
     }
     
     [Fact]
     public void NotSupport_ICollection()
     {
         var entity = TestDataBuilder
-            .For<ClassWithAllList>()
+            .For<ClassWithICollection>()
             .Build();
 
-        entity.ICollectionProp.Should().BeNull();
+        entity.Prop.Should().BeNull();
     }
     
     [Fact]
     public void Support_ArrayList()
     {
         var entity = TestDataBuilder
-            .For<ClassWithAllList>()
+            .For<ClassWithArrayList>()
             .Build();
 
-        entity.ArrayListProp.Should().NotBeNull();
+        entity.Prop.Should().NotBeNull();
     }
     
     [Fact]
     public void Support_LinkedList()
     {
         var entity = TestDataBuilder
-            .For<ClassWithAllList>()
+            .For<ClassWithGenericLinkedList>()
             .Build();
 
-        entity.LinkedListStringProp.Should().NotBeNull();
+        entity.Prop.Should().NotBeNull();
     }
     
     [Fact]
     public void Support_QueueGeneric()
     {
         var entity = TestDataBuilder
-            .For<ClassWithAllList>()
+            .For<ClassWithGenericQueue>()
             .Build();
 
-        entity.QueueStringProp.Should().NotBeNull();
+        entity.Prop.Should().NotBeNull();
     }
     
     [Fact]
     public void Support_Queue()
     {
         var entity = TestDataBuilder
-            .For<ClassWithAllList>()
+            .For<ClassWithQueue>()
             .Build();
 
-        entity.QueueProp.Should().NotBeNull();
+        entity.Prop.Should().NotBeNull();
     }
     
     [Fact]
     public void Support_Stack()
     {
         var entity = TestDataBuilder
-            .For<ClassWithAllList>()
+            .For<ClassWithStack>()
             .Build();
 
-        entity.StackProp.Should().NotBeNull();
+        entity.Prop.Should().NotBeNull();
     }
     
     [Fact]
     public void Support_StackGeneric()
     {
         var entity = TestDataBuilder
-            .For<ClassWithAllList>()
+            .For<ClassWithGenericStack>()
             .Build();
 
-        entity.StackStringProp.Should().NotBeNull();
+        entity.Prop.Should().NotBeNull();
     }
     
     [Fact]
     public void Support_IEnumerableGeneric()
     {
         var entity = TestDataBuilder
-            .For<ClassWithAllList>()
+            .For<ClassWithGenericIEnumerable>()
             .Build();
 
-        entity.IEnumerableStringProp.Should().NotBeNull();
+        entity.Prop.Should().NotBeNull();
     }
     
     [Fact]
     public void NotSupport_IEnumerable()
     {
         var entity = TestDataBuilder
-            .For<ClassWithAllList>()
+            .For<ClassWithIEnumerable>()
             .Build();
 
-        entity.IEnumerableProp.Should().BeNull();
+        entity.Prop.Should().BeNull();
     }
     
     [Fact]
     public void Support_IReadOnlyCollectionGeneric()
     {
         var entity = TestDataBuilder
-            .For<ClassWithAllList>()
+            .For<ClassWithGenericIReadOnlyCollection>()
             .Build();
 
-        entity.IReadOnlyCollectionStringProp.Should().NotBeNull();
+        entity.Prop.Should().NotBeNull();
     }
     
     [Fact]
     public void Support_IReadOnlyListGeneric()
     {
         var entity = TestDataBuilder
-            .For<ClassWithAllList>()
+            .For<ClassWithGenericIReadOnlyList>()
             .Build();
 
-        entity.IReadOnlyListStringProp.Should().NotBeNull();
+        entity.Prop.Should().NotBeNull();
     }
 }
