@@ -52,11 +52,11 @@ public class WithListSizeTests
     public void GenericICollection_size_changed_to_3()
     {
         var entity = TestDataBuilder
-            .For<ClassWithAllList>()
+            .For<ClassWithGenericICollection>()
             .WithListSize(3)
             .Build();
 
-        entity.ICollectionStringProp.Count.Should().Be(3);
+        entity.Prop.Count.Should().Be(3);
     }
     
     [Fact]
