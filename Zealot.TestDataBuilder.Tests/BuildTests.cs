@@ -27,10 +27,10 @@ public class BuildTests
     [Fact]
     public void Throws_Exception_for_unsupported_types()
     {
-        var exception = Assert.Throws<NotSupportedException>(() =>
-        {
-            TestDataBuilder.For<ClassWithIntPtr>().Build();
-        });
-        exception.Message.Should().Be($"The strategy with type '{typeof(IntPtr).FullName}' is not supported.");
+        Action exception = () => TestDataBuilder.For<ClassWithIntPtr>().Build();
+        exception
+            .Should()
+            .Throw<NotSupportedException>()
+            .WithMessage($"The strategy with type '{typeof(IntPtr).FullName}' is not supported.");
     }
 }
