@@ -89,8 +89,8 @@ public class SampleTests
             .Build();
 
         sample.Should().NotBeNull();
-        sample.BooleanProperty.Should().BeFalse();
-        sample.BooleanPropertyNullable.Should().BeFalse();
+        sample.BooleanProperty.Should().BeTrue();
+        sample.BooleanPropertyNullable.Should().BeTrue();
 
         sample.ByteProperty.Should().NotBe(default);
         sample.BytePropertyNullable.Should().NotBe(default);
@@ -314,7 +314,7 @@ public class SampleTests
 
         p1.ClassOfGodArrayProp.Should().NotBeNull();
         p1.ClassOfGodArrayProp.Length.Should().Be(2);
-        p1.ClassOfGodArrayProp[0].BooleanProperty.Should().BeFalse();
+        p1.ClassOfGodArrayProp[0].BooleanProperty.Should().BeTrue();
 
         p1.Recursive_A.Should().NotBeNull();
     }

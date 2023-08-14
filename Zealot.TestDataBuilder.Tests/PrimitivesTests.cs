@@ -31,4 +31,14 @@ public class PrimitivesTests
         
         entity.Should().Be(1);
     }
+    
+    [Fact]
+    public void Support_bool()
+    {
+        var entity = TestDataBuilder
+            .For<bool>()
+            .Build();
+        
+        entity.Should().Be(true);
+    }
 }
