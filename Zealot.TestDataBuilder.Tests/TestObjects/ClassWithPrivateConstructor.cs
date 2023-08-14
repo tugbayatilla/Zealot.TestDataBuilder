@@ -1,7 +1,8 @@
 namespace Zealot.SampleBuilder.Tests.TestObjects;
 
-internal class ClassWithPrivateConstructor
+internal abstract class ClassWithPrivateConstructor
 {
+    public static ClassWithPrivateConstructor Init() => null!;
     private ClassWithPrivateConstructor()
     {
     }
