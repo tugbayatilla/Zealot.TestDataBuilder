@@ -4,7 +4,6 @@ using Zealot.Strategies;
 namespace Zealot.Interfaces;
 
 public interface IBuilder<out TEntity>
-    where TEntity: new() 
 {
     /// <summary>
     /// Required
