@@ -125,6 +125,17 @@ public class WithListSizeTests
         entity.Prop.Count.Should().Be(3);
     }
     
+    [Fact]
+    public void GenericIEnumerable_size_changed_to_3()
+    {
+        var entity = TestDataBuilder
+            .For<ClassWithGenericIEnumerable>()
+            .WithListSize(3)
+            .Build();
+
+        entity.Prop.Count().Should().Be(3);
+    }
+    
     
     
     [Fact]
