@@ -16,7 +16,11 @@ public class BuildTests
     [Fact]
     public void Build_always_creates_an_instance()
     {
-        TestDataBuilder.For<ClassWithNoProperty>().Build().Should().NotBeNull();
+        TestDataBuilder
+            .For<ClassWithNoProperty>()
+            .Build()
+            .Should()
+            .NotBeNull();
     }
 
     [Fact]
