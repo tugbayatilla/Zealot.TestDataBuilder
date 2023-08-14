@@ -21,7 +21,6 @@ public class StringTests
         entity.StringNullableProp2.Should().MatchRegex("StringNullableProp2_[0-9]");
     }
     
-    //todo: support default value for all primitive types 
     [Fact]
     public void Support_string_has_default_value()
     {

@@ -15,7 +15,6 @@ internal class ClassStrategy : Strategy
     {
         var newContext = CreateNewContextIfItIsForAProperty(context, type);
 
-        // break recursion
         if (BreakRecursion(newContext, type))
             return default!;
 
@@ -35,18 +34,14 @@ internal class ClassStrategy : Strategy
 
     private static void HandleForeachProperty(IContext newContext)
     {
-        // find properties
         var properties = newContext.Scope.EntityType.GetProperties();
-        // for each property
         foreach (var propertyInfo in properties)
         {
             if (newContext.With.Only.IgnoreThis(propertyInfo.PropertyType)) continue;
 
-            // find the Strategy for the type
             var strategy = newContext.StrategyContainer.Resolve(propertyInfo.PropertyType);
             newContext.Scope = newContext.Scope with {PropertyName = propertyInfo.Name};
 
-            // execute the strategy
             strategy.Execute(newContext);
         }
     }
