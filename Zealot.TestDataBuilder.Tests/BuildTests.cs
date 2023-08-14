@@ -8,9 +8,10 @@ public class BuildTests
     [Fact]
     public void For_returns_builder_interface()
     {
-        var forResult = TestDataBuilder.For<ClassWithNoProperty>();
-
-        forResult.Should().BeAssignableTo<IBuilder<ClassWithNoProperty>>();
+        TestDataBuilder
+            .For<ClassWithNoProperty>()
+            .Should()
+            .BeAssignableTo<IBuilder<ClassWithNoProperty>>();
     }
 
     [Fact]
