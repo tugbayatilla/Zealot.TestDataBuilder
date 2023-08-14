@@ -46,54 +46,14 @@ internal class SampleDataWithDictionary
     public Dictionary<string, int> DictionaryStringIntProperty { get; set; }
 }
 
-//todo: support inheritance and parameters in constructor
-public class SampleUser : SampleUserShort
+
+internal class ClassWithoutParameterlessConstructor
 {
-    public SampleUser(SampleUserShort instaUserShort)
+    public ClassWithoutParameterlessConstructor(ClassWithTwoString argument)
     {
-        Pk = instaUserShort.Pk;
-        UserName = instaUserShort.UserName;
-        FullName = instaUserShort.FullName;
-        IsPrivate = instaUserShort.IsPrivate;
-        ProfilePicture = instaUserShort.ProfilePicture;
-        ProfilePictureId = instaUserShort.ProfilePictureId;
-        IsVerified = instaUserShort.IsVerified;
+        Prop1 = argument.Prop1;
+        Prop2 = argument.Prop2;
     }
-
-    public bool HasAnonymousProfilePicture { get; set; }
-    public int FollowersCount { get; set; }
-    public string FollowersCountByLine { get; set; }
-    public string SocialContext { get; set; }
-    public string SearchSocialContext { get; set; }
-    public int MutualFollowers { get; set; }
-    public int UnseenCount { get; set; }
-}
-
-[Serializable]
-public class SampleUserShort
-{
-    public bool IsVerified { get; set; }
-    public bool IsPrivate { get; set; }
-    public long Pk { get; set; }
-    public string ProfilePicture { get; set; }
-    public string ProfilePictureId { get; set; } = "unknown";
-    public string UserName { get; set; }
-    public string FullName { get; set; }
-
-    public static SampleUserShort Empty => new SampleUserShort {FullName = string.Empty, UserName = string.Empty};
-
-    public bool Equals(SampleUserShort user)
-    {
-        return Pk == user?.Pk;
-    }
-
-    public override bool Equals(object obj)
-    {
-        return Equals(obj as SampleUserShort);
-    }
-
-    public override int GetHashCode()
-    {
-        return Pk.GetHashCode();
-    }
+    public string Prop1 { get; set; }
+    public string Prop2 { get; set; }
 }
