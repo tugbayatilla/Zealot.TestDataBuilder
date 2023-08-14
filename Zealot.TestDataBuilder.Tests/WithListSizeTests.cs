@@ -5,6 +5,16 @@ namespace Zealot.SampleBuilder.Tests;
 public class WithListSizeTests
 {
     [Fact]
+    public void Default_Queue_size_is_2()
+    {
+        var entity = TestDataBuilder
+            .For<ClassWithQueue>()
+            .Build();
+
+        entity.Prop.Count.Should().Be(2);
+    }
+    
+    [Fact]
     public void ArrayList_size_changed_to_3()
     {
         var entity = TestDataBuilder
@@ -13,6 +23,17 @@ public class WithListSizeTests
             .Build();
 
         entity.Prop.Count.Should().Be(3);
+    }
+    
+    [Fact]
+    public void Array_size_changed_to_3()
+    {
+        var entity = TestDataBuilder
+            .For<ClassWithTwoIntegerArray>()
+            .WithListSize(3)
+            .Build();
+
+        entity.Prop1.Length.Should().Be(3);
     }
     
     [Fact]
@@ -147,7 +168,27 @@ public class WithListSizeTests
         entity.Prop.Should().BeNull();
     }
     
+    [Fact]
+    public void IReadOnlyList_size_changed_to_3()
+    {
+        var entity = TestDataBuilder
+            .For<ClassWithGenericIReadOnlyList>()
+            .WithListSize(3)
+            .Build();
+
+        entity.Prop.Count.Should().Be(3);
+    }
     
+    [Fact]
+    public void IReadOnlyCollection_changed_to_3()
+    {
+        var entity = TestDataBuilder
+            .For<ClassWithGenericIReadOnlyCollection>()
+            .WithListSize(3)
+            .Build();
+
+        entity.Prop.Count.Should().Be(3);
+    }
     
     [Fact]
     public void Default_List_size_is_2()
@@ -164,38 +205,6 @@ public class WithListSizeTests
     {
         var entity = TestDataBuilder
             .For<ClassWithOneStringList>()
-            .WithListSize(3)
-            .Build();
-
-        entity.Prop.Count.Should().Be(3);
-    }
-    
-    [Fact]
-    public void Default_Queue_size_is_2()
-    {
-        var entity = TestDataBuilder
-            .For<ClassWithQueue>()
-            .Build();
-
-        entity.Prop.Count.Should().Be(2);
-    }
-    
-    [Fact]
-    public void Array_size_changed_to_3()
-    {
-        var entity = TestDataBuilder
-            .For<ClassWithTwoIntegerArray>()
-            .WithListSize(3)
-            .Build();
-
-        entity.Prop1.Count().Should().Be(3);
-    }
-    
-    [Fact]
-    public void IReadOnlyList_size_changed_to_3()
-    {
-        var entity = TestDataBuilder
-            .For<ClassWithGenericIReadOnlyList>()
             .WithListSize(3)
             .Build();
 
