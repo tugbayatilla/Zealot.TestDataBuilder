@@ -41,4 +41,14 @@ public class PrimitivesTests
         
         entity.Should().Be(true);
     }
+    
+    [Fact]
+    public void Support_datetime()
+    {
+        var entity = TestDataBuilder
+            .For<DateTime>()
+            .Build();
+        
+        entity.Should().BeAfter(DateTime.UtcNow.AddSeconds(-1));
+    }
 }
