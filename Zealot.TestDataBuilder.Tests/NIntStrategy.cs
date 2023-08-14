@@ -1,2 +1,0 @@
-namespace Zealot.SampleBuilder.Tests;
-
