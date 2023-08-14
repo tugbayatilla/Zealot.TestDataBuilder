@@ -81,17 +81,17 @@ public class WithListSizeTests
         entity.Prop.Count.Should().Be(0);
     }
     
-    
     [Fact]
-    public void Default_List_size_is_2()
+    public void GenericQueue_size_changed_to_3()
     {
         var entity = TestDataBuilder
-            .For<ClassWithOneStringList>()
+            .For<ClassWithGenericQueue>()
+            .WithListSize(3)
             .Build();
 
-        entity.Prop.Count.Should().Be(2);
+        entity.Prop.Count.Should().Be(3);
     }
-    
+
     [Fact]
     public void Queue_size_changed_to_3()
     {
@@ -104,10 +104,21 @@ public class WithListSizeTests
     }
     
     [Fact]
-    public void GenericQueue_size_changed_to_3()
+    public void Stack_size_changed_to_3()
     {
         var entity = TestDataBuilder
-            .For<ClassWithGenericQueue>()
+            .For<ClassWithStack>()
+            .WithListSize(3)
+            .Build();
+
+        entity.Prop.Count.Should().Be(3);
+    }
+
+    [Fact]
+    public void GenericStack_size_changed_to_3()
+    {
+        var entity = TestDataBuilder
+            .For<ClassWithGenericStack>()
             .WithListSize(3)
             .Build();
 
@@ -115,6 +126,16 @@ public class WithListSizeTests
     }
     
     
+    
+    [Fact]
+    public void Default_List_size_is_2()
+    {
+        var entity = TestDataBuilder
+            .For<ClassWithOneStringList>()
+            .Build();
+
+        entity.Prop.Count.Should().Be(2);
+    }
     
     [Fact]
     public void Change_size_to_3()
@@ -126,8 +147,6 @@ public class WithListSizeTests
 
         entity.Prop.Count.Should().Be(3);
     }
-    
-    
     
     [Fact]
     public void Default_Queue_size_is_2()
@@ -149,19 +168,6 @@ public class WithListSizeTests
 
         entity.Prop1.Count().Should().Be(3);
     }
-    
-    [Fact]
-    public void Stack_size_changed_to_3()
-    {
-        var entity = TestDataBuilder
-            .For<ClassWithStack>()
-            .WithListSize(3)
-            .Build();
-
-        entity.Prop.Count.Should().Be(3);
-    }
-    
-    
     
     [Fact]
     public void IReadOnlyList_size_changed_to_3()

@@ -67,6 +67,11 @@ internal class ListStrategy : Strategy
             {
                 (instance as dynamic)?.Enqueue(value);
             }
+            
+            if (instance.GetType().Name == typeof(Stack<>).Name)
+            {
+                (instance as dynamic)?.Push(value);
+            }
         }
 
         return instance;
