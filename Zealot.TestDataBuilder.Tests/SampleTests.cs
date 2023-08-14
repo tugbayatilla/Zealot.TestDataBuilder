@@ -12,6 +12,7 @@ public class SampleTests
             .Build();
 
         entity.DictionaryProperty.Should().NotBeNull();
+        entity.DictionaryStringIntProperty.Should().NotBeNull();
     }
 
     [Fact]
