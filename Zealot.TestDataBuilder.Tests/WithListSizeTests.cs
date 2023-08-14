@@ -136,6 +136,17 @@ public class WithListSizeTests
         entity.Prop.Count().Should().Be(3);
     }
     
+    [Fact]
+    public void IEnumerable_not_supported()
+    {
+        var entity = TestDataBuilder
+            .For<ClassWithIEnumerable>()
+            .WithListSize(3)
+            .Build();
+
+        entity.Prop.Should().BeNull();
+    }
+    
     
     
     [Fact]
