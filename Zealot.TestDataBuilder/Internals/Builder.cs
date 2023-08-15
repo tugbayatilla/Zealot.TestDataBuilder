@@ -19,10 +19,7 @@ internal class Builder<TEntity> : IBuilder<TEntity>
             _context.Scope.EntityType.Name);
 
         var strategy = _context.StrategyContainer.Resolve(_context.Scope.EntityType);
-        strategy.Execute(_context);
-
-        _context.Scope = _context.Scope with { PropertyName = ""};
-        return (TEntity) _context.Scope.Entity;
+        return (TEntity) strategy.ExecuteWithReturn(_context);
     }
 
     public IBuilder<TEntity> WithOnly<TProperty>()

@@ -27,6 +27,17 @@ internal abstract class Strategy : IStrategy
 
     public virtual object ExecuteWithReturn(IContext context)
     {
-        return null;
+        if (!string.IsNullOrWhiteSpace(context.Scope.PropertyName))
+        {
+            var pi = context.Scope.Entity.GetType().GetProperty(context.Scope.PropertyName);
+            pi.SecureSetValue(context.Scope.Entity, GenerateValue(context, pi.PropertyType));
+        }
+        else
+        {
+            object entity = GenerateValue(context, context.Scope.EntityType);
+            context.Scope = context.Scope with {Entity = entity};
+        }
+
+        return context.Scope.Entity;
     }
 }
