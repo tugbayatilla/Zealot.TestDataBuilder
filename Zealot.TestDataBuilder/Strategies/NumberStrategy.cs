@@ -7,6 +7,23 @@ internal class NumberStrategy : Strategy
 {
     private int _currentNumber;
 
+    public override object ExecuteWithReturn(IContext context)
+    {
+        var type = context.Scope.EntityType;
+        
+        SetStartingNumberAtTheBeginning(context);
+
+        if (type.IsNullable())
+        {
+            var underlyingType = type.GenericTypeArguments.FirstOrDefault();
+
+            var finalExpression = Expression.Constant(Convert.ChangeType(_currentNumber++, underlyingType!), type);
+            return finalExpression.Value;
+        }
+
+        return Convert.ChangeType(_currentNumber++, type);
+    }
+
     public override object GenerateValue(IContext context, Type type)
     {
         SetStartingNumberAtTheBeginning(context);

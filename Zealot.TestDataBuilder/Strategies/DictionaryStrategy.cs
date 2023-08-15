@@ -35,10 +35,12 @@ internal class DictionaryStrategy : Strategy
         for (var i = 0; i < SizeOfList; i++)
         {
             var strategy1 = context.StrategyContainer.Resolve(arguments[0]);
-            var key = strategy1.GenerateValue(context, arguments[0]);
+            var newContext1 = context.CloneWithType(arguments[0]);
+            var key = strategy1.ExecuteWithReturn(newContext1);
 
             var strategy2 = context.StrategyContainer.Resolve(arguments[1]);
-            var value = strategy2.GenerateValue(context, arguments[1]);
+            var newContext2 = context.CloneWithType(arguments[1]);
+            var value = strategy2.ExecuteWithReturn(newContext2);
 
             propertyInstance.Add(key, value);
         }

@@ -12,4 +12,10 @@ internal class StringStrategy : Strategy
         _number++;
         return $"{context.With.String.Prefix}{context.Scope.PropertyName}_{_number}{context.With.String.Suffix}";
     }
+
+    public override object ExecuteWithReturn(IContext context)
+    {
+        _number++;
+        return $"{context.With.String.Prefix}{context.Scope.PropertyName}_{_number}{context.With.String.Suffix}";
+    }
 }
