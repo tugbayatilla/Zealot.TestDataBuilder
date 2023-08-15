@@ -26,9 +26,9 @@ internal class ListStrategy : Strategy
             typeof(IReadOnlyCollection<>),
             typeof(IReadOnlyList<>)
         };
-    
-    public override Expression<Func<Type, bool>> ResolveCondition 
-        => info => AvailableTypes.Any(x=>x.Name == info.Name);
+
+    public override Expression<Func<Type, bool>> ResolveCondition
+        => info => AvailableTypes.Any(x => x.Name == info.Name);
 
     public override object GenerateValue(IContext context, Type type)
     {
@@ -38,16 +38,19 @@ internal class ListStrategy : Strategy
         {
             listType = typeof(List<>).MakeGenericType(type.GenericTypeArguments);
         }
-        
+
         var instance = Instance.Create(listType);
-        
+
         if (instance == null) return null!;
         var argumentType = instance.GetType().GetGenericArguments().FirstOrDefault() ?? typeof(string);
         var strategy = context.StrategyContainer.Resolve(argumentType);
 
         for (var i = 0; i < context.With.List.Size; i++)
         {
-            var value = strategy.GenerateValue(context, argumentType);
+            var newContext = context.CloneWithType(argumentType);
+            newContext.Scope = newContext.Scope with {PropertyName = context.Scope.PropertyName};
+            var value = strategy.ExecuteWithReturn(newContext);
+
             if (instance is Queue queueInstance)
             {
                 queueInstance.Enqueue(value);
@@ -57,7 +60,7 @@ internal class ListStrategy : Strategy
             {
                 stackInstance.Push(value);
             }
-            
+
             if (instance is ICollection)
             {
                 (instance as IList)?.Add(value);
@@ -67,7 +70,7 @@ internal class ListStrategy : Strategy
             {
                 (instance as dynamic)?.Enqueue(value);
             }
-            
+
             if (instance.GetType().Name == typeof(Stack<>).Name)
             {
                 (instance as dynamic)?.Push(value);

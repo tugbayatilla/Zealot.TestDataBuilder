@@ -27,7 +27,7 @@ internal class WithRecursionLevel : IWithRecursionLevel
             if (scope.Parent == null) return (exist, level);
             
             // parent has same type, recursion
-            if (scope.Parent.Entity.GetType() == type)
+            if (scope.Parent.Entity?.GetType() == type)
             {
                 exist = true;
                 if(level.ContainsKey(type))
