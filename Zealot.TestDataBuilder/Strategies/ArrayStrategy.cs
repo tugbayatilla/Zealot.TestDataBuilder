@@ -15,7 +15,8 @@ internal class ArrayStrategy : Strategy
             
         for (var i = 0; i < context.With.List.Size; i++)
         {
-            var value = strategy.GenerateValue(context, elementType!);
+            var newContext = context.CloneWithType(elementType!);
+            var value = strategy.ExecuteWithReturn(newContext);
             instance?.SetValue(value, i);
         }
 

@@ -24,4 +24,9 @@ internal abstract class Strategy : IStrategy
             context.Scope = context.Scope with {Entity = entity};
         }
     }
+
+    public virtual object ExecuteWithReturn(IContext context)
+    {
+        return null;
+    }
 }

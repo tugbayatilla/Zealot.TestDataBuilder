@@ -6,6 +6,22 @@ namespace Zealot.Strategies;
 
 internal class ClassStrategy : Strategy
 {
+    public override object ExecuteWithReturn(IContext context)
+    {
+        var newContext = CreateNewContextIfItIsForAProperty(context, context.Scope.EntityType);
+
+        if (BreakRecursion(newContext, context.Scope.EntityType))
+            return default!;
+
+        CreateAnInstanceOfAnEntityAndSetToScope(newContext);
+
+        HandleForeachProperty(newContext);
+
+        OverrideProperties(newContext);
+
+        return newContext.Scope.Entity;
+    }
+
     public override Expression<Func<Type, bool>> ResolveCondition => info =>
         (info.IsClass || info.IsStruct())
         && !info.IsArray
