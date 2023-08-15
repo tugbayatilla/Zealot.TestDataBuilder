@@ -15,7 +15,7 @@ internal abstract class Strategy : IStrategy
     {
         if (!string.IsNullOrWhiteSpace(context.Scope.PropertyName))
         {
-            var pi = context.Scope.Entity.GetType().GetProperty(context.Scope.PropertyName);
+            var pi = context.Scope.EntityType.GetProperty(context.Scope.PropertyName);
             pi.SecureSetValue(context.Scope.Entity, GenerateValue(context, pi.PropertyType));
         }
         else
@@ -29,12 +29,15 @@ internal abstract class Strategy : IStrategy
     {
         if (!string.IsNullOrWhiteSpace(context.Scope.PropertyName))
         {
-            var pi = context.Scope.Entity.GetType().GetProperty(context.Scope.PropertyName);
-            pi.SecureSetValue(context.Scope.Entity, GenerateValue(context, pi.PropertyType));
+            var pi = context.Scope.EntityType.GetProperty(context.Scope.PropertyName);
+            var strategy = context.StrategyContainer.Resolve(pi.PropertyType);
+            var newContext = context.CloneWithType(pi.PropertyType);
+            var generateValue = strategy.ExecuteWithReturn(newContext);
+            pi.SecureSetValue(context.Scope.Entity, generateValue);
         }
         else
         {
-            object entity = GenerateValue(context, context.Scope.EntityType);
+            var entity = GenerateValue(context, context.Scope.EntityType);
             context.Scope = context.Scope with {Entity = entity};
         }
 
