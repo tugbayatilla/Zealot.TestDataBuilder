@@ -9,5 +9,5 @@ internal abstract class Strategy : IStrategy
     public virtual Expression<Func<Type, bool>> ResolveCondition 
         => info => AvailableTypes.Any(x=>x == info);
 
-    public abstract object ExecuteWithReturn(IContext context);
+    public abstract object Execute(IContext context);
 }

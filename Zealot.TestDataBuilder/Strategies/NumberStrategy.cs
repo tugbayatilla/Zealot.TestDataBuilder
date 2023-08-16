@@ -7,7 +7,7 @@ internal class NumberStrategy : Strategy
 {
     private int _currentNumber;
 
-    public override object ExecuteWithReturn(IContext context)
+    public override object Execute(IContext context)
     {
         var type = context.Scope.EntityType;
         

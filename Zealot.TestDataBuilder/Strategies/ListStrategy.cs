@@ -30,7 +30,7 @@ internal class ListStrategy : Strategy
     public override Expression<Func<Type, bool>> ResolveCondition
         => info => AvailableTypes.Any(x => x.Name == info.Name);
 
-    public override object ExecuteWithReturn(IContext context)
+    public override object Execute(IContext context)
     {
         var type = context.Scope.EntityType;
         var listType = type;
@@ -50,7 +50,7 @@ internal class ListStrategy : Strategy
         {
             var newContext = context.CloneWithType(argumentType);
             newContext.Scope = newContext.Scope with {PropertyName = context.Scope.PropertyName};
-            var value = strategy.ExecuteWithReturn(newContext);
+            var value = strategy.Execute(newContext);
 
             if (instance is Queue queueInstance)
             {

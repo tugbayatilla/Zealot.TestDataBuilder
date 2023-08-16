@@ -19,7 +19,7 @@ internal class DictionaryStrategy : Strategy
     public override Expression<Func<Type, bool>> ResolveCondition
         => info => AvailableTypes.Any(x => x.Name == info.Name);
 
-    public override object ExecuteWithReturn(IContext context)
+    public override object Execute(IContext context)
     {
         var type = context.Scope.EntityType;
         var propertyType = type;
@@ -37,11 +37,11 @@ internal class DictionaryStrategy : Strategy
         {
             var strategy1 = context.StrategyContainer.Resolve(arguments[0]);
             var newContext1 = context.CloneWithType(arguments[0]);
-            var key = strategy1.ExecuteWithReturn(newContext1);
+            var key = strategy1.Execute(newContext1);
 
             var strategy2 = context.StrategyContainer.Resolve(arguments[1]);
             var newContext2 = context.CloneWithType(arguments[1]);
-            var value = strategy2.ExecuteWithReturn(newContext2);
+            var value = strategy2.Execute(newContext2);
 
             propertyInstance.Add(key, value);
         }

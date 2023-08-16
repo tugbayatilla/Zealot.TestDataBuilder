@@ -6,7 +6,7 @@ namespace Zealot.Strategies;
 
 internal class ClassStrategy : Strategy
 {
-    public override object ExecuteWithReturn(IContext context)
+    public override object Execute(IContext context)
     {
         var newContext = CreateNewContextIfItIsForAProperty(context, context.Scope.EntityType);
 
@@ -45,7 +45,7 @@ internal class ClassStrategy : Strategy
             var newContext = context.CloneWithType(propertyInfo.PropertyType);
             newContext.Scope = newContext.Scope with {PropertyName = propertyInfo.Name};
 
-            var entity = strategy.ExecuteWithReturn(newContext);
+            var entity = strategy.Execute(newContext);
             newContext.Scope = newContext.Scope with {Entity = entity};
             
             var pi = newContext.Scope.Parent.EntityType.GetProperty(newContext.Scope.PropertyName);

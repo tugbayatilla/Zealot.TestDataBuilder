@@ -11,7 +11,7 @@ internal class ByteStrategy : Strategy
         typeof(byte?), typeof(byte)
     };
 
-    public override object ExecuteWithReturn(IContext context)
+    public override object Execute(IContext context)
     {
         return A;
     }

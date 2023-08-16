@@ -32,7 +32,7 @@ internal class DummyNIntStrategy : Strategy
 {
     public override IEnumerable<Type> AvailableTypes => new[] { typeof(IntPtr) };
 
-    public override object ExecuteWithReturn(IContext context)
+    public override object Execute(IContext context)
     {
         return IntPtr.Parse("1");
     }

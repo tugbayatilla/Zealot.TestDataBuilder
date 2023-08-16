@@ -7,7 +7,7 @@ internal class ArrayStrategy : Strategy
 {
     public override Expression<Func<Type, bool>> ResolveCondition => info => info.IsArray;
 
-    public override object ExecuteWithReturn(IContext context)
+    public override object Execute(IContext context)
     {
         var elementType = context.Scope.EntityType.GetElementType();
         var instance = Array.CreateInstance(elementType!, context.With.List.Size);
@@ -17,7 +17,7 @@ internal class ArrayStrategy : Strategy
         for (var i = 0; i < context.With.List.Size; i++)
         {
             var newContext = context.CloneWithType(elementType!);
-            var value = strategy.ExecuteWithReturn(newContext);
+            var value = strategy.Execute(newContext);
             instance?.SetValue(value, i);
         }
 

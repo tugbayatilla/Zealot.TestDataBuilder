@@ -10,7 +10,7 @@ internal class BooleanStrategy : Strategy
         typeof(bool?)
     };
 
-    public override object ExecuteWithReturn(IContext context)
+    public override object Execute(IContext context)
     {
         return true;
     }

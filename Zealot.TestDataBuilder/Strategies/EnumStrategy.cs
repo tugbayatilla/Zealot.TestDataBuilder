@@ -10,7 +10,7 @@ internal class EnumStrategy : Strategy
                 || info.IsNullableEnum() 
                 || (info.BaseType != null && info.BaseType == typeof(Enum));
 
-    public override object ExecuteWithReturn(IContext context)
+    public override object Execute(IContext context)
     {
         var type = context.Scope.EntityType;
         var enumType = type;
