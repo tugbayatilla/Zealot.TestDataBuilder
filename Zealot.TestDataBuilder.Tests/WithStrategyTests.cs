@@ -31,10 +31,6 @@ public class WithStrategyTests
 internal class DummyNIntStrategy : Strategy
 {
     public override IEnumerable<Type> AvailableTypes => new[] { typeof(IntPtr) };
-    public override object GenerateValue(IContext context, Type type)
-    {
-        return IntPtr.Parse("1");
-    }
 
     public override object ExecuteWithReturn(IContext context)
     {

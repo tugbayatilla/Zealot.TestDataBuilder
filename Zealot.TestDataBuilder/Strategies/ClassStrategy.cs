@@ -27,22 +27,6 @@ internal class ClassStrategy : Strategy
         && !info.IsArray
         && !new ListStrategy().ResolveCondition.Compile().Invoke(info);
 
-    public override object GenerateValue(IContext context, Type type)
-    {
-        var newContext = CreateNewContextIfItIsForAProperty(context, type);
-
-        if (BreakRecursion(newContext, type))
-            return default!;
-
-        CreateAnInstanceOfAnEntityAndSetToScope(newContext);
-
-        HandleForeachProperty(newContext);
-
-        OverrideProperties(newContext);
-
-        return newContext.Scope.Entity;
-    }
-
     private static void OverrideProperties(IContext newContext)
     {
         newContext.With.Override.Apply(newContext.Scope.Entity);

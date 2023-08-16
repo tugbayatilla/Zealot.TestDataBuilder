@@ -9,11 +9,6 @@ internal class GuidStrategy : Strategy
         typeof(Guid?),typeof(Guid),
     };
 
-    public override object GenerateValue(IContext context, Type type)
-    {
-        return context.With.Guid.Guid;
-    }
-
     public override object ExecuteWithReturn(IContext context)
     {
         return context.With.Guid.Guid;

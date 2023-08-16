@@ -24,21 +24,6 @@ internal class NumberStrategy : Strategy
         return Convert.ChangeType(_currentNumber++, type);
     }
 
-    public override object GenerateValue(IContext context, Type type)
-    {
-        SetStartingNumberAtTheBeginning(context);
-
-        if (type.IsNullable())
-        {
-            var underlyingType = type.GenericTypeArguments.FirstOrDefault();
-
-            var finalExpression = Expression.Constant(Convert.ChangeType(_currentNumber++, underlyingType!), type);
-            return finalExpression.Value;
-        }
-
-        return Convert.ChangeType(_currentNumber++, type);
-    }
-
     private void SetStartingNumberAtTheBeginning(IContext context)
     {
         if (_currentNumber == default)

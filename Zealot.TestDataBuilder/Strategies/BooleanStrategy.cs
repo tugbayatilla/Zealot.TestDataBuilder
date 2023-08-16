@@ -10,12 +10,6 @@ internal class BooleanStrategy : Strategy
         typeof(bool?)
     };
 
-    public override object GenerateValue(IContext context, Type type)
-    {
-        //return true;
-        throw new NotImplementedException();
-    }
-
     public override object ExecuteWithReturn(IContext context)
     {
         return true;

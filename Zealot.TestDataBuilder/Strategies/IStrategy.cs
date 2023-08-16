@@ -7,7 +7,5 @@ public interface IStrategy
 {
     IEnumerable<Type> AvailableTypes { get; }
     Expression<Func<Type, bool>> ResolveCondition { get; }
-    object GenerateValue(IContext context, Type type);
-    void Execute(IContext context);
     object ExecuteWithReturn(IContext context);
 }

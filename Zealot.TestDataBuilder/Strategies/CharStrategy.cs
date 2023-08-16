@@ -11,11 +11,6 @@ internal class CharStrategy : Strategy
         typeof(char?), typeof(char)
     };
 
-    public override object GenerateValue(IContext context, Type type)
-    {
-        return A;
-    }
-
     public override object ExecuteWithReturn(IContext context)
     {
         return A;

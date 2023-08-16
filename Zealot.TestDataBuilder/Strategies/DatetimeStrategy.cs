@@ -10,11 +10,6 @@ internal class DatetimeStrategy : Strategy
         typeof(DateTime?)
     };
 
-    public override object GenerateValue(IContext context, Type type)
-    {
-        return context.With.Date.UtcDate;
-    }
-
     public override object ExecuteWithReturn(IContext context)
     {
         return context.With.Date.UtcDate;
