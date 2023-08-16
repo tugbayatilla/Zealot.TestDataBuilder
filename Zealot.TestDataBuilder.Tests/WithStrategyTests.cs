@@ -18,7 +18,7 @@ public class WithStrategyTests
         
         var entity = TestDataBuilder
             .For<ClassWithTwoIntPtr>()
-            .WithStrategy(new NIntStrategy())
+            .WithStrategy(new DummyNIntStrategy())
             .Build();
 
         entity.Prop1.Should().Be(1);
@@ -28,10 +28,15 @@ public class WithStrategyTests
     
 }
 
-internal class NIntStrategy : Strategy
+internal class DummyNIntStrategy : Strategy
 {
     public override IEnumerable<Type> AvailableTypes => new[] { typeof(IntPtr) };
     public override object GenerateValue(IContext context, Type type)
+    {
+        return IntPtr.Parse("1");
+    }
+
+    public override object ExecuteWithReturn(IContext context)
     {
         return IntPtr.Parse("1");
     }

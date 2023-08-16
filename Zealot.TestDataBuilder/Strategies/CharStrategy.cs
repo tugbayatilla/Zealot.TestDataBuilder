@@ -15,4 +15,9 @@ internal class CharStrategy : Strategy
     {
         return A;
     }
+
+    public override object ExecuteWithReturn(IContext context)
+    {
+        return A;
+    }
 }

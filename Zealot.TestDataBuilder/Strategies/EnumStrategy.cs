@@ -12,6 +12,20 @@ internal class EnumStrategy : Strategy
 
     public override object GenerateValue(IContext context, Type type)
     {
+        // var enumType = type;
+        // if (type.IsNullableEnum())
+        // {
+        //     enumType = Nullable.GetUnderlyingType(type);
+        // }
+        //
+        // var values = Enum.GetValues(enumType!);
+        // return values.Length > 0 ? values.GetValue(0)! : default!;
+        throw new NotImplementedException("GenerateValue!");
+    }
+
+    public override object ExecuteWithReturn(IContext context)
+    {
+        var type = context.Scope.EntityType;
         var enumType = type;
         if (type.IsNullableEnum())
         {

@@ -14,4 +14,9 @@ internal class DatetimeStrategy : Strategy
     {
         return context.With.Date.UtcDate;
     }
+
+    public override object ExecuteWithReturn(IContext context)
+    {
+        return context.With.Date.UtcDate;
+    }
 }

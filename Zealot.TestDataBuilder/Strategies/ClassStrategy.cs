@@ -48,17 +48,25 @@ internal class ClassStrategy : Strategy
         newContext.With.Override.Apply(newContext.Scope.Entity);
     }
 
-    private static void HandleForeachProperty(IContext newContext)
+    private static void HandleForeachProperty(IContext context)
     {
-        var properties = newContext.Scope.EntityType.GetProperties();
+        var properties = context.Scope.EntityType.GetProperties();
         foreach (var propertyInfo in properties)
         {
-            if (newContext.With.Only.IgnoreThis(propertyInfo.PropertyType)) continue;
+            if (context.With.Only.IgnoreThis(propertyInfo.PropertyType)) continue;
 
-            var strategy = newContext.StrategyContainer.Resolve(propertyInfo.PropertyType);
+            
+            var strategy = context.StrategyContainer.Resolve(propertyInfo.PropertyType);
+            
+            var newContext = context.CloneWithType(propertyInfo.PropertyType);
             newContext.Scope = newContext.Scope with {PropertyName = propertyInfo.Name};
 
-            strategy.Execute(newContext);
+            var entity = strategy.ExecuteWithReturn(newContext);
+            newContext.Scope = newContext.Scope with {Entity = entity};
+            
+            var pi = newContext.Scope.Parent.EntityType.GetProperty(newContext.Scope.PropertyName);
+            pi.SecureSetValue(newContext.Scope.Parent.Entity, newContext.Scope.Entity);
+            
         }
     }
 

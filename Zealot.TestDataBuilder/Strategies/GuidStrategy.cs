@@ -13,4 +13,9 @@ internal class GuidStrategy : Strategy
     {
         return context.With.Guid.Guid;
     }
+
+    public override object ExecuteWithReturn(IContext context)
+    {
+        return context.With.Guid.Guid;
+    }
 }
