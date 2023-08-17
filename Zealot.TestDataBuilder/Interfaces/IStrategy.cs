@@ -1,7 +1,6 @@
 ﻿using System.Linq.Expressions;
-using Zealot.Interfaces;
 
-namespace Zealot.Strategies;
+namespace Zealot.Interfaces;
 
 public interface IStrategy
 {
