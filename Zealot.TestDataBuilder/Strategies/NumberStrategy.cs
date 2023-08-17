@@ -44,8 +44,8 @@ internal class NumberStrategy : IStrategy
             typeof(float?), typeof(float),
             typeof(decimal?), typeof(decimal),
             typeof(long?), typeof(long),
-            typeof(UInt16?), typeof(UInt16),
-            typeof(UInt32?), typeof(UInt32),
-            typeof(UInt64?), typeof(UInt64)
+            typeof(ushort?), typeof(ushort),
+            typeof(uint?), typeof(uint),
+            typeof(ulong?), typeof(ulong)
         };
 }

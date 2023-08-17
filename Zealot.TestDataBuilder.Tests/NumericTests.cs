@@ -150,7 +150,7 @@ public class NumericTests
     {
         var subject = TestDataBuilder
             .For<ClassWithAllPrimitives>()
-            .WithOnly<UInt16>()
+            .WithOnly<ushort>()
             .Build();
         subject.UInt16Prop.Should().NotBe(0);
         subject.UInt16Prop2.Should().NotBe(0);
@@ -163,7 +163,7 @@ public class NumericTests
     {
         var subject = TestDataBuilder
             .For<ClassWithAllPrimitives>()
-            .WithOnly<UInt16?>()
+            .WithOnly<ushort?>()
             .Build();
         subject.UInt16NullableProp.Should().NotBe(0);
         subject.UInt16NullableProp2.Should().NotBe(0);
@@ -176,7 +176,7 @@ public class NumericTests
     {
         var subject = TestDataBuilder
             .For<ClassWithAllPrimitives>()
-            .WithOnly<UInt32>()
+            .WithOnly<uint>()
             .Build();
         subject.UInt32Prop.Should().NotBe(0);
         subject.UInt32Prop2.Should().NotBe(0);
@@ -189,7 +189,7 @@ public class NumericTests
     {
         var subject = TestDataBuilder
             .For<ClassWithAllPrimitives>()
-            .WithOnly<UInt32?>()
+            .WithOnly<uint?>()
             .Build();
         subject.UInt32NullableProp.Should().NotBe(0);
         subject.UInt32NullableProp2.Should().NotBe(0);
@@ -202,7 +202,7 @@ public class NumericTests
     {
         var subject = TestDataBuilder
             .For<ClassWithAllPrimitives>()
-            .WithOnly<UInt64>()
+            .WithOnly<ulong>()
             .Build();
         subject.UInt64Prop.Should().NotBe(0);
         subject.UInt64Prop2.Should().NotBe(0);
@@ -215,7 +215,7 @@ public class NumericTests
     {
         var subject = TestDataBuilder
             .For<ClassWithAllPrimitives>()
-            .WithOnly<UInt64?>()
+            .WithOnly<ulong?>()
             .Build();
         subject.UInt64NullableProp.Should().NotBe(0);
         subject.UInt64NullableProp2.Should().NotBe(0);

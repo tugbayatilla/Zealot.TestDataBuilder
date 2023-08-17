@@ -42,15 +42,15 @@ internal struct StructWithAllPrimitives
 
     public string? StringNullableProp { get; set; }
 
-    public UInt16 UInt16Prop { get; set; }
+    public ushort UInt16Prop { get; set; }
 
-    public UInt16? UInt16NullableProp { get; set; }
+    public ushort? UInt16NullableProp { get; set; }
 
-    public UInt32 UInt32Prop { get; set; }
+    public uint UInt32Prop { get; set; }
 
-    public UInt32? UInt32NullableProp { get; set; }
+    public uint? UInt32NullableProp { get; set; }
 
-    public UInt64 UInt64Prop { get; set; }
+    public ulong UInt64Prop { get; set; }
 
-    public UInt64? UInt64NullableProp { get; set; }
+    public ulong? UInt64NullableProp { get; set; }
 }
