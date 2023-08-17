@@ -3,14 +3,16 @@ using Zealot.Interfaces;
 
 namespace Zealot.Strategies;
 
-internal class EnumStrategy : Strategy
+internal class EnumStrategy : IStrategy
 {
-    public override Expression<Func<Type, bool>> ResolveCondition => 
+    public IEnumerable<Type> AvailableTypes => default!;
+
+    public Expression<Func<Type, bool>> ResolveCondition => 
         info => info.IsEnum 
                 || info.IsNullableEnum() 
                 || (info.BaseType != null && info.BaseType == typeof(Enum));
 
-    public override object Execute(IContext context)
+    public object Execute(IContext context)
     {
         var type = context.Scope.EntityType;
         var enumType = type;
