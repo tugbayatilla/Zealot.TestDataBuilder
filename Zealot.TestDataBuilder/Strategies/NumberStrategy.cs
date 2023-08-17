@@ -3,14 +3,17 @@ using Zealot.Interfaces;
 
 namespace Zealot.Strategies;
 
-internal class NumberStrategy : Strategy
+internal class NumberStrategy : IStrategy
 {
     private int _currentNumber;
 
-    public override object Execute(IContext context)
+    public Expression<Func<Type, bool>> ResolveCondition
+        => info => AvailableTypes.Any(x => x == info);
+
+    public object Execute(IContext context)
     {
         var type = context.Scope.EntityType;
-        
+
         SetStartingNumberAtTheBeginning(context);
 
         if (type.IsNullable())
@@ -32,7 +35,7 @@ internal class NumberStrategy : Strategy
         }
     }
 
-    public override IEnumerable<Type> AvailableTypes =>
+    public IEnumerable<Type> AvailableTypes =>
         new[]
         {
             typeof(int?), typeof(int),
