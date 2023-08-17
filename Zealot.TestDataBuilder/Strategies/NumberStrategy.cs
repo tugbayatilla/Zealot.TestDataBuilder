@@ -16,15 +16,13 @@ internal class NumberStrategy : IStrategy
 
         SetStartingNumberAtTheBeginning(context);
 
-        if (type.IsNullable())
-        {
-            var underlyingType = type.GenericTypeArguments.FirstOrDefault();
+        if (!type.IsNullable()) return Convert.ChangeType(_currentNumber++, type);
+        
+        var underlyingType = type.GenericTypeArguments.FirstOrDefault();
 
-            var finalExpression = Expression.Constant(Convert.ChangeType(_currentNumber++, underlyingType!), type);
-            return finalExpression.Value;
-        }
+        var finalExpression = Expression.Constant(Convert.ChangeType(_currentNumber++, underlyingType!), type);
+        return finalExpression.Value;
 
-        return Convert.ChangeType(_currentNumber++, type);
     }
 
     private void SetStartingNumberAtTheBeginning(IContext context)
