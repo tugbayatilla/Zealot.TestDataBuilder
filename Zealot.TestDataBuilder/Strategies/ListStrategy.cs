@@ -12,17 +12,29 @@ internal class ListStrategy : IStrategy
 
     public object Execute(IContext context)
     {
-        var type = context.Scope.EntityType;
-        var listType = type;
+        var listType = context.Scope.EntityType;
+        listType = ChangeListTypeIfGeneric(context, listType);
 
-        if (type is {IsInterface: true, IsGenericType: true})
+        var list = Instance.Create(listType);
+        if (list == null) return null!;
+        
+        FillListWithData(context, list);
+
+        return list;
+    }
+
+    private static Type ChangeListTypeIfGeneric(IContext context, Type listType)
+    {
+        if (context.Scope.EntityType is {IsInterface: true, IsGenericType: true})
         {
-            listType = typeof(List<>).MakeGenericType(type.GenericTypeArguments);
+            listType = typeof(List<>).MakeGenericType(context.Scope.EntityType.GenericTypeArguments);
         }
 
-        var instance = Instance.Create(listType);
+        return listType;
+    }
 
-        if (instance == null) return null!;
+    private static void FillListWithData(IContext context, object instance)
+    {
         var argumentType = instance.GetType().GetGenericArguments().FirstOrDefault() ?? typeof(string);
         var strategy = context.StrategyContainer.Resolve(argumentType);
 
@@ -32,15 +44,8 @@ internal class ListStrategy : IStrategy
             newContext.Scope = newContext.Scope with {PropertyName = context.Scope.PropertyName};
             var value = strategy.Execute(newContext);
 
-            if (instance is Queue queueInstance)
-            {
-                queueInstance.Enqueue(value);
-            }
-
-            if (instance is Stack stackInstance)
-            {
-                stackInstance.Push(value);
-            }
+            (instance as Queue)?.Enqueue(value);
+            (instance as Stack)?.Push(value);
 
             if (instance is ICollection)
             {
@@ -57,10 +62,8 @@ internal class ListStrategy : IStrategy
                 (instance as dynamic)?.Push(value);
             }
         }
-
-        return instance;
     }
-    
+
     private static IEnumerable<Type> AvailableTypes =>
         new[]
         {
