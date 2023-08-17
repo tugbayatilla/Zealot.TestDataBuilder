@@ -4,9 +4,9 @@ using Zealot.Internals;
 
 namespace Zealot.Strategies;
 
-internal class ClassStrategy : Strategy
+internal class ClassStrategy : IStrategy
 {
-    public override object Execute(IContext context)
+    public object Execute(IContext context)
     {
         var newContext = CreateNewContextIfItIsForAProperty(context, context.Scope.EntityType);
 
@@ -22,7 +22,9 @@ internal class ClassStrategy : Strategy
         return newContext.Scope.Entity;
     }
 
-    public override Expression<Func<Type, bool>> ResolveCondition => info =>
+    public IEnumerable<Type> AvailableTypes => default!;
+
+    public Expression<Func<Type, bool>> ResolveCondition => info =>
         (info.IsClass || info.IsStruct())
         && !info.IsArray
         && !new ListStrategy().ResolveCondition.Compile().Invoke(info);
