@@ -13,7 +13,7 @@ internal class StringStrategy : IStrategy
     public object Execute(IContext context)
     {
         _number++;
-        return $"{context.With.String.Prefix}{context.Scope.PropertyName}_{_number}{context.With.String.Suffix}";
+        return $"{context.With.String.Prefix}{context.Scope.ParentPropertyName}_{_number}{context.With.String.Suffix}";
     }
     
     private static IEnumerable<Type> AvailableTypes => new[] { typeof(string) };

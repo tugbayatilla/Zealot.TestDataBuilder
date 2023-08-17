@@ -41,7 +41,7 @@ internal class ListStrategy : IStrategy
         for (var i = 0; i < context.With.List.Size; i++)
         {
             var newContext = context.CloneWithType(argumentType);
-            newContext.Scope = newContext.Scope with {PropertyName = context.Scope.PropertyName};
+            newContext.Scope = newContext.Scope with {ParentPropertyName = context.Scope.ParentPropertyName};
             var value = strategy.Execute(newContext);
 
             (instance as Queue)?.Enqueue(value);

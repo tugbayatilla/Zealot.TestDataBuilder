@@ -43,12 +43,12 @@ internal class ClassStrategy : IStrategy
             var strategy = context.StrategyContainer.Resolve(propertyInfo.PropertyType);
             
             var newContext = context.CloneWithType(propertyInfo.PropertyType);
-            newContext.Scope = newContext.Scope with {PropertyName = propertyInfo.Name};
+            newContext.Scope = newContext.Scope with {ParentPropertyName = propertyInfo.Name};
 
             var entity = strategy.Execute(newContext);
             newContext.Scope = newContext.Scope with {Entity = entity};
             
-            var pi = newContext.Scope.Parent.EntityType.GetProperty(newContext.Scope.PropertyName);
+            var pi = newContext.Scope.Parent.EntityType.GetProperty(newContext.Scope.ParentPropertyName);
             pi.SecureSetValue(newContext.Scope.Parent.Entity, newContext.Scope.Entity);
             
         }
@@ -62,7 +62,7 @@ internal class ClassStrategy : IStrategy
 
     private static IContext CreateNewContextIfItIsForAProperty(IContext context, Type type)
     {
-        var itIsForAProperty = !string.IsNullOrWhiteSpace(context.Scope.PropertyName);
+        var itIsForAProperty = !string.IsNullOrWhiteSpace(context.Scope.ParentPropertyName);
         return itIsForAProperty ? context.CloneWithType(type) : context;
     }
 
