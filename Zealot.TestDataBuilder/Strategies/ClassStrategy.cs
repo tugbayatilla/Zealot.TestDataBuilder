@@ -40,13 +40,16 @@ internal class ClassStrategy : IStrategy
             if (context.With.Only.IgnoreThis(propertyInfo.PropertyType)) continue;
 
             
-            var strategy = context.StrategyContainer.Resolve(propertyInfo.PropertyType);
-            
             var newContext = context.CloneWithType(propertyInfo.PropertyType);
             newContext.Scope = newContext.Scope with {ParentPropertyName = propertyInfo.Name};
-
-            var entity = strategy.Execute(newContext);
+            
+            var entity = newContext
+                .StrategyContainer
+                .Resolve(propertyInfo.PropertyType)
+                .Execute(newContext);
+            
             newContext.Scope = newContext.Scope with {Entity = entity};
+
             
             var pi = newContext.Scope.Parent.EntityType.GetProperty(newContext.Scope.ParentPropertyName);
             pi.SecureSetValue(newContext.Scope.Parent.Entity, newContext.Scope.Entity);
