@@ -5,7 +5,6 @@ namespace Zealot.Strategies;
 
 internal class ArrayStrategy : IStrategy
 {
-    public IEnumerable<Type> AvailableTypes => default!;
     public Expression<Func<Type, bool>> ResolveCondition => info => info.IsArray;
 
     public object Execute(IContext context)

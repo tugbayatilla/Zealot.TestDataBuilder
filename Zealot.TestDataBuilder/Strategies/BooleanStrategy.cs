@@ -5,12 +5,6 @@ namespace Zealot.Strategies;
 
 internal class BooleanStrategy : IStrategy
 {
-    public IEnumerable<Type> AvailableTypes => new[]
-    {
-        typeof(bool),
-        typeof(bool?)
-    };
-
     public Expression<Func<Type, bool>> ResolveCondition 
         => info => AvailableTypes.Any(x=>x == info);
 
@@ -18,4 +12,10 @@ internal class BooleanStrategy : IStrategy
     {
         return true;
     }
+    
+    private static IEnumerable<Type> AvailableTypes => new[]
+    {
+        typeof(bool),
+        typeof(bool?)
+    };
 }

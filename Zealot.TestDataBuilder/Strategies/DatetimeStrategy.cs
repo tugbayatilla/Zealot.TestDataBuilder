@@ -5,12 +5,6 @@ namespace Zealot.Strategies;
 
 internal class DatetimeStrategy : IStrategy
 {
-    public IEnumerable<Type> AvailableTypes => new[]
-    {
-        typeof(DateTime),
-        typeof(DateTime?)
-    };
-
     public Expression<Func<Type, bool>> ResolveCondition 
         => info => AvailableTypes.Any(x=>x == info);
 
@@ -18,4 +12,10 @@ internal class DatetimeStrategy : IStrategy
     {
         return context.With.Date.UtcDate;
     }
+    
+    private static IEnumerable<Type> AvailableTypes => new[]
+    {
+        typeof(DateTime),
+        typeof(DateTime?)
+    };
 }

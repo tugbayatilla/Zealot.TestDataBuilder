@@ -22,8 +22,6 @@ internal class ClassStrategy : IStrategy
         return newContext.Scope.Entity;
     }
 
-    public IEnumerable<Type> AvailableTypes => default!;
-
     public Expression<Func<Type, bool>> ResolveCondition => info =>
         (info.IsClass || info.IsStruct())
         && !info.IsArray

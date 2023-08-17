@@ -9,13 +9,6 @@ internal class DictionaryStrategy : IStrategy
 {
     private const int SizeOfList = 2;
     
-    public IEnumerable<Type> AvailableTypes =>
-        new[]
-        {
-            typeof(Dictionary<,>),
-            typeof(IReadOnlyDictionary<,>)
-        };
-
     public Expression<Func<Type, bool>> ResolveCondition
         => info => AvailableTypes.Any(x => x.Name == info.Name);
 
@@ -48,4 +41,10 @@ internal class DictionaryStrategy : IStrategy
         
         return propertyInstance;
     }
+    private static IEnumerable<Type> AvailableTypes =>
+        new[]
+        {
+            typeof(Dictionary<,>),
+            typeof(IReadOnlyDictionary<,>)
+        };
 }

@@ -7,26 +7,6 @@ namespace Zealot.Strategies;
 
 internal class ListStrategy : IStrategy
 {
-    public IEnumerable<Type> AvailableTypes =>
-        new[]
-        {
-            typeof(ArrayList),
-            typeof(List<>),
-            typeof(IList<>),
-            typeof(IList),
-            typeof(ICollection<>),
-            typeof(ICollection),
-            typeof(LinkedList<>),
-            typeof(Queue<>),
-            typeof(Queue),
-            typeof(Stack),
-            typeof(Stack<>),
-            typeof(IEnumerable<>),
-            typeof(IEnumerable),
-            typeof(IReadOnlyCollection<>),
-            typeof(IReadOnlyList<>)
-        };
-
     public Expression<Func<Type, bool>> ResolveCondition
         => info => AvailableTypes.Any(x => x.Name == info.Name);
 
@@ -80,4 +60,24 @@ internal class ListStrategy : IStrategy
 
         return instance;
     }
+    
+    private static IEnumerable<Type> AvailableTypes =>
+        new[]
+        {
+            typeof(ArrayList),
+            typeof(List<>),
+            typeof(IList<>),
+            typeof(IList),
+            typeof(ICollection<>),
+            typeof(ICollection),
+            typeof(LinkedList<>),
+            typeof(Queue<>),
+            typeof(Queue),
+            typeof(Stack),
+            typeof(Stack<>),
+            typeof(IEnumerable<>),
+            typeof(IEnumerable),
+            typeof(IReadOnlyCollection<>),
+            typeof(IReadOnlyList<>)
+        };
 }

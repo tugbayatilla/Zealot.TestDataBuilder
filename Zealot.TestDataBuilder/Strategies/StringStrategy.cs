@@ -6,7 +6,7 @@ namespace Zealot.Strategies;
 internal class StringStrategy : IStrategy
 {
     private int _number;
-    public IEnumerable<Type> AvailableTypes => new[] { typeof(string) };
+    
     public Expression<Func<Type, bool>> ResolveCondition 
         => info => AvailableTypes.Any(x=>x == info);
 
@@ -15,4 +15,6 @@ internal class StringStrategy : IStrategy
         _number++;
         return $"{context.With.String.Prefix}{context.Scope.PropertyName}_{_number}{context.With.String.Suffix}";
     }
+    
+    private static IEnumerable<Type> AvailableTypes => new[] { typeof(string) };
 }

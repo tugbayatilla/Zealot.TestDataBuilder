@@ -5,11 +5,6 @@ namespace Zealot.Strategies;
 
 internal class GuidStrategy : IStrategy
 {
-    public IEnumerable<Type> AvailableTypes => new[]
-    {
-        typeof(Guid?),typeof(Guid),
-    };
-
     public Expression<Func<Type, bool>> ResolveCondition 
         => info => AvailableTypes.Any(x=>x == info);
 
@@ -17,4 +12,8 @@ internal class GuidStrategy : IStrategy
     {
         return context.With.Guid.Guid;
     }
+    private static IEnumerable<Type> AvailableTypes => new[]
+    {
+        typeof(Guid?),typeof(Guid),
+    };
 }

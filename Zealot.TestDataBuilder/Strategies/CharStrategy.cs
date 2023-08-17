@@ -6,12 +6,6 @@ namespace Zealot.Strategies;
 internal class CharStrategy : IStrategy
 {
     private const char A = 'A';
-
-    public IEnumerable<Type> AvailableTypes => new[]
-    {
-        typeof(char?), typeof(char)
-    };
-
     public Expression<Func<Type, bool>> ResolveCondition 
         => info => AvailableTypes.Any(x=>x == info);
 
@@ -19,4 +13,8 @@ internal class CharStrategy : IStrategy
     {
         return A;
     }
+    private static IEnumerable<Type> AvailableTypes => new[]
+    {
+        typeof(char?), typeof(char)
+    };
 }

@@ -35,7 +35,7 @@ internal class NumberStrategy : IStrategy
         }
     }
 
-    public IEnumerable<Type> AvailableTypes =>
+    private static IEnumerable<Type> AvailableTypes =>
         new[]
         {
             typeof(int?), typeof(int),

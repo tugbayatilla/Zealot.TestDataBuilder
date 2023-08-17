@@ -5,8 +5,6 @@ namespace Zealot.Strategies;
 
 internal class EnumStrategy : IStrategy
 {
-    public IEnumerable<Type> AvailableTypes => default!;
-
     public Expression<Func<Type, bool>> ResolveCondition => 
         info => info.IsEnum 
                 || info.IsNullableEnum() 

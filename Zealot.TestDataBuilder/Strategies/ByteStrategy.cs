@@ -7,11 +7,6 @@ internal class ByteStrategy : IStrategy
 {
     private static readonly byte A = Convert.ToByte('A');
 
-    public IEnumerable<Type> AvailableTypes => new[]
-    {
-        typeof(byte?), typeof(byte)
-    };
-
     public Expression<Func<Type, bool>> ResolveCondition
         => info => AvailableTypes.Any(x=>x == info);
 
@@ -19,4 +14,9 @@ internal class ByteStrategy : IStrategy
     {
         return A;
     }
+    
+    private static IEnumerable<Type> AvailableTypes => new[]
+    {
+        typeof(byte?), typeof(byte)
+    };
 }
