@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using Zealot.Interfaces;
 using Zealot.SampleBuilder.Tests.TestObjects;
 using Zealot.Strategies;
@@ -28,11 +29,13 @@ public class WithStrategyTests
     
 }
 
-internal class DummyNIntStrategy : Strategy
+internal class DummyNIntStrategy : IStrategy
 {
-    public override IEnumerable<Type> AvailableTypes => new[] { typeof(IntPtr) };
+    public IEnumerable<Type> AvailableTypes => new[] { typeof(IntPtr) };
+    public Expression<Func<Type, bool>> ResolveCondition 
+        => info => AvailableTypes.Any(x=>x == info);
 
-    public override object Execute(IContext context)
+    public object Execute(IContext context)
     {
         return IntPtr.Parse("1");
     }
