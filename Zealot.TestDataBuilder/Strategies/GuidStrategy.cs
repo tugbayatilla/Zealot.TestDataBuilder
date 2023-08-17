@@ -1,15 +1,19 @@
-﻿using Zealot.Interfaces;
+﻿using System.Linq.Expressions;
+using Zealot.Interfaces;
 
 namespace Zealot.Strategies;
 
-internal class GuidStrategy : Strategy
+internal class GuidStrategy : IStrategy
 {
-    public override IEnumerable<Type> AvailableTypes => new[]
+    public IEnumerable<Type> AvailableTypes => new[]
     {
         typeof(Guid?),typeof(Guid),
     };
 
-    public override object Execute(IContext context)
+    public Expression<Func<Type, bool>> ResolveCondition 
+        => info => AvailableTypes.Any(x=>x == info);
+
+    public object Execute(IContext context)
     {
         return context.With.Guid.Guid;
     }
