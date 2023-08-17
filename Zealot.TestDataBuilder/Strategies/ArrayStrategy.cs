@@ -3,11 +3,12 @@ using Zealot.Interfaces;
 
 namespace Zealot.Strategies;
 
-internal class ArrayStrategy : Strategy
+internal class ArrayStrategy : IStrategy
 {
-    public override Expression<Func<Type, bool>> ResolveCondition => info => info.IsArray;
+    public IEnumerable<Type> AvailableTypes => default!;
+    public Expression<Func<Type, bool>> ResolveCondition => info => info.IsArray;
 
-    public override object Execute(IContext context)
+    public object Execute(IContext context)
     {
         var elementType = context.Scope.EntityType.GetElementType();
         var instance = Array.CreateInstance(elementType!, context.With.List.Size);
