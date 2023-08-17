@@ -5,21 +5,21 @@ using Zealot.Internals;
 
 namespace Zealot.Strategies;
 
-internal class DictionaryStrategy : Strategy
+internal class DictionaryStrategy : IStrategy
 {
     private const int SizeOfList = 2;
     
-    public override IEnumerable<Type> AvailableTypes =>
+    public IEnumerable<Type> AvailableTypes =>
         new[]
         {
             typeof(Dictionary<,>),
             typeof(IReadOnlyDictionary<,>)
         };
 
-    public override Expression<Func<Type, bool>> ResolveCondition
+    public Expression<Func<Type, bool>> ResolveCondition
         => info => AvailableTypes.Any(x => x.Name == info.Name);
 
-    public override object Execute(IContext context)
+    public object Execute(IContext context)
     {
         var type = context.Scope.EntityType;
         var propertyType = type;
