@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-using Zealot.Interfaces;
+using Zealot.Internals.Interfaces;
 
 namespace Zealot.Internals;
 

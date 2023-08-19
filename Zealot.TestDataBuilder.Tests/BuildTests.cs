@@ -1,4 +1,3 @@
-using Zealot.Interfaces;
 using Zealot.SampleBuilder.Tests.TestObjects;
 
 namespace Zealot.SampleBuilder.Tests;

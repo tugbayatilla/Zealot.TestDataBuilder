@@ -1,3 +1,5 @@
+using Zealot.Internals;
+
 namespace Zealot.SampleBuilder.Tests;
 
 public static class TestHelper

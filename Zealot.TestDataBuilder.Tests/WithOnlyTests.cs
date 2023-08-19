@@ -1,5 +1,5 @@
-using Zealot.Interfaces;
 using Zealot.Internals;
+using Zealot.Internals.Interfaces;
 using Zealot.SampleBuilder.Tests.TestObjects;
 
 namespace Zealot.SampleBuilder.Tests;

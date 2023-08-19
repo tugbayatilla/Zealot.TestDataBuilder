@@ -1,5 +1,5 @@
-using Zealot.Interfaces;
-using Zealot.Strategies;
+using Zealot.Internals.Interfaces;
+using Zealot.Internals.Strategies;
 
 namespace Zealot.Internals;
 
