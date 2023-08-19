@@ -10,7 +10,7 @@ public class BuildTests
         TestDataBuilder
             .For<ClassWithNoProperty>()
             .Should()
-            .BeAssignableTo<IBuilder<ClassWithNoProperty>>();
+            .BeAssignableTo<ITestDataBuilder<ClassWithNoProperty>>();
     }
 
     [Fact]

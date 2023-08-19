@@ -9,13 +9,13 @@ public static class TestDataBuilder
     /// <summary>
     /// Required
     /// </summary>
-    public static IBuilder<TEntity> For<TEntity>()
+    public static ITestDataBuilder<TEntity> For<TEntity>()
     {
         IContext context = new Context(
             typeof(TEntity), 
             new With(),
             new StrategyContainer());
 
-        return new Builder<TEntity>(context);
+        return new TestDataBuilder<TEntity>(context);
     }
 }

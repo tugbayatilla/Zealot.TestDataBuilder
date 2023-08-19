@@ -2,7 +2,7 @@
 
 namespace Zealot;
 
-public interface IBuilder<out TEntity>
+public interface ITestDataBuilder<out TEntity>
 {
     /// <summary>
     /// Required
@@ -12,56 +12,56 @@ public interface IBuilder<out TEntity>
     /// <summary>
     /// Optional
     /// </summary>
-    IBuilder<TEntity> WithOnly<TProperty>();
+    ITestDataBuilder<TEntity> WithOnly<TProperty>();
     
     /// <summary>
     /// Optional
     /// </summary>
-    IBuilder<TEntity> WithOnly(Type type); 
+    ITestDataBuilder<TEntity> WithOnly(Type type); 
     
     /// <summary>
     /// Optional
     /// </summary>
-    IBuilder<TEntity> WithOverride(Action<TEntity> action);
+    ITestDataBuilder<TEntity> WithOverride(Action<TEntity> action);
 
     /// <summary>
     /// Optional
     /// </summary>
-    IBuilder<TEntity> WithDate(DateTime dateTime);
+    ITestDataBuilder<TEntity> WithDate(DateTime dateTime);
 
     /// <summary>
     /// Optional
     /// </summary>
-    IBuilder<TEntity> WithGuid(Guid guid);
+    ITestDataBuilder<TEntity> WithGuid(Guid guid);
     
     /// <summary>
     /// Optional
     /// </summary>
-    IBuilder<TEntity> WithRecursionLevel(int recursionLevel);
+    ITestDataBuilder<TEntity> WithRecursionLevel(int recursionLevel);
     
     /// <summary>
     /// Optional
     /// </summary>
-    IBuilder<TEntity> WithStringPrefix(string prefix);
+    ITestDataBuilder<TEntity> WithStringPrefix(string prefix);
     
     /// <summary>
     /// Optional
     /// </summary>
-    IBuilder<TEntity> WithStringSuffix(string suffix);
+    ITestDataBuilder<TEntity> WithStringSuffix(string suffix);
     
     /// <summary>
     /// Optional
     /// </summary>
-    IBuilder<TEntity> WithStartingNumber(int startingNumber);
+    ITestDataBuilder<TEntity> WithStartingNumber(int startingNumber);
     
     /// <summary>
     /// Optional
     /// </summary>
-    IBuilder<TEntity> WithLogger(ILogger logger);
+    ITestDataBuilder<TEntity> WithLogger(ILogger logger);
     
     /// <summary>
     /// Optional
     /// </summary>
-    IBuilder<TEntity> WithListSize(int size);
+    ITestDataBuilder<TEntity> WithListSize(int size);
 
 }
