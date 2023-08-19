@@ -14,3 +14,6 @@ nCrunchTemp_*
 
 ## SonarQube ##
 .sonarqube
+
+## Rider dotCover ##
+dotCover.*
