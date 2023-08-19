@@ -11,3 +11,6 @@ obj/
 *_NCrunch*
 nCrunchTemp_*
 *.ncrunch*
+
+## SonarQube ##
+.sonarqube
