@@ -32,9 +32,4 @@ internal class StrategyContainer : IStrategyContainer
         }
         return strategy;
     }
-    
-    public void Register(IStrategy strategy)
-    {
-        _registeredStrategies.Add(strategy);
-    }
 }
