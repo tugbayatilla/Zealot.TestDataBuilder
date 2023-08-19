@@ -7,7 +7,7 @@ internal class ArrayStrategy : IStrategy
 {
     public Expression<Func<Type, bool>> ResolveCondition => info => info.IsArray;
 
-    public object Execute(IContext context)
+    public object? Execute(IContext context)
     {
         var elementType = context.Scope.EntityType.GetElementType();
         var instance = Array.CreateInstance(elementType!, context.With.List.Size);
@@ -21,6 +21,6 @@ internal class ArrayStrategy : IStrategy
             instance?.SetValue(value, i);
         }
 
-        return instance!;
+        return instance;
     }
 }

@@ -5,7 +5,7 @@ namespace Zealot.Internals.Strategies;
 
 internal class ClassStrategy : IStrategy
 {
-    public object Execute(IContext context)
+    public object? Execute(IContext context)
     {
         var newContext = CreateNewContextIfItIsForAProperty(context, context.Scope.EntityType);
 

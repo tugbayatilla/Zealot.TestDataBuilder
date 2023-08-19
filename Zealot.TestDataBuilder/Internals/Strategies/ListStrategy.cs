@@ -9,7 +9,7 @@ internal class ListStrategy : IStrategy
     public Expression<Func<Type, bool>> ResolveCondition
         => info => AvailableTypes.Any(x => x.Name == info.Name);
 
-    public object Execute(IContext context)
+    public object? Execute(IContext context)
     {
         var listType = context.Scope.EntityType;
         listType = ChangeListTypeIfGeneric(context, listType);
