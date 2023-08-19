@@ -12,17 +12,22 @@ internal class NumberStrategy : IStrategy
 
     public object Execute(IContext context)
     {
-        var type = context.Scope.EntityType;
+        var type = FindType(context);
 
         SetStartingNumberAtTheBeginning(context);
 
-        if (!type.IsNullable()) return Convert.ChangeType(_currentNumber++, type);
+        var nextNumber = Convert.ChangeType(_currentNumber++, type);
         
-        var underlyingType = type.GenericTypeArguments.FirstOrDefault();
+        return type.IsNullable() 
+            ? Expression.Constant(nextNumber, type).Value! 
+            : nextNumber;
+    }
 
-        var finalExpression = Expression.Constant(Convert.ChangeType(_currentNumber++, underlyingType!), type);
-        return finalExpression.Value;
-
+    private static Type FindType(IContext context)
+    {
+        var type = context.Scope.EntityType;
+        if (type.IsNullable()) type = type.GenericTypeArguments.FirstOrDefault();
+        return type!;
     }
 
     private void SetStartingNumberAtTheBeginning(IContext context)
