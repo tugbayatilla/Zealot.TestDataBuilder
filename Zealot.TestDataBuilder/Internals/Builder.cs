@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
 using Zealot.Interfaces;
-using Zealot.Strategies;
 
 namespace Zealot.Internals;
 
@@ -43,12 +42,6 @@ internal class Builder<TEntity> : IBuilder<TEntity>
     public IBuilder<TEntity> WithDate(DateTime dateTime)
     {
         _context.With.Date.UtcDate = dateTime;
-        return this;
-    }
-
-    public IBuilder<TEntity> WithStrategy(IStrategy strategy)
-    {
-        _context.StrategyContainer.Register(strategy);
         return this;
     }
 

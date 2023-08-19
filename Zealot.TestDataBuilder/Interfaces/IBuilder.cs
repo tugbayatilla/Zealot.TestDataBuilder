@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using Zealot.Strategies;
 
 namespace Zealot.Interfaces;
 
@@ -29,12 +28,7 @@ public interface IBuilder<out TEntity>
     /// Optional
     /// </summary>
     IBuilder<TEntity> WithDate(DateTime dateTime);
-    
-    /// <summary>
-    /// Optional
-    /// </summary>
-    IBuilder<TEntity> WithStrategy(IStrategy strategy);
-    
+
     /// <summary>
     /// Optional
     /// </summary>

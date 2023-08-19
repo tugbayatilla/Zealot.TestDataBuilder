@@ -2,7 +2,7 @@
 
 namespace Zealot.Interfaces;
 
-public interface IStrategy
+internal interface IStrategy
 {
     Expression<Func<Type, bool>> ResolveCondition { get; }
     object Execute(IContext context);

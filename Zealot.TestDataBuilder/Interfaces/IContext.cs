@@ -1,6 +1,6 @@
 ﻿namespace Zealot.Interfaces;
 
-public interface IContext
+internal interface IContext
 {
     IContext CloneWithType(Type entityType);
     IStrategyContainer StrategyContainer { get; }

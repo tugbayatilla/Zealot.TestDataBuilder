@@ -1,6 +1,6 @@
 namespace Zealot.Interfaces;
 
-public interface IWith
+internal interface IWith
 {
     IWithOnly Only { get; }
     IWithRecursionLevel RecursionLevel { get; }
