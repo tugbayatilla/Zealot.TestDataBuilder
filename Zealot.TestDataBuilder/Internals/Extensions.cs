@@ -1,4 +1,3 @@
-using System.Linq.Expressions;
 using System.Reflection;
 
 namespace Zealot.Internals;
@@ -12,13 +11,11 @@ internal static class Extensions
 
     public static bool IsNullable(this Type type)
     {
-        // ref-type
         if (!type.IsValueType)
         {
             return true;
         }
 
-        // Nullable<T>
         return Nullable.GetUnderlyingType(type) != null;
     }
 

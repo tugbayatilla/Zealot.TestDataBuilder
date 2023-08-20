@@ -1,5 +1,3 @@
-using Zealot.Internals.Interfaces;
-
 namespace Zealot.Internals.Withs;
 
 internal class WithOverride : IWithOverride

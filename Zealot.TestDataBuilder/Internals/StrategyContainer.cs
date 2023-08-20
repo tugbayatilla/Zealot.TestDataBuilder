@@ -1,4 +1,3 @@
-using Zealot.Internals.Interfaces;
 using Zealot.Internals.Strategies;
 
 namespace Zealot.Internals;

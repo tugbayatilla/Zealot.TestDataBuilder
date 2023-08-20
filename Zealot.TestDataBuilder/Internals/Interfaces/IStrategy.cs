@@ -1,6 +1,4 @@
-﻿using System.Linq.Expressions;
-
-namespace Zealot.Internals.Interfaces;
+﻿namespace Zealot.Internals.Interfaces;
 
 internal interface IStrategy
 {

@@ -58,10 +58,9 @@ public interface ITestDataBuilder<out TEntity>
     /// Optional
     /// </summary>
     ITestDataBuilder<TEntity> WithLogger(ILogger logger);
-    
+
     /// <summary>
     /// Optional
     /// </summary>
     ITestDataBuilder<TEntity> WithListSize(int size);
-
 }

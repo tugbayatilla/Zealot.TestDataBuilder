@@ -1,5 +1,3 @@
-using Zealot.Internals.Interfaces;
-
 namespace Zealot.Internals;
 
 internal class WithRecursionLevel : IWithRecursionLevel

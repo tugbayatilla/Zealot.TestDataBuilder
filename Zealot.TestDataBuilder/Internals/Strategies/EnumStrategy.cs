@@ -1,7 +1,4 @@
-﻿using System.Linq.Expressions;
-using Zealot.Internals.Interfaces;
-
-namespace Zealot.Internals.Strategies;
+﻿namespace Zealot.Internals.Strategies;
 
 internal class EnumStrategy : IStrategy
 {
