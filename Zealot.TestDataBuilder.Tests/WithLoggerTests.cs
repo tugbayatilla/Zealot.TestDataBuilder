@@ -1,8 +1,8 @@
 using Microsoft.Extensions.Logging;
 using Moq;
-using Zealot.SampleBuilder.Tests.TestObjects;
+using Zealot.Tests.TestObjects;
 
-namespace Zealot.SampleBuilder.Tests;
+namespace Zealot.Tests;
 
 public class WithLoggerTests
 {

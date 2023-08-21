@@ -1,8 +1,8 @@
 using Zealot.Internals;
 using Zealot.Internals.Interfaces;
-using Zealot.SampleBuilder.Tests.TestObjects;
+using Zealot.Tests.TestObjects;
 
-namespace Zealot.SampleBuilder.Tests;
+namespace Zealot.Tests;
 
 public class WithOnlyTests
 {

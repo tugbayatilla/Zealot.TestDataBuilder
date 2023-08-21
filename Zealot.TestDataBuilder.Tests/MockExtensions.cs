@@ -2,7 +2,7 @@ using System.Linq.Expressions;
 using Microsoft.Extensions.Logging;
 using Moq;
 
-namespace Zealot.SampleBuilder.Tests;
+namespace Zealot.Tests;
 
 public static class MockExtensions
 {

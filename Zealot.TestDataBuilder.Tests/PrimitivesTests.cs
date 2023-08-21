@@ -1,4 +1,4 @@
-namespace Zealot.SampleBuilder.Tests;
+namespace Zealot.Tests;
 
 public class PrimitivesTests
 {

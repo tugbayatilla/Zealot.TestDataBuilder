@@ -1,3 +1,3 @@
-namespace Zealot.SampleBuilder.Tests.TestObjects;
+namespace Zealot.Tests.TestObjects;
 
 internal enum EnumWithNothing { }

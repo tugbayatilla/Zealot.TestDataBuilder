@@ -1,6 +1,6 @@
 using Zealot.Internals;
 
-namespace Zealot.SampleBuilder.Tests;
+namespace Zealot.Tests;
 
 public static class TestHelper
 {

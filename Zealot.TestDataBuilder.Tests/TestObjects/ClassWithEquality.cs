@@ -1,4 +1,4 @@
-namespace Zealot.SampleBuilder.Tests.TestObjects;
+namespace Zealot.Tests.TestObjects;
 
 // ReSharper disable once ClassNeverInstantiated.Global
 internal class ClassWithEquality

@@ -1,4 +1,4 @@
-namespace Zealot.SampleBuilder.Tests.TestObjects;
+namespace Zealot.Tests.TestObjects;
 
 public class ClassWithGenericICollection
 {

@@ -7,7 +7,7 @@
 
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
-    <RootNamespace>Zealot.SampleBuilder.Tests</RootNamespace>
+    <RootNamespace>Zealot.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

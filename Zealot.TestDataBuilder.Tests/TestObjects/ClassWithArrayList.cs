@@ -1,6 +1,6 @@
 using System.Collections;
 
-namespace Zealot.SampleBuilder.Tests.TestObjects;
+namespace Zealot.Tests.TestObjects;
 
 public class ClassWithArrayList
 {
