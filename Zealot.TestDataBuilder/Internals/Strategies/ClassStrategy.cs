@@ -23,9 +23,10 @@ internal class ClassStrategy : IStrategy
         && !info.IsArray
         && !new ListStrategy().ResolveCondition.Compile().Invoke(info);
 
-    private static void OverrideProperties(IContext newContext)
+    private static void OverrideProperties(IContext context)
     {
-        newContext.With.Override.Apply(newContext.Scope.Entity);
+        if (context.Scope.Entity == null) return;
+        context.With.Override.Apply(context.Scope.Entity);
     }
 
     private static void HandleForeachProperty(IContext context)
