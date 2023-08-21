@@ -46,12 +46,15 @@ internal class ClassStrategy : IStrategy
                 .Execute(newContext);
             
             newContext.Scope = newContext.Scope with {Entity = entity};
-
             
-            var pi = newContext.Scope.Parent.EntityType.GetProperty(newContext.Scope.ParentPropertyName);
-            pi.SecureSetValue(newContext.Scope.Parent.Entity, newContext.Scope.Entity);
-            
+            SetEntityToParentProperty(newContext);
         }
+    }
+
+    private static void SetEntityToParentProperty(IContext newContext)
+    {
+        var pi = newContext.Scope.Parent.EntityType.GetProperty(newContext.Scope.ParentPropertyName);
+        pi.SecureSetValue(newContext.Scope.Parent.Entity, newContext.Scope.Entity);
     }
 
     private static void CreateAnInstanceOfAnEntityAndSetToScope(IContext context)
