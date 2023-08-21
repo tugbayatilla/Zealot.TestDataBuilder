@@ -17,7 +17,8 @@ internal class TestDataBuilder<TEntity> : ITestDataBuilder<TEntity>
             _context.Scope.EntityType.Name);
 
         var strategy = _context.StrategyContainer.Resolve(_context.Scope.EntityType);
-        return (TEntity) strategy.Execute(_context);
+        var result = strategy.Execute(_context);
+        return result != default ? (TEntity) result : default!;
     }
 
     public ITestDataBuilder<TEntity> WithOnly<TProperty>()

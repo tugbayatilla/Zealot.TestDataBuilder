@@ -32,4 +32,14 @@ public class BuildTests
             .Throw<NotSupportedException>()
             .WithMessage($"The strategy with type '{typeof(IntPtr).FullName}' is not supported.");
     }
+    
+    [Fact]
+    public void Returns_null_for_class_with_private_constructor()
+    {
+        TestDataBuilder
+            .For<ClassWithPrivateConstructor>()
+            .Build()
+            .Should()
+            .BeNull();
+    }
 }
