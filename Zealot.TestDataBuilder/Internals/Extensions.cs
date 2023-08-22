@@ -21,9 +21,6 @@ internal static class Extensions
 
     public static object? GetDefault(this Type type)
     {
-        
-        if (type == null) throw new ArgumentNullException("type");
-        
         Expression<Func<object>> e = Expression.Lambda<Func<object>>(
             Expression.Convert(
                 Expression.Default(type), typeof(object)
