@@ -68,4 +68,14 @@ public class DictionaryTests
         entity.StringAndIntReadOnlyProp.Count.Should().Be(2);
     }
     
+    [Fact]
+    public void Support_dictionary_with_unsupported_type_ICollection()
+    {
+        var entity = TestDataBuilder
+            .For<ClassWithUnsupportedType>()
+            .Build();
+
+        entity.Prop.Count.Should().Be(0);
+    }
+    
 }
