@@ -15,14 +15,14 @@ public static class MockExtensions
             times);
     }
 
-    public static void VerifyLog(this Mock<ILogger> loggerMock, LogLevel logLevel, string message,
+    private static void VerifyLog(this Mock<ILogger> loggerMock, LogLevel logLevel, string message,
         Expression<Func<Exception, bool>> exceptionMatch, Times times)
     {
         loggerMock.Verify(
             x => x.Log(
                 It.Is<LogLevel>(l => l == logLevel),
                 It.IsAny<EventId>(),
-                It.Is<It.IsAnyType>((v, t) => v.ToString().Contains(message)),
+                It.Is<It.IsAnyType>((v, t) => v.ToString()!.Contains(message)),
                 It.Is(exceptionMatch),
                 It.Is<Func<It.IsAnyType, Exception, string>>((v, t) => true)!
             ), times);
