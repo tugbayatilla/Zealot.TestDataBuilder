@@ -53,8 +53,8 @@ internal class ClassStrategy : IStrategy
 
     private static void SetEntityToParentProperty(IContext newContext)
     {
-        var pi = newContext.Scope.Parent.EntityType.GetProperty(newContext.Scope.ParentPropertyName);
-        pi.SecureSetValue(newContext.Scope.Parent.Entity, newContext.Scope.Entity);
+        var pi = newContext.Scope.Parent!.EntityType.GetProperty(newContext.Scope.ParentPropertyName!);
+        pi!.SecureSetValue(newContext.Scope.Parent.Entity!, newContext.Scope.Entity!);
     }
 
     private static void CreateAnInstanceOfAnEntityAndSetToScope(IContext context)
