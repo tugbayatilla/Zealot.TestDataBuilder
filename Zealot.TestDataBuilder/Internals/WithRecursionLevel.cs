@@ -15,7 +15,7 @@ internal class WithRecursionLevel : IWithRecursionLevel
         return true;
     }
 
-    private (bool exist, Dictionary<Type, int> level) RecursionExist(Scope scope, Type type)
+    private static (bool exist, Dictionary<Type, int> level) RecursionExist(Scope scope, Type type)
     {
         Dictionary<Type, int> level = new Dictionary<Type, int>();
         var exist = false;
