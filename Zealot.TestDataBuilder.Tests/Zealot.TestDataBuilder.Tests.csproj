@@ -10,6 +10,14 @@
     <RootNamespace>Zealot.Tests</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <NoWarn>1701;1702;CS8618</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <NoWarn>1701;1702;CS8618</NoWarn>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="6.11.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
@@ -28,5 +36,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Zealot.TestDataBuilder\Zealot.TestDataBuilder.csproj" />
   </ItemGroup>
+
 
 </Project>
