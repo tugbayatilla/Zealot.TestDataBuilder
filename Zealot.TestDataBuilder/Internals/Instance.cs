@@ -19,10 +19,10 @@ internal static class Instance
         if (ctorInfo != null)
         {
             var ctorParametersInfo = ctorInfo.GetParameters();
-            constructorArguments.AddRange(
-                ctorParametersInfo.Select(info => info.ParameterType.IsClass
-                    ? Create(info.ParameterType)
-                    : info.ParameterType.GetDefault()));
+            var parameters = ctorParametersInfo.Select(info => info.ParameterType.IsClass
+                ? Create(info.ParameterType)
+                : info.ParameterType.GetDefault());
+            constructorArguments.AddRange(parameters!);
 
             var createdActivator = GetActivator<object>(ctorInfo);
             instance = createdActivator(constructorArguments.ToArray());
