@@ -22,5 +22,6 @@ public class BooleanTests
             .Build();
 
         entity.Prop1.Should().Be(true);
+        entity.Prop2.Should().Be(true);
     }
 }

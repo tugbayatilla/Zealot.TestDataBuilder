@@ -39,12 +39,15 @@ public class ArrayTests
     {
         var entity = TestDataBuilder
             .For<ClassWithTwoBoolArray>()
-            .WithOverride(p=>p.Prop1[0] = true)
             .Build();
 
         entity.Prop1.Should().NotBeNull();
         entity.Prop1.Length.Should().Be(2);
         entity.Prop1[0].Should().BeTrue();
+        
+        entity.Prop2.Should().NotBeNull();
+        entity.Prop2.Length.Should().Be(2);
+        entity.Prop2[0].Should().BeTrue();
 
     }
     
