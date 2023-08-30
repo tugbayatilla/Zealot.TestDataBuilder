@@ -11,10 +11,10 @@ public class InheritanceTests
             .For<ClassWithInheritance>()
             .Build();
 
-        instance.Prop.Should().MatchRegex("BaseStringProp_[0-9]");
-        instance.PropBase.Should().MatchRegex( "StringProp1_[0-9]");
+        instance.Prop.Should().MatchRegex("Prop_[0-9]");
+        instance.PropBase.Should().MatchRegex( "PropBase_[0-9]");
         instance.PropListBase.Count.Should().Be(2);
-        instance.PropListBase[0].Should().MatchRegex("ListOfStringProp_[0-9]");
-        instance.PropListBase[1].Should().MatchRegex("ListOfStringProp_[0-9]");
+        instance.PropListBase[0].Should().MatchRegex("PropListBase_[0-9]");
+        instance.PropListBase[1].Should().MatchRegex("PropListBase_[0-9]");
     }
 }

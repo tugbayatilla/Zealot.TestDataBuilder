@@ -227,10 +227,10 @@ public class SampleTests
             .Build();
 
         instance.ClassWithInheritanceProp.Should().NotBeNull();
-        instance.ClassWithInheritanceProp.PropBase.Should().MatchRegex("StringProp1_[0-9]");
+        instance.ClassWithInheritanceProp.PropBase.Should().MatchRegex("PropBase_[0-9]");
         instance.ClassWithInheritanceProp.PropListBase.Count.Should().Be(2);
-        instance.ClassWithInheritanceProp.PropListBase[0].Should().MatchRegex("ListOfStringProp_[0-9]");
-        instance.ClassWithInheritanceProp.PropListBase[1].Should().MatchRegex("ListOfStringProp_[0-9]");
+        instance.ClassWithInheritanceProp.PropListBase[0].Should().MatchRegex("PropListBase_[0-9]");
+        instance.ClassWithInheritanceProp.PropListBase[1].Should().MatchRegex("PropListBase_[0-9]");
     }
 
     [Theory]
