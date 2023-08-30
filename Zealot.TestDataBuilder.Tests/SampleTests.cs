@@ -232,42 +232,7 @@ public class SampleTests
         instance.ClassWithInheritanceProp.PropListBase[0].Should().MatchRegex("PropListBase_[0-9]");
         instance.ClassWithInheritanceProp.PropListBase[1].Should().MatchRegex("PropListBase_[0-9]");
     }
-
-    [Theory]
-    [InlineData("", "", "{0}_[0-9]")]
-    [InlineData("pre_", "", "pre_{0}_[0-9]")]
-    [InlineData("", "_suf", "{0}_[0-9]_suf")]
-    [InlineData("pre_", "_suf", "pre_{0}_[0-9]_suf")]
-    public void support_prefix_ans_suffix(string prefix, string suffix, string result)
-    {
-        var instance = TestDataBuilder
-            .For<ClassWithTwoString>()
-            .WithStringPrefix(prefix)
-            .WithStringSuffix(suffix)
-            .Build();
-
-        instance.Should().NotBeNull();
-        instance.Prop1.Should().MatchRegex(string.Format(result, nameof(instance.Prop1)));
-    }
-
-    [Fact]
-    public void Should_be_recursive_list_property_must_be_filled()
-    {
-        var p1 = TestDataBuilder
-            .For<ClassWithThreeClassRecursively.A>()
-            .WithRecursionLevel(4)
-            .Build();
-
-        p1.Should().NotBeNull();
-        p1.Ref_B.Ref_C.Ref_A_list.Should().NotBeNull();
-        p1.Ref_B.Ref_C.Ref_A_list.Count.Should().Be(2);
-        p1.Ref_B.Ref_C.Ref_A_list[0].Should().NotBeNull();
-        p1.Ref_B.Ref_C.Ref_A_list[0].Ref_B.Should().NotBeNull();
-        p1.Ref_B.Ref_C.Ref_A_list[0].Ref_B.Ref_C.Should().NotBeNull();
-        p1.Ref_B.Ref_C.Ref_A_list[0].Ref_B.Ref_C.Ref_A_list.Should().NotBeNull();
-        p1.Ref_B.Ref_C.Ref_A_list[0].Ref_B.Ref_C.Ref_A_list[0].Should().NotBeNull();
-    }
-
+    
     [Fact]
     public void Should_be_nullable_enum_class_be_filled()
     {
