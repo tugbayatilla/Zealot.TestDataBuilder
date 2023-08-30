@@ -1,20 +1,8 @@
 namespace Zealot.Tests.TestObjects;
 
-public class InheritedClass : BaseClass
-{
-    public string BaseStringProp { get; set; }
-}
-
-public class BaseClass
-{
-    public string StringProp1 { get; set; }
-    public List<string> ListOfStringProp { get; set; }
-    
-}
-
 public class ClassHavingAnotherClassAsProperty
 {
-    public InheritedClass InheritedClassProp { get; set; }
+    public ClassWithInheritance ClassWithInheritanceProp { get; set; }
 
     public string Prop { get; set; }
 }

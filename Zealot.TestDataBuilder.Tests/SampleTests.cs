@@ -220,31 +220,17 @@ public class SampleTests
     }
 
     [Fact]
-    public void Should_create_sample_data_for_inherited_class()
-    {
-        var instance = TestDataBuilder
-            .For<InheritedClass>()
-            .Build();
-
-        instance.BaseStringProp.Should().MatchRegex("BaseStringProp_[0-9]");
-        instance.StringProp1.Should().MatchRegex( "StringProp1_[0-9]");
-        instance.ListOfStringProp.Count.Should().Be(2);
-        instance.ListOfStringProp[0].Should().MatchRegex("ListOfStringProp_[0-9]");
-        instance.ListOfStringProp[1].Should().MatchRegex("ListOfStringProp_[0-9]");
-    }
-
-    [Fact]
     public void Should_create_sample_data_for_having_another_class_as_property()
     {
         var instance = TestDataBuilder
             .For<ClassHavingAnotherClassAsProperty>()
             .Build();
 
-        instance.InheritedClassProp.Should().NotBeNull();
-        instance.InheritedClassProp.StringProp1.Should().MatchRegex("StringProp1_[0-9]");
-        instance.InheritedClassProp.ListOfStringProp.Count.Should().Be(2);
-        instance.InheritedClassProp.ListOfStringProp[0].Should().MatchRegex("ListOfStringProp_[0-9]");
-        instance.InheritedClassProp.ListOfStringProp[1].Should().MatchRegex("ListOfStringProp_[0-9]");
+        instance.ClassWithInheritanceProp.Should().NotBeNull();
+        instance.ClassWithInheritanceProp.PropBase.Should().MatchRegex("StringProp1_[0-9]");
+        instance.ClassWithInheritanceProp.PropListBase.Count.Should().Be(2);
+        instance.ClassWithInheritanceProp.PropListBase[0].Should().MatchRegex("ListOfStringProp_[0-9]");
+        instance.ClassWithInheritanceProp.PropListBase[1].Should().MatchRegex("ListOfStringProp_[0-9]");
     }
 
     [Theory]
