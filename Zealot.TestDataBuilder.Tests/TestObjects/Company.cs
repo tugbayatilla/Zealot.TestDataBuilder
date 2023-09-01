@@ -6,11 +6,11 @@ internal class Company
     public string Name { get; set; }
     public DateTime FoundAt { get; set; }
     public DateTime? Closed { get; set; }
-    public List<Branch> Branches { get; set; } = default!;
+    public List<Branch> Branches { get; set; }
     public MainBranch MainBranch { get; set; }
     public Employee Owner { get; set; }
-    public IEnumerable<Employee> SubWorkers { get; set; } = default!;
-    public List<Employee> MainWorkers { get; set; } = default!;
+    public IEnumerable<Employee> SubWorkers { get; set; }
+    public List<Employee> MainWorkers { get; set; }
     public Address MainAddress { get; set; }
 }
 
@@ -37,5 +37,5 @@ internal class Address
         Name = name;
     }
 
-    public string Name { get; set; }
+    public string Name { get; }
 }

@@ -22,5 +22,6 @@ public class ConstructorHavingParameterTests
             .Build();
 
         entity.Prop1.Should().MatchBuilderNamingRegex(nameof(entity.Prop1));
+        entity.Prop2.Should().MatchBuilderNamingRegex(nameof(entity.Prop2));
     }
 }

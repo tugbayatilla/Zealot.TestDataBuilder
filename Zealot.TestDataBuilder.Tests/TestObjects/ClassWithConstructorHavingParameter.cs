@@ -7,6 +7,6 @@ internal class ClassWithConstructorHavingParameter
         Prop1 = argument.Prop1;
         Prop2 = argument.Prop2;
     }
-    public string Prop1 { get; set; }
-    public string Prop2 { get; set; }
+    public string Prop1 { get; }
+    public string Prop2 { get; }
 }

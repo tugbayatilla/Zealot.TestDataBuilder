@@ -49,7 +49,7 @@ public class CompanyTests
         
         // Main Address
         company.MainAddress.Should().NotBeNull();
-        company.MainAddress.Name.Should().MatchBuilderNamingRegex("Name");
+        company.MainAddress.Name.Should().MatchBuilderNamingRegex("name");
         
         // Main Workers
         company.MainWorkers.Should().NotBeNull();

@@ -1,4 +1,6 @@
 using System.Reflection;
+using Zealot.Internals.Strategies;
+using Zealot.Internals.Withs;
 
 namespace Zealot.Internals;
 
@@ -19,9 +21,13 @@ internal static class Instance
         if (ctorInfo != null)
         {
             var ctorParametersInfo = ctorInfo.GetParameters();
-            var parameters = ctorParametersInfo.Select(info => info.ParameterType.IsClass
-                ? Create(info.ParameterType)
-                : info.ParameterType.GetDefault());
+            var parameters = ctorParametersInfo.Select(info =>
+            {
+                var context = new Context(info.ParameterType, new With(), new StrategyContainer());
+                var strategy = context.StrategyContainer.Resolve(info.ParameterType);
+                context.Scope = context.Scope with { ParentPropertyName = info.Name};
+                return strategy.Execute(context);
+            });
             constructorArguments.AddRange(parameters!);
 
             var createdActivator = GetActivator<object>(ctorInfo);
