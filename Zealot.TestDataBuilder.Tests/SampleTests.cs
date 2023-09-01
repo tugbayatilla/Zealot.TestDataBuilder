@@ -255,6 +255,27 @@ public class SampleTests
         p1.ClassOfGodArrayProp.Length.Should().Be(2);
         p1.ClassOfGodArrayProp[0].BooleanProperty.Should().BeTrue();
 
-        p1.Recursive_A.Should().NotBeNull();
+        // A
+        p1.RecursiveA.Should().NotBeNull();
+        p1.RecursiveA.Name.Should().MatchBuilderNamingRegex(nameof(p1.RecursiveA.Name));
+
+        // Ref B
+        p1.RecursiveA.RefB.Should().NotBeNull();
+        p1.RecursiveA.RefB.Name.Should().MatchBuilderNamingRegex(nameof(p1.RecursiveA.RefB.Name));
+        
+        // Ref B under Ref C
+        p1.RecursiveA.RefB.RefC.Should().NotBeNull();
+        p1.RecursiveA.RefB.RefC.Name.Should().MatchBuilderNamingRegex(nameof(p1.RecursiveA.RefB.RefC.Name));
+
+        // Ref A - No recursion so it should be null
+        p1.RecursiveA.RefB.RefC.RefA.Should().BeNull();
+
+        // Ref A list
+        p1.RecursiveA.RefB.RefC.RefAList.Should().NotBeNull();
+        p1.RecursiveA.RefB.RefC.RefAList.Count.Should().Be(2);
+        
+        //No recursion so elements inside list should be null
+        p1.RecursiveA.RefB.RefC.RefAList[0].Should().BeNull();
+        p1.RecursiveA.RefB.RefC.RefAList[1].Should().BeNull();
     }
 }

@@ -6,19 +6,19 @@ internal class ClassWithThreeClassRecursively
     {
         public string Name { get; set; }
 
-        public B Ref_B { get; set; }
+        public B RefB { get; set; }
     }
 
     internal class B
     {
         public string Name { get; set; }
-        public C Ref_C { get; set; }
+        public C RefC { get; set; }
     }
 
     internal class C
     {
         public string Name { get; set; }
-        public A Ref_A { get; set; }
-        public List<A> Ref_A_list { get; set; }
+        public A RefA { get; set; }
+        public List<A> RefAList { get; set; }
     }
 }
