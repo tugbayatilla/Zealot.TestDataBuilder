@@ -16,6 +16,18 @@ public class WithOnlyTests
 
         TestHelper.CheckDefaultExcept<string>(entity);
     }
+    
+    [Fact]
+    public void WithOnly_has_idempotency()
+    {
+        var entity = TestDataBuilder
+            .For<ClassWithAllPrimitives>()
+            .WithOnly<string>()
+            .WithOnly<string>()
+            .Build();
+
+        TestHelper.CheckDefaultExcept<string>(entity);
+    }
 
     [Fact]
     public void IWithOnlyContainer_Exist_with_IReadOnlyDictionary()
