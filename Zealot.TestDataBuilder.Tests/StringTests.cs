@@ -30,4 +30,15 @@ public class StringTests
 
         instance.Prop.Should().MatchBuilderNamingRegex(nameof(instance.Prop));
     }
+    
+    [Fact]
+    public void Support_unique_string_content()
+    {
+        var instance = TestDataBuilder
+            .For<ClassWithTwoString>()
+            .Build();
+
+        instance.Prop1.Should().MatchBuilderNamingRegex(nameof(instance.Prop1));
+        instance.Prop2.Should().MatchBuilderNamingRegex(nameof(instance.Prop2));
+    }
 }
