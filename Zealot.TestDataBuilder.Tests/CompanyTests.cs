@@ -19,7 +19,7 @@ public class CompanyTests
 
         // Company
         company.CompanyId.Should().Be(1);
-        company.Name.Should().MatchRegex($"{nameof(company.Name)}_[0-9]");//todo: make an extension method for this
+        company.Name.Should().MatchRegex($"{nameof(company.Name)}_[0-9]");
         company.FoundAt.Should().Be(now);
         company.Closed.Should().Be(now);
         
@@ -44,8 +44,8 @@ public class CompanyTests
         company.SubWorkers.Count().Should().Be(2);
         company.SubWorkers.First().Company.Should().NotBeSameAs(company);
         company.SubWorkers.Last().Company.Should().NotBeSameAs(company);
-        company.SubWorkers.First().Name.Should().MatchRegex("Name_[0-9]");//todo: make an extension method for this
-        company.SubWorkers.Last().Name.Should().MatchRegex("Name_[0-9]");
+        company.SubWorkers.First().Name.Should().MatchRegex("Name_[0-9]");
+        company.SubWorkers.Last().Name.Should().MatchBuilderNamingRegex("Name");
         
         // Main Address
         company.MainAddress.Should().NotBeNull();
