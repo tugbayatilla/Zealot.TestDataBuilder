@@ -15,3 +15,6 @@ resharper_property_can_be_made_init_only_global_highlighting = none
 
 # UnassignedGetOnlyAutoProperty
 resharper_unassigned_get_only_auto_property_highlighting = none
+
+# UnusedMethodReturnValue.Global
+resharper_unused_method_return_value_global_highlighting = none
