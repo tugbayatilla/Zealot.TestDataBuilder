@@ -64,10 +64,4 @@ internal class ClassWithAllPrimitives
     
     public uint? UInt32NullableProp { get; set; }
     public uint? UInt32NullableProp2 { get; set; }
-    
-    public ulong UInt64Prop { get; set; }
-    public ulong UInt64Prop2 { get; set; }
-    
-    public ulong? UInt64NullableProp { get; set; }
-    public ulong? UInt64NullableProp2 { get; set; }
 }

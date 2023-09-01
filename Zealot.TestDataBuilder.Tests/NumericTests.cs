@@ -201,13 +201,13 @@ public class NumericTests
     public void Support_unsigned_int64()
     {
         var subject = TestDataBuilder
-            .For<ClassWithAllPrimitives>()
+            .For<ClassWithTwoUnsignedInt64>()
             .WithOnly<ulong>()
             .Build();
-        subject.UInt64Prop.Should().NotBe(0);
-        subject.UInt64Prop2.Should().NotBe(0);
+        subject.Prop.Should().Be(1);
+        subject.Prop2.Should().Be(2);
 
-        subject.UInt64Prop.Should().NotBe(subject.UInt64Prop2);
+        subject.Prop.Should().NotBe(subject.Prop2);
     }
     
     [Fact]
