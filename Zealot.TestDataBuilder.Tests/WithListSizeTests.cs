@@ -210,4 +210,15 @@ public class WithListSizeTests
 
         entity.Prop.Count.Should().Be(3);
     }
+    
+    [Fact]
+    public void Accepts_only_positive_numbers()
+    {
+        var entity = TestDataBuilder
+            .For<ClassWithOneStringList>()
+            .WithListSize(-1)
+            .Build();
+
+        entity.Prop.Count.Should().Be(0);
+    }
 }
