@@ -33,6 +33,16 @@ public class PrimitivesTests
     }
     
     [Fact]
+    public void Support_int_nullable()
+    {
+        var entity = TestDataBuilder
+            .For<int?>()
+            .Build();
+        
+        entity.Should().Be(1);
+    }
+    
+    [Fact]
     public void Support_bool()
     {
         var entity = TestDataBuilder
