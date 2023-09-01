@@ -223,4 +223,25 @@ public class NumericTests
         subject.UInt64NullableProp.Should().NotBe(subject.UInt64NullableProp2);
     }
     
+    [Fact]
+    public void Support_bool()
+    {
+        var subject = TestDataBuilder
+            .For<ClassWithTwoBool>()
+            .Build();
+        
+        subject.Prop.Should().BeTrue();
+        subject.Prop2.Should().BeTrue();
+    }
+    
+    [Fact]
+    public void Support_bool_nullable()
+    {
+        var subject = TestDataBuilder
+            .For<ClassWithTwoBoolNullable>()
+            .Build();
+        
+        subject.Prop1.Should().BeTrue();
+        subject.Prop2.Should().BeTrue();
+    }
 }
