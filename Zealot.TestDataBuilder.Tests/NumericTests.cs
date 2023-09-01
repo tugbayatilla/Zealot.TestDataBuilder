@@ -49,18 +49,6 @@ public class NumericTests
         subject.Prop2.Should().Be(2);
         subject.Prop1.Should().NotBe(subject.Prop2);
     }
-
-    [Fact]
-    public void Support_double()
-    {
-        var subject = TestDataBuilder
-            .For<ClassWithTwoDouble>()
-            .Build();
-        subject.DoubleProp.Should().NotBe(0);
-        subject.DoubleProp2.Should().NotBe(0);
-
-        subject.DoubleProp.Should().NotBe(subject.DoubleProp2);
-    }
     
     [Fact]
     public void Support_short()
@@ -94,19 +82,26 @@ public class NumericTests
     }
     
     [Fact]
+    public void Support_double()
+    {
+        var subject = TestDataBuilder
+            .For<ClassWithTwoDouble>()
+            .Build();
+        
+        subject.Prop1.Should().Be(0);
+        subject.Prop2.Should().Be(1);
+        subject.Prop1.Should().NotBe(subject.Prop2);
+    }
+    
+    [Fact]
     public void Support_double_nullable()
     {
         var subject = TestDataBuilder
             .For<ClassWithTwoDoubleNullable>()
-            .WithOnly<double?>()
             .Build();
         
-        subject.Prop1.Should().NotBeNull();
-        subject.Prop2.Should().NotBeNull();
-        
-        subject.Prop1.Should().NotBe(0);
-        subject.Prop2.Should().NotBe(0);
-
+        subject.Prop1.Should().Be(0);
+        subject.Prop2.Should().Be(1);
         subject.Prop1.Should().NotBe(subject.Prop2);
     }
 
