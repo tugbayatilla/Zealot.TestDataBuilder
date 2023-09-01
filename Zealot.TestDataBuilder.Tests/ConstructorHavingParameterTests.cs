@@ -21,6 +21,6 @@ public class ConstructorHavingParameterTests
             .For<ClassWithConstructorHavingParameter>()
             .Build();
 
-        entity.Prop1.Should().MatchRegex("Prop1_[0-9]");
+        entity.Prop1.Should().MatchBuilderNamingRegex(nameof(entity.Prop1));
     }
 }

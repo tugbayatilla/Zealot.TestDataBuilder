@@ -11,14 +11,14 @@ public class StringTests
             .For<ClassWithAllPrimitives>()
             .WithOnly<string>()
             .Build();
-        
-        entity.StringProp.Should().MatchRegex("StringProp_[0-9]");
+
+        entity.StringProp.Should().MatchBuilderNamingRegex(nameof(entity.StringProp));
         
         entity.StringNullableProp.Should().NotBeNull();
         entity.StringNullableProp2.Should().NotBeNull();
         
-        entity.StringNullableProp.Should().MatchRegex("StringNullableProp_[0-9]");
-        entity.StringNullableProp2.Should().MatchRegex("StringNullableProp2_[0-9]");
+        entity.StringNullableProp.Should().MatchBuilderNamingRegex(nameof(entity.StringNullableProp));
+        entity.StringNullableProp2.Should().MatchBuilderNamingRegex(nameof(entity.StringNullableProp2));
     }
     
     [Fact]
@@ -28,6 +28,6 @@ public class StringTests
             .For<ClassWithStringHavingDefaultValue>()
             .Build();
 
-        instance.Prop.Should().MatchRegex("Prop_[0-9]");
+        instance.Prop.Should().MatchBuilderNamingRegex(nameof(instance.Prop));
     }
 }

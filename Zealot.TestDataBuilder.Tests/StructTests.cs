@@ -13,7 +13,7 @@ public class StructTests
 
         subject.Prop.Should().NotBeNull();
         subject.Prop.BoolProp.Should().BeTrue();
-        subject.Prop.StringProp.Should().MatchRegex("StringProp_[0-9]");
+        subject.Prop.StringProp.Should().MatchBuilderNamingRegex(nameof(subject.Prop.StringProp));
     }
     
     [Fact]
