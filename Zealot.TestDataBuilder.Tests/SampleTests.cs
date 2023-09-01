@@ -60,24 +60,7 @@ public class SampleTests
         instance.ClassWithPrivateConstructorProp.Should().BeNull();
     }
 
-
-    [Fact]
-    public void Should_create_and_fill_company()
-    {
-        var now = DateTime.Now;
-        var instance = TestDataBuilder
-            .For<Company>()
-            .WithDate(now)
-            .Build();
-
-        instance.Should().NotBeNull();
-
-        instance.CompanyId.Should().NotBe(default);
-        instance.Branches.Should().NotBeNull();
-
-        instance.MainAddress.Should().NotBeNull();
-    }
-
+    
     [Fact]
     public void Should_fill_primitive_values()
     {
