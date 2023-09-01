@@ -1,4 +1,4 @@
-namespace Zealot.Tests;
+namespace Zealot.Tests.TestObjects;
 
 public class ClassWithTwoStringInConstructor
 {

@@ -1,4 +1,3 @@
-using FluentAssertions.Equivalency;
 using Zealot.Tests.TestObjects;
 
 namespace Zealot.Tests;
