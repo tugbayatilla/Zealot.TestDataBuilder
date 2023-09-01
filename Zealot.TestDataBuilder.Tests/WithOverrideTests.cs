@@ -20,13 +20,15 @@ public class WithOverrideTests
     [Fact]
     public void Change_struct_property()
     {
+        const string alteredText = "AlteredText";
         var entity = TestDataBuilder
-            .For<ClassWithStructWithAllPrimitives>()
-            .WithOverride(p => p.Prop = new StructWithAllPrimitives {BoolProp = true})
+            .For<ClassWithStructWithTwoString>()
+            .WithOverride(p 
+                => p.Prop = p.Prop with {PropNullable = alteredText})
             .Build();
-
         
-        entity.Prop.BoolProp.Should().BeTrue();
+        entity.Prop.Prop.Should().MatchBuilderNamingRegex(nameof(entity.Prop.Prop));
+        entity.Prop.PropNullable.Should().Be(alteredText);
     }
 
     [Fact]

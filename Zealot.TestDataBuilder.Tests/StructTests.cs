@@ -8,12 +8,12 @@ public class StructTests
     public void Support_struct_as_property()
     {
         var subject = TestDataBuilder
-            .For<ClassWithStructWithAllPrimitives>()
+            .For<ClassWithStructWithTwoString>()
             .Build();
 
         subject.Prop.Should().NotBeNull();
-        subject.Prop.BoolProp.Should().BeTrue();
-        subject.Prop.StringProp.Should().MatchBuilderNamingRegex(nameof(subject.Prop.StringProp));
+        subject.Prop.Prop.Should().MatchBuilderNamingRegex(nameof(subject.Prop.Prop));
+        subject.Prop.PropNullable.Should().MatchBuilderNamingRegex(nameof(subject.Prop.PropNullable));
     }
     
     [Fact]
