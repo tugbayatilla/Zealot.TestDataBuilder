@@ -1,8 +1,8 @@
 namespace Zealot.Tests.TestObjects;
 
-internal class ClassWithConstructorHavingParameter
+internal class ClassWithOneClassInConstructor
 {
-    public ClassWithConstructorHavingParameter(ClassWithTwoString argument)
+    public ClassWithOneClassInConstructor(ClassWithTwoString argument)
     {
         Prop1 = argument.Prop1;
         Prop2 = argument.Prop2;

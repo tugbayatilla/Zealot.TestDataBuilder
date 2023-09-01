@@ -12,7 +12,7 @@ internal class ListStrategy : IStrategy
         var listType = context.Scope.EntityType;
         listType = ChangeListTypeIfGeneric(context, listType);
 
-        var list = Instance.Create(listType);
+        var list = Instance.Create(listType, context);
         if (list == null) return null!;
         
         FillListWithData(context, list);

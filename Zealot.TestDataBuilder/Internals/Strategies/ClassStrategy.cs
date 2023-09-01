@@ -58,7 +58,7 @@ internal class ClassStrategy : IStrategy
 
     private static void CreateAnInstanceOfAnEntityAndSetToScope(IContext context)
     {
-        var newInstance = Instance.Create(context.Scope.EntityType);
+        var newInstance = Instance.Create(context.Scope.EntityType, context);
         context.Scope = context.Scope with {Entity = newInstance};
     }
 

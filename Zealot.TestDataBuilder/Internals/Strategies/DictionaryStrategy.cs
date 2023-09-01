@@ -19,7 +19,7 @@ internal class DictionaryStrategy : IStrategy
             propertyType = typeof(Dictionary<,>).MakeGenericType(type.GenericTypeArguments);
         }
 
-        var propertyInstance = Instance.Create(propertyType) as IDictionary;
+        var propertyInstance = Instance.Create(propertyType, context) as IDictionary;
 
         var arguments = propertyInstance!.GetType().GetGenericArguments();
 

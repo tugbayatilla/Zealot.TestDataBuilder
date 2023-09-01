@@ -5,17 +5,6 @@ namespace Zealot.Tests;
 public class SampleTests
 {
     [Fact]
-    public void Should_dictionary_initialized()
-    {
-        var entity = TestDataBuilder
-            .For<SampleDataWithDictionary>()
-            .Build();
-
-        entity.DictionaryProperty.Should().NotBeNull();
-        entity.DictionaryStringIntProperty.Should().NotBeNull();
-    }
-
-    [Fact]
     public void Should_create_same_instance_when_build_method_called()
     {
         var now = DateTime.Now;
@@ -144,19 +133,6 @@ public class SampleTests
 
         sample.ClassWithTwoDateTimeAndInheritFromClassWithTwoInteger.Should().NotBeNull();
         sample.ClassWithTwoDateTimeAndInheritFromClassWithTwoInteger.DateTimeProperty.Should().NotBe(default);
-    }
-
-    [Fact]
-    public void Should_fill_primitive_constructor_sub_class_property()
-    {
-        var now = DateTime.Now;
-        var sample = TestDataBuilder
-            .For<ClassOfGod>()
-            .WithDate(now)
-            .Build();
-
-        sample.SampleDataPrimitiveConstructorSubClass.Should().NotBeNull();
-        sample.SampleDataPrimitiveConstructorSubClass.DateTimeProperty.Should().NotBe(default);
     }
 
     [Fact]

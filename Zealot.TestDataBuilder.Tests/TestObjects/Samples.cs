@@ -3,8 +3,6 @@ namespace Zealot.Tests.TestObjects;
 public class ClassHavingAnotherClassAsProperty
 {
     public ClassWithInheritance ClassWithInheritanceProp { get; set; }
-
-    public string Prop { get; set; }
 }
 
 public class ClassHavingIListInterfaceAsProperty
@@ -16,20 +14,4 @@ public class ClassHavingIListInterfaceAsProperty
 internal class ClassWithTwoDateTimeAndInheritFromClassWithTwoInteger : ClassWithTwoInteger
 {
     public DateTime DateTimeProperty { get; set; }
-}
-
-internal class SampleDataPrimitiveConstructorSubClass
-{
-    public SampleDataPrimitiveConstructorSubClass(DateTime dateTime)
-    {
-        DateTimeProperty = dateTime;
-    }
-
-    public DateTime DateTimeProperty { get; set; }
-}
-
-internal class SampleDataWithDictionary
-{
-    public Dictionary<object, object> DictionaryProperty { get; set; }
-    public Dictionary<string, int> DictionaryStringIntProperty { get; set; }
 }

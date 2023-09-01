@@ -8,7 +8,7 @@ internal static class Instance
 {
     private delegate T ObjectActivator<out T>(params object[] args);
 
-    public static object? Create(Type type)
+    public static object? Create(Type type, IContext context)
     {
         object? instance = null!;
         if (type.ContainsGenericParameters)
@@ -23,10 +23,10 @@ internal static class Instance
             var ctorParametersInfo = ctorInfo.GetParameters();
             var parameters = ctorParametersInfo.Select(info =>
             {
-                var context = new Context(info.ParameterType, new With(), new StrategyContainer());
-                var strategy = context.StrategyContainer.Resolve(info.ParameterType);
-                context.Scope = context.Scope with { ParentPropertyName = info.Name};
-                return strategy.Execute(context);
+                var newContext = context.CloneWithType(info.ParameterType);
+                var strategy = newContext.StrategyContainer.Resolve(info.ParameterType);
+                newContext.Scope = newContext.Scope with { ParentPropertyName = info.Name};
+                return strategy.Execute(newContext);
             });
             constructorArguments.AddRange(parameters!);
 
