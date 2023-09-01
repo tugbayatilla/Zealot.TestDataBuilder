@@ -12,3 +12,6 @@ resharper_unused_auto_property_accessor_global_highlighting = none
 
 # PropertyCanBeMadeInitOnly.Global
 resharper_property_can_be_made_init_only_global_highlighting = none
+
+# UnassignedGetOnlyAutoProperty
+resharper_unassigned_get_only_auto_property_highlighting = none
