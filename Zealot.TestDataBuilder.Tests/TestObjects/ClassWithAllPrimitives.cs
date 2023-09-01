@@ -2,12 +2,6 @@
 
 internal class ClassWithAllPrimitives
 {
-    public int IntProp { get; set; }
-    public int IntProp2 { get; set; }
-    
-    public int? IntNullableProp { get; set; }
-    public int? IntNullableProp2 { get; set; }
-    
     public float FloatProp { get; set; }
     public float FloatProp2 { get; set; }
     

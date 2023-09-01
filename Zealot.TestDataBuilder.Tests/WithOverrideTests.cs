@@ -46,12 +46,12 @@ public class WithOverrideTests
     public void Change_called_2_times()
     {
         var entity = TestDataBuilder
-            .For<ClassWithAllPrimitives>()
-            .WithOverride(p => p.IntProp = 1_000_000)
-            .WithOverride(p => p.IntNullableProp = 2_000_000)
+            .For<ClassWithTwoInteger>()
+            .WithOverride(p => p.Prop1 = 1_000_000)
+            .WithOverride(p => p.Prop2 = 2_000_000)
             .Build();
 
-        entity.IntProp.Should().Be(1_000_000);
-        entity.IntNullableProp.Should().Be(2_000_000);
+        entity.Prop1.Should().Be(1_000_000);
+        entity.Prop2.Should().Be(2_000_000);
     }
 }

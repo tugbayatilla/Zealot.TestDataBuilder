@@ -30,16 +30,24 @@ public class NumericTests
     public void Support_integer()
     {
         var subject = TestDataBuilder
-            .For<ClassWithAllPrimitives>()
-            .WithOnly<int>()
+            .For<ClassWithTwoInteger>()
             .Build();
 
-        subject.IntProp.Should().NotBe(0);
-        subject.IntProp2.Should().NotBe(0);
+        subject.Prop1.Should().Be(1);
+        subject.Prop2.Should().Be(2);
+        subject.Prop1.Should().NotBe(subject.Prop2);
+    }
+    
+    [Fact]
+    public void Support_integer_nullable()
+    {
+        var subject = TestDataBuilder
+            .For<ClassWithTwoIntegerNullable>()
+            .Build();
 
-        subject.IntProp.Should().NotBe(subject.IntProp2);
-
-        TestHelper.CheckDefaultExcept<int>(subject);
+        subject.Prop1.Should().Be(1);
+        subject.Prop2.Should().Be(2);
+        subject.Prop1.Should().NotBe(subject.Prop2);
     }
 
     [Fact]
@@ -66,20 +74,6 @@ public class NumericTests
         subject.ShortProp2.Should().NotBe(0);
 
         subject.ShortProp.Should().NotBe(subject.ShortProp2);
-    }
-    
-    [Fact]
-    public void Support_integer_nullable()
-    {
-        var subject = TestDataBuilder
-            .For<ClassWithAllPrimitives>()
-            .WithOnly<int?>()
-            .Build();
-        
-        subject.IntNullableProp.Should().NotBe(0);
-        subject.IntNullableProp2.Should().NotBe(0);
-
-        subject.IntNullableProp.Should().NotBe(subject.IntNullableProp2);
     }
     
     [Fact]
