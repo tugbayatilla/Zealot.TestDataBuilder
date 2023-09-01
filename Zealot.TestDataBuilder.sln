@@ -5,8 +5,6 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zealot.TestDataBuilder", "Zealot.TestDataBuilder\Zealot.TestDataBuilder.csproj", "{7B8FC399-FA09-40AB-AF2D-C76A41D803B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zealot.TestDataBuilder.IntegrationTests", "Zealot.TestDataBuilder.IntegrationTests\Zealot.TestDataBuilder.IntegrationTests.csproj", "{70DADA11-D9BD-4D1E-AD72-4FEC56C8009F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zealot.TestDataBuilder.Tests", "Zealot.TestDataBuilder.Tests\Zealot.TestDataBuilder.Tests.csproj", "{0F89E3EF-90AD-4284-A70A-82091518744F}"
 EndProject
 Global
@@ -22,10 +20,6 @@ Global
 		{7B8FC399-FA09-40AB-AF2D-C76A41D803B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B8FC399-FA09-40AB-AF2D-C76A41D803B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B8FC399-FA09-40AB-AF2D-C76A41D803B0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{70DADA11-D9BD-4D1E-AD72-4FEC56C8009F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{70DADA11-D9BD-4D1E-AD72-4FEC56C8009F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{70DADA11-D9BD-4D1E-AD72-4FEC56C8009F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{70DADA11-D9BD-4D1E-AD72-4FEC56C8009F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0F89E3EF-90AD-4284-A70A-82091518744F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0F89E3EF-90AD-4284-A70A-82091518744F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F89E3EF-90AD-4284-A70A-82091518744F}.Release|Any CPU.ActiveCfg = Release|Any CPU
