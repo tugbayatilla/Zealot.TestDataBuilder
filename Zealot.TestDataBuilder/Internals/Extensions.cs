@@ -11,11 +11,6 @@ internal static class Extensions
 
     public static bool IsNullable(this Type type)
     {
-        if (!type.IsValueType)
-        {
-            return true;
-        }
-
         return Nullable.GetUnderlyingType(type) != null;
     }
 
