@@ -123,19 +123,6 @@ public class SampleTests
     }
 
     [Fact]
-    public void Should_fill_inherited_sub_class_property()
-    {
-        var now = DateTime.Now;
-        var sample = TestDataBuilder
-            .For<ClassOfGod>()
-            .WithDate(now)
-            .Build();
-
-        sample.ClassWithTwoDateTimeAndInheritFromClassWithTwoInteger.Should().NotBeNull();
-        sample.ClassWithTwoDateTimeAndInheritFromClassWithTwoInteger.DateTimeProperty.Should().NotBe(default);
-    }
-
-    [Fact]
     public void Should_fill_generic_list_property()
     {
         var sample = TestDataBuilder

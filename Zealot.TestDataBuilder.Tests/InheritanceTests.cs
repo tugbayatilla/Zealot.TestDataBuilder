@@ -17,4 +17,19 @@ public class InheritanceTests
         instance.PropListBase[0].Should().MatchBuilderNamingRegex(nameof(instance.PropListBase));
         instance.PropListBase[1].Should().MatchBuilderNamingRegex(nameof(instance.PropListBase));
     }
+    
+    [Fact]
+    public void Support_setting_base_class_properties_having_setter()
+    {
+        var now = DateTime.Now;
+        var sample = TestDataBuilder
+            .For<ClassWithOneDateTimeAndInheritingClassWithTwoInteger>()
+            .WithDate(now)
+            .Build();
+
+        sample.Should().NotBeNull();
+        sample.DateTimeProperty.Should().Be(now);
+        sample.Prop1.Should().Be(1);
+        sample.Prop2.Should().Be(2);
+    }
 }

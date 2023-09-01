@@ -10,8 +10,6 @@ internal class ClassOfGod
     #region Classes
 
     public ClassWithOnePropertyWithoutSetter ClassWithOnePropertyWithoutSetter { get; set; }
-    public ClassWithTwoDateTimeAndInheritFromClassWithTwoInteger ClassWithTwoDateTimeAndInheritFromClassWithTwoInteger { get; set; }
-    public ClassWithOneDateTimeInConstructor ClassWithOneDateTimeInConstructor { get; set; }
     public ClassWithPrivateConstructor ClassWithPrivateConstructorProp { get; set; }
 
     #endregion

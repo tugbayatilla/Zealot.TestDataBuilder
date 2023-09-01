@@ -11,7 +11,7 @@ public class ClassHavingIListInterfaceAsProperty
     public IList<ClassHavingAnotherClassAsProperty> IListInterfaceProperty { get; set; }
 }
 
-internal class ClassWithTwoDateTimeAndInheritFromClassWithTwoInteger : ClassWithTwoInteger
+internal class ClassWithOneDateTimeAndInheritingClassWithTwoInteger : ClassWithTwoInteger
 {
     public DateTime DateTimeProperty { get; set; }
 }
