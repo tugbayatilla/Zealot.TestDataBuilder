@@ -35,7 +35,6 @@ internal class ClassStrategy : IStrategy
         foreach (var propertyInfo in properties)
         {
             if (context.With.Only.IgnoreThis(propertyInfo.PropertyType)) continue;
-
             
             var newContext = context.CloneWithType(propertyInfo.PropertyType);
             newContext.Scope = newContext.Scope with {ParentPropertyName = propertyInfo.Name};

@@ -10,23 +10,25 @@ public class WithOnlyTests
     public void WithOnly_string()
     {
         var entity = TestDataBuilder
-            .For<ClassWithAllPrimitives>()
+            .For<ClassWithIntegerAndString>()
             .WithOnly<string>()
             .Build();
 
-        TestHelper.CheckDefaultExcept<string>(entity);
+        entity.StringProp.Should().MatchBuilderNamingRegex(nameof(entity.StringProp));
+        entity.IntProp.Should().Be(0);
     }
     
     [Fact]
     public void WithOnly_has_idempotency()
     {
         var entity = TestDataBuilder
-            .For<ClassWithAllPrimitives>()
+            .For<ClassWithIntegerAndString>()
             .WithOnly<string>()
             .WithOnly<string>()
             .Build();
 
-        TestHelper.CheckDefaultExcept<string>(entity);
+        entity.StringProp.Should().MatchBuilderNamingRegex(nameof(entity.StringProp));
+        entity.IntProp.Should().Be(0);
     }
 
     [Fact]

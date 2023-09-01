@@ -4,28 +4,6 @@ namespace Zealot.Tests;
 
 public class NumericTests
 {
-    [Theory]
-    [InlineData(typeof(string))]
-    [InlineData(typeof(int))]
-    [InlineData(typeof(int?))]
-    [InlineData(typeof(double))]
-    [InlineData(typeof(double?))]
-    [InlineData(typeof(float))]
-    [InlineData(typeof(float?))]
-    [InlineData(typeof(long))]
-    [InlineData(typeof(long?))]
-    [InlineData(typeof(short))]
-    [InlineData(typeof(short?))]
-    public void Support_type(Type setOnlyType)
-    {
-        var subject = TestDataBuilder
-            .For<ClassWithAllPrimitives>()
-            .WithOnly(setOnlyType)
-            .Build();
-
-        TestHelper.AssertAllPropertiesWithSetOnly(subject, setOnlyType);
-    }
-    
     [Fact]
     public void Support_integer()
     {

@@ -39,7 +39,7 @@ public class DictionaryTests
     public void Support_dictionary_int_complex_has_2_items()
     {
         var entity = TestDataBuilder
-            .For<ClassWithDictionaryOfIntAndClassWithAllPrimitives>()
+            .For<ClassWithDictionaryOfIntAndClassWithTwoInteger>()
             .Build();
 
         entity.Prop.Count.Should().Be(2);
