@@ -149,52 +149,48 @@ public class NumericTests
     public void Support_unsigned_int16()
     {
         var subject = TestDataBuilder
-            .For<ClassWithAllPrimitives>()
-            .WithOnly<ushort>()
+            .For<ClassWithTwoUnsignedInt16>()
             .Build();
-        subject.UInt16Prop.Should().NotBe(0);
-        subject.UInt16Prop2.Should().NotBe(0);
-
-        subject.UInt16Prop.Should().NotBe(subject.UInt16Prop2);
+        
+        subject.Prop.Should().Be(1);
+        subject.Prop2.Should().Be(2);
+        subject.Prop.Should().NotBe(subject.Prop2);
     }
     
     [Fact]
     public void Support_unsigned_int16_nullable()
     {
         var subject = TestDataBuilder
-            .For<ClassWithAllPrimitives>()
-            .WithOnly<ushort?>()
+            .For<ClassWithTwoUnsignedInt16Nullable>()
             .Build();
-        subject.UInt16NullableProp.Should().NotBe(0);
-        subject.UInt16NullableProp2.Should().NotBe(0);
-
-        subject.UInt16NullableProp.Should().NotBe(subject.UInt16NullableProp2);
+        
+        subject.Prop.Should().Be(1);
+        subject.Prop2.Should().Be(2);
+        subject.Prop.Should().NotBe(subject.Prop2);
     }
     
     [Fact]
     public void Support_unsigned_int32()
     {
         var subject = TestDataBuilder
-            .For<ClassWithAllPrimitives>()
-            .WithOnly<uint>()
+            .For<ClassWithTwoUnsignedInt32>()
             .Build();
-        subject.UInt32Prop.Should().NotBe(0);
-        subject.UInt32Prop2.Should().NotBe(0);
-
-        subject.UInt32Prop.Should().NotBe(subject.UInt32Prop2);
+        
+        subject.Prop.Should().Be(1);
+        subject.Prop2.Should().Be(2);
+        subject.Prop.Should().NotBe(subject.Prop2);
     }
     
     [Fact]
     public void Support_unsigned_int32_nullable()
     {
         var subject = TestDataBuilder
-            .For<ClassWithAllPrimitives>()
-            .WithOnly<uint?>()
+            .For<ClassWithTwoUnsignedInt32Nullable>()
             .Build();
-        subject.UInt32NullableProp.Should().NotBe(0);
-        subject.UInt32NullableProp2.Should().NotBe(0);
-
-        subject.UInt32NullableProp.Should().NotBe(subject.UInt32NullableProp2);
+        
+        subject.Prop.Should().Be(1);
+        subject.Prop2.Should().Be(2);
+        subject.Prop.Should().NotBe(subject.Prop2);
     }
     
     [Fact]

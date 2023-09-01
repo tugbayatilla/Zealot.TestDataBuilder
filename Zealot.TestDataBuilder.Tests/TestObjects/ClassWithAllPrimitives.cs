@@ -52,16 +52,4 @@ internal class ClassWithAllPrimitives
     
     public string? StringNullableProp { get; set; }
     public string? StringNullableProp2 { get; set; }
-    
-    public ushort UInt16Prop { get; set; }
-    public ushort UInt16Prop2 { get; set; }
-    
-    public ushort? UInt16NullableProp { get; set; }
-    public ushort? UInt16NullableProp2 { get; set; }
-    
-    public uint UInt32Prop { get; set; }
-    public uint UInt32Prop2 { get; set; }
-    
-    public uint? UInt32NullableProp { get; set; }
-    public uint? UInt32NullableProp2 { get; set; }
 }
