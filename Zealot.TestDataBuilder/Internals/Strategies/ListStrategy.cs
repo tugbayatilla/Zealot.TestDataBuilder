@@ -51,12 +51,12 @@ internal class ListStrategy : IStrategy
 
             if (instance.GetType().Name == typeof(Queue<>).Name)
             {
-                (instance as dynamic)?.Enqueue(value);
+                (instance as dynamic).Enqueue(value);
             }
 
             if (instance.GetType().Name == typeof(Stack<>).Name)
             {
-                (instance as dynamic)?.Push(value);
+                (instance as dynamic).Push(value);
             }
         }
     }
