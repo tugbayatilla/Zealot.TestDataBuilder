@@ -54,31 +54,24 @@ public class NumericTests
     public void Support_short()
     {
         var subject = TestDataBuilder
-            .For<ClassWithAllPrimitives>()
-            .WithOnly<short>()
+            .For<ClassWithTwoShort>()
             .Build();
         
-        subject.ShortProp.Should().NotBe(0);
-        subject.ShortProp2.Should().NotBe(0);
-
-        subject.ShortProp.Should().NotBe(subject.ShortProp2);
+        subject.Prop1.Should().Be(1);
+        subject.Prop2.Should().Be(2);
+        subject.Prop1.Should().NotBe(subject.Prop2);
     }
     
     [Fact]
     public void Support_short_nullable()
     {
         var subject = TestDataBuilder
-            .For<ClassWithAllPrimitives>()
-            .WithOnly<short?>()
+            .For<ClassWithTwoShortNullable>()
             .Build();
         
-        subject.ShortNullableProp.Should().NotBeNull();
-        subject.ShortNullableProp2.Should().NotBeNull();
-
-        subject.ShortNullableProp.Should().NotBe(0);
-        subject.ShortNullableProp2.Should().NotBe(0);
-
-        subject.ShortNullableProp.Should().NotBe(subject.ShortNullableProp2);
+        subject.Prop1.Should().Be(1);
+        subject.Prop2.Should().Be(2);
+        subject.Prop1.Should().NotBe(subject.Prop2);
     }
     
     [Fact]
@@ -88,8 +81,8 @@ public class NumericTests
             .For<ClassWithTwoDouble>()
             .Build();
         
-        subject.Prop1.Should().Be(0);
-        subject.Prop2.Should().Be(1);
+        subject.Prop1.Should().Be(1);
+        subject.Prop2.Should().Be(2);
         subject.Prop1.Should().NotBe(subject.Prop2);
     }
     
@@ -100,8 +93,8 @@ public class NumericTests
             .For<ClassWithTwoDoubleNullable>()
             .Build();
         
-        subject.Prop1.Should().Be(0);
-        subject.Prop2.Should().Be(1);
+        subject.Prop1.Should().Be(1);
+        subject.Prop2.Should().Be(2);
         subject.Prop1.Should().NotBe(subject.Prop2);
     }
 
@@ -112,8 +105,8 @@ public class NumericTests
             .For<ClassWithTwoFloatNullable>()
             .Build();
         
-        subject.Prop1.Should().Be(0);
-        subject.Prop2.Should().Be(1);
+        subject.Prop1.Should().Be(1);
+        subject.Prop2.Should().Be(2);
         subject.Prop1.Should().NotBe(subject.Prop2);
     }
     
@@ -124,8 +117,8 @@ public class NumericTests
             .For<ClassWithTwoFloat>()
             .Build();
         
-        subject.Prop1.Should().Be(0);
-        subject.Prop2.Should().Be(1);
+        subject.Prop1.Should().Be(1);
+        subject.Prop2.Should().Be(2);
         subject.Prop1.Should().NotBe(subject.Prop2);
     }
     
