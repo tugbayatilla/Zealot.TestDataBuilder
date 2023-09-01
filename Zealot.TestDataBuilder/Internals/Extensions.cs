@@ -14,7 +14,7 @@ internal static class Extensions
         return Nullable.GetUnderlyingType(type) != null;
     }
 
-    public static object? GetDefault(this Type type)
+    public static object GetDefault(this Type type)
     {
         Expression<Func<object>> e = Expression.Lambda<Func<object>>(
             Expression.Convert(

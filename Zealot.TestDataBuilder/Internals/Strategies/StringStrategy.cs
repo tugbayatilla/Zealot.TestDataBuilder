@@ -8,7 +8,7 @@ internal class StringStrategy : IStrategy
 
     public Expression<Func<Type, bool>> ResolveCondition => t => t == typeof(string);
 
-    public object? Execute(IContext context)
+    public object Execute(IContext context)
     {
         var sb = new StringBuilder();
         sb.Append(context.With.String.Prefix);

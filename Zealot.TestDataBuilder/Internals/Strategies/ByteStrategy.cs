@@ -7,7 +7,7 @@ internal class ByteStrategy : IStrategy
     public Expression<Func<Type, bool>> ResolveCondition
         => info => AvailableTypes.Any(x=>x == info);
 
-    public object? Execute(IContext context)
+    public object Execute(IContext context)
     {
         return A;
     }

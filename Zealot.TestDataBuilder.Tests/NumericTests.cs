@@ -23,7 +23,7 @@ public class NumericTests
             .WithOnly(setOnlyType)
             .Build();
 
-        TestHelper.AssertAllPropertiesWithSetOnly(subject, setOnlyType); //TODO: get rid of this
+        TestHelper.AssertAllPropertiesWithSetOnly(subject, setOnlyType);
     }
     
     [Fact]

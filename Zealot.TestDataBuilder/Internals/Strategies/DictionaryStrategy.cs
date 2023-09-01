@@ -9,7 +9,7 @@ internal class DictionaryStrategy : IStrategy
     public Expression<Func<Type, bool>> ResolveCondition
         => info => AvailableTypes.Any(x => x.Name == info.Name);
 
-    public object? Execute(IContext context)
+    public object Execute(IContext context)
     {
         var type = context.Scope.EntityType;
         var propertyType = type;
