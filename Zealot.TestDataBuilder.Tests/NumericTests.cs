@@ -114,29 +114,24 @@ public class NumericTests
     public void Support_float_nullable()
     {
         var subject = TestDataBuilder
-            .For<ClassWithAllPrimitives>()
-            .WithOnly<float?>()
+            .For<ClassWithTwoFloatNullable>()
             .Build();
         
-        subject.FloatNullableProp.Should().NotBeNull();
-        subject.FloatNullableProp2.Should().NotBeNull();
-        
-        subject.FloatNullableProp.Should().NotBe(0);
-        subject.FloatNullableProp2.Should().NotBe(0);
-
-        subject.FloatNullableProp.Should().NotBe(subject.FloatNullableProp2);
+        subject.Prop1.Should().Be(0);
+        subject.Prop2.Should().Be(1);
+        subject.Prop1.Should().NotBe(subject.Prop2);
     }
     
     [Fact]
     public void Support_float()
     {
-        var subject = TestDataBuilder.For<ClassWithAllPrimitives>()
-                .WithOnly<float>()
-                .Build();
-        subject.FloatProp.Should().NotBe(0);
-        subject.FloatProp2.Should().NotBe(0);
-
-        subject.FloatProp.Should().NotBe(subject.FloatProp2);
+        var subject = TestDataBuilder
+            .For<ClassWithTwoFloat>()
+            .Build();
+        
+        subject.Prop1.Should().Be(0);
+        subject.Prop2.Should().Be(1);
+        subject.Prop1.Should().NotBe(subject.Prop2);
     }
     
     [Fact]
