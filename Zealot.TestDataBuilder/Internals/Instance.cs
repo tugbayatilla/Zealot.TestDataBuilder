@@ -32,12 +32,7 @@ internal static class Instance
             instance = createdActivator(constructorArguments.ToArray());
         }
         
-        if (type.IsStruct())
-        {
-            instance = Activator.CreateInstance(type);
-        }
-
-        if (type.IsValueType)
+        if (type.IsValueType || type.IsStruct())
         {
             instance = Activator.CreateInstance(type);
         }
