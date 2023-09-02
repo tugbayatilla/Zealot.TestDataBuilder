@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 
 namespace Zealot.Internals;
 
@@ -77,6 +78,7 @@ internal class TestDataBuilder<TEntity> : ITestDataBuilder<TEntity>
 
     public ITestDataBuilder<TEntity> WithLogger(ILogger logger)
     {
+        // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         if (logger != null)
         {
             _context.With.Log.Logger = logger;
