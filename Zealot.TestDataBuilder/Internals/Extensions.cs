@@ -9,17 +9,6 @@ internal static class Extensions
         return Nullable.GetUnderlyingType(type) != null;
     }
 
-    public static object GetDefault(this Type type)
-    {
-        Expression<Func<object>> e = Expression.Lambda<Func<object>>(
-            Expression.Convert(
-                Expression.Default(type), typeof(object)
-            )
-        );
-
-        return e.Compile()();
-    }
-
     public static bool IsSame(this Type p, Type type)
     {
         var result = p.Name == type.Name;
