@@ -1,3 +1,9 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace Zealot.Tests.TestObjects;
 
-internal class ClassWithNoProperty { }
+[SuppressMessage("Sonar", "S209")]
+internal class ClassWithNoProperty
+{
+
+}
