@@ -1,5 +1,4 @@
-using Microsoft.Extensions.Logging;
-using Moq;
+using Microsoft.Extensions.Logging.Abstractions;
 using Zealot.Tests.TestObjects;
 
 namespace Zealot.Tests;
@@ -20,13 +19,14 @@ public class WithLoggerTests
     [Fact]
     public void Debug_log_on_build_start()
     {
-        var loggerMock = new Mock<ILogger>();
+        var logger = new TestLogger();
         
         _ = TestDataBuilder
             .For<ClassWithTwoInteger>()
-            .WithLogger(loggerMock.Object)
+            .WithLogger(logger)
             .Build();
 
-        loggerMock.VerifyDebug($"Build for {nameof(ClassWithTwoInteger)} starts", Times.Once());
+        logger.NumberOfExecution.Should().Be(1);
+        logger.Message.Should().Be($"Build for {nameof(ClassWithTwoInteger)} starts");
     }
 }
