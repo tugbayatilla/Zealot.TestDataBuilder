@@ -11,6 +11,6 @@ internal class GuidStrategy : IStrategy
     }
     private static IEnumerable<Type> AvailableTypes => new[]
     {
-        typeof(Guid?),typeof(Guid),
+        typeof(Guid?),typeof(Guid)
     };
 }
