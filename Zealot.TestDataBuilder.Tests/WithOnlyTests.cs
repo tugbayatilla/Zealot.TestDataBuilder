@@ -19,6 +19,18 @@ public class WithOnlyTests
     }
     
     [Fact]
+    public void WithOnly_int()
+    {
+        var entity = TestDataBuilder
+            .For<ClassWithIntegerAndString>()
+            .WithOnly<int>()
+            .Build();
+
+        entity.StringProp.Should().BeNullOrWhiteSpace();
+        entity.IntProp.Should().Be(1);
+    }
+    
+    [Fact]
     public void WithOnly_has_idempotency()
     {
         var entity = TestDataBuilder
