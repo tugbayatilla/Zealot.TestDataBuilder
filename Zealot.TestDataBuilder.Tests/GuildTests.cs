@@ -14,6 +14,7 @@ public class GuidTests
             .Build();
 
         entity.Prop1.Should().Be(guid);
+        entity.Prop2.Should().Be(guid);
     }
     
     [Fact]
@@ -24,6 +25,7 @@ public class GuidTests
             .Build();
 
         entity.Prop1.Should().NotBeEmpty();
+        entity.Prop2.Should().NotBeEmpty();
     }
     
     [Fact]
@@ -36,6 +38,7 @@ public class GuidTests
             .Build();
 
         entity.Prop1.Should().Be(guid);
+        entity.Prop2.Should().Be(guid);
     }
     
     [Fact]
@@ -46,5 +49,6 @@ public class GuidTests
             .Build();
 
         entity.Prop1.Should().NotBeEmpty();
+        entity.Prop2.Should().NotBeEmpty();
     }
 }

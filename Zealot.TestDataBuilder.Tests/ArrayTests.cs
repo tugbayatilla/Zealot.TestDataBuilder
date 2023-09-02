@@ -12,6 +12,7 @@ public class ArrayTests
             .Build();
 
         entity.Prop1.Should().NotBeNull();
+        entity.Prop2.Should().NotBeNull();
     }
     
     [Fact]
@@ -22,6 +23,7 @@ public class ArrayTests
             .Build();
 
         entity.Prop1.Should().NotBeNull();
+        entity.Prop2.Should().NotBeNull();
     }
     
     [Fact]
@@ -32,6 +34,7 @@ public class ArrayTests
             .Build();
 
         entity.Prop1.Should().NotBeNull();
+        entity.Prop2.Should().NotBeNull();
     }
     
     [Fact]

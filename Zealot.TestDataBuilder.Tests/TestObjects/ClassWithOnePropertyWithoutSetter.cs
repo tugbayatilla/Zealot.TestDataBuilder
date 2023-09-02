@@ -2,7 +2,7 @@ namespace Zealot.Tests.TestObjects;
 
 internal class ClassWithOnePropertyWithoutSetter
 {
-    public int IntProperty { get; set; }
-    public string StringProperty { get; set; }
-    public string NoSetterProperty { get; }
+    public int IntProp { get; set; }
+    public string StringProp { get; set; }
+    public string NoSetterProp { get; }
 }

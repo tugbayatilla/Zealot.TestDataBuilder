@@ -113,13 +113,14 @@ public class SampleTests
     public void Should_fill_simple_sub_class_property()
     {
         var sample = TestDataBuilder
-            .For<ClassOfGod>()
+            .For<ClassWithOnePropertyWithoutSetter>()
             .Build();
 
-        sample.ClassWithOnePropertyWithoutSetter.Should().NotBeNull();
-        sample.ClassWithOnePropertyWithoutSetter.IntProperty.Should().NotBe(default);
-        sample.ClassWithOnePropertyWithoutSetter.StringProperty.Should()
-            .MatchBuilderNamingRegex(nameof(sample.ClassWithOnePropertyWithoutSetter.StringProperty));
+        sample.Should().NotBeNull();
+        sample.IntProp.Should().Be(1);
+        sample.StringProp.Should()
+            .MatchBuilderNamingRegex(nameof(sample.StringProp));
+        sample.NoSetterProp.Should().Be(default);
     }
 
     [Fact]
@@ -132,7 +133,7 @@ public class SampleTests
         sample.SampleDataSimpleSubClassList.Should().NotBeNull();
         sample.SampleDataSimpleSubClassList.Count.Should().Be(2);
 
-        sample.SampleDataSimpleSubClassList[0].IntProperty.Should().NotBe(default);
+        sample.SampleDataSimpleSubClassList[0].IntProp.Should().NotBe(default);
     }
 
     [Fact]
@@ -143,7 +144,7 @@ public class SampleTests
             .Build();
 
         sample.SampleDataSimpleSubClassIListInterface.Should().NotBeNullOrEmpty();
-        sample.SampleDataSimpleSubClassIListInterface[0].IntProperty.Should().NotBe(default);
+        sample.SampleDataSimpleSubClassIListInterface[0].IntProp.Should().NotBe(default);
     }
 
     [Fact]

@@ -14,6 +14,7 @@ public class DatetimeTests
             .Build();
 
         entity.Prop1.Should().Be(now);
+        entity.Prop2.Should().Be(now);
     }
     
     [Fact]
@@ -37,5 +38,6 @@ public class DatetimeTests
             .Build();
 
         entity.Prop1.Should().Be(now);
+        entity.Prop2.Should().Be(now);
     }
 }
