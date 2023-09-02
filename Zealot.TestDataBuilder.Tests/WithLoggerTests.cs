@@ -1,4 +1,3 @@
-using Microsoft.Extensions.Logging.Abstractions;
 using Zealot.Tests.TestObjects;
 
 namespace Zealot.Tests;
