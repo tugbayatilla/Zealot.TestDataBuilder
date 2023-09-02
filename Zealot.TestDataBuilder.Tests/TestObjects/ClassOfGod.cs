@@ -6,13 +6,7 @@ internal class ClassOfGod
     public IList<ClassWithOnePropertyWithoutSetter> SampleDataSimpleSubClassIListInterface { get; set; }
     public ICollection<ClassWithOnePropertyWithoutSetter> SampleDataSimpleSubClassICollectionInterface { get; set; }
     public IEnumerable<ClassWithOnePropertyWithoutSetter> SampleDataSimpleSubClassIEnumerableInterface { get; set; }
-
-    #region Classes
-
-    public ClassWithOnePropertyWithoutSetter ClassWithOnePropertyWithoutSetter { get; set; }
     public ClassWithPrivateConstructor ClassWithPrivateConstructorProp { get; set; }
-
-    #endregion
 
     #region Primitives / Value Types
 

@@ -42,5 +42,7 @@ public class EnumTests
             .Build();
 
         entity.Prop.Should().Be(EnumWithThreeItem.Item1);
+        entity.Prop.Should().NotBe(EnumWithThreeItem.Item2);
+        entity.Prop.Should().NotBe(EnumWithThreeItem.Item3);
     }
 }
