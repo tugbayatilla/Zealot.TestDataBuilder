@@ -2,6 +2,10 @@
 
 namespace Zealot;
 
+/// <summary>
+/// Test Data Builder
+/// </summary>
+/// <typeparam name="TEntity">Given object</typeparam>
 public interface ITestDataBuilder<out TEntity>
 {
     /// <summary>
@@ -72,10 +76,12 @@ public interface ITestDataBuilder<out TEntity>
     ITestDataBuilder<TEntity> WithListSize(int size);
 
     /// <summary>
-    /// Optional: overrides default value which is 2.
-    /// Lists will have elements which are given as size.
+    /// Optional: overrides default value which is the property name.
     /// </summary>
     ITestDataBuilder<TEntity> WithStringBody(string body);
 
+    /// <summary>
+    /// Optional: overrides default value which is _ (underscore).
+    /// </summary>
     ITestDataBuilder<TEntity> WithStringSeparator(string separator);
 }

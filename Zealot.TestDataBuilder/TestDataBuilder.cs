@@ -2,6 +2,9 @@ using Zealot.Internals.Withs;
 
 namespace Zealot;
 
+/// <summary>
+/// Test Data Builder
+/// </summary>
 public static class TestDataBuilder
 {
     /// <summary>
