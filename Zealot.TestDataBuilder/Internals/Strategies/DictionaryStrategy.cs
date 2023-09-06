@@ -21,8 +21,6 @@ internal class DictionaryStrategy : IStrategy
 
         var arguments = propertyInstance!.GetType().GetGenericArguments();
         
-        context.With.String.StringUniqueStartingNumber.Set(1);
-        
         for (var i = 0; i < context.With.List.Size; i++)
         {
             var strategy1 = context.StrategyContainer.Resolve(arguments[0]);
@@ -36,8 +34,6 @@ internal class DictionaryStrategy : IStrategy
             
             propertyInstance.Add(key, value);
         }
-        
-        context.With.String.StringUniqueStartingNumber.Reset();
         
         return propertyInstance;
     }

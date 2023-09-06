@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Zealot.Internals.Withs;
 
 namespace Zealot.Internals;
 
@@ -91,13 +92,13 @@ internal class TestDataBuilder<TEntity> : ITestDataBuilder<TEntity>
 
     public ITestDataBuilder<TEntity> WithStringBody(string body)
     {
-        _context.With.String.Body.Set(body);
+        _context.With.String.Body = body;
         return this;
     }
 
     public ITestDataBuilder<TEntity> WithStringUniqueStartingNumber(int uniqueStartingNumber)
     {
-        _context.With.String.StringUniqueStartingNumber.Set(uniqueStartingNumber);
+        _context.With.String.StringUniqueStartingNumber = uniqueStartingNumber;
         return this;
     }
 }

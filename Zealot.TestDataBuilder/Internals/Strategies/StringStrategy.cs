@@ -10,19 +10,9 @@ internal class StringStrategy : IStrategy
     {
         var sb = new StringBuilder();
         
-        sb.Append(context.With.String.Body.IsSet 
-            ? context.With.String.Body.Value 
-            : TestDataBuilder.DefaultStringBodyTemplate);
-        
-        sb.Append(context.With.String.StringUniqueStartingNumber.Value);
-        IncrementTheNumber(context);
+        sb.Append(context.With.String.Body);
+        sb.Append(context.With.String.StringUniqueStartingNumber++);
         
         return sb.ToString();
-    }
-
-    private static void IncrementTheNumber(IContext context)
-    {
-        var nextNumber = context.With.String.StringUniqueStartingNumber.Value + 1;
-        context.With.String.StringUniqueStartingNumber.Set(nextNumber);
     }
 }
