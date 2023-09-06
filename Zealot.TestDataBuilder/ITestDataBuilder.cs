@@ -84,4 +84,6 @@ public interface ITestDataBuilder<out TEntity>
     /// Optional: overrides default value which is _ (underscore).
     /// </summary>
     ITestDataBuilder<TEntity> WithStringSeparator(string separator);
+
+    ITestDataBuilder<TEntity> WithStringUniqueStartNumber(int uniqueStartingNumber);
 }

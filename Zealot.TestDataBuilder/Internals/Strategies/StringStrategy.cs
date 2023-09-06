@@ -21,7 +21,10 @@ internal class StringStrategy : IStrategy
             context.With.String.Separator.Value
             : DefaultSeparator);
         
-        sb.Append(++_number);
+        sb.Append(context.With.String.StringUniqueStartNumber.IsSet ?
+            context.With.String.StringUniqueStartNumber.Value++
+            : ++_number);
+        
         sb.Append(context.With.String.Suffix);
         
         return sb.ToString();

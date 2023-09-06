@@ -8,4 +8,5 @@ internal interface IWithString
     string Suffix { get; set; }
     StringBody Body { get; set; }
     StringSeparator Separator { get; set; }
+    StringUniqueStartNumber StringUniqueStartNumber { get; set; }
 }

@@ -105,4 +105,11 @@ internal class TestDataBuilder<TEntity> : ITestDataBuilder<TEntity>
         _context.With.String.Separator.Value = separator;
         return this;
     }
+
+    public ITestDataBuilder<TEntity> WithStringUniqueStartNumber(int uniqueStartingNumber)
+    {
+        _context.With.String.StringUniqueStartNumber.IsSet = true;
+        _context.With.String.StringUniqueStartNumber.Value = uniqueStartingNumber;
+        return this;
+    }
 }
