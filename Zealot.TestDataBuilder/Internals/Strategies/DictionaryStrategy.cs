@@ -4,8 +4,6 @@ namespace Zealot.Internals.Strategies;
 
 internal class DictionaryStrategy : IStrategy
 {
-    private const int SizeOfList = 2;
-    
     public Expression<Func<Type, bool>> ResolveCondition
         => info => AvailableTypes.Any(x => x.Name == info.Name);
 
@@ -26,7 +24,7 @@ internal class DictionaryStrategy : IStrategy
         context.With.String.Separator.Set("_");
         context.With.String.StringUniqueStartNumber.Set(1);
         
-        for (var i = 0; i < SizeOfList; i++)
+        for (var i = 0; i < context.With.List.Size; i++)
         {
             var strategy1 = context.StrategyContainer.Resolve(arguments[0]);
             var newContext1 = context.CloneWithType(arguments[0]);
