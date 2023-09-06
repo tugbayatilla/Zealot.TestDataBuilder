@@ -91,4 +91,11 @@ internal class TestDataBuilder<TEntity> : ITestDataBuilder<TEntity>
         _context.With.List.Size = size;
         return this;
     }
+
+    public ITestDataBuilder<TEntity> WithStringBody(string body)
+    {
+        _context.With.String.Body.IsSet = true;
+        _context.With.String.Body.Value = body;
+        return this;
+    }
 }

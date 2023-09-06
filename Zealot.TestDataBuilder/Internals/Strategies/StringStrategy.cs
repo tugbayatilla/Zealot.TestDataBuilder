@@ -12,7 +12,9 @@ internal class StringStrategy : IStrategy
     {
         var sb = new StringBuilder();
         sb.Append(context.With.String.Prefix);
-        sb.Append(context.Scope.ParentPropertyName);
+        sb.Append(context.With.String.Body.IsSet 
+            ? context.With.String.Body.Value 
+            : context.Scope.ParentPropertyName);
         sb.Append('_');
         sb.Append(++_number);
         sb.Append(context.With.String.Suffix);

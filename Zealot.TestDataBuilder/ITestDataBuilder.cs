@@ -70,4 +70,10 @@ public interface ITestDataBuilder<out TEntity>
     /// Lists will have elements which are given as size.
     /// </summary>
     ITestDataBuilder<TEntity> WithListSize(int size);
+
+    /// <summary>
+    /// Optional: overrides default value which is 2.
+    /// Lists will have elements which are given as size.
+    /// </summary>
+    ITestDataBuilder<TEntity> WithStringBody(string body);
 }
