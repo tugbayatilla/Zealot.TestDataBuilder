@@ -9,17 +9,18 @@ public class PrimitivesTests
             .For<string>()
             .Build();
         
-        entity.Should().Be("_1");
+        entity.Should().Be("");
     }
     
     [Fact]
     public void Support_multiple_strings()
     {
         var stringBuilder = TestDataBuilder
-            .For<string>();
+            .For<string>()
+            .WithStringUniqueStartNumber(1);
         
-        stringBuilder.Build().Should().Be("_1");
-        stringBuilder.Build().Should().Be("_2");
+        stringBuilder.Build().Should().Be("1");
+        stringBuilder.Build().Should().Be("2");
     }
     
     [Fact]

@@ -5,10 +5,10 @@ namespace Zealot.Tests;
 public class WithStringTests
 {
     [Theory]
-    [InlineData("", "", "{0}_[0-9]")]
-    [InlineData("pre_", "", "pre_{0}_[0-9]")]
-    [InlineData("", "_suf", "{0}_[0-9]_suf")]
-    [InlineData("pre_", "_suf", "pre_{0}_[0-9]_suf")]
+    [InlineData("", "", "{0}")]
+    [InlineData("pre_", "", "pre_{0}")]
+    [InlineData("", "_suf", "{0}_suf")]
+    [InlineData("pre_", "_suf", "pre_{0}_suf")]
     public void Support_prefix_and_suffix(string prefix, string suffix, string result)
     {
         var instance = TestDataBuilder

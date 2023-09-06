@@ -4,8 +4,7 @@ namespace Zealot.Internals.Strategies;
 
 internal class StringStrategy : IStrategy
 {
-    private int _number;
-    private static readonly string DefaultSeparator = "_";
+    private static readonly string DefaultSeparator = "";
     public Expression<Func<Type, bool>> ResolveCondition => t => t == typeof(string);
 
     public object Execute(IContext context)
@@ -21,10 +20,11 @@ internal class StringStrategy : IStrategy
             context.With.String.Separator.Value
             : DefaultSeparator);
         
-        sb.Append(context.With.String.StringUniqueStartNumber.IsSet ?
-            context.With.String.StringUniqueStartNumber.Value++
-            : ++_number);
-        
+        if(context.With.String.StringUniqueStartNumber.IsSet)
+        {
+            sb.Append(context.With.String.StringUniqueStartNumber.Value++);
+        }
+
         sb.Append(context.With.String.Suffix);
         
         return sb.ToString();

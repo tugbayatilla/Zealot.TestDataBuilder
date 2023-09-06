@@ -23,6 +23,12 @@ internal class DictionaryStrategy : IStrategy
 
         var arguments = propertyInstance!.GetType().GetGenericArguments();
 
+        var backupWith = context.With;
+        context.With.String.Separator.IsSet = true;
+        context.With.String.Separator.Value = "_";
+        context.With.String.StringUniqueStartNumber.IsSet = true;
+        context.With.String.StringUniqueStartNumber.Value = 1;
+        
         for (var i = 0; i < SizeOfList; i++)
         {
             var strategy1 = context.StrategyContainer.Resolve(arguments[0]);
@@ -36,6 +42,10 @@ internal class DictionaryStrategy : IStrategy
             
             propertyInstance.Add(key, value);
         }
+
+        context.With.String.Separator = backupWith.String.Separator;
+        context.With.String.StringUniqueStartNumber = backupWith.String.StringUniqueStartNumber;
+        
         
         return propertyInstance;
     }
