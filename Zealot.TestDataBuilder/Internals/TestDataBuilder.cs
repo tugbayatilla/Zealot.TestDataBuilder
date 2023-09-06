@@ -98,4 +98,11 @@ internal class TestDataBuilder<TEntity> : ITestDataBuilder<TEntity>
         _context.With.String.Body.Value = body;
         return this;
     }
+
+    public ITestDataBuilder<TEntity> WithStringSeparator(string separator)
+    {
+        _context.With.String.Separator.IsSet = true;
+        _context.With.String.Separator.Value = separator;
+        return this;
+    }
 }

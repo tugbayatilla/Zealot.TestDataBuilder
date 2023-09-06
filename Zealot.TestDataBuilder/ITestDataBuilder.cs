@@ -76,4 +76,6 @@ public interface ITestDataBuilder<out TEntity>
     /// Lists will have elements which are given as size.
     /// </summary>
     ITestDataBuilder<TEntity> WithStringBody(string body);
+
+    ITestDataBuilder<TEntity> WithStringSeparator(string separator);
 }
