@@ -142,3 +142,62 @@ var instance = TestDataBuilder
                .WithRecursionLevel(1)
                .Build();
 ```
+
+### WithStringPrefix
+
+> You can add prefix to all string properties.
+
+- Default is empty.
+
+```csharp
+using Zealot;
+
+var instance = TestDataBuilder
+               .For<Your Class or Struct or any Primitive Type>()
+               .WithStringPrefix("prefix")
+               .Build();
+```
+
+### WithStringSuffix
+
+> You can add suffix to all string properties.
+
+- Default is empty.
+
+```csharp
+using Zealot;
+
+var instance = TestDataBuilder
+               .For<Your Class or Struct or any Primitive Type>()
+               .WithStringSuffix("suffix")
+               .Build();
+```
+
+### WithStringUniqueNumber
+
+> You can add incremental number at the end of each string property.
+
+- Default is empty.
+
+```csharp
+using Zealot;
+
+var instance = TestDataBuilder
+               .For<Your Class or Struct or any Primitive Type>()
+               .WithStringUniqueNumber(1)
+               .Build();
+```
+
+
+> You can add separator between unique number and suffix (if present) to the each string property.
+
+- Default is empty.
+
+```csharp
+using Zealot;
+
+var instance = TestDataBuilder
+               .For<Your Class or Struct or any Primitive Type>()
+               .WithStringSeparator("_")
+               .Build();
+```
