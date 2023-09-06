@@ -22,11 +22,18 @@ internal class StringStrategy : IStrategy
         
         if(context.With.String.StringUniqueStartNumber.IsSet)
         {
-            sb.Append(context.With.String.StringUniqueStartNumber.Value++);
+            sb.Append(context.With.String.StringUniqueStartNumber.Value);
+            IncrementTheNumber(context);
         }
 
         sb.Append(context.With.String.Suffix);
         
         return sb.ToString();
+    }
+
+    private static void IncrementTheNumber(IContext context)
+    {
+        var nextNumber = context.With.String.StringUniqueStartNumber.Value + 1;
+        context.With.String.StringUniqueStartNumber.Set(nextNumber);
     }
 }

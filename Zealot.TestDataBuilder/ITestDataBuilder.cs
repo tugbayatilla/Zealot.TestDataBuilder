@@ -81,9 +81,13 @@ public interface ITestDataBuilder<out TEntity>
     ITestDataBuilder<TEntity> WithStringBody(string body);
 
     /// <summary>
-    /// Optional: overrides default value which is _ (underscore).
+    /// Optional: overrides default value which is empty.
     /// </summary>
     ITestDataBuilder<TEntity> WithStringSeparator(string separator);
 
+    /// <summary>
+    /// Optional: add incremental value to the end of the string to creat uniqueness.
+    /// Default is no unique number at the end of the string.
+    /// </summary>
     ITestDataBuilder<TEntity> WithStringUniqueStartNumber(int uniqueStartingNumber);
 }

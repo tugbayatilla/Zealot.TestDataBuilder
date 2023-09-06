@@ -94,22 +94,19 @@ internal class TestDataBuilder<TEntity> : ITestDataBuilder<TEntity>
 
     public ITestDataBuilder<TEntity> WithStringBody(string body)
     {
-        _context.With.String.Body.IsSet = true;
-        _context.With.String.Body.Value = body;
+        _context.With.String.Body.Set(body);
         return this;
     }
 
     public ITestDataBuilder<TEntity> WithStringSeparator(string separator)
     {
-        _context.With.String.Separator.IsSet = true;
-        _context.With.String.Separator.Value = separator;
+        _context.With.String.Separator.Set(separator);
         return this;
     }
 
     public ITestDataBuilder<TEntity> WithStringUniqueStartNumber(int uniqueStartingNumber)
     {
-        _context.With.String.StringUniqueStartNumber.IsSet = true;
-        _context.With.String.StringUniqueStartNumber.Value = uniqueStartingNumber;
+        _context.With.String.StringUniqueStartNumber.Set(uniqueStartingNumber);
         return this;
     }
 }
