@@ -10,13 +10,15 @@
     <Title>Zealot - Test Data Builder</Title>
     <Authors>Tugbay Atilla</Authors>
     <Description>Create sample/test data for the classes used in test methods </Description>
-    <Copyright>2023 Tugbay Atilla</Copyright>
-    <PackageProjectUrl>https://github.com/users/tugbayatilla/projects/1</PackageProjectUrl>
-    <PackageLicenseUrl>../LICENSE</PackageLicenseUrl>
+    <Copyright>Copyright (c) Tugbay Atilla 2023</Copyright>
     <RepositoryUrl>https://github.com/tugbayatilla/Zealot.TestDataBuilder</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://github.com/users/tugbayatilla/projects/1</PackageProjectUrl>
+    <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageIcon>logo.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
@@ -27,7 +29,9 @@
     <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
   </ItemGroup>
 
-
-
-
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath=""/>
+    <None Include="..\logo.png" Pack="true" PackagePath=""/>
+  </ItemGroup>
+  
 </Project>
