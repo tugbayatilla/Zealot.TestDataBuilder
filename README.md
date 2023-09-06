@@ -143,37 +143,23 @@ var instance = TestDataBuilder
                .Build();
 ```
 
-### WithStringPrefix
 
-> You can add prefix to all string properties.
+### WithStringBody
 
-- Default is empty.
+> You can change default body for all string properties.
 
-```csharp
-using Zealot;
-
-var instance = TestDataBuilder
-               .For<Your Class or Struct or any Primitive Type>()
-               .WithStringPrefix("prefix")
-               .Build();
-```
-
-### WithStringSuffix
-
-> You can add suffix to all string properties.
-
-- Default is empty.
+- Default is 'test_'.
 
 ```csharp
 using Zealot;
 
 var instance = TestDataBuilder
                .For<Your Class or Struct or any Primitive Type>()
-               .WithStringSuffix("suffix")
+               .WithStringBody("suffix")
                .Build();
 ```
 
-### WithStringUniqueNumber
+### WithStringUniqueStartingNumber
 
 > You can add incremental number at the end of each string property.
 
@@ -184,20 +170,41 @@ using Zealot;
 
 var instance = TestDataBuilder
                .For<Your Class or Struct or any Primitive Type>()
-               .WithStringUniqueNumber(1)
+               .WithStringUniqueStartingNumber(1)
                .Build();
 ```
 
 
-> You can add separator between unique number and suffix (if present) to the each string property.
 
-- Default is empty.
+### WithDate
+
+> You can change all dates with given datetime.
+
+- Default is DateTime.UtcNow.
 
 ```csharp
 using Zealot;
 
+var uthNow = DateTime.UtcNow;
 var instance = TestDataBuilder
                .For<Your Class or Struct or any Primitive Type>()
-               .WithStringSeparator("_")
+               .WithDate(utcNow)
                .Build();
 ```
+
+### WithGuid
+
+> You can change all guids with given datetime.
+
+- Default is Guid.NewGuid().
+
+```csharp
+using Zealot;
+
+var guid = Guid.NewGuid();
+var instance = TestDataBuilder
+               .For<Your Class or Struct or any Primitive Type>()
+               .WithGuid(guid)
+               .Build();
+```
+
