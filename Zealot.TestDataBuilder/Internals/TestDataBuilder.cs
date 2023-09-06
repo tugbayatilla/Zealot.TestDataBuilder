@@ -31,8 +31,7 @@ internal class TestDataBuilder<TEntity> : ITestDataBuilder<TEntity>
         _context.With.Only.Add(type);
         return this;
     }
-
-
+    
     public ITestDataBuilder<TEntity> WithOverride(Action<TEntity> action)
     {
         _context.With.Override.Add(o => action.Invoke((TEntity) o));
@@ -59,13 +58,11 @@ internal class TestDataBuilder<TEntity> : ITestDataBuilder<TEntity>
 
     public ITestDataBuilder<TEntity> WithStringPrefix(string prefix)
     {
-        _context.With.String.Prefix = prefix;
         return this;
     }
 
     public ITestDataBuilder<TEntity> WithStringSuffix(string suffix)
     {
-        _context.With.String.Suffix = suffix;
         return this;
     }
 
@@ -98,15 +95,9 @@ internal class TestDataBuilder<TEntity> : ITestDataBuilder<TEntity>
         return this;
     }
 
-    public ITestDataBuilder<TEntity> WithStringSeparator(string separator)
+    public ITestDataBuilder<TEntity> WithStringUniqueStartingNumber(int uniqueStartingNumber)
     {
-        _context.With.String.Separator.Set(separator);
-        return this;
-    }
-
-    public ITestDataBuilder<TEntity> WithStringUniqueStartNumber(int uniqueStartingNumber)
-    {
-        _context.With.String.StringUniqueStartNumber.Set(uniqueStartingNumber);
+        _context.With.String.StringUniqueStartingNumber.Set(uniqueStartingNumber);
         return this;
     }
 }

@@ -51,7 +51,6 @@ public class ArrayTests
         entity.Prop2.Should().NotBeNull();
         entity.Prop2.Length.Should().Be(2);
         entity.Prop2[0].Should().BeTrue();
-
     }
     
     [Fact]

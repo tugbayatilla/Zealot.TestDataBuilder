@@ -92,8 +92,8 @@ public class SampleTests
         sample.SingleProperty.Should().NotBe(default);
         sample.SinglePropertyNullable.Should().NotBe(default);
 
-        sample.StringProperty.Should().MatchBuilderNamingRegex(nameof(sample.StringProperty));
-        sample.StringPropertyNullable.Should().MatchBuilderNamingRegex(nameof(sample.StringPropertyNullable));
+        sample.StringProperty.Should().MatchBuilderNamingRegex();
+        sample.StringPropertyNullable.Should().MatchBuilderNamingRegex();
 
         sample.UInt16Property.Should().NotBe(default);
         sample.UInt16PropertyNullable.Should().NotBe(default);
@@ -119,7 +119,7 @@ public class SampleTests
         sample.Should().NotBeNull();
         sample.IntProp.Should().Be(1);
         sample.StringProp.Should()
-            .MatchBuilderNamingRegex(nameof(sample.StringProp));
+            .MatchBuilderNamingRegex();
         sample.NoSetterProp.Should().Be(default);
     }
 
@@ -176,12 +176,12 @@ public class SampleTests
 
         instance.ClassWithInheritanceProp.Should().NotBeNull();
         instance.ClassWithInheritanceProp.PropBase.Should()
-            .MatchBuilderNamingRegex(nameof(instance.ClassWithInheritanceProp.PropBase));
+            .MatchBuilderNamingRegex();
         instance.ClassWithInheritanceProp.PropListBase.Count.Should().Be(2);
         instance.ClassWithInheritanceProp.PropListBase[0].Should()
-            .MatchBuilderNamingRegex(nameof(instance.ClassWithInheritanceProp.PropListBase));
+            .MatchBuilderNamingRegex();
         instance.ClassWithInheritanceProp.PropListBase[1].Should()
-            .MatchBuilderNamingRegex(nameof(instance.ClassWithInheritanceProp.PropListBase));
+            .MatchBuilderNamingRegex();
     }
     
     [Fact]
@@ -221,15 +221,15 @@ public class SampleTests
 
         // A
         p1.RecursiveA.Should().NotBeNull();
-        p1.RecursiveA.Name.Should().MatchBuilderNamingRegex(nameof(p1.RecursiveA.Name));
+        p1.RecursiveA.Name.Should().MatchBuilderNamingRegex();
 
         // Ref B
         p1.RecursiveA.RefB.Should().NotBeNull();
-        p1.RecursiveA.RefB.Name.Should().MatchBuilderNamingRegex(nameof(p1.RecursiveA.RefB.Name));
+        p1.RecursiveA.RefB.Name.Should().MatchBuilderNamingRegex();
         
         // Ref B under Ref C
         p1.RecursiveA.RefB.RefC.Should().NotBeNull();
-        p1.RecursiveA.RefB.RefC.Name.Should().MatchBuilderNamingRegex(nameof(p1.RecursiveA.RefB.RefC.Name));
+        p1.RecursiveA.RefB.RefC.Name.Should().MatchBuilderNamingRegex();
 
         // Ref A - No recursion so it should be null
         p1.RecursiveA.RefB.RefC.RefA.Should().BeNull();

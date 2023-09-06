@@ -15,8 +15,8 @@ public class WithStringBodyTests
             .Build();
 
         instance.Should().NotBeNull();
-        instance.Prop1.Should().Be($"{body}");
-        instance.Prop2.Should().Be($"{body}");
+        instance.Prop1.Should().Be($"{body}1");
+        instance.Prop2.Should().Be($"{body}2");
     }
 
     [Fact]
@@ -27,7 +27,7 @@ public class WithStringBodyTests
             .Build();
 
         instance.Should().NotBeNull();
-        instance.Prop1.Should().MatchBuilderNamingRegex(nameof(instance.Prop1));
-        instance.Prop2.Should().MatchBuilderNamingRegex(nameof(instance.Prop2));
+        instance.Prop1.Should().MatchBuilderNamingRegex();
+        instance.Prop2.Should().MatchBuilderNamingRegex();
     }
 }

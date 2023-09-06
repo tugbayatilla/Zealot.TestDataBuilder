@@ -11,11 +11,11 @@ public class InheritanceTests
             .For<ClassWithInheritance>()
             .Build();
 
-        instance.Prop.Should().MatchBuilderNamingRegex(nameof(instance.Prop));
-        instance.PropBase.Should().MatchBuilderNamingRegex(nameof(instance.PropBase));
+        instance.Prop.Should().MatchBuilderNamingRegex();
+        instance.PropBase.Should().MatchBuilderNamingRegex();
         instance.PropListBase.Count.Should().Be(2);
-        instance.PropListBase[0].Should().MatchBuilderNamingRegex(nameof(instance.PropListBase));
-        instance.PropListBase[1].Should().MatchBuilderNamingRegex(nameof(instance.PropListBase));
+        instance.PropListBase[0].Should().MatchBuilderNamingRegex();
+        instance.PropListBase[1].Should().MatchBuilderNamingRegex();
     }
     
     [Fact]

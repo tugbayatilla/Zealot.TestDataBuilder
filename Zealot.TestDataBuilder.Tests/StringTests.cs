@@ -11,8 +11,8 @@ public class StringTests
             .For<ClassWithTwoString>()
             .Build();
 
-        entity.Prop1.Should().MatchBuilderNamingRegex(nameof(entity.Prop1));
-        entity.Prop2.Should().MatchBuilderNamingRegex(nameof(entity.Prop2));
+        entity.Prop1.Should().MatchBuilderNamingRegex();
+        entity.Prop2.Should().MatchBuilderNamingRegex();
     }
     
     [Fact]
@@ -22,8 +22,8 @@ public class StringTests
             .For<ClassWithTwoStringNullable>()
             .Build();
 
-        entity.Prop1.Should().MatchBuilderNamingRegex(nameof(entity.Prop1));
-        entity.Prop2.Should().MatchBuilderNamingRegex(nameof(entity.Prop2));
+        entity.Prop1.Should().MatchBuilderNamingRegex();
+        entity.Prop2.Should().MatchBuilderNamingRegex();
     }
     
     [Fact]
@@ -33,6 +33,6 @@ public class StringTests
             .For<ClassWithStringHavingDefaultValue>()
             .Build();
 
-        instance.Prop.Should().MatchBuilderNamingRegex(nameof(instance.Prop));
+        instance.Prop.Should().MatchBuilderNamingRegex();
     }
 }

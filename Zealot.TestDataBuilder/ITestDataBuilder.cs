@@ -47,18 +47,6 @@ public interface ITestDataBuilder<out TEntity>
     ITestDataBuilder<TEntity> WithRecursionLevel(int recursionLevel);
     
     /// <summary>
-    /// Optional: overrides default value which is nothing
-    /// Adds the given string to the beginning of all string properties
-    /// </summary>
-    ITestDataBuilder<TEntity> WithStringPrefix(string prefix);
-    
-    /// <summary>
-    /// Optional: overrides default value which is nothing
-    /// Adds the given string to the end of all string properties
-    /// </summary>
-    ITestDataBuilder<TEntity> WithStringSuffix(string suffix);
-    
-    /// <summary>
     /// Optional: overrides default value which is 1.
     /// Uniqueness can be achieved with the incremental number.
     /// </summary>
@@ -76,18 +64,12 @@ public interface ITestDataBuilder<out TEntity>
     ITestDataBuilder<TEntity> WithListSize(int size);
 
     /// <summary>
-    /// Optional: overrides default value which is the property name.
+    /// Optional: overrides default value which is the 'test_'.
     /// </summary>
     ITestDataBuilder<TEntity> WithStringBody(string body);
 
     /// <summary>
-    /// Optional: overrides default value which is empty.
+    /// Optional: overrides default value which is the incremental number starting from 1.
     /// </summary>
-    ITestDataBuilder<TEntity> WithStringSeparator(string separator);
-
-    /// <summary>
-    /// Optional: add incremental value to the end of the string to creat uniqueness.
-    /// Default is no unique number at the end of the string.
-    /// </summary>
-    ITestDataBuilder<TEntity> WithStringUniqueStartNumber(int uniqueStartingNumber);
+    ITestDataBuilder<TEntity> WithStringUniqueStartingNumber(int uniqueStartingNumber);
 }

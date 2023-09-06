@@ -27,7 +27,7 @@ public class WithOverrideTests
                 => p.Prop = p.Prop with {PropNullable = alteredText})
             .Build();
         
-        entity.Prop.Prop.Should().MatchBuilderNamingRegex(nameof(entity.Prop.Prop));
+        entity.Prop.Prop.Should().MatchBuilderNamingRegex();
         entity.Prop.PropNullable.Should().Be(alteredText);
     }
 

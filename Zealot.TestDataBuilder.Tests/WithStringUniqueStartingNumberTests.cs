@@ -2,7 +2,7 @@ using Zealot.Tests.TestObjects;
 
 namespace Zealot.Tests;
 
-public class WithStringUniqueNumberTests
+public class WithStringUniqueStartingNumberTests
 {
     [Theory]
     [InlineData(1)]
@@ -11,12 +11,11 @@ public class WithStringUniqueNumberTests
     {
         var instance = TestDataBuilder
             .For<ClassWithTwoString>()
-            .WithStringSeparator("_")
-            .WithStringUniqueStartNumber(uniqueStartingNumber)
+            .WithStringUniqueStartingNumber(uniqueStartingNumber)
             .Build();
         
         instance.Should().NotBeNull();
-        instance.Prop1.Should().Be($"{nameof(instance.Prop1)}_{uniqueStartingNumber}");
-        instance.Prop2.Should().Be($"{nameof(instance.Prop2)}_{uniqueStartingNumber+1}");
+        instance.Prop1.Should().Be($"{TestDataBuilder.DefaultStringBodyTemplate}{uniqueStartingNumber}");
+        instance.Prop2.Should().Be($"{TestDataBuilder.DefaultStringBodyTemplate}{uniqueStartingNumber+1}");
     }
 }

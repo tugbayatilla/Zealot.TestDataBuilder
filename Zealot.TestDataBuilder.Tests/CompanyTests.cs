@@ -19,7 +19,7 @@ public class CompanyTests
 
         // Company
         company.CompanyId.Should().Be(1);
-        company.Name.Should().MatchBuilderNamingRegex(nameof(company.Name));
+        company.Name.Should().MatchBuilderNamingRegex();
         company.FoundAt.Should().Be(now);
         company.Closed.Should().Be(now);
         
@@ -44,12 +44,12 @@ public class CompanyTests
         company.SubWorkers.Count().Should().Be(2);
         company.SubWorkers.First().Company.Should().NotBeSameAs(company);
         company.SubWorkers.Last().Company.Should().NotBeSameAs(company);
-        company.SubWorkers.First().Name.Should().MatchBuilderNamingRegex("Name");
-        company.SubWorkers.Last().Name.Should().MatchBuilderNamingRegex("Name");
+        company.SubWorkers.First().Name.Should().MatchBuilderNamingRegex();
+        company.SubWorkers.Last().Name.Should().MatchBuilderNamingRegex();
         
         // Main Address
         company.MainAddress.Should().NotBeNull();
-        company.MainAddress.Name.Should().MatchBuilderNamingRegex("name");
+        company.MainAddress.Name.Should().MatchBuilderNamingRegex();
         
         // Main Workers
         company.MainWorkers.Should().NotBeNull();

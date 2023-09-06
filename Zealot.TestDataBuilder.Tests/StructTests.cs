@@ -12,8 +12,8 @@ public class StructTests
             .Build();
 
         subject.Prop.Should().NotBeNull();
-        subject.Prop.Prop.Should().MatchBuilderNamingRegex(nameof(subject.Prop.Prop));
-        subject.Prop.PropNullable.Should().MatchBuilderNamingRegex(nameof(subject.Prop.PropNullable));
+        subject.Prop.Prop.Should().MatchBuilderNamingRegex();
+        subject.Prop.PropNullable.Should().MatchBuilderNamingRegex();
     }
     
     [Fact]
@@ -43,8 +43,8 @@ public class StructTests
         subject.ByteNullableProp.Should().Be(a);
         subject.CharProp.Equals('A').Should().BeTrue();
         subject.CharNullableProp!.Value.Equals('A').Should().BeTrue();
-        subject.StringProp.Should().MatchBuilderNamingRegex(nameof(subject.StringProp));
-        subject.StringNullableProp.Should().MatchBuilderNamingRegex(nameof(subject.StringNullableProp));
+        subject.StringProp.Should().MatchBuilderNamingRegex();
+        subject.StringNullableProp.Should().MatchBuilderNamingRegex();
         subject.UInt16Prop.Should().Be(13);
         subject.UInt16NullableProp.Should().Be(14);
         subject.UInt32Prop.Should().Be(15);

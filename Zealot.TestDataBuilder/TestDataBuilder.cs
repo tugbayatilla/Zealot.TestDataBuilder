@@ -8,6 +8,11 @@ namespace Zealot;
 public static class TestDataBuilder
 {
     /// <summary>
+    /// Default string body text
+    /// </summary>
+    public static readonly string DefaultStringBodyTemplate = "test_";
+    
+    /// <summary>
     /// Required
     /// </summary>
     public static ITestDataBuilder<TEntity> For<TEntity>()

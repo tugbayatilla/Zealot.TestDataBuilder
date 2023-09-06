@@ -14,7 +14,7 @@ public class WithOnlyTests
             .WithOnly<string>()
             .Build();
 
-        entity.StringProp.Should().MatchBuilderNamingRegex(nameof(entity.StringProp));
+        entity.StringProp.Should().MatchBuilderNamingRegex();
         entity.IntProp.Should().Be(0);
     }
     
@@ -39,7 +39,7 @@ public class WithOnlyTests
             .WithOnly<string>()
             .Build();
 
-        entity.StringProp.Should().MatchBuilderNamingRegex(nameof(entity.StringProp));
+        entity.StringProp.Should().MatchBuilderNamingRegex();
         entity.IntProp.Should().Be(0);
     }
 
