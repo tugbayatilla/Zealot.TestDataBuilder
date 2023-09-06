@@ -20,14 +20,14 @@ public class WithStringBodyTests
     }
 
     [Fact]
-    public void Default_is_property_name()
+    public void Default_is_test_underscore()
     {
         var instance = TestDataBuilder
             .For<ClassWithTwoString>()
             .Build();
 
         instance.Should().NotBeNull();
-        instance.Prop1.Should().MatchBuilderNamingRegex();
-        instance.Prop2.Should().MatchBuilderNamingRegex();
+        instance.Prop1.Should().Be("test_1");
+        instance.Prop2.Should().Be("test_2");
     }
 }
