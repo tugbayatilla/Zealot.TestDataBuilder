@@ -7,17 +7,29 @@ internal class ListStrategy : IStrategy
     public Expression<Func<Type, bool>> ResolveCondition
         => info => AvailableTypes.Any(x => x.Name == info.Name);
 
-    public object Execute(IContext context)
+    public object? Execute(IContext context)
     {
         var listType = context.Scope.EntityType;
         listType = ChangeListTypeIfGeneric(context, listType);
 
-        var list = Instance.Create(listType, context);
-        if (list == null) return null!;
+        var list = GetListInstanceIfInitializedInProperty(context);
+
+        list ??= Instance.Create(listType, context);
         
-        FillListWithData(context, list);
+        FillListWithData(context, ref list);
 
         return list;
+    }
+
+    private static object? GetListInstanceIfInitializedInProperty(IContext context)
+    {
+        if (!string.IsNullOrWhiteSpace(context.Scope.ParentPropertyName))
+        {
+            var pi = context.Scope.Parent!.EntityType.GetProperty(context.Scope.ParentPropertyName);
+            return pi!.GetValue(context.Scope.Parent.Entity, null);
+        }
+
+        return null;
     }
 
     private static Type ChangeListTypeIfGeneric(IContext context, Type listType)
@@ -30,8 +42,10 @@ internal class ListStrategy : IStrategy
         return listType;
     }
 
-    private static void FillListWithData(IContext context, object instance)
+    private static void FillListWithData(IContext context, ref object? instance)
     {
+        if (instance == null) return;
+        
         var argumentType = instance.GetType().GetGenericArguments().FirstOrDefault() ?? typeof(string);
         var strategy = context.StrategyContainer.Resolve(argumentType);
 
