@@ -5,6 +5,34 @@ namespace Zealot.Tests;
 public class ListTests
 {
     [Fact]
+    public void Support_IListOfString()
+    {
+        var entity = TestDataBuilder
+            .For<ClassWithIListOfString>()
+            .Build();
+
+        entity.Prop.Should().NotBeNull();
+        entity.Prop.Count.Should().Be(2);
+        entity.Prop[0].Should().Be("test_1");
+        entity.Prop[1].Should().Be("test_2");
+    }
+    
+    [Fact]
+    public void Support_IListOfClassWithTwoString()
+    {
+        var entity = TestDataBuilder
+            .For<ClassWithIListOfClassWithTwoString>()
+            .Build();
+
+        entity.Prop.Should().NotBeNull();
+        entity.Prop.Count.Should().Be(2);
+        entity.Prop[0].Prop1.Should().Be("test_1");
+        entity.Prop[0].Prop2.Should().Be("test_2");
+        entity.Prop[1].Prop1.Should().Be("test_3");
+        entity.Prop[1].Prop2.Should().Be("test_4");
+    }
+    
+    [Fact]
     public void Support_IListGeneric()
     {
         var entity = TestDataBuilder
@@ -12,6 +40,7 @@ public class ListTests
             .Build();
 
         entity.Prop.Should().NotBeNull();
+        entity.Prop.Count.Should().Be(2);
     }
     
     [Fact]
