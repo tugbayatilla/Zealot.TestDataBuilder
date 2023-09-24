@@ -9,6 +9,9 @@ internal class ByteStrategy : IStrategy
 
     public object Execute(IContext context)
     {
+        if (context.With.Default.IsUsingDefault)
+            return default!;
+        
         return A;
     }
     
