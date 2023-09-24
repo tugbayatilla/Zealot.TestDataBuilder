@@ -11,4 +11,5 @@ internal interface IWith
     IWithLogger Log { get; }
     IWithOverride Override { get; }
     IWithList List { get; }
+    IWithDefault Default { get; set; }
 }

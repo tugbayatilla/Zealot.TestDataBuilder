@@ -101,4 +101,10 @@ internal class TestDataBuilder<TEntity> : ITestDataBuilder<TEntity>
         _context.With.String.StringUniqueStartingNumber = uniqueStartingNumber;
         return this;
     }
+
+    public ITestDataBuilder<TEntity> WithDefault()
+    {
+        _context.With.Default.IsUsingDefault = true;
+        return this;
+    }
 }
