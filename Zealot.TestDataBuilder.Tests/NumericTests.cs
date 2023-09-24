@@ -180,7 +180,7 @@ public class NumericTests
             .For<ClassWithTwoBool>()
             .Build();
         
-        subject.Prop.Should().BeTrue();
+        subject.Prop1.Should().BeTrue();
         subject.Prop2.Should().BeTrue();
     }
     
