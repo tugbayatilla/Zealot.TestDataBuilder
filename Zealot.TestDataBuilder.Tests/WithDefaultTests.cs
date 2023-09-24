@@ -44,4 +44,17 @@ public class WithDefaultTests
         instance.Prop1.Should().Be(Guid.Empty);
         instance.Prop2.Should().Be(Guid.Empty);
     }
+    
+    [Fact]
+    public void Support_Char()
+    {
+        var instance = TestDataBuilder
+            .For<ClassWithTwoChar>()
+            .WithDefault()
+            .Build();
+
+        instance.Should().NotBeNull();
+        instance.Prop1.Should().Be(default);
+        instance.Prop2.Should().Be(default);
+    }
 }
