@@ -208,3 +208,17 @@ var instance = TestDataBuilder
                .Build();
 ```
 
+### WithDefault
+
+> You can change all properties with default values.
+
+```csharp
+using Zealot;
+
+var guid = Guid.NewGuid();
+var instance = TestDataBuilder
+               .For<Your Class or Struct or any Primitive Type>()
+               .WithDefault()
+               .Build();
+```
+
