@@ -57,16 +57,6 @@ internal class TestDataBuilder<TEntity> : ITestDataBuilder<TEntity>
         return this;
     }
 
-    public ITestDataBuilder<TEntity> WithStringPrefix(string prefix)
-    {
-        return this;
-    }
-
-    public ITestDataBuilder<TEntity> WithStringSuffix(string suffix)
-    {
-        return this;
-    }
-
     public ITestDataBuilder<TEntity> WithStartingNumber(int startingNumber)
     {
         _context.With.Number.StartingNumber = startingNumber;
