@@ -83,4 +83,17 @@ public class WithDefaultTests
         instance.Prop1.Should().Be(default);
         instance.Prop2.Should().Be(default);
     }
+    
+    [Fact]
+    public void Support_Datetime()
+    {
+        var instance = TestDataBuilder
+            .For<ClassWithTwoDatetime>()
+            .WithDefault()
+            .Build();
+
+        instance.Should().NotBeNull();
+        instance.Prop1.Should().Be(default);
+        instance.Prop2.Should().Be(default);
+    }
 }
