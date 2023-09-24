@@ -8,6 +8,9 @@ internal class StringStrategy : IStrategy
 
     public object Execute(IContext context)
     {
+        if (context.With.Default.IsUsingDefault)
+            return default!;
+        
         var sb = new StringBuilder();
         
         sb.Append(context.With.String.Body);

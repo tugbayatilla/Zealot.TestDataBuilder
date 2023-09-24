@@ -11,7 +11,7 @@ public class CharTests
             .For<ClassWithTwoChar>()
             .Build();
         
-        subject.Prop.Should().NotBeNull();
+        subject.Prop1.Should().NotBeNull();
         subject.Prop2.Should().NotBeNull();
     }
     

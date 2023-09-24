@@ -7,6 +7,9 @@ internal class DatetimeStrategy : IStrategy
 
     public object Execute(IContext context)
     {
+        if (context.With.Default.IsUsingDefault)
+            return default!;
+        
         return context.With.Date.UtcDate;
     }
     

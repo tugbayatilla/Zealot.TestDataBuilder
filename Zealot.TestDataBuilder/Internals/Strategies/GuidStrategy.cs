@@ -7,6 +7,9 @@ internal class GuidStrategy : IStrategy
 
     public object Execute(IContext context)
     {
+        if (context.With.Default.IsUsingDefault)
+            return Guid.Empty;
+        
         return context.With.Guid.Guid;
     }
     private static IEnumerable<Type> AvailableTypes => new[]

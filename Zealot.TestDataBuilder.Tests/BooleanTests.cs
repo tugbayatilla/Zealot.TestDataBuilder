@@ -11,7 +11,7 @@ public class BooleanTests
             .For<ClassWithTwoBool>()
             .Build();
 
-        entity.Prop.Should().Be(true);
+        entity.Prop1.Should().Be(true);
     }
     
     [Fact]

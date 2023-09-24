@@ -11,7 +11,7 @@ public class ByteTests
             .For<ClassWithTwoByte>()
             .Build();
         
-        subject.Prop.Should().NotBe(default);
+        subject.Prop1.Should().NotBe(default);
         subject.Prop2.Should().NotBe(default);
     }
     

@@ -11,4 +11,5 @@ internal class With : IWith
     public IWithLogger Log { get; } = new WithLog();
     public IWithOverride Override { get; } = new WithOverride();
     public IWithList List { get; } = new WithList();
+    public IWithDefault Default { get; set; } = new WithDefault();
 }

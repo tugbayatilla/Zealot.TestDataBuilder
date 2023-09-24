@@ -57,16 +57,6 @@ internal class TestDataBuilder<TEntity> : ITestDataBuilder<TEntity>
         return this;
     }
 
-    public ITestDataBuilder<TEntity> WithStringPrefix(string prefix)
-    {
-        return this;
-    }
-
-    public ITestDataBuilder<TEntity> WithStringSuffix(string suffix)
-    {
-        return this;
-    }
-
     public ITestDataBuilder<TEntity> WithStartingNumber(int startingNumber)
     {
         _context.With.Number.StartingNumber = startingNumber;
@@ -99,6 +89,12 @@ internal class TestDataBuilder<TEntity> : ITestDataBuilder<TEntity>
     public ITestDataBuilder<TEntity> WithStringUniqueStartingNumber(int uniqueStartingNumber)
     {
         _context.With.String.StringUniqueStartingNumber = uniqueStartingNumber;
+        return this;
+    }
+
+    public ITestDataBuilder<TEntity> WithDefault()
+    {
+        _context.With.Default.IsUsingDefault = true;
         return this;
     }
 }

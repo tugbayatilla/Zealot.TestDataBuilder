@@ -9,6 +9,9 @@ internal class NumberStrategy : IStrategy
 
     public object Execute(IContext context)
     {
+        if (context.With.Default.IsUsingDefault)
+            return default!;
+        
         var type = FindType(context);
 
         SetStartingNumberAtTheBeginning(context);

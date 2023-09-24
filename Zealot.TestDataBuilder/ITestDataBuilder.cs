@@ -72,4 +72,9 @@ public interface ITestDataBuilder<out TEntity>
     /// Optional: overrides default value which is the incremental number starting from 1.
     /// </summary>
     ITestDataBuilder<TEntity> WithStringUniqueStartingNumber(int uniqueStartingNumber);
+
+    /// <summary>
+    /// Optional: set default values to the all properties
+    /// </summary>
+    ITestDataBuilder<TEntity> WithDefault();
 }
